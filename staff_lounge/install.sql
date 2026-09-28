@@ -20,4 +20,21 @@ PROMPT 06 - Scheduler job
 PROMPT 07 - Grants
 @@07_grants.sql
 
+PROMPT Checking for invalid objects
+DECLARE
+    V_COUNT NUMBER;
+BEGIN
+    SELECT COUNT(*)
+    INTO   V_COUNT
+    FROM   ALL_OBJECTS
+    WHERE  OWNER  = 'HRD'
+    AND    STATUS = 'INVALID'
+    AND    (OBJECT_NAME LIKE '%LOUNGE%');
+
+    IF V_COUNT > 0 THEN
+        RAISE_APPLICATION_ERROR(-20199, V_COUNT || ' staff lounge object(s) failed to compile. See ALL_ERRORS.');
+    END IF;
+END;
+/
+
 PROMPT Staff lounge module installed.

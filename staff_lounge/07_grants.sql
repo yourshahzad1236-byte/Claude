@@ -8,9 +8,12 @@
 -- device, APEX parsing-schema-proxy, HR and payroll accounts as needed.
 --------------------------------------------------------------------------------
 
-CREATE ROLE HRD_LOUNGE_DEVICE_ROLE;   -- card readers / swipe middleware
-CREATE ROLE HRD_LOUNGE_HR_ROLE;       -- HR officers: reports, reversals, cards
-CREATE ROLE HRD_LOUNGE_PAYROLL_ROLE;  -- payroll process
+-- Card readers / swipe middleware
+CREATE ROLE HRD_LOUNGE_DEVICE_ROLE;
+-- HR officers: reports, reversals, cards, rates
+CREATE ROLE HRD_LOUNGE_HR_ROLE;
+-- Payroll process
+CREATE ROLE HRD_LOUNGE_PAYROLL_ROLE;
 
 -- Devices: record swipes only
 GRANT EXECUTE ON HRD.PKG_LOUNGE_DEVICE TO HRD_LOUNGE_DEVICE_ROLE;
