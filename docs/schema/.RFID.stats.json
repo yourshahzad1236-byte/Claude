@@ -1,0 +1,28 @@
+{
+ "schema": "RFID",
+ "counts": {
+  "tables": 43,
+  "views": 15,
+  "sequences": 5,
+  "packages": 15,
+  "procedures": 3,
+  "functions": 1,
+  "triggers": 104,
+  "types": 2,
+  "synonyms": 31
+ },
+ "fk_total": 20,
+ "tables_without_pk": [
+  "ATTENDANCE",
+  "ATTENDANCE_INCORRECT",
+  "RFID_ACCESS_SYNC_LOG",
+  "RFID_CONFIDENTIAL_Q_HIS",
+  "RFID_DELETED_ACCESS_AUDIT",
+  "RFID_DOORS_LOG",
+  "RFID_MACHINES_DATA",
+  "RFID_MACHINE_CATEGORY_ACS",
+  "RFID_MACHINE_TIMESTAMP",
+  "TMP_SELECTED_MACHINES_PR",
+  "TRAINING_ATTENDANCE_STG"
+ ]
+}
