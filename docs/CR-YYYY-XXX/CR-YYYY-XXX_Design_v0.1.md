@@ -486,10 +486,10 @@ Application: the existing HR application, ID TBC (Q-20). Pages 700–799 are res
 | 755 | Request adjustment (modal) | P755_TRIP_DATE, P755_TRIP_DIRECTION, P755_REASON; BTN_SUBMIT. 3 fields, 1 click (NFR-USA-01) | P_SUBMIT_ADJUSTMENT | AUTH_TRANSPORT_EMPLOYEE |
 | 760 | Adjustment approvals | REG_PENDING_REQUESTS (IR with row version hidden); BTN_APPROVE, BTN_REJECT; P760_COMMENT | P_DECIDE_ADJUSTMENT | AUTH_TRANSPORT_APPROVER |
 | 770 | Transaction trail | REG_TRAIL (IR, export CSV/XLSX), REG_AUDIT | VW_TRANSPORT_TRAIL, audit log | AUTH_TRANSPORT_HR or AUTH_TRANSPORT_FINANCE |
-| 780 | Non-swipe report | REG_NONSWIPE (IR); P780_PERIOD; excludes exempted days | F_IS_PRESENT, exemptions (DS-14) | AUTH_TRANSPORT_HR or AUTH_TRANSPORT_COORDINATOR |
+| 780 | Non-swipe report | REG_NONSWIPE (IR); P780_PERIOD, P780_MIN_TRIPS; excludes exempted days | F_NONSWIPE_REPORT (DS-14) | AUTH_TRANSPORT_HR or AUTH_TRANSPORT_COORDINATOR |
 | 790 | Monthly register | REG_PERIODS, REG_REGISTER (IR with FINANCE_REVIEW_FLAG filter); BTN_CLOSE_PERIOD, BTN_SEND_TO_PAYROLL, BTN_REOPEN | P_CLOSE_PERIOD, P_SEND_TO_PAYROLL, P_REOPEN_PERIOD | AUTH_TRANSPORT_FINANCE |
 
-Session state protection is on for every item carrying an ID. The employee is always taken from the session (`F_GET_CURRENT_EMPLOYEE`), never from a page item. This closes the tampering risk seen with `P20_EMP_ID` in the demo schema.
+Session state protection is on for every item carrying an ID. The employee is always taken from the session (`F_GET_CURRENT_EMPLOYEE`), never from a page item, so one employee can't act as another by changing a value in the browser.
 
 # 8. Integrations, jobs and notifications
 | DS | Name | Type | Trigger / schedule | Logic | Failure handling |
@@ -575,13 +575,13 @@ In reverse order:
 5. Drop the package and views.
 6. Run `CR-YYYY-XXX_99_rollback.sql` (triggers, tables, sequences).
 
-**Data safety:** step 6 destroys all transport data. Before go-live that is fine. After go-live, stop at step 1–3 (disable jobs, block the endpoint, hide the pages) and keep the data for payroll audit.
+**Data safety:** step 6 destroys all transport data. Before go-live that is fine. After go-live, do only steps 1–3 (disable jobs, block the endpoint, hide the pages) and keep the data for payroll audit.
 
 # 13. Testing notes for developers and QA
 - **Unit-test each setting combination that matters:** SETTLEMENT_MODE × 4, PRORATION_MODE × 3, DIRECTION_MODE × 2, SINGLE_SWIPE_RULE × 2. A pairwise set of about 12 cases is enough.
 - **Month arithmetic:** November 2026 has 25 Monday–Saturday days and December 2026 has 27. Check that CAP_ZERO gives 0 and a Finance review flag for a full-use employee, and that SCALE_ALLOWANCE gives 25,000 and 27,000 allowances.
 - **Swipe edge cases:** replay of the same batch; out-of-order arrival of offline swipes; a swipe exactly at the repeat-window boundary; a night shift crossing midnight (trip date = start date); the last day of the month.
-- **Concurrency:** two approvers deciding the same request (one gets -20709); the job running while Finance closes the period (close runs derivation first, and the job skips CLOSED periods).
+- **Concurrency:** two approvers deciding the same request (one gets -20709); the job running while Finance closes the period (close runs derivation first; trips dated in a closed period go to the next open period, §6.2 step 7).
 - **Security:** direct URL to pages without the role; changing P755 items in the browser; maker = checker.
 - QA writes the functional test cases from the SRS (`skmch-qa-testcases`). These notes don't replace them.
 
@@ -589,7 +589,7 @@ In reverse order:
 ## 14.1 Risks
 | Risk | Impact | Mitigation |
 |---|---|---|
-| Blocking questions answered late or not at all | Wrong settings at go-live | Defaults in §14.3 are the MoM's literal reading; Finance reviews the settings before activation |
+| Blocking questions answered late or not at all | Wrong settings at go-live | Defaults in §14.3 are the closest reading of the MoM; Finance reviews every setting before activation |
 | Existing card, attendance, leave and payroll objects differ from assumptions | Adapter rework | All access isolated in 6 adapter functions (KD-02); schema indexing is the first task |
 | Terminal vendor can't call REST | Swipe capture blocked | Fallback: vendor writes to a staging table and a job calls P_RECORD_SWIPE (Q-19) |
 | Many settings increase the test effort | Schedule | Pairwise testing (§13); only the chosen combination needs full UAT |
