@@ -5718,7 +5718,7 @@ Store leave tracking information in accordance with employee and leave type
 | HR_REMARKS | VARCHAR2(1000) | Y |  |
 
 - **PK** `PK_LEAVE_APPLICATION_HISTORY`: APPLICANT_MRNO, EMP_LEAVE_SERIAL_NO, APPLICANT_SERIAL_NO
-- **CHECK** `CK_LEAVE_APPLICATION_HISTORY_1`:  EHC_QUEUE IN ('Y','N'
+- **CHECK** `CK_LEAVE_APPLICATION_HISTORY_1`: EHC_QUEUE IN ('Y','N'
 - **Triggers**: `LEAVE_APPLICATION_HISTORY_DEL` (after delete), `LEAVE_APPLICATION_HISTORY_INS` (before insert), `LEAVE_APPLICATION_HISTORY_UPD` (before update)
 
 ## HRD.LEAVE_APPLICATION_QUEUE
@@ -5740,7 +5740,7 @@ Store status of leave queues for approval  or rejection purpose
 | HR_REMARKS | VARCHAR2(1000) | Y |  |
 
 - **PK** `PK_LEAVE_APPLICATION_QUEUE`: APPLICANT_MRNO, EMP_LEAVE_SERIAL_NO
-- **CHECK** `CK_LEAVE_APPLICATION_QUEUE_1`:  EHC_QUEUE IN ('Y','N'
+- **CHECK** `CK_LEAVE_APPLICATION_QUEUE_1`: EHC_QUEUE IN ('Y','N'
 - **Triggers**: `LEAVE_APPLICATION_PT_DEL` (after delete), `LEAVE_APPLICATION_PT_INS` (before insert), `LEAVE_APPLICATION_PT_UPD` (after update), `LEAVE_APPLICATION_QUEUE_DEL` (after delete), `LEAVE_APPLICATION_QUEUE_INS` (before insert), `LEAVE_APPLICATION_QUEUE_UPD` (before update)
 
 ## HRD.LEAVE_APPROVAL_HISTORY
@@ -8203,7 +8203,7 @@ _No standard audit columns._
 
 - **PK** `PK_SHIFT_DAYS`: SHIFT_DATE, SHIFT_ID
 - **FK** `FK_SHIFT_DAYS_1`: (SHIFT_ID) -> HRD.SHIFT(SHIFT_ID)
-- **CHECK** `CHK_SHIF_DAYS_1`: SHIFT_DATE = TRUNC(SHIFT_DATE
+- **CHECK** `CHK_SHIF_DAYS_1`: SHIFT_DATE = TRUNC(SHIFT_DATE))
 - **CHECK** `CK_SHIFT_DAYS_001`: RAMZAN IN ('Y','N'
 - **Triggers**: `SHIFT_DAYS_DEL` (after delete), `SHIFT_DAYS_INS` (before insert), `SHIFT_DAYS_UPD` (before update)
 

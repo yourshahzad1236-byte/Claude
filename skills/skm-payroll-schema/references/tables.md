@@ -148,7 +148,7 @@ This table is used to define different types of allowances / deductions which ar
 
 - **PK** `PK_DEF_ARREAR`: ARREAR_CODE
 - **CHECK** `CK_DEF_ARREAR_1`: ACTIVE IN ('Y', 'N'
-- **CHECK** `CK_DEF_ARREAR_2`:  AD_TYPE IN ('A','D'
+- **CHECK** `CK_DEF_ARREAR_2`: AD_TYPE IN ('A','D'
 - **Triggers**: `DEF_ARREAR_CEA` (before insert or update or delete), `DEF_ARREAR_DEL` (after delete), `DEF_ARREAR_INS` (before insert), `DEF_ARREAR_UPD` (before update), `TRG_WS_WVB_PD_FA_Q` (after insert or update or delete)
 
 ## PAYROLL.ARREAR_DETAIL

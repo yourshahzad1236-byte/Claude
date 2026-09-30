@@ -17,7 +17,7 @@ The SKM database is split in four Oracle schemas. Each has its own skill; load t
 ## How to route
 1. Identify the business area: lookup/master data -> `skm-definitions-schema`; employees/HR -> `skm-hrd-schema`; salary/loans/expenses -> `skm-payroll-schema`; attendance machines/RFID -> `skm-rfid-schema`.
 2. Open that skill's `references/tables.md` and find the table (`## SCHEMA.TABLE`). Read columns, PK and FK lines.
-3. Follow `FK` lines across schemas: `DEFINITIONS` is referenced by the others for lookup values; `HRD` employees link to `PAYROLL` and `RFID` records. Load the target schema's skill for the referenced table.
+3. Follow `FK` lines across schemas: Load the target schema's skill for the referenced table.
 4. Before writing PL/SQL, check `references/code-objects.md` for an existing package/procedure instead of duplicating logic.
 5. Use only names present in the skills. If a table or column is missing, say so and ask.
 
