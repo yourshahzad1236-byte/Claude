@@ -1,0 +1,225 @@
+{
+ "schema": "HRD",
+ "tables": {
+  "HRD_LEAVE_REQUEST": {
+   "columns": {
+    "LEAVE_REQUEST_ID": {
+     "type": "NUMBER(12)",
+     "nullable": false,
+     "default": ""
+    },
+    "EMPLOYEE_ID": {
+     "type": "NUMBER(10)",
+     "nullable": false,
+     "default": ""
+    },
+    "LEAVE_TYPE": {
+     "type": "VARCHAR2(3)",
+     "nullable": false,
+     "default": ""
+    },
+    "FROM_DATE": {
+     "type": "DATE",
+     "nullable": false,
+     "default": ""
+    },
+    "TO_DATE": {
+     "type": "DATE",
+     "nullable": false,
+     "default": ""
+    },
+    "STATUS": {
+     "type": "VARCHAR2(10)",
+     "nullable": true,
+     "default": "'SUBMITTED'"
+    },
+    "APPROVED_BY": {
+     "type": "NUMBER(10)",
+     "nullable": true,
+     "default": ""
+    },
+    "APPROVED_ON": {
+     "type": "DATE",
+     "nullable": true,
+     "default": ""
+    }
+   },
+   "pk": [
+    "LEAVE_REQUEST_ID"
+   ],
+   "fks": [
+    {
+     "name": "",
+     "columns": [
+      "EMPLOYEE_ID"
+     ],
+     "ref_table": "HRD_EMPLOYEE_MST",
+     "ref_columns": []
+    }
+   ],
+   "uniques": [],
+   "checks": [],
+   "indexes": [],
+   "triggers": [
+    "TRG_LEAVE_REQUEST_BI (BEFORE INSERT)"
+   ],
+   "comment": "",
+   "col_comments": {},
+   "files": [
+    "tables/hrd_leave_request.sql"
+   ],
+   "referenced_by": [
+    "PACKAGE BODY PKG_LEAVE_MANAGEMENT (BODY)",
+    "TRIGGER TRG_LEAVE_REQUEST_BI",
+    "VIEW VW_PENDING_LEAVES"
+   ]
+  },
+  "HRD_EMPLOYEE_MST": {
+   "columns": {
+    "EMPLOYEE_ID": {
+     "type": "NUMBER(10)",
+     "nullable": false,
+     "default": ""
+    },
+    "EMP_NAME": {
+     "type": "VARCHAR2(100)",
+     "nullable": false,
+     "default": ""
+    },
+    "DEPT_ID": {
+     "type": "NUMBER(6)",
+     "nullable": true,
+     "default": ""
+    },
+    "REPORTING_MGR_ID": {
+     "type": "NUMBER(10)",
+     "nullable": true,
+     "default": ""
+    },
+    "STATUS": {
+     "type": "VARCHAR2(1)",
+     "nullable": false,
+     "default": "'A'"
+    },
+    "CREATED_ON": {
+     "type": "DATE",
+     "nullable": true,
+     "default": "SYSDATE"
+    }
+   },
+   "pk": [
+    "EMPLOYEE_ID"
+   ],
+   "fks": [
+    {
+     "name": "FK_EMP_MGR",
+     "columns": [
+      "REPORTING_MGR_ID"
+     ],
+     "ref_table": "HRD_EMPLOYEE_MST",
+     "ref_columns": [
+      "EMPLOYEE_ID"
+     ]
+    }
+   ],
+   "uniques": [],
+   "checks": [
+    "CONSTRAINT CK_EMP_STATUS CHECK (STATUS IN ('A','I'))"
+   ],
+   "indexes": [
+    "IDX_EMP_DEPT (DEPT_ID)"
+   ],
+   "triggers": [],
+   "comment": "Employee master",
+   "col_comments": {
+    "STATUS": "A=Active, I=Inactive"
+   },
+   "files": [
+    "tables/hrd_employee_mst.sql"
+   ],
+   "referenced_by": [
+    "VIEW VW_PENDING_LEAVES"
+   ]
+  }
+ },
+ "programs": {
+  "TRG_LEAVE_REQUEST_BI": {
+   "type": "TRIGGER",
+   "units": [],
+   "uses": [
+    "HRD_LEAVE_REQUEST"
+   ],
+   "calls": [],
+   "called_by": [],
+   "files": [
+    "tables/hrd_leave_request.sql"
+   ]
+  },
+  "VW_PENDING_LEAVES": {
+   "type": "VIEW",
+   "units": [],
+   "uses": [
+    "HRD_EMPLOYEE_MST",
+    "HRD_LEAVE_REQUEST"
+   ],
+   "calls": [],
+   "called_by": [],
+   "files": [
+    "tables/hrd_leave_request.sql"
+   ]
+  },
+  "PKG_LEAVE_MANAGEMENT (BODY)": {
+   "type": "PACKAGE BODY",
+   "units": [],
+   "uses": [
+    "HRD_LEAVE_REQUEST"
+   ],
+   "calls": [],
+   "called_by": [
+    "APEX 200:20 Apply Leave"
+   ],
+   "files": [
+    "packages/pkg_leave_management.pkb"
+   ]
+  },
+  "PKG_LEAVE_MANAGEMENT": {
+   "type": "PACKAGE",
+   "units": [
+    "PROCEDURE P_SUBMIT_LEAVE(P_EMPLOYEE_ID IN NUMBER, P_LEAVE_TYPE IN VARCHAR2, P_FROM IN DATE, P_TO IN DATE)",
+    "FUNCTION F_LEAVE_BALANCE(P_EMPLOYEE_ID IN NUMBER, P_LEAVE_TYPE IN VARCHAR2) RETURN NUMBER"
+   ],
+   "uses": [],
+   "calls": [],
+   "called_by": [
+    "APEX 200:20 Apply Leave"
+   ],
+   "files": [
+    "packages/pkg_leave_management.pks"
+   ]
+  }
+ },
+ "sequences": [
+  "EMPLOYEE_SEQ"
+ ],
+ "apex": {
+  "200": {
+   "20": {
+    "name": "Apply Leave",
+    "uses": [],
+    "calls": [
+     "PKG_LEAVE_MANAGEMENT"
+    ]
+   },
+   "30": {
+    "name": "Pending Approvals",
+    "uses": [
+     "VW_PENDING_LEAVES"
+    ],
+    "calls": []
+   }
+  }
+ },
+ "documents": [
+  "overview.md"
+ ]
+}

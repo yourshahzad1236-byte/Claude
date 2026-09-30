@@ -1,0 +1,7 @@
+{
+  "name": "skmch-sdlc",
+  "version": "1.0.0",
+  "description": "SKMCH SDLC skills: MoM to SRS, SRS review, design doc/RFC, Oracle/APEX implementation, QA test cases and execution, system documentation, HRD schema context and naming standards.",
+  "author": { "name": "SKMCH Information Systems" },
+  "keywords": ["sdlc", "srs", "rfc", "oracle", "plsql", "apex", "qa", "healthcare"]
+}
