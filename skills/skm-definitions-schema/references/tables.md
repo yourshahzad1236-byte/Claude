@@ -111,8 +111,8 @@ Audit/multi-location columns (user_id, terminal, trn_date, original_user_id, ori
 
 - **PK** `PK_REPORT_TYPES`: REPORT_TYPE_ID
 - **UK** `UK_REPORT_TYPES_01`: REPORT_TYPE_DESC
-- **CHECK** `CK_REPORT_TYPES_2`: ORIENTATION IN ('P','L'
-- **CHECK** `CK_REPORT_TYPES_3`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_REPORT_TYPES_2`: ORIENTATION IN ('P','L')
+- **CHECK** `CK_REPORT_TYPES_3`: ACTIVE IN ('Y','N')
 - **Triggers**: `REPORT_TYPES_CEA` (before insert or update or delete), `REPORT_TYPES_DEL` (after delete), `REPORT_TYPES_INS` (before insert), `REPORT_TYPES_UPD` (before update), `TRG_WS_FSH_UM_XJ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DEVELOPMENT_TOOLS
@@ -153,11 +153,11 @@ Audit/multi-location columns (user_id, terminal, trn_date, original_user_id, ori
 
 - **PK** `PK_DB_SERVICES`: SERVICE_ID
 - **UK** `UK_DB_SERVICES_1`: SERVICE_NAME
-- **CHECK** `CK_DB_SERVICES_1`: DB_TYPE IN ('DEV','QA','PRE-PROD','STANDBY','PROD','SNAPSHOT'
+- **CHECK** `CK_DB_SERVICES_1`: DB_TYPE IN ('DEV','QA','PRE-PROD','STANDBY','PROD','SNAPSHOT')
 - **CHECK** `CK_DB_SERVICES_2`: UPPER(SERVICE_NAME) = SERVICE_NAME
-- **CHECK** `CK_DB_SERVICES_3`: DC_TYPE IN ('D','C','X'
-- **CHECK** `CK_DB_SERVICES_4`: OBSOLETE IN ('Y','N'
-- **CHECK** `CK_DB_SERVICES_5`: IS_DISTRIBUTED_MODE IN ('Y','N'
+- **CHECK** `CK_DB_SERVICES_3`: DC_TYPE IN ('D','C','X')
+- **CHECK** `CK_DB_SERVICES_4`: OBSOLETE IN ('Y','N')
+- **CHECK** `CK_DB_SERVICES_5`: IS_DISTRIBUTED_MODE IN ('Y','N')
 - **Triggers**: `DB_SERVICES_CHK` (before insert or update), `DB_SERVICES_DEL` (after delete), `DB_SERVICES_INS` (before insert), `DB_SERVICES_UPD` (before update)
 
 ## DEFINITIONS.OBJECTS
@@ -223,10 +223,10 @@ Audit/multi-location columns (user_id, terminal, trn_date, original_user_id, ori
 - **FK** `FK_OBJECTS_4`: (REPORT_TYPE_ID) -> DEFINITIONS.REPORT_TYPES(REPORT_TYPE_ID) [disabled]
 - **FK** `FK_OBJECTS_5`: (RUN_FROM_SERVER) -> DEFINITIONS.DB_SERVICES(SERVICE_ID) [disabled]
 - **FK** `FK_OBJECTS_6`: (DEV_TOOL) -> DEFINITIONS.DEVELOPMENT_TOOLS(SERIAL_NO)
-- **CHECK** `CK_OBJECTS_001`: CREATE_SESSION IN ('Y','N'
-- **CHECK** `CK_OBJECT_1`: RESTRICTED IN ('Y','N'
-- **CHECK** `CK_OBJECT_2`: EMAIL_SEND IN ('Y','N'
-- **CHECK** `CK_OBJECT_5`: MDI_FORM IN ('Y','N'
+- **CHECK** `CK_OBJECTS_001`: CREATE_SESSION IN ('Y','N')
+- **CHECK** `CK_OBJECT_1`: RESTRICTED IN ('Y','N')
+- **CHECK** `CK_OBJECT_2`: EMAIL_SEND IN ('Y','N')
+- **CHECK** `CK_OBJECT_5`: MDI_FORM IN ('Y','N')
 - **Triggers**: `OBJECTS_DEL` (after delete), `OBJECTS_INS` (before insert), `OBJECTS_INSERT` (before insert), `OBJECTS_UPD` (before update), `TRG_WS_NFN_XP_FS_Q` (after insert or update or delete), `TRG_WS_ODK_DO_PB_Q` (after insert or update or delete)
 
 ## DEFINITIONS.OBJECT_ACTION
@@ -437,7 +437,7 @@ _No standard audit columns._
 | AUTO_ORDER | CHAR(1) default 'N' | Y | Use  for location wise and order location Link CPT functional |
 
 - **PK** `PK_ADDITIONAL_CPT_1`: CPT_ID
-- **CHECK** `ADDITIONAL_CPT_1`: ACTIVE IN ('Y','N'
+- **CHECK** `ADDITIONAL_CPT_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `ADDITIONAL_CPT_CEA` (before insert or update or delete), `ADDITIONAL_CPT_DEL` (after delete), `ADDITIONAL_CPT_INS` (before insert), `ADDITIONAL_CPT_UPD` (before update), `TRG_WS_HNO_JM_YI_Q` (after insert or update or delete)
 
 ## DEFINITIONS.ADDITIONAL_CPT_DETAIL
@@ -518,9 +518,9 @@ _No standard audit columns._
 | PRACTICE_INCOME | CHAR(1) default 'N' | N | Y means that is a share that can be paid to the performer N Means its not a share distributable |
 
 - **PK** `PK_ADMIN_COSTING`: ADMIN_COSTING_ID
-- **CHECK** `CHK_ADMIN_COSTING_02`: DISTRIBUTABLE = UPPER(DISTRIBUTABLE
-- **CHECK** `CHK_ADMIN_COSTING_03`: DISTRIBUTABLE IN ('Y','N'
-- **CHECK** `CHK_ADMIN_COSTING_1`: COSTING_CATEGORY IN ('D','T','O','S','R'
+- **CHECK** `CHK_ADMIN_COSTING_02`: DISTRIBUTABLE = UPPER(DISTRIBUTABLE)
+- **CHECK** `CHK_ADMIN_COSTING_03`: DISTRIBUTABLE IN ('Y','N')
+- **CHECK** `CHK_ADMIN_COSTING_1`: COSTING_CATEGORY IN ('D','T','O','S','R')
 - **Triggers**: `ADMIN_COSTING_CEA` (before insert or update or delete), `ADMIN_COSTING_DEL` (after delete), `ADMIN_COSTING_INS` (before insert), `ADMIN_COSTING_UPD` (before update), `TRG_WS_GCI_OT_JF_Q` (after insert or update or delete)
 
 ## DEFINITIONS.ADMISSION_CANCEL_REASON
@@ -531,7 +531,7 @@ _No standard audit columns._
 | ADM_CANCEL_REASON_DESC | VARCHAR2(500) | Y |  |
 | ACTIVE | CHAR(1) default 'Y' | Y |  |
 
-- **CHECK** `CK_ADMISSION_CANCEL_REASON_001`: ACTIVE IN ('N','Y'
+- **CHECK** `CK_ADMISSION_CANCEL_REASON_001`: ACTIVE IN ('N','Y')
 
 ## DEFINITIONS.ADMISSION_FOR_SETUP
 
@@ -951,7 +951,7 @@ _No standard audit columns._
 | ACTIVE | CHAR(1) default 'Y' | Y |  |
 
 - **PK** `PK_AFFILIATION`: AFFILIATION_ID
-- **CHECK** `CK_AFFILIATION_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_AFFILIATION_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `AFFILIATION_CEA` (before insert or update or delete), `AFFILIATION_TS` (before insert or update or delete), `TRG_WS_GRA_PF_AC_Q` (after insert or update or delete)
 
 ## DEFINITIONS.AGENT_MASTER
@@ -1014,7 +1014,7 @@ _No standard audit columns._
 | ACTIVE | CHAR(1) default 'Y' | Y |  |
 
 - **PK** `PK_AGE_GROUPS`: AGE_GROUP_ID
-- **CHECK** `CK_AGE_GROUPS_001`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_AGE_GROUPS_001`: ACTIVE IN ('Y','N')
 - **Triggers**: `AGE_GROUPS_CEA` (before insert or update or delete), `TRG_WS_FFI_VF_JK_Q` (after insert or update or delete)
 
 ## DEFINITIONS.AI_MODELS
@@ -1123,10 +1123,10 @@ _No standard audit columns._
 - **PK** `PK_OBJECT_PARAMETERS`: PARAM_ID
 - **UK** `UK_OBJECT_PARAMETERS_1`: OBJECT_CODE, PARAM_NAME
 - **FK** `FK_OBJECT_PARAMETERS_01`: (OBJECT_CODE) -> DEFINITIONS.OBJECTS(OBJECT_CODE) [disabled]
-- **CHECK** `CK_OBJECT_PARAMETERS_1`: PARAM_REQUIRED IN ('Y','N'
-- **CHECK** `CK_OBJECT_PARAMETERS_2`: PARAM_CHECK_DEFAULT IN ('Y','N'
-- **CHECK** `CK_OBJECT_PARAMETERS_3`: PARAM_DISPLAY IN ('Y','N'
-- **CHECK** `CK_OBJECT_PARAMETERS_4`: PARAM_NAME = UPPER(PARAM_NAME
+- **CHECK** `CK_OBJECT_PARAMETERS_1`: PARAM_REQUIRED IN ('Y','N')
+- **CHECK** `CK_OBJECT_PARAMETERS_2`: PARAM_CHECK_DEFAULT IN ('Y','N')
+- **CHECK** `CK_OBJECT_PARAMETERS_3`: PARAM_DISPLAY IN ('Y','N')
+- **CHECK** `CK_OBJECT_PARAMETERS_4`: PARAM_NAME = UPPER(PARAM_NAME)
 - **Triggers**: `OBJECT_PARAMETERS_DEL` (after delete), `OBJECT_PARAMETERS_INS` (before insert), `OBJECT_PARAMETERS_NEW_ID` (before insert), `OBJECT_PARAMETERS_UPD` (before update)
 
 ## DEFINITIONS.ALERT_OBJECT_PARAM
@@ -1143,7 +1143,7 @@ _No standard audit columns._
 - **PK** `PK_ALERT_OBJECT_PARAM`: ALERT_ID, PARAM_ID
 - **FK** `FK_ALERT_OBJECT_PARAM_01`: (ALERT_ID) -> DEFINITIONS.ALERT_SETUP(ALERT_ID)
 - **FK** `FK_ALERT_OBJECT_PARAM_02`: (PARAM_ID) -> DEFINITIONS.OBJECT_PARAMETERS(PARAM_ID) [disabled]
-- **CHECK** `CHK_ALERT_OBJECT_PARAM_01`: PARAM_VALUE_TYPE IN ('S','D'
+- **CHECK** `CHK_ALERT_OBJECT_PARAM_01`: PARAM_VALUE_TYPE IN ('S','D')
 - **Triggers**: `ALERT_OBJECT_PARAM_DEL` (after delete), `ALERT_OBJECT_PARAM_INS` (before insert), `ALERT_OBJECT_PARAM_UPD` (before update)
 
 ## DEFINITIONS.ALERT_OBJECT_PARAM_COPY_R
@@ -1331,7 +1331,7 @@ _No standard audit columns._
 | ACTIVE | VARCHAR2(1) default 'Y' | Y |  |
 
 - **PK** `PK_APPEARANCE`: APPEARANCE_ID
-- **CHECK** `CK_APPEARANCE_001`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_APPEARANCE_001`: ACTIVE IN ('Y','N') 
 - **Triggers**: `APPEARANCE_CEA` (before insert or update or delete), `APPEARANCE_DEL` (after delete), `APPEARANCE_INS` (before insert), `APPEARANCE_UPD` (before update), `TRG_WS_KFN_KK_RL_Q` (after insert or update or delete)
 
 ## DEFINITIONS.APPLICATION_ID_R
@@ -1562,7 +1562,7 @@ This table contains definitions of Armay ranks (System Constant Level table)
 | FORCE_TYPE_ID | VARCHAR2(6) | Y |  |
 
 - **PK** `PK_ARMY_RANKS`: RANK_ID
-- **CHECK** `CK_ARMY_RANKS_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_ARMY_RANKS_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `ARMY_RANKS_CEA` (before insert or update or delete), `ARMY_RANKS_DEL` (after delete), `ARMY_RANKS_INS` (before insert), `ARMY_RANKS_UPD` (before update), `TRG_WS_SKX_BI_WR_Q` (after insert or update or delete)
 
 ## DEFINITIONS.ARMY_RANKS_NAVY
@@ -1774,7 +1774,7 @@ This table contains definitions of Armay ranks (System Constant Level table)
 | REGION_TYPE_ID | VARCHAR2(3) default '001' | N | 001 Means its a marketing region. and 002 for HSM regions |
 
 - **PK** `PK_REGION`: REGION_ID
-- **CHECK** `CK_REGION_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_REGION_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `REGION_CEA` (before insert or update or delete), `TRG_WS_ROX_FJ_AO_Q` (after insert or update or delete)
 
 ## DEFINITIONS.COUNTRY
@@ -1931,19 +1931,19 @@ This table contains definitions of Armay ranks (System Constant Level table)
 - **FK** `FK_CITY`: (COUNTRY_ID, STATE_ID, DISTRICT_ID, CITY_ID) -> DEFINITIONS.TEHSIL(COUNTRY_ID, STATE_ID, DISTRICT_ID, TEHSIL_ID) [disabled]
 - **FK** `FK_LOCATION_2`: (PARTY_ID) -> PARTY.PARTY(PARTY_ID) [disabled]
 - **FK** `FK_LOCATION_3`: (BATCH_RECEIVE_LOCATION_ID) -> DEFINITIONS.LOCATION(LOCATION_ID) [disabled]
-- **CHECK** `CK_LOCATION_01`: LAB_LOCATION IN ('Y','N'
-- **CHECK** `CK_LOCATION_02`: CONTINGENCY_FLAG IN ('Y','N'
-- **CHECK** `CK_LOCATION_03`: TIMER_CHECKING IN('Y','N'
-- **CHECK** `CK_LOCATION_04`: SEND_ALERTS IN ('Y','N'
-- **CHECK** `CK_LOCATION_05`: TERMINAL_WISE_BATCH IN ('Y','N'
-- **CHECK** `CK_LOCATION_06`: ON_LINE IN ('Y','N'
-- **CHECK** `CK_LOCATION_07`: INVOICE_VOUCHER IN ('Y','N'
-- **CHECK** `CK_LOCATION_08`: CC_TYPE IN('N','F','S','K','D','P'
-- **CHECK** `CK_LOCATION_09`: ACTIVE IN ('N','Y'
-- **CHECK** `CK_LOCATION_10`: APPLICATION_LOGGING_ON IN ('Y','N','U'
-- **CHECK** `CK_LOCATION_11`: LIFE_THREATENING_EMERGENCY IN ('N','Y'
+- **CHECK** `CK_LOCATION_01`: LAB_LOCATION IN ('Y','N')
+- **CHECK** `CK_LOCATION_02`: CONTINGENCY_FLAG IN ('Y','N')
+- **CHECK** `CK_LOCATION_03`: TIMER_CHECKING IN('Y','N')
+- **CHECK** `CK_LOCATION_04`: SEND_ALERTS IN ('Y','N')
+- **CHECK** `CK_LOCATION_05`: TERMINAL_WISE_BATCH IN ('Y','N')
+- **CHECK** `CK_LOCATION_06`: ON_LINE IN ('Y','N')
+- **CHECK** `CK_LOCATION_07`: INVOICE_VOUCHER IN ('Y','N')
+- **CHECK** `CK_LOCATION_08`: CC_TYPE IN('N','F','S','K','D','P')
+- **CHECK** `CK_LOCATION_09`: ACTIVE IN ('N','Y')
+- **CHECK** `CK_LOCATION_10`: APPLICATION_LOGGING_ON IN ('Y','N','U')
+- **CHECK** `CK_LOCATION_11`: LIFE_THREATENING_EMERGENCY IN ('N','Y')
 - **CHECK** `CK_LOCATION_12`: LOCATION_ID <> BATCH_RECEIVE_LOCATION_ID
-- **CHECK** `CK_LOCATION_13`: SUBSTR(LOCATION_CODE,1,1) IN ('0','1','2','3','4','5','6','7','8','9'
+- **CHECK** `CK_LOCATION_13`: SUBSTR(LOCATION_CODE,1,1) IN ('0','1','2','3','4','5','6','7','8','9')
 - **Triggers**: `BEFORE_LOCATION_INS_UPD_DEL` (before insert or delete or update), `CONTINGENCY_FLAG_HIST` (before insert or update of contingency_flag), `LOCATION_AFTER_INS` (after insert), `LOCATION_CEA` (before insert or update or delete), `LOCATION_DEL` (after delete), `LOCATION_INS` (before insert), `LOCATION_TS` (before insert or update or delete), `LOCATION_UPD` (before update), `TRG_WS_UMF_MV_UF_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DIVISIONS
@@ -2027,12 +2027,12 @@ This table contains definitions of Armay ranks (System Constant Level table)
 - **UK** `UK_ORDER_LOCATION`: SHORT_DESC
 - **FK** `FK_ORDER_LOCATION_2`: (COST_CENTER_ID) -> DEFINITIONS.COST_PROFIT_CENTER(COST_CENTER_ID)
 - **FK** `FK_S01_T067_S01_T064_1`: (LOCATION_ID) -> DEFINITIONS.LOCATION(LOCATION_ID)
-- **CHECK** `CHK_ORDER_LOCATION_04`: DEFAULT_ORDER_LOCATION IN ('N','Y'
-- **CHECK** `CK_ORDER_LOCATION_001`: CHART_ISSUE_LOCATION IN ('N','Y'
-- **CHECK** `CK_ORDER_LOCATION_002`: CHART_MASTER_LOCATION IN ('N','Y'
-- **CHECK** `CK_ORDER_LOCATION_3`: INPATIENT_UNIT IN ('N','Y'
-- **CHECK** `CK_ORDER_LOCATION_5`: CASH_ENTRY_B4_POPULATE_SUMMARY IN ('N','Y'
-- **CHECK** `CK_ORDER_LOCATION_6`: EMERGENCY_LOCATION IN ('N','Y'
+- **CHECK** `CHK_ORDER_LOCATION_04`: DEFAULT_ORDER_LOCATION IN ('N','Y')
+- **CHECK** `CK_ORDER_LOCATION_001`: CHART_ISSUE_LOCATION IN ('N','Y')
+- **CHECK** `CK_ORDER_LOCATION_002`: CHART_MASTER_LOCATION IN ('N','Y')
+- **CHECK** `CK_ORDER_LOCATION_3`: INPATIENT_UNIT IN ('N','Y')
+- **CHECK** `CK_ORDER_LOCATION_5`: CASH_ENTRY_B4_POPULATE_SUMMARY IN ('N','Y')
+- **CHECK** `CK_ORDER_LOCATION_6`: EMERGENCY_LOCATION IN ('N','Y')
 - **Triggers**: `ORDER_LOCATION_CEA` (before insert or update or delete), `ORDER_LOCATION_DEL` (after delete), `ORDER_LOCATION_INS` (before insert), `ORDER_LOCATION_TS` (before insert or update or delete), `ORDER_LOCATION_UPD` (before update), `TRG_WS_SAG_LH_LT_Q` (after insert or update or delete), `UPD_COVID_ORDER_LOCATION` (before update)
 
 ## DEFINITIONS.AUTO_SIGN_ORD_LOCATION
@@ -2047,7 +2047,7 @@ This table contains definitions of Armay ranks (System Constant Level table)
 
 - **PK** `PK_AUTO_SIGN_ORD_LOCATION`: LOCATION_ID, ORDER_LOCATION_ID
 - **FK** `FK_AUTO_SIGN_ORD_LOCATION_1`: (LOCATION_ID, ORDER_LOCATION_ID) -> DEFINITIONS.ORDER_LOCATION(LOCATION_ID, ORDER_LOCATION_ID)
-- **CHECK** `CK_AUTO_SIGN_ORD_LOCATION_1`: SIGN_OPTION IN ('N','A','T'
+- **CHECK** `CK_AUTO_SIGN_ORD_LOCATION_1`: SIGN_OPTION IN ('N','A','T')
 - **Triggers**: `AUTO_SIGN_ORD_LOCATION_DEL` (after delete), `AUTO_SIGN_ORD_LOCATION_INS` (before insert), `AUTO_SIGN_ORD_LOCATION_UPD` (before update)
 
 ## DEFINITIONS.AUTO_SIGN_TERMINAL
@@ -2060,7 +2060,7 @@ This table contains definitions of Armay ranks (System Constant Level table)
 | ACTIVE | CHAR(1) default 'Y' | Y |  |
 
 - **PK** `PK_AUTO_SIGN_TERMINAL`: TERMINAL_NAME
-- **CHECK** `CK_AUTO_SIGN_TERMINAL_1`: SIGN_OPTION IN ('N','A','T'
+- **CHECK** `CK_AUTO_SIGN_TERMINAL_1`: SIGN_OPTION IN ('N','A','T')
 - **Triggers**: `AUTO_SIGN_TERMINAL_CEA` (before insert or update or delete), `AUTO_SIGN_TERMINAL_DEL` (after delete), `AUTO_SIGN_TERMINAL_INS` (before insert), `AUTO_SIGN_TERMINAL_UPD` (before update), `TRG_WS_RDH_DW_QX_Q` (after insert or update or delete)
 
 ## DEFINITIONS.AUTO_SIGN_USER
@@ -2074,7 +2074,7 @@ This table contains definitions of Armay ranks (System Constant Level table)
 
 - **PK** `PK_AUTO_SIGN_USER`: USER_MRNO
 - **FK** `FK_AUTO_SIGN_USER_1`: (USER_MRNO) -> REGISTRATION.PATIENT(MRNO)
-- **CHECK** `CK_AUTO_SIGN_USER`: SIGN_OPTION IN ('N','A','T'
+- **CHECK** `CK_AUTO_SIGN_USER`: SIGN_OPTION IN ('N','A','T')
 - **Triggers**: `AUTO_SIGN_USER_DEL` (after delete), `AUTO_SIGN_USER_INS` (before insert), `AUTO_SIGN_USER_UPD` (before update)
 
 ## DEFINITIONS.BANK
@@ -2134,7 +2134,7 @@ This table contains definitions of Armay ranks (System Constant Level table)
 
 - **PK** `PK_BANK_BRANCH`: BRANCH_ID, BANK_ID
 - **FK** `FK_BANK_BRANCH_1`: (BANK_ID) -> DEFINITIONS.BANK(BANK_ID) [disabled]
-- **CHECK** `CK_BANK_BRANCH_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_BANK_BRANCH_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `BANK_BRANCH_CEA` (before insert or update or delete), `BANK_BRANCH_DEL` (after delete), `BANK_BRANCH_INS` (before insert), `BANK_BRANCH_TS` (before insert or update or delete), `BANK_BRANCH_UPD` (before update), `TRG_WS_CHR_PE_GA_Q` (after insert or update or delete)
 
 ## DEFINITIONS.BASIC_PARAMETERS
@@ -2234,7 +2234,7 @@ This table contains definitions of Armay ranks (System Constant Level table)
 - **PK** `PK_ROOMS`: ROOM_ID
 - **FK** `FK_ROOMS1`: (LOCATION_ID, ORDER_LOCATION_ID) -> DEFINITIONS.ORDER_LOCATION(LOCATION_ID, ORDER_LOCATION_ID)
 - **FK** `FK_ROOMS_02`: (BUILDING_BLOCK_FLOOR_ID) -> DEFINITIONS.BUILDING_BLOCK_FLOORS(BUILDING_BLOCK_FLOOR_ID) [disabled]
-- **CHECK** `CHK_ROOMS_01`: ACTIVE IN ('Y','N'
+- **CHECK** `CHK_ROOMS_01`: ACTIVE IN ('Y','N')
 - **Triggers**: `ROOMS_DEL` (after delete), `ROOMS_INS` (before insert), `ROOMS_POST_INSERT` (after insert), `ROOMS_UPD` (before update), `ROOMS_UPDT` (before update), `UPD_COVID_ROOMS` (before update of covid)
 
 ## DEFINITIONS.BED_STATUS
@@ -2294,10 +2294,10 @@ This table contains definitions of Armay ranks (System Constant Level table)
 - **PK** `PK_DEF_BED`: BED_ID, LOCATION_ID
 - **FK** `FK_DEF_BED_01`: (ROOM_ID) -> DEFINITIONS.ROOMS(ROOM_ID) [disabled]
 - **FK** `FK_DEF_BED_02`: (EVENT_ID) -> DEFINITIONS.BED_STATUS(EVENT_ID) [disabled]
-- **CHECK** `CHK_DEF_BED_01`: AVAILABLE IN ('Y','N'
-- **CHECK** `CHK_DEF_BED_02`: ACTIVE IN ('Y','N'
-- **CHECK** `CHK_DEF_BED_03`: FRAT_REQUIRED IN ('N','U','Y'
-- **CHECK** `CHK_DEF_BED_04`: FCP_REQUIRED IN ('N','U','Y'
+- **CHECK** `CHK_DEF_BED_01`: AVAILABLE IN ('Y','N')
+- **CHECK** `CHK_DEF_BED_02`: ACTIVE IN ('Y','N')
+- **CHECK** `CHK_DEF_BED_03`: FRAT_REQUIRED IN ('N','U','Y')
+- **CHECK** `CHK_DEF_BED_04`: FCP_REQUIRED IN ('N','U','Y')
 - **Triggers**: `DEF_BED_AFTER_UPD` (after update), `DEF_BED_CEA` (before insert or update or delete), `DEF_BED_DEL` (after delete), `DEF_BED_INS` (before insert), `DEF_BED_PENDING_Q` (after update), `DEF_BED_UPD` (before update), `DEF_BED_UPT` (before update), `MAINTAIN_BEDS_DESC_HISTORY` (after update of bed_desc), `TRG_WS_DWW_GE_MI_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DOCTOR
@@ -2350,11 +2350,11 @@ This table contains definitions of Armay ranks (System Constant Level table)
 
 - **PK** `PK_DOCTOR`: DOCTOR_ID
 - **FK** `FK_DOCTOR`: (DOCTOR_MRNO) -> REGISTRATION.PATIENT(MRNO)
-- **CHECK** `CHK_ACTIVE_DOTOR`: ACTIVE IN ('H','Y','N','Z'
-- **CHECK** `CK_DOCTOR_1`: ONCOLOGIST IN ('Y','N'
-- **CHECK** `CK_DOCTOR_2`: CONSULTANT IN ('Y','N'
-- **CHECK** `CK_DOCTOR_3`: HOSPITALIST IN ('Y','N'
-- **CHECK** `CK_DOCTOR_5`: PRINT_FEEDBACK_ON_WORKORDER IN ('Y','N'
+- **CHECK** `CHK_ACTIVE_DOTOR`: ACTIVE IN ('H','Y','N','Z')
+- **CHECK** `CK_DOCTOR_1`: ONCOLOGIST IN ('Y','N')
+- **CHECK** `CK_DOCTOR_2`: CONSULTANT IN ('Y','N')
+- **CHECK** `CK_DOCTOR_3`: HOSPITALIST IN ('Y','N')
+- **CHECK** `CK_DOCTOR_5`: PRINT_FEEDBACK_ON_WORKORDER IN ('Y','N')
 - **Triggers**: `DOCOTR_ID_SEQ_INSERT` (before insert), `DOCTOR_CEA` (before insert or update or delete), `DOCTOR_CHECK_MRNO` (before insert or update of doctor_mrno, dr_surname), `DOCTOR_CHECK_UPD_INS` (before insert or update), `DOCTOR_HIST_INSERTION` (before insert or update of doctor_mrno,full_name,letter_head1,letter_head2,extension,fax,email), `DOCTOR_INS` (before insert), `DOCTOR_MRNO_UPD_INS` (before insert or update of doctor_mrno), `DOCTOR_NAME_UPD_INS` (before insert or update of name, full_name), `DOCTOR_TS` (before insert or update or delete), `SETUP_REVIEW_ALERT_DR_INS` (after insert), `SETUP_REVIEW_ALERT_DR_UPD` (after update of consultant, diagnostic_doctor, resident_doctor), `TRG_WS_XSS_DT_IF_Q` (after insert or update or delete)
 
 ## DEFINITIONS.BEDS
@@ -2403,13 +2403,13 @@ This table contains definitions of Armay ranks (System Constant Level table)
 - **UK** `UK_ORDER_KEY`: ORDER_TYPE_ID, ORDER_NO, LOCATION_ID, ORDER_LOCATION_ID
 - **FK** `FK_BEDS_02`: (BED_ID, BED_LOCATION_ID) -> DEFINITIONS.DEF_BED(BED_ID, LOCATION_ID) [disabled]
 - **FK** `FK_BEDS_1`: (DOCTOR_ID) -> DEFINITIONS.DOCTOR(DOCTOR_ID) [disabled]
-- **CHECK** `CK_BEDS1`: DOCTOR_DISCHARGE IN ('Y','N'
-- **CHECK** `CK_BEDS_001`: DISCHARGE_START IN ('Y','N'
-- **CHECK** `CK_BEDS_002`: ADMISSION_FINAL IN ('N','Y'
-- **CHECK** `CK_BEDS_2`: BBK_CLEARED IN ('N','Y'
-- **CHECK** `CK_BEDS_3`: DISCHARGE_START IN ('N','Y'
-- **CHECK** `CK_BEDS_4`: BED_STATUS IN('F','N'
-- **CHECK** `CK_BEDS_5`: SEND_ALERT IN('Y','N'
+- **CHECK** `CK_BEDS1`: DOCTOR_DISCHARGE IN ('Y','N')
+- **CHECK** `CK_BEDS_001`: DISCHARGE_START IN ('Y','N')
+- **CHECK** `CK_BEDS_002`: ADMISSION_FINAL IN ('N','Y')
+- **CHECK** `CK_BEDS_2`: BBK_CLEARED IN ('N','Y')
+- **CHECK** `CK_BEDS_3`: DISCHARGE_START IN ('N','Y')
+- **CHECK** `CK_BEDS_4`: BED_STATUS IN('F','N')
+- **CHECK** `CK_BEDS_5`: SEND_ALERT IN('Y','N')
 - **Triggers**: `AHB_PATIENTS_PQ` (after insert or update or delete), `BEDS_ADMISSION_TYPE_UPD` (before update), `BEDS_DEL` (after delete), `BEDS_INS` (before insert), `BEDS_INSERT` (before insert), `BEDS_PENDING_Q` (after insert or update), `BEDS_UPD` (before update), `BEDS_UPDT` (before update), `DISCHARGE_PATIENT_PENDING_QUEUE` (before update of designation_category_id), `INP_DISCHARGE_FINAL` (before delete), `IPD_DISCHARGE_EVENT_UPD` (after update), `PENDING_QUEUE_DNR_DELETE` (after delete), `SEND_DISCHARGE_ALERTS` (after update), `TRG_WS_ZNW_OL_NQ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.BEDS_ACTIVE_HISTORY
@@ -2607,7 +2607,7 @@ This is transaction table to store bed description history.
 
 - **PK** `PK_BLOOD_GROUP`: BLOOD_GROUP_ID
 - **UK** `UK_BLOOD_GROUP_1`: BARCODE
-- **CHECK** `CK_BLOOD_GROUP_001`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_BLOOD_GROUP_001`: ACTIVE IN ('Y','N')
 - **Triggers**: `BLOOD_GROUP_CEA` (before insert or update or delete), `BLOOD_GROUP_DEL` (after delete), `BLOOD_GROUP_INS` (before insert), `BLOOD_GROUP_TS` (before insert or update or delete), `BLOOD_GROUP_UPD` (before update), `TRG_WS_QQS_YK_KP_Q` (after insert or update or delete)
 
 ## DEFINITIONS.BMT_ABO_MISMATCH
@@ -2782,7 +2782,7 @@ This is transaction table to store bed description history.
 | ACTIVE | VARCHAR2(1) default 'Y' | N |  |
 
 - **PK** `PK_BODY_SITE`: BODY_SITE_ID
-- **CHECK** `CK_BODY_SITE_001`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_BODY_SITE_001`: ACTIVE IN ('Y','N')
 - **Triggers**: `BODY_SITE_CEA` (before insert or update or delete), `BODY_SITE_DEL` (after delete), `BODY_SITE_INS` (before insert), `BODY_SITE_UPD` (before update), `TRG_WS_IGF_RJ_RC_Q` (after insert or update or delete)
 
 ## DEFINITIONS.BONUS_ALLOWED_SECTION
@@ -2910,7 +2910,7 @@ If a form is calling within another form then we have to define x position and y
 - **PK** `PK_CANCER_GROUPS`: CANCER_GROUP_ID
 - **UK** `UK_CANCER_GROUPS`: CANCER_GROUP_DESC
 - **CHECK** `CK_CANCER_GROUPS_1`: CANCER_GROUP_DESC IS NOT NULL
-- **CHECK** `CK_CANCER_GROUPS_2`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_CANCER_GROUPS_2`: ACTIVE IN ('Y','N')
 - **Triggers**: `CANCER_GROUPS_CEA` (before insert or update or delete), `CANCER_GROUPS_DEL` (after delete), `CANCER_GROUPS_INS` (before insert), `CANCER_GROUPS_UPD` (before update), `TRG_WS_ZAL_HA_UX_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CANCER_GROUPS_MORPH_PRECEDENCE
@@ -2922,7 +2922,7 @@ If a form is calling within another form then we have to define x position and y
 | PRECEDENCE_OVER_ICD | CHAR(1) default 'Y' | Y |  |
 
 - **PK** `PK_CANCER_GROUPS_MORPH_PREC`: MORPH_CODE_FROM, MORPH_CODE_TO
-- **CHECK** `CK_PRECEDENCE_OVER_ICD`: PRECEDENCE_OVER_ICD IN ('Y', 'N'
+- **CHECK** `CK_PRECEDENCE_OVER_ICD`: PRECEDENCE_OVER_ICD IN ('Y', 'N')
 - **Triggers**: `CANCER_GROUPS_MORPH_PRECEDENCE_CEA` (before insert or update or delete), `CANCER_GRP_MORPH_PRECDNS_DEL` (after delete), `CANCER_GRP_MORPH_PRECDNS_INS` (before insert), `CANCER_GRP_MORPH_PRECDNS_UPD` (before update), `TRG_WS_RYQ_LS_EJ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CANCER_GROUPS_OF_PATIENT_DET
@@ -2941,7 +2941,7 @@ If a form is calling within another form then we have to define x position and y
 
 - **UK** `PK_CANCER_GROUPS_OF_PAT_DET`: MRNO, CANCER_GROUP_ID, ICD_ID, MORPH_CODE
 - **FK** `FK_CANCER_GROUPS_OF_PAT_DET_2`: (MRNO) -> REGISTRATION.PATIENT(MRNO)
-- **CHECK** `CHK_CGOPD_01`: AGE_GROUP IN ('A', 'P'
+- **CHECK** `CHK_CGOPD_01`: AGE_GROUP IN ('A', 'P')
 - **Triggers**: `CANCER_GRP_OF_PAT_DET_DEL` (after delete), `CANCER_GRP_OF_PAT_DET_INS` (before insert), `CANCER_GRP_OF_PAT_DET_UPD` (before update)
 
 ## DEFINITIONS.CANCER_GROUPS_OF_PATIENT_SUM
@@ -2957,7 +2957,7 @@ If a form is calling within another form then we have to define x position and y
 | FORMER_MRNO | VARCHAR2(14) | Y |  |
 
 - **PK** `PK_CANCER_GROUPS_OF_PAT_SUM`: MRNO, CANCER_GROUP_ID
-- **CHECK** `CHK_CGOPS_01`: AGE_GROUP IN ('A', 'P'
+- **CHECK** `CHK_CGOPS_01`: AGE_GROUP IN ('A', 'P')
 - **Triggers**: `CANCER_GRPS_OF_PAT_SUM_DEL` (after delete), `CANCER_GRPS_OF_PAT_SUM_INS` (before insert), `CANCER_GRPS_OF_PAT_SUM_UPD` (before update), `TRG_WS_EUW_GY_VC_Q` (after insert or update or delete), `TRG_WS_TAQ_CM_XE_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CANCER_GROUP_SETUP
@@ -2977,8 +2977,8 @@ If a form is calling within another form then we have to define x position and y
 - **PK** `PK_CANCER_GROUP_SETUP`: CANCER_GRUOP_ID, SERIAL_NO
 - **UK** `UK_CANCER_GROUP_SETUP`: CANCER_GRUOP_ID, VERSION, AGE_GROUP, ICD_ID_FROM, ICD_ID_TO, MORPH_CODE_FROM, MORPH_CODE_TO, ACTIVE
 - **FK** `FK_CANCER_GROUP_SETUP_1`: (CANCER_GRUOP_ID) -> DEFINITIONS.CANCER_GROUPS(CANCER_GROUP_ID)
-- **CHECK** `CK_CANCER_GROUP_SETUP_1`: AGE_GROUP IN ('B','A','P'
-- **CHECK** `CK_CANCER_GROUP_SETUP_2`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_CANCER_GROUP_SETUP_1`: AGE_GROUP IN ('B','A','P')
+- **CHECK** `CK_CANCER_GROUP_SETUP_2`: ACTIVE IN ('Y','N')
 - **CHECK** `CK_CANCER_GROUP_SETUP_3`: CANCER_GRUOP_ID IS NOT NULL
 - **CHECK** `CK_CANCER_GROUP_SETUP_4`: VERSION IS NOT NULL
 - **Triggers**: `CANCER_GROUP_SETUP_CEA` (before insert or update or delete), `CANCER_GROUP_SETUP_DEL` (after delete), `CANCER_GROUP_SETUP_INS` (before insert), `CANCER_GROUP_SETUP_UPD` (before update), `TRG_WS_KBA_JX_XP_Q` (after insert or update or delete)
@@ -3088,9 +3088,9 @@ If a form is calling within another form then we have to define x position and y
 - **UK** `U_DESCRIPTION`: DESCRIPTION
 - **FK** `FK_OCCUPATION`: (OCCUPATION_ID) -> DEFINITIONS.OCCUPATION(OCCUPATION_ID) [disabled]
 - **FK** `FK_OCCUPATION_1`: (PARENT_DESIGNATION_ID) -> DEFINITIONS.DESIGNATION(DESIGNATION_ID) [disabled]
-- **CHECK** `CHK_DESIGNATION_1`: ACTIVE IN ('N','Y'
-- **CHECK** `CK_DESIGNATION_001`: CARD_SWIPE_EXEMPTION IN ('Y','N'
-- **CHECK** `CK_DESIGNATION_002`: DUPLICATE IN ('N','Y'
+- **CHECK** `CHK_DESIGNATION_1`: ACTIVE IN ('N','Y')
+- **CHECK** `CK_DESIGNATION_001`: CARD_SWIPE_EXEMPTION IN ('Y','N')
+- **CHECK** `CK_DESIGNATION_002`: DUPLICATE IN ('N','Y')
 - **Triggers**: `DESIGNATION_CEA` (before insert or update or delete), `DESIGNATION_TS` (before insert or update or delete), `SETUP_REVIEW_ALERT_INS` (after insert), `TRG_WS_MFL_GP_BG_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DESIGNATION_CATEGORY
@@ -3110,11 +3110,11 @@ If a form is calling within another form then we have to define x position and y
 | HR_DOCUMENT | CHAR(1) default 'N' | Y |  |
 
 - **PK** `PK_DESIGNATION_CATEGORY`: DESIGNATION_CATEGORY_ID
-- **CHECK** `CK_DESIGNATION_CATEGORY`: ACTIVE IN ('Y', 'N'
-- **CHECK** `CK_DESIGNATION_CATEGORY_001`: DOCTOR_RELATED IN ('N','Y'
-- **CHECK** `CK_DESIGNATION_CATEGORY_002`: ON_CALL IN ('N','Y'
-- **CHECK** `CK_DESIGNATION_CATEGORY_1`: CLINICAL IN ('Y', 'N'
-- **CHECK** `CK_DESIGNATION_CATEGORY_2`: FINANCIAL IN ('Y', 'N'
+- **CHECK** `CK_DESIGNATION_CATEGORY`: ACTIVE IN ('Y', 'N')
+- **CHECK** `CK_DESIGNATION_CATEGORY_001`: DOCTOR_RELATED IN ('N','Y')
+- **CHECK** `CK_DESIGNATION_CATEGORY_002`: ON_CALL IN ('N','Y')
+- **CHECK** `CK_DESIGNATION_CATEGORY_1`: CLINICAL IN ('Y', 'N')
+- **CHECK** `CK_DESIGNATION_CATEGORY_2`: FINANCIAL IN ('Y', 'N')
 - **Triggers**: `DESIGNATION_CATEGORY_CEA` (before insert or update or delete), `DESIGNATION_CATEGORY_DEL` (after delete), `DESIGNATION_CATEGORY_INS` (before insert), `DESIGNATION_CATEGORY_UPD` (before update), `TRG_WS_GIW_AM_QL_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CATEGORY_WISE_DESIGNATION
@@ -3157,7 +3157,7 @@ If a form is calling within another form then we have to define x position and y
 | DESTINATION_TABLE | VARCHAR2(150) | N |  |
 
 - **PK** `PK_CC_DESTINATION_TABLES`: DESTINATION_TABLE
-- **CHECK** `CHK_CC_DESTINATION_TABLES`: DESTINATION_TABLE = UPPER(DESTINATION_TABLE
+- **CHECK** `CHK_CC_DESTINATION_TABLES`: DESTINATION_TABLE = UPPER(DESTINATION_TABLE)
 - **Triggers**: `CC_DESTINATION_TABLES_CEA` (before insert or update or delete), `CC_DESTINATION_TABLES_DEL` (after delete), `CC_DESTINATION_TABLES_INS` (before insert), `CC_DESTINATION_TABLES_UPD` (before update), `TRG_WS_ICT_GM_MA_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CC_SOURCE_TABLES
@@ -3167,7 +3167,7 @@ If a form is calling within another form then we have to define x position and y
 | SOURCE_TABLE | VARCHAR2(150) | N |  |
 
 - **PK** `PK_CC_SOURCE_TABLES`: SOURCE_TABLE
-- **CHECK** `CHK_SOURCE_TABLES_1`: SOURCE_TABLE = UPPER(SOURCE_TABLE
+- **CHECK** `CHK_SOURCE_TABLES_1`: SOURCE_TABLE = UPPER(SOURCE_TABLE)
 - **Triggers**: `CC_SOURCE_TABLES_CEA` (before insert or update or delete), `CC_SOURCE_TABLES_DEL` (after delete), `CC_SOURCE_TABLES_INS` (before insert), `CC_SOURCE_TABLES_UPD` (before update), `TRG_WS_JPQ_AS_HL_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CDM_DOMAIN
@@ -3483,9 +3483,9 @@ It will be used as setup table for Chemobay SMS sending utility
 | QR_SERVER_PATH | VARCHAR2(400) | Y | This column contains info about qr_server_path |
 
 - **PK** `PK_ORGANIZATION`: ORGANIZATION_ID
-- **CHECK** `CK_ORGANIZATION_1`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_ORGANIZATION_2`: DEFAULT_ORG IN ('Y','N'
-- **CHECK** `CK_ORGANIZATION_3`: PATIENT_CNIC_MANDATORY IN ('Y','N'
+- **CHECK** `CK_ORGANIZATION_1`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_ORGANIZATION_2`: DEFAULT_ORG IN ('Y','N')
+- **CHECK** `CK_ORGANIZATION_3`: PATIENT_CNIC_MANDATORY IN ('Y','N')
 - **Triggers**: `ORGANIZATION_CEA` (before insert or update or delete), `ORGANIZATION_DEL` (after delete), `ORGANIZATION_INS` (before insert), `ORGANIZATION_UPD` (before update), `TRG_WS_SZZ_XI_WS_Q` (after insert or update or delete)
 
 ## DEFINITIONS.GL_CC_GROUPS
@@ -3498,7 +3498,7 @@ It will be used as setup table for Chemobay SMS sending utility
 | ACTIVE | CHAR(1) default 'Y' | Y |  |
 
 - **PK** `PK_GL_CC_GROUPS`: COST_CENTRE_GROUP_CODE
-- **CHECK** `CK_GL_CC_GROUPS_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_GL_CC_GROUPS_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `GL_CC_GROUPS_CEA` (before insert or update or delete), `GL_CC_GROUPS_DEL` (after delete), `GL_CC_GROUPS_INS` (before insert), `GL_CC_GROUPS_UPD` (before update), `TRG_WS_KCE_DC_EI_Q` (after insert or update or delete)
 
 ## DEFINITIONS.GL_COST_CENTRES
@@ -3521,9 +3521,9 @@ It will be used as setup table for Chemobay SMS sending utility
 - **FK** `FK_GL_COST_CENTRES_1`: (COST_CENTRE_GROUP_CODE) -> DEFINITIONS.GL_CC_GROUPS(COST_CENTRE_GROUP_CODE) [disabled]
 - **FK** `FK_GL_COST_CENTRES_2`: (ORGANIZATION_ID) -> DEFINITIONS.ORGANIZATION(ORGANIZATION_ID) [disabled]
 - **FK** `FK_GL_COST_CENTRES_3`: (LOCATION_ID) -> DEFINITIONS.LOCATION(LOCATION_ID) [disabled]
-- **CHECK** `CK_GL_COST_CENTRES_1`: COST_CENTRE_TYPE IN ('C', 'P'
-- **CHECK** `CK_GL_COST_CENTRES_2`: COST_CENTRE_CATEGORY IN ('D', 'S', 'O'
-- **CHECK** `CK_GL_COST_CENTRES_3`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_GL_COST_CENTRES_1`: COST_CENTRE_TYPE IN ('C', 'P')
+- **CHECK** `CK_GL_COST_CENTRES_2`: COST_CENTRE_CATEGORY IN ('D', 'S', 'O')
+- **CHECK** `CK_GL_COST_CENTRES_3`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `GL_COST_CENTRES_CEA` (before insert or update or delete), `GL_COST_CENTRES_DEL` (after delete), `GL_COST_CENTRES_INS` (before insert), `GL_COST_CENTRES_UPD` (before update), `TRG_WS_EVV_IM_GM_Q` (after insert or update or delete)
 
 ## DEFINITIONS.GL_DEPARTMENTS
@@ -3546,7 +3546,7 @@ It will be used as setup table for Chemobay SMS sending utility
 - **FK** `FK_GL_DEPARTMENTS`: (DEPARTMENT_ID) -> DEFINITIONS.DEPARTMENT(DEPARTMENT_ID) [disabled]
 - **FK** `FK_GL_DEPARTMENTS_1`: (GROUP_CODE) -> DEFINITIONS.GL_DEPT_GROUPS(GROUP_CODE) [disabled]
 - **FK** `FK_GL_DEPARTMENTS_2`: (SERVICE_CODE) -> DEFINITIONS.GL_DEPT_SERVICES(SERVICE_CODE) [disabled]
-- **CHECK** `CK_GL_DEPARTMENTS_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_GL_DEPARTMENTS_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `GL_DEPARTMENTS_CEA` (before insert or update or delete), `GL_DEPARTMENTS_DEL` (after delete), `GL_DEPARTMENTS_INS` (before insert), `GL_DEPARTMENTS_UPD` (before update), `TRG_WS_NDH_DO_AN_Q` (after insert or update or delete)
 
 ## DEFINITIONS.GL_DIVISIONS
@@ -3561,7 +3561,7 @@ It will be used as setup table for Chemobay SMS sending utility
 | HEAD_MRNO | VARCHAR2(14) | Y |  |
 
 - **PK** `PK_GL_DIVISIONS`: DIVISION_CODE
-- **CHECK** `CK_GL_DIVISIONS_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_GL_DIVISIONS_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `GL_DIVISIONS_CEA` (before insert or update or delete), `GL_DIVISIONS_DEL` (after delete), `GL_DIVISIONS_INS` (before insert), `GL_DIVISIONS_UPD` (before update), `TRG_WS_PGF_HW_YW_Q` (after insert or update or delete)
 
 ## DEFINITIONS.GL_DIV_DEPT
@@ -3576,7 +3576,7 @@ It will be used as setup table for Chemobay SMS sending utility
 - **PK** `PK_GL_DIV_DEPT`: DIVISION_CODE, DEPARTMENT_CODE
 - **FK** `FK_GL_DIV_DEPT_1`: (DIVISION_CODE) -> DEFINITIONS.GL_DIVISIONS(DIVISION_CODE)
 - **FK** `FK_GL_DIV_DEPT_2`: (DEPARTMENT_CODE) -> DEFINITIONS.GL_DEPARTMENTS(DEPARTMENT_CODE) [disabled]
-- **CHECK** `CK_GL_DIV_DEPT_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_GL_DIV_DEPT_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `GL_DIV_DEPT_CEA` (before insert or update or delete), `GL_DIV_DEPT_DEL` (after delete), `GL_DIV_DEPT_INS` (before insert), `GL_DIV_DEPT_UPD` (before update), `TRG_WS_OYJ_ST_HJ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.GL_DIV_DEPT_CC
@@ -3594,7 +3594,7 @@ It will be used as setup table for Chemobay SMS sending utility
 - **PK** `PK_GL_DIV_DEPT_CC`: COST_CENTRE_ID
 - **FK** `FK_GL_DIV_DEPT_CC_1`: (COST_CENTRE_CODE) -> DEFINITIONS.GL_COST_CENTRES(COST_CENTRE_CODE) [disabled]
 - **FK** `FK_GL_DIV_DEPT_CC_2`: (DIVISION_CODE, DEPARTMENT_CODE) -> DEFINITIONS.GL_DIV_DEPT(DIVISION_CODE, DEPARTMENT_CODE) [disabled]
-- **CHECK** `CK_GL_DIV_DEPT_CC_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_GL_DIV_DEPT_CC_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `GL_DIV_DEPT_CC_CEA` (before insert or update or delete), `GL_DIV_DEPT_CC_DEL` (after delete), `GL_DIV_DEPT_CC_INS` (before insert), `GL_DIV_DEPT_CC_UPD` (before update), `TRG_WS_AKQ_QU_WF_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DEPARTMENT_NATURE
@@ -3673,13 +3673,13 @@ This table contains List of departments
 - **FK** `FK_DEPARTMENT_2`: (COST_CENTRE_ID) -> DEFINITIONS.GL_DIV_DEPT_CC(COST_CENTRE_ID) [disabled]
 - **FK** `FK_DEPARTMENT_3`: (DIVISION_ID) -> DEFINITIONS.DIVISIONS(DIVISION_ID) [disabled]
 - **FK** `FK_DEPARTMENT_6`: (ITEM_TYPE_ID) -> BILLING.ITEM_TYPE(ITEM_TYPE_ID)
-- **CHECK** `CK_DEPARTMENT_001`: OVERTIME_ALLOWED IN ('N','Y'
-- **CHECK** `CK_DEPARTMENT_1`: CASH_SUMMARY_AGGREGATE IN ('Y', 'N'
-- **CHECK** `CK_DEPARTMENT_2`: DOCTOR_REQUIRED IN ('Y', 'N'
-- **CHECK** `CK_DEPARTMENT_3`: GENERAL_DEPARTMENT IN ('N','Y'
-- **CHECK** `CK_DEPARTMENT_4`: REPORTING_PANEL IN ('Y', 'N'
-- **CHECK** `CK_DEPARTMENT_5`: ACTIVE IN ('Y', 'N'
-- **CHECK** `CK_DEPARTMENT_6`: CLINICAL_REPORT IN ('Y', 'N'
+- **CHECK** `CK_DEPARTMENT_001`: OVERTIME_ALLOWED IN ('N','Y')
+- **CHECK** `CK_DEPARTMENT_1`: CASH_SUMMARY_AGGREGATE IN ('Y', 'N')
+- **CHECK** `CK_DEPARTMENT_2`: DOCTOR_REQUIRED IN ('Y', 'N')
+- **CHECK** `CK_DEPARTMENT_3`: GENERAL_DEPARTMENT IN ('N','Y')
+- **CHECK** `CK_DEPARTMENT_4`: REPORTING_PANEL IN ('Y', 'N')
+- **CHECK** `CK_DEPARTMENT_5`: ACTIVE IN ('Y', 'N')
+- **CHECK** `CK_DEPARTMENT_6`: CLINICAL_REPORT IN ('Y', 'N')
 - **Triggers**: `DEPARTMENT_CEA` (before insert or update or delete), `DEPARTMENT_DEL` (after delete), `DEPARTMENT_INS` (before insert), `DEPARTMENT_TS` (before insert or update or delete), `DEPARTMENT_UPD` (before update), `TRG_WS_OHM_PX_HD_Q` (after insert or update or delete)
 
 ## DEFINITIONS.GL_DEPT_GROUPS
@@ -3692,7 +3692,7 @@ This table contains List of departments
 | ACTIVE | CHAR(1) default 'Y' | Y |  |
 
 - **PK** `PK_GL_DEPT_GROUPS`: GROUP_CODE
-- **CHECK** `CK_GL_DEPT_GROUPS_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_GL_DEPT_GROUPS_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `GL_DEPT_GROUPS_CEA` (before insert or update or delete), `GL_DEPT_GROUPS_DEL` (after delete), `GL_DEPT_GROUPS_INS` (before insert), `GL_DEPT_GROUPS_UPD` (before update), `TRG_WS_XBK_YI_FI_Q` (after insert or update or delete)
 
 ## DEFINITIONS.GL_DEPT_SERVICES
@@ -3705,7 +3705,7 @@ This table contains List of departments
 | ACTIVE | CHAR(1) default 'Y' | Y |  |
 
 - **PK** `PK_GL_DEPT_SERVICES`: SERVICE_CODE
-- **CHECK** `CK_GL_DEPT_SERVICES_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_GL_DEPT_SERVICES_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `GL_DEPT_SERVICES_CEA` (before insert or update or delete), `GL_DEPT_SERVICES_DEL` (after delete), `GL_DEPT_SERVICES_INS` (before insert), `GL_DEPT_SERVICES_UPD` (before update), `TRG_WS_PRZ_OF_RD_Q` (after insert or update or delete)
 
 ## DEFINITIONS.SPECIALITY_MASTER
@@ -3723,7 +3723,7 @@ This table contains List of departments
 - **PK** `PK_SPECIALITY_MASTER`: SPECIALITY_ID
 - **UK** `UK_SPECIALITY_MASTER_1`: DESCRIPTION
 - **FK** `FK_SPECIALITY_MASTER_1`: (COST_CENTRE_ID) -> DEFINITIONS.GL_DIV_DEPT_CC(COST_CENTRE_ID) [disabled]
-- **CHECK** `CK_SPECIALITY_MASTER_1`: ACTIVE IN ('N','Y'
+- **CHECK** `CK_SPECIALITY_MASTER_1`: ACTIVE IN ('N','Y')
 - **Triggers**: `SPECIALITY_MASTER_CEA` (before insert or update or delete), `SPECIALITY_MASTER_DEL` (after delete), `SPECIALITY_MASTER_INS` (before insert), `SPECIALITY_MASTER_UPD` (before update), `TRG_WS_COA_EA_GJ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CLINIC_SPECIALITY
@@ -3752,7 +3752,7 @@ This table contains List of departments
 
 - **PK** `PK_CLINIC_SPECIALITY`: CLINIC_SPECIALITY_ID
 - **FK** `FK_CLINIC_SPECIALITY_01`: (SPECIALITY_ID) -> DEFINITIONS.SPECIALITY_MASTER(SPECIALITY_ID) [disabled]
-- **CHECK** `CK_CLINIC_SPECIALITY_1`: DOCTOR_SPECIALITY_FLAG IN ('N','Y'
+- **CHECK** `CK_CLINIC_SPECIALITY_1`: DOCTOR_SPECIALITY_FLAG IN ('N','Y')
 - **CHECK** `CK_CLINIC_SPECIALITY_2`: "ADMISSION_ALLOWED"='Y' OR "ADMISSION_ALLOWED"='N'
 - **Triggers**: `CLINIC_SPECIALITY_CEA` (before insert or update or delete), `CLINIC_SPECIALITY_DEL` (after delete), `CLINIC_SPECIALITY_INS` (before insert), `CLINIC_SPECIALITY_TS` (before insert or update or delete), `CLINIC_SPECIALITY_UPD` (before update), `TRG_WS_ITF_HD_RH_Q` (after insert or update or delete)
 
@@ -3769,7 +3769,7 @@ This table contains List of departments
 
 - **PK** `PK_CPT_CATEGORY`: CPT_CATEGORY_ID
 - **FK** `FK_CPT_CATEGORY_01`: (CLINIC_SPECIALITY_ID) -> DEFINITIONS.CLINIC_SPECIALITY(CLINIC_SPECIALITY_ID) [disabled]
-- **CHECK** `CHK_CPT_CATEGORY_01`: ACTIVE IN ('Y','N'
+- **CHECK** `CHK_CPT_CATEGORY_01`: ACTIVE IN ('Y','N')
 - **Triggers**: `CPT_CATEGORY_CEA` (before insert or update or delete), `CPT_CATEGORY_DEL` (after delete), `CPT_CATEGORY_INS` (before insert), `CPT_CATEGORY_UPD` (before update), `TRG_WS_QIR_CT_OU_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DEPARTMENT_NATURE_DETAIL
@@ -3942,36 +3942,36 @@ This table contains List of departments
 - **FK** `FK_CPT_5`: (MODALITY_ID) -> RADIOLOGY.MODALITY(MODALITY_ID) [disabled]
 - **FK** `FK_CPT_6`: (ITEM_TYPE_ID) -> BILLING.ITEM_TYPE(ITEM_TYPE_ID)
 - **FK** `FK_S01_T009_S01_T100_1`: (CPT_CATEGORY_ID) -> DEFINITIONS.CPT_CATEGORY(CPT_CATEGORY_ID)
-- **CHECK** `CHK_CPT_IMAGE_REQUIRED`: IMAGE_REQUIRED IN ('N','Y'
-- **CHECK** `CH_CPT_17`: CPT_TYPE IN ('A','M','U'
-- **CHECK** `CK_CPT_001`: MAX_QUANTITY_ALLOWED IN ('Y','N'
-- **CHECK** `CK_CPT_002`: ACK_PERFORMANCE_REQ IN ('Y','N'
-- **CHECK** `CK_CPT_025`: INVOICE_STATUS_ID IN ('002','015'
+- **CHECK** `CHK_CPT_IMAGE_REQUIRED`: IMAGE_REQUIRED IN ('N','Y')
+- **CHECK** `CH_CPT_17`: CPT_TYPE IN ('A','M','U')
+- **CHECK** `CK_CPT_001`: MAX_QUANTITY_ALLOWED IN ('Y','N')
+- **CHECK** `CK_CPT_002`: ACK_PERFORMANCE_REQ IN ('Y','N')
+- **CHECK** `CK_CPT_025`: INVOICE_STATUS_ID IN ('002','015')
 - **CHECK** `CK_CPT_1`: NO_OF_PROCEDURES>=1
-- **CHECK** `CK_CPT_10`: CONSULTANT_NORMAL IN ('Y','N'
-- **CHECK** `CK_CPT_11`: NOT_REPORTABLE IN ('Y', 'N'
-- **CHECK** `CK_CPT_12`: COMBINED_REPORT IN ('', 'N'
-- **CHECK** `CK_CPT_13`: OPEN_PRICE IN ('Y', 'N'
-- **CHECK** `CK_CPT_14`: CONSULTANT_ABNORMAL IN ('Y', 'N'
-- **CHECK** `CK_CPT_15`: COMBINED_REPORT_NORMAL IN ('Y', 'N'
-- **CHECK** `CK_CPT_16`: COMBINED_REPORT_ABNORMAL IN ('Y', 'N'
-- **CHECK** `CK_CPT_18`: USER_DEFINED_DEPT IN ('Y','N'
-- **CHECK** `CK_CPT_19`: BLOCK_AUTO_INP_INVOICE IN('Y','N'
+- **CHECK** `CK_CPT_10`: CONSULTANT_NORMAL IN ('Y','N')
+- **CHECK** `CK_CPT_11`: NOT_REPORTABLE IN ('Y', 'N')
+- **CHECK** `CK_CPT_12`: COMBINED_REPORT IN ('', 'N')
+- **CHECK** `CK_CPT_13`: OPEN_PRICE IN ('Y', 'N')
+- **CHECK** `CK_CPT_14`: CONSULTANT_ABNORMAL IN ('Y', 'N')
+- **CHECK** `CK_CPT_15`: COMBINED_REPORT_NORMAL IN ('Y', 'N')
+- **CHECK** `CK_CPT_16`: COMBINED_REPORT_ABNORMAL IN ('Y', 'N')
+- **CHECK** `CK_CPT_18`: USER_DEFINED_DEPT IN ('Y','N')
+- **CHECK** `CK_CPT_19`: BLOCK_AUTO_INP_INVOICE IN('Y','N')
 - **CHECK** `CK_CPT_2`: INSTR(NO_OF_PROCEDURES,'.')=0
-- **CHECK** `CK_CPT_20`: CONSENT_TYPE IN ('V','W','N'
-- **CHECK** `CK_CPT_21`: LIMITED_IMAGES IN ('Y','N'
-- **CHECK** `CK_CPT_22`: CONSULTANT_ONLY IN ('Y','N'
-- **CHECK** `CK_CPT_23`: CONTRAST IN ('M','O','N'
-- **CHECK** `CK_CPT_24`: INCLUDE_IN_CONTRACT_BY_DEFAULT IN ('Y','N'
-- **CHECK** `CK_CPT_3`: SPECIMEN_NATURE_REQUIRED IN ('Y', 'N'
-- **CHECK** `CK_CPT_4`: SPECIMEN_SITE_REQUIRED IN ('Y', 'N'
-- **CHECK** `CK_CPT_5`: WORK_ORDER_PRINT IN ('Y', 'N'
-- **CHECK** `CK_CPT_6`: TECH_NORMAL IN ('Y','N'
-- **CHECK** `CK_CPT_7`: TECH_ABNORMAL IN ('Y','N'
-- **CHECK** `CK_CPT_8`: DOCTOR_NORMAL IN ('Y','N'
-- **CHECK** `CK_CPT_9`: DOCTOR_ABNORMAL IN ('Y','N'
+- **CHECK** `CK_CPT_20`: CONSENT_TYPE IN ('V','W','N')
+- **CHECK** `CK_CPT_21`: LIMITED_IMAGES IN ('Y','N')
+- **CHECK** `CK_CPT_22`: CONSULTANT_ONLY IN ('Y','N')
+- **CHECK** `CK_CPT_23`: CONTRAST IN ('M','O','N')
+- **CHECK** `CK_CPT_24`: INCLUDE_IN_CONTRACT_BY_DEFAULT IN ('Y','N')
+- **CHECK** `CK_CPT_3`: SPECIMEN_NATURE_REQUIRED IN ('Y', 'N')
+- **CHECK** `CK_CPT_4`: SPECIMEN_SITE_REQUIRED IN ('Y', 'N')
+- **CHECK** `CK_CPT_5`: WORK_ORDER_PRINT IN ('Y', 'N')
+- **CHECK** `CK_CPT_6`: TECH_NORMAL IN ('Y','N')
+- **CHECK** `CK_CPT_7`: TECH_ABNORMAL IN ('Y','N')
+- **CHECK** `CK_CPT_8`: DOCTOR_NORMAL IN ('Y','N')
+- **CHECK** `CK_CPT_9`: DOCTOR_ABNORMAL IN ('Y','N')
 - **CHECK** `NN_CPT_1`: NOT_REPORTABLE IS NOT NULL
-- **CHECK** `NN_CPT_2`: WORK_ORDER_PRINT IS NOT NULL)
+- **CHECK** `NN_CPT_2`: WORK_ORDER_PRINT IS NOT NULL
 - **Triggers**: `BEFORE_CPT_PRICE_UPD` (before update), `CPT_CEA` (before insert or update or delete), `CPT_DEL` (after delete), `CPT_INS` (before insert), `CPT_PRICE_HISTORY_INS` (after insert), `CPT_TS` (before insert or update or delete), `CPT_UPD` (before update), `TRG_WS_QXK_QJ_RH_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CLIENT_CPT_PRICE
@@ -4152,7 +4152,7 @@ This table will be used to save the Clinical Service Type wise Price
 - **PK** `PK_CLINICAL_SERVICE_PRICE`: LOCATION_ID, PATIENT_TYPE_ID, CPT_ID, CLINICAL_SERVICE_TYPE
 - **FK** `FK_CLINICAL_SERVICE_PRICE_1`: (LOCATION_ID) -> DEFINITIONS.LOCATION(LOCATION_ID)
 - **FK** `FK_CLINICAL_SERVICE_PRICE_2`: (CPT_ID) -> DEFINITIONS.CPT(CPT_ID) [disabled]
-- **CHECK** `CK_CLINICAL_SERVICE_PRICE_1`: CLINICAL_SERVICE_TYPE IN ('O','E','I','B'
+- **CHECK** `CK_CLINICAL_SERVICE_PRICE_1`: CLINICAL_SERVICE_TYPE IN ('O','E','I','B')
 - **Triggers**: `CLINICAL_SERVICE_PRICE_CEA` (before insert or update or delete), `CLINICAL_SERVICE_PRICE_DEL` (after delete), `CLINICAL_SERVICE_PRICE_INS` (before insert), `CLINICAL_SERVICE_PRICE_UPD` (before update), `TRG_WS_ATY_IP_HN_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CLINICAL_SERVICE_TYPE
@@ -4165,7 +4165,7 @@ This table will be used to save the Clinical Service Type wise Price
 | REMARKS | VARCHAR2(4000) | Y |  |
 
 - **PK** `PK_CLINICAL_SERVICE_TYPE`: CLINICAL_SERVICE_TYPE_ID
-- **CHECK** `CHK_CLINICAL_SERVICE_TYPE`: ACTIVE IN ('Y','N'
+- **CHECK** `CHK_CLINICAL_SERVICE_TYPE`: ACTIVE IN ('Y','N')
 
 ## DEFINITIONS.CLINICAL_SP_PRIVILEGES_SETUP
 
@@ -4290,17 +4290,17 @@ This table will be used to define the Clinic Wise CPT Prices
 - **PK** `PK_PATIENT_TYPE`: PATIENT_TYPE_ID
 - **FK** `FK_PATIENT_TYPE_1`: (LOCATION_ID) -> DEFINITIONS.LOCATION(LOCATION_ID)
 - **FK** `FK_PATIENT_TYPE_3`: (FORCE_TYPE_ID) -> DEFINITIONS.FORCE_TYPE(FORCE_TYPE_ID) [disabled]
-- **CHECK** `CK_PATIENT_TYPE_001`: MEDICAL_ALLOWED IN ('Y','N'
-- **CHECK** `CK_PATIENT_TYPE_002`: SPOUSE_MEDICAL_ALLOWED IN ('N','Y'
-- **CHECK** `CK_PATIENT_TYPE_003`: CHILDREN_MEDICAL_ALLOWED IN ('N','Y'
-- **CHECK** `CK_PATIENT_TYPE_004`: INCLUDE_IN_HR_REPORTS IN ('Y','N'
-- **CHECK** `CK_PATIENT_TYPE_1`: INHOUSE_ORDER IN ('Y', 'N'
-- **CHECK** `CK_PATIENT_TYPE_2`: CARD_SWIPER IN ('N','Y'
-- **CHECK** `CK_PATIENT_TYPE_3`: SALARY_ALLOWED IN ('N','Y'
-- **CHECK** `CK_PATIENT_TYPE_4`: CREATE_MRNO IN ('A','M'
-- **CHECK** `CK_PATIENT_TYPE_6`: ATTACH_COMPANY IN ('N','Y'
-- **CHECK** `CK_PATIENT_TYPE_7`: REQUIRE_COMPANY IN ('N','Y'
-- **CHECK** `CK_PATIENT_TYPE_9`: SIGN_REQUIRE IN ('Y','N'
+- **CHECK** `CK_PATIENT_TYPE_001`: MEDICAL_ALLOWED IN ('Y','N')
+- **CHECK** `CK_PATIENT_TYPE_002`: SPOUSE_MEDICAL_ALLOWED IN ('N','Y')
+- **CHECK** `CK_PATIENT_TYPE_003`: CHILDREN_MEDICAL_ALLOWED IN ('N','Y')
+- **CHECK** `CK_PATIENT_TYPE_004`: INCLUDE_IN_HR_REPORTS IN ('Y','N')
+- **CHECK** `CK_PATIENT_TYPE_1`: INHOUSE_ORDER IN ('Y', 'N')
+- **CHECK** `CK_PATIENT_TYPE_2`: CARD_SWIPER IN ('N','Y')
+- **CHECK** `CK_PATIENT_TYPE_3`: SALARY_ALLOWED IN ('N','Y')
+- **CHECK** `CK_PATIENT_TYPE_4`: CREATE_MRNO IN ('A','M')
+- **CHECK** `CK_PATIENT_TYPE_6`: ATTACH_COMPANY IN ('N','Y')
+- **CHECK** `CK_PATIENT_TYPE_7`: REQUIRE_COMPANY IN ('N','Y')
+- **CHECK** `CK_PATIENT_TYPE_9`: SIGN_REQUIRE IN ('Y','N')
 - **Triggers**: `PATIENT_TYPE_CEA` (before insert or update or delete), `PATIENT_TYPE_DEL` (after delete), `PATIENT_TYPE_INS` (before insert), `PATIENT_TYPE_TS` (before insert or update or delete), `PATIENT_TYPE_UPD` (before update), `TRG_WS_NNK_VQ_MU_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CLINIC_PATIENT_TYPE
@@ -4386,7 +4386,7 @@ Save allowed patient types that can be appointed in specified clinic
 - **PK** `PK_CLINIC_CPT`: CLINIC_ID, CPT_ID
 - **FK** `FK_CLINIC_ID`: (CLINIC_ID) -> REGISTRATION.CLINIC(CLINIC_ID)
 - **FK** `FK_CPT_ID`: (CPT_ID) -> DEFINITIONS.CPT(CPT_ID) [disabled]
-- **CHECK** `CHECK_DEFAULT`: P_DEFAULT IN ('Y','N'
+- **CHECK** `CHECK_DEFAULT`: P_DEFAULT IN ('Y','N')
 
 ## DEFINITIONS.CL_CLEARANCE_TYPE
 
@@ -4439,7 +4439,7 @@ Save allowed patient types that can be appointed in specified clinic
 | ACTIVE | VARCHAR2(1) default 'Y' | Y |  |
 
 - **PK** `PK_COLOURS`: COLOUR_ID
-- **CHECK** `CK_COLOURS_001`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_COLOURS_001`: ACTIVE IN ('Y','N') 
 - **Triggers**: `COLOURS_CEA` (before insert or update or delete), `COLOURS_DEL` (after delete), `COLOURS_INS` (before insert), `COLOURS_UPD` (before update), `TRG_WS_QYZ_SX_RT_Q` (after insert or update or delete)
 
 ## DEFINITIONS.TABLE_MAPPING
@@ -4481,7 +4481,7 @@ Save allowed patient types that can be appointed in specified clinic
 
 - **PK** `PK_COMMENT_TYPES`: COMMENT_TYPE_ID
 - **UK** `UK_COMMENT_TYPES_1`: MODULE_ID, DESCRIPTION
-- **CHECK** `CK_COMMENT_TYPES_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_COMMENT_TYPES_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `COMMENT_TYPES_CEA` (before insert or update or delete), `COMMENT_TYPES_DEL` (after delete), `COMMENT_TYPES_INS` (before insert), `COMMENT_TYPES_UPD` (before update), `TRG_WS_DNX_WN_ET_Q` (after insert or update or delete)
 
 ## DEFINITIONS.COMMENTS
@@ -4498,8 +4498,8 @@ Save allowed patient types that can be appointed in specified clinic
 - **PK** `PK_COMMENTS`: COMMENT_ID
 - **UK** `UK_COMMENTS_1`: COMMENT_TYPE_ID, COMMENT_DESC
 - **FK** `FK_COMMENTS_1`: (COMMENT_TYPE_ID) -> DEFINITIONS.COMMENT_TYPES(COMMENT_TYPE_ID)
-- **CHECK** `CK_COMMENTS_1`: COMMENT_DESC = UPPER(COMMENT_DESC
-- **CHECK** `CK_COMMENTS_2`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_COMMENTS_1`: COMMENT_DESC = UPPER(COMMENT_DESC)
+- **CHECK** `CK_COMMENTS_2`: ACTIVE IN ('Y','N')
 - **Triggers**: `COMMENTS_CEA` (before insert or update or delete), `COMMENTS_DEL` (after delete), `COMMENTS_INS` (before insert), `COMMENTS_UPD` (before update), `TRG_WS_HZC_YY_CT_Q` (after insert or update or delete)
 
 ## DEFINITIONS.COMPANY
@@ -4529,7 +4529,7 @@ Save allowed patient types that can be appointed in specified clinic
 | ACTIVE | CHAR(1) default 'Y' | Y |  |
 
 - **PK** `PK_COMPARISON_OPERATORS`: OPERATOR_ID
-- **CHECK** `CK_COMPARISON_OPERATORS_001`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_COMPARISON_OPERATORS_001`: ACTIVE IN ('Y','N')
 - **Triggers**: `COMPARISON_OPERATORS_CEA` (before insert or update or delete), `TRG_WS_HNH_JK_BC_Q` (after insert or update or delete)
 
 ## DEFINITIONS.COMPLIANCE
@@ -4699,7 +4699,7 @@ It is used for configuration of events for consent cancellation.
 - **FK** `FK_DEPARTMENT_SECTION_01`: (NATURE_ID, NATURE_DETAIL_ID) -> DEFINITIONS.DEPARTMENT_NATURE_DETAIL(NATURE_ID, NATURE_DETAIL_ID) [disabled]
 - **FK** `FK_DEPARTMENT_SECTION_2`: (ITEM_TYPE_ID) -> BILLING.ITEM_TYPE(ITEM_TYPE_ID)
 - **FK** `FK_S01_T015_S01_T014_1`: (DEPARTMENT_ID) -> DEFINITIONS.DEPARTMENT(DEPARTMENT_ID)
-- **CHECK** `CK_DEPARTMENT_SECTION_1`: NAME_AS_DEPARTMENT IN('Y','N'
+- **CHECK** `CK_DEPARTMENT_SECTION_1`: NAME_AS_DEPARTMENT IN('Y','N')
 - **Triggers**: `DEPARTMENT_SECTION_CEA` (before insert or update or delete), `DEPARTMENT_SECTION_DEL` (after delete), `DEPARTMENT_SECTION_INS` (before insert), `DEPARTMENT_SECTION_UPD` (before update), `TRG_WS_PYL_YT_OL_Q` (after insert or update or delete)
 
 ## DEFINITIONS.COST_CENTER
@@ -4757,7 +4757,7 @@ This table is in use of chemo administration sheets.
 
 - **PK** `PK_COURIER`: COUNTRY_ID, STATE_ID, DISTRICT_ID, CPT_ID
 - **FK** `FK_COURIER`: (COUNTRY_ID, STATE_ID, DISTRICT_ID) -> DEFINITIONS.DISTRICT(COUNTRY_ID, STATE_ID, DISTRICT_ID)
-- **CHECK** `CHECK_ACTIVE`: ACTIVE IN('Y','N'
+- **CHECK** `CHECK_ACTIVE`: ACTIVE IN('Y','N')
 - **Triggers**: `COURIER_CPT_DISTRICT_CEA` (before insert or update or delete), `TRG_WS_SES_VH_QJ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CPT_ADMIN_R
@@ -4812,7 +4812,7 @@ This table is in use of chemo administration sheets.
 - **UK** `UK_CPT_BAN_1`: CPT_ID, START_DATE
 - **FK** `FK_CPT_BAN_1`: (BAN_TYPE_ID) -> DEFINITIONS.CPT_BAN_TYPES(BAN_TYPE_ID) [disabled]
 - **FK** `FK_CPT_BAN_2`: (CPT_ID) -> DEFINITIONS.CPT(CPT_ID)
-- **CHECK** `CK_CPT_BAN_1`: BAN_FACTOR IN ('D','B','E'
+- **CHECK** `CK_CPT_BAN_1`: BAN_FACTOR IN ('D','B','E')
 - **Triggers**: `CPT_BAN_CEA` (before insert or update or delete), `CPT_BAN_DEL` (after delete), `CPT_BAN_INS` (before insert), `CPT_BAN_UPD` (before update), `TRG_WS_IOT_YR_ST_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CPT_BAN_DETAIL
@@ -4838,7 +4838,7 @@ This table is in use of chemo administration sheets.
 - **FK** `FK_CPT_BAN_DETAIL_4`: (PATIENT_MRNO) -> REGISTRATION.PATIENT(MRNO) [disabled]
 - **FK** `FK_CPT_BAN_DETAIL_5`: (CLIENT_ID) -> BILLING.CLIENT(CLIENT_ID) [disabled]
 - **FK** `FK_CPT_BAN_DETAIL_6`: (USER_MRNO) -> SECURITY.USERS(MRNO) [disabled]
-- **CHECK** `CK_CPT_BAN_DETAIL_1`: BAN_FACTOR IN ('B','E'
+- **CHECK** `CK_CPT_BAN_DETAIL_1`: BAN_FACTOR IN ('B','E')
 - **CHECK** `CK_CPT_BAN_DETAIL_2`: LENGTH(LOCATION_ID||'~'||ORDER_TYPE_ID||'~'||PATIENT_TYPE_ID||'~'||PATIENT_MRNO||'~'||CLIENT_ID||'~'||USER_MRNO)>5
 - **Triggers**: `CPT_BAN_DETAIL_DEL` (after delete), `CPT_BAN_DETAIL_INS` (before insert), `CPT_BAN_DETAIL_UPD` (before update), `TRG_WS_IWF_XF_EG_Q` (after insert or update or delete)
 
@@ -4888,7 +4888,7 @@ This table is in use of chemo administration sheets.
 
 - **PK** `PK_CPT_CATEGORY_DETAIL`: CPT_CATEGORY_DETAIL_ID
 - **FK** `FK_CPT_CATEGORY_DETAIL_1`: (CPT_CATEGORY_ID) -> DEFINITIONS.CPT_CATEGORY(CPT_CATEGORY_ID) [disabled]
-- **CHECK** `CK_CPT_CATEGORY_DETAIL_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_CPT_CATEGORY_DETAIL_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `CPT_CATEGORY_DETAIL_CEA` (before insert or update or delete), `CPT_CATEGORY_DETAIL_DEL` (after delete), `CPT_CATEGORY_DETAIL_INS` (before insert), `CPT_CATEGORY_DETAIL_UPD` (before update), `TRG_WS_YOX_FO_GG_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CPT_CAT_PRICE_HISTORY
@@ -5034,7 +5034,7 @@ This table is in use of chemo administration sheets.
 - **UK** `UK_CPT_ID`: CPT_ID
 - **FK** `FK_S01_T092_S01_T009_1`: (CPT_ID) -> DEFINITIONS.CPT(CPT_ID)
 - **FK** `FK_S01_T092_S01_T015_2`: (DEPARTMENT_ID, SECTION_ID) -> DEFINITIONS.DEPARTMENT_SECTION(DEPARTMENT_ID, SECTION_ID)
-- **CHECK** `CK_CPT_DEPARTMENT_SECTION_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_CPT_DEPARTMENT_SECTION_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `CPT_DEPARTMENT_SECTION_CEA` (before insert or update or delete), `CPT_DEPARTMENT_SECTION_DEL` (after delete), `CPT_DEPARTMENT_SECTION_INS` (before insert), `CPT_DEPARTMENT_SECTION_UPD` (before update), `TRG_WS_RCK_VP_MR_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CPT_DEPARTMENT_SECTION_UPD_R
@@ -5319,8 +5319,8 @@ _No standard audit columns._
 | SURGICAL | VARCHAR2(1) default 'N' | Y |  |
 | SIMILAR | VARCHAR2(1) default 'U' | Y |  |
 
-- **CHECK** `CK_CPT_NEW_R_001`: SURGICAL IN ('Y','N'
-- **CHECK** `CK_CPT_NEW_R_002`: SIMILAR IN ('Y','N','U'
+- **CHECK** `CK_CPT_NEW_R_001`: SURGICAL IN ('Y','N')
+- **CHECK** `CK_CPT_NEW_R_002`: SIMILAR IN ('Y','N','U')
 
 ## DEFINITIONS.PACKAGE_TYPE
 This table will be used to define the Package Category, This table is Constant Table
@@ -5335,7 +5335,7 @@ This table will be used to define the Package Category, This table is Constant T
 - **PK** `PK_PACKAGE_TYPE`: PACKAGE_TYPE_ID
 - **UK** `UK_PACKAGE_TYPE_1`: DESCRIPTION
 - **UK** `UK_PACKAGE_TYPE_2`: SHORT_DESC
-- **CHECK** `CK_PACKAGE_TYPE_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_PACKAGE_TYPE_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `PACKAGE_TYPE_CEA` (before insert or update or delete), `PACKAGE_TYPE_DEL` (after delete), `PACKAGE_TYPE_INS` (before insert), `PACKAGE_TYPE_UPD` (before update), `TRG_WS_CLJ_RG_SL_Q` (after insert or update or delete)
 
 ## DEFINITIONS.PACKAGES
@@ -5712,10 +5712,10 @@ _No standard audit columns._
 | PHLEBOTOMIST_SPECIMEN | CHAR(1) default 'N' | N |  |
 
 - **PK** `PK_SPECIMEN`: SPECIMEN_ID
-- **CHECK** `CK_SPECIMEN_1`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_SPECIMEN_2`: DEFAULTS IN ('Y','N'
-- **CHECK** `CK_SPECIMEN_3`: COMPOUND IN ('Y','N'
-- **CHECK** `CK_SPECIMEN_4`: PHLEBOTOMIST_SPECIMEN IN ('Y','N'
+- **CHECK** `CK_SPECIMEN_1`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_SPECIMEN_2`: DEFAULTS IN ('Y','N')
+- **CHECK** `CK_SPECIMEN_3`: COMPOUND IN ('Y','N')
+- **CHECK** `CK_SPECIMEN_4`: PHLEBOTOMIST_SPECIMEN IN ('Y','N')
 - **Triggers**: `SPECIMEN_CEA` (before insert or update or delete), `SPECIMEN_DEL` (after delete), `SPECIMEN_INS` (before insert), `SPECIMEN_TS` (before insert or update or delete), `SPECIMEN_UPD` (before update), `TRG_WS_TXD_AF_NP_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CPT_REPORT
@@ -5731,8 +5731,8 @@ _No standard audit columns._
 
 - **PK** `PK_CPT_REPORT`: CPT_REPORT_ID, CPT_ID
 - **FK** `FK_CPT_REPORT_1`: (SPECIMEN_ID) -> DEFINITIONS.SPECIMEN(SPECIMEN_ID)
-- **CHECK** `CK_CPT_REPORT_1`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_CPT_REPORT_2`: REPORT_PUBLISH IN ('Y','N'
+- **CHECK** `CK_CPT_REPORT_1`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_CPT_REPORT_2`: REPORT_PUBLISH IN ('Y','N')
 - **Triggers**: `CPT_REPORT_CEA` (before insert or update or delete), `CPT_REPORT_DEL` (after delete), `CPT_REPORT_INS` (before insert), `CPT_REPORT_UPD` (before update), `TRG_WS_ZPT_OQ_AU_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DEPARTMENTAL_REPORTING_PANEL
@@ -5755,8 +5755,8 @@ This table contains information of departmaental Reporting panel/fotter detail
 
 - **PK** `PK_DEPT_REPORTING_PANEL`: PANEL_ID
 - **FK** `FK_DEPT_REPORTING_PANEL_1`: (DEPARTMENT_ID) -> DEFINITIONS.DEPARTMENT(DEPARTMENT_ID) [disabled]
-- **CHECK** `CK_DEPT_REPORTING_PANEL_1`: FINAL IN ('Y','N'
-- **CHECK** `CK_DEPT_REPORTING_PANEL_2`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_DEPT_REPORTING_PANEL_1`: FINAL IN ('Y','N')
+- **CHECK** `CK_DEPT_REPORTING_PANEL_2`: ACTIVE IN ('Y','N')
 - **Triggers**: `DEPARTMENTAL_REPORTING_PANEL_CEA` (before insert or update or delete), `DEPARTMENTAL_RPRTNG_PNL_DEL` (after delete), `DEPARTMENTAL_RPRTNG_PNL_INS` (before insert), `DEPARTMENTAL_RPRTNG_PNL_UPD` (before update), `REPORTING_PANEL_FINAL` (before insert or update), `TRG_WS_MEK_TH_CP_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CPT_REPORT_NAME
@@ -5771,7 +5771,7 @@ This table contains information of departmaental Reporting panel/fotter detail
 - **UK** `UK_CPT_REPORT_NAME`: CPT_ID, REPORT_NAME, ACTIVE
 - **FK** `FK_CPT_REPORT_NAME_1`: (PANEL_ID) -> DEFINITIONS.DEPARTMENTAL_REPORTING_PANEL(PANEL_ID) [disabled]
 - **FK** `FK_CPT_REPORT_NAME_2`: (CPT_ID) -> DEFINITIONS.CPT(CPT_ID)
-- **CHECK** `CHK_CPT_REPORT_NAME_1`: ACTIVE IN ('N','Y'
+- **CHECK** `CHK_CPT_REPORT_NAME_1`: ACTIVE IN ('N','Y')
 
 ## DEFINITIONS.CPT_RESTRICTED
 
@@ -5833,7 +5833,7 @@ This table contains information of departmaental Reporting panel/fotter detail
 
 - **PK** `PK_CPT_RESTRICTION_TYPE`: CPT_RESTRICTION_TYPE_ID
 - **FK** `FK_CPT_RESTRICTION_TYPE_1`: (CPT_GROUP_TYPE_ID) -> DEFINITIONS.CPT_GROUP_TYPE(CPT_GROUP_TYPE_ID)
-- **CHECK** `CK_CPT_RESTRICTION_TYPE_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_CPT_RESTRICTION_TYPE_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `CPT_RESTRICTION_TYPE_CEA` (before insert or update or delete), `CPT_RESTRICTION_TYPE_DEL` (after delete), `CPT_RESTRICTION_TYPE_INS` (before insert), `CPT_RESTRICTION_TYPE_UPD` (before update), `TRG_WS_AAA_ZP_BQ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.RESTRICTED_CPT
@@ -5849,7 +5849,7 @@ This table contains information of departmaental Reporting panel/fotter detail
 
 - **PK** `PK_RESTRICTED_CPT`: CPT_ID, CPT_RESTRICTION_TYPE_ID
 - **FK** `FK_RESTRICTED_CPT_1`: (CPT_RESTRICTION_TYPE_ID) -> DEFINITIONS.CPT_RESTRICTION_TYPE(CPT_RESTRICTION_TYPE_ID)
-- **CHECK** `CK_RESTRICTED_CPT_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_RESTRICTED_CPT_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `RESTRICTED_CPT_CEA` (before insert or update or delete), `RESTRICTED_CPT_DEL` (after delete), `RESTRICTED_CPT_INS` (before insert), `RESTRICTED_CPT_UPD` (before update), `TRG_WS_ZWX_OS_GR_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CPT_RESTRICTED_PARAM
@@ -5921,7 +5921,7 @@ This table contains information of departmaental Reporting panel/fotter detail
 | OLD_PRICE | NUMBER(12,2) | Y |  |
 
 - **PK** `PK_CPT_REVIEW_HISTORY`: CPT_ID, REVIEW_DATE
-- **CHECK** `CK_CPT_REVIEW_HISTORY_001`: REVIEW_DATE = TRUNC(REVIEW_DATE))
+- **CHECK** `CK_CPT_REVIEW_HISTORY_001`: REVIEW_DATE = TRUNC(REVIEW_DATE)
 - **Triggers**: `CPT_REVIEW_HISTORY_CEA` (before insert or update or delete), `CPT_REVIEW_HISTORY_DEL` (after delete), `CPT_REVIEW_HISTORY_INS` (before insert), `CPT_REVIEW_HISTORY_UPD` (before update), `TRG_WS_CNG_FG_JQ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CPT_ROLE_REST_PERMIT
@@ -5964,7 +5964,7 @@ To link a CPT with multiple specialties of the same department
 - **PK** `PK_CPT_SPECIALTIES`: CPT_ID, CLINIC_SPECIALITY_ID
 - **FK** `FK_CPT_SPECIALTIES_01`: (CPT_ID) -> DEFINITIONS.CPT(CPT_ID)
 - **FK** `FK_CPT_SPECIALTIES_02`: (CLINIC_SPECIALITY_ID) -> DEFINITIONS.CLINIC_SPECIALITY(CLINIC_SPECIALITY_ID) [disabled]
-- **CHECK** `CHK_CPT_SPECIALTIES_01`: ACTIVE IN ('N','Y'
+- **CHECK** `CHK_CPT_SPECIALTIES_01`: ACTIVE IN ('N','Y')
 - **Triggers**: `CPT_SPECIALTIES_CEA` (before insert or update or delete), `CPT_SPECIALTIES_DEL` (after delete), `CPT_SPECIALTIES_INS` (before insert), `CPT_SPECIALTIES_UPD` (before update), `TRG_WS_DVE_DH_EU_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CPT_SPECIMEN
@@ -5985,13 +5985,13 @@ To link a CPT with multiple specialties of the same department
 - **PK** `PK_CPT_SPECIMEN`: CPT_ID, SPECIMEN_ID
 - **FK** `FK_S01_T078_S01_T009_1`: (CPT_ID) -> DEFINITIONS.CPT(CPT_ID)
 - **FK** `FK_S01_T078_S01_T071_2`: (SPECIMEN_ID) -> DEFINITIONS.SPECIMEN(SPECIMEN_ID)
-- **CHECK** `CK_CPT_SPECIMEN_1`: DEFAULTS IN ('Y', 'N'
-- **CHECK** `CK_CPT_SPECIMEN_2`: ACTIVE IN ('Y', 'N'
-- **CHECK** `CK_CPT_SPECIMEN_3`: (DEFAULTS = 'Y' AND ACTIVE = 'Y' OR DEFAULTS = 'N' AND ACTIVE = 'N' OR DEFAULTS = 'N' AND ACTIVE = 'Y'
-- **CHECK** `CK_CPT_SPECIMEN_4`: REMARKS_REQUIRED IN ('Y','N'
-- **CHECK** `CK_CPT_SPECIMEN_5`: COLOR_DEFAULT IN ('Y','N'
-- **CHECK** `CK_CPT_SPECIMEN_6`: APPEARANCE_DEFAULT IN ('Y','N'
-- **CHECK** `CK_CPT_SPECIMEN_7`: PRINT_LABEL IN ('Y','N'
+- **CHECK** `CK_CPT_SPECIMEN_1`: DEFAULTS IN ('Y', 'N')
+- **CHECK** `CK_CPT_SPECIMEN_2`: ACTIVE IN ('Y', 'N')
+- **CHECK** `CK_CPT_SPECIMEN_3`: (DEFAULTS = 'Y' AND ACTIVE = 'Y' OR DEFAULTS = 'N' AND ACTIVE = 'N' OR DEFAULTS = 'N' AND ACTIVE = 'Y')
+- **CHECK** `CK_CPT_SPECIMEN_4`: REMARKS_REQUIRED IN ('Y','N')
+- **CHECK** `CK_CPT_SPECIMEN_5`: COLOR_DEFAULT IN ('Y','N')
+- **CHECK** `CK_CPT_SPECIMEN_6`: APPEARANCE_DEFAULT IN ('Y','N')
+- **CHECK** `CK_CPT_SPECIMEN_7`: PRINT_LABEL IN ('Y','N')
 - **Triggers**: `CPT_SPECIMEN_CEA` (before insert or update or delete), `CPT_SPECIMEN_DEL` (after delete), `CPT_SPECIMEN_INS` (before insert), `CPT_SPECIMEN_TS` (before insert or update or delete), `CPT_SPECIMEN_UPD` (before update), `TRG_WS_DFC_WC_QH_Q` (after insert or update or delete)
 
 ## DEFINITIONS.CPT_SURGERY_R
@@ -6259,9 +6259,9 @@ To link a CPT with multiple specialties of the same department
 | MODEL_TYPE_ID | NUMBER(2) | N | This column contain value of  data model type id |
 
 - **PK** `PK_DATA_SYNC_MODEL_001`: DB_USER, DB_TYPE, NETWORK_TOPOLOGY, MODEL_TYPE_ID
-- **CHECK** `CH_DATA_SYNC_MODEL_01`: NETWORK_TOPOLOGY IN ('STAR','MESH'
-- **CHECK** `CH_DATA_SYNC_MODEL_02`: ACTION_FOR_TIGGER IN ('NONE','DC-TO-CR','DC-TO-ALL'
-- **CHECK** `CH_DATA_SYNC_MODEL_03`: ACTION_FOR_PROCEDURE IN ('NONE','DC-TO-ALL','DC-TO-BUFFER'
+- **CHECK** `CH_DATA_SYNC_MODEL_01`: NETWORK_TOPOLOGY IN ('STAR','MESH')
+- **CHECK** `CH_DATA_SYNC_MODEL_02`: ACTION_FOR_TIGGER IN ('NONE','DC-TO-CR','DC-TO-ALL')
+- **CHECK** `CH_DATA_SYNC_MODEL_03`: ACTION_FOR_PROCEDURE IN ('NONE','DC-TO-ALL','DC-TO-BUFFER')
 
 ## DEFINITIONS.DATA_SYNC_MODEL_TYPES
 
@@ -6282,7 +6282,7 @@ To link a CPT with multiple specialties of the same department
 | DATE_COLUMN | DATE | N |  |
 
 - **PK** `PK_DATES`: DATE_COLUMN
-- **CHECK** `CK_DATES_001`: DATE_COLUMN = TRUNC(DATE_COLUMN
+- **CHECK** `CK_DATES_001`: DATE_COLUMN = TRUNC(DATE_COLUMN)
 
 ## DEFINITIONS.DAY
 
@@ -6298,7 +6298,7 @@ To link a CPT with multiple specialties of the same department
 | WORKING_DAY | CHAR(1) default 'Y' | N |  |
 
 - **PK** `PK_DAY`: DAY_ID
-- **CHECK** `CK_DAY_001`: WORKING_DAY IN ('Y','N'
+- **CHECK** `CK_DAY_001`: WORKING_DAY IN ('Y','N')
 - **Triggers**: `DAY_CEA` (before insert or update or delete), `DAY_DEL` (after delete), `DAY_INS` (before insert), `DAY_UPD` (before update), `TRG_WS_HWP_RJ_FK_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DAY_LANGUAGE_SETUP
@@ -6417,7 +6417,7 @@ This table is used to store then setup data of medicine filters.
 | ACTIVE | CHAR(1) default 'Y' | N | Y: ACTIVE, N: INACTIVE |
 
 - **PK** `PK_FILES_SERVERS_TYPES`: SERVER_TYPE_ID
-- **CHECK** `CK_FILES_SERVERS_TYPES_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_FILES_SERVERS_TYPES_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `FILES_SERVERS_TYPES_DEL` (after delete), `FILES_SERVERS_TYPES_INS` (before insert), `FILES_SERVERS_TYPES_UPD` (before update), `TRG_WS_SAM_LJ_CS_Q` (after insert or update or delete)
 
 ## DEFINITIONS.FILES_SERVERS
@@ -6437,7 +6437,7 @@ This table is used to store then setup data of medicine filters.
 - **PK** `PK_FILES_SERVERS`: SERVER_ID
 - **UK** `UK_FILES_SERVERS_1`: ACCESS_PATH
 - **FK** `FK_FILES_SERVERS_1`: (SERVER_TYPE_ID) -> DEFINITIONS.FILES_SERVERS_TYPES(SERVER_TYPE_ID)
-- **CHECK** `CK_FILES_SERVERS_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_FILES_SERVERS_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `FILES_SERVERS_DEL` (after delete), `FILES_SERVERS_INS` (before insert), `FILES_SERVERS_NEW_ID` (before insert or update), `FILES_SERVERS_UPD` (before update), `TRG_WS_RID_CQ_BR_Q` (after insert or update or delete)
 
 ## DEFINITIONS.FILES_TYPES
@@ -6457,7 +6457,7 @@ This table is used to store then setup data of medicine filters.
 
 - **PK** `PK_FILES_TYPES`: FILE_TYPE_ID
 - **UK** `UK_FILES_TYPES`: FILE_DESC
-- **CHECK** `CK_FILES_TYPES_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_FILES_TYPES_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `FILES_TYPES_DEL` (after delete), `FILES_TYPES_INS` (before insert), `FILES_TYPES_UPD` (before update), `TRG_WS_IBA_SJ_YY_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DEFAULT_FILES_SERVERS
@@ -6765,8 +6765,8 @@ This table will be used to define the Service Category Group e.g. CPT, Pharmacy,
 | ACTIVE | CHAR(1) default 'Y' | N | Status of the Transaction |
 
 - **PK** `PK_SERVICE_CATEGORY_GROUP`: SERVICE_CATEGORY_GROUP_ID
-- **CHECK** `CK_SERVICE_CATEGORY_GROUP_1`: DESCRIPTION=UPPER(DESCRIPTION
-- **CHECK** `CK_SERVICE_CATEGORY_GROUP_2`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_SERVICE_CATEGORY_GROUP_1`: DESCRIPTION=UPPER(DESCRIPTION)
+- **CHECK** `CK_SERVICE_CATEGORY_GROUP_2`: ACTIVE IN ('Y','N')
 - **CHECK** `CK_SERVICE_CATEGORY_GROUP_3`: ORG_ID='SKM'
 - **Triggers**: `SERVICE_CATEGORY_GROUP_CEA` (before insert or update or delete), `SERVICE_CATEGORY_GROUP_DEL` (after delete), `SERVICE_CATEGORY_GROUP_INS` (before insert), `SERVICE_CATEGORY_GROUP_UPD` (before update), `TRG_WS_NQF_NK_UU_Q` (after insert or update or delete)
 
@@ -6782,7 +6782,7 @@ This table will be used to define the Service Types e.g. CPT, Pharmacy, Consulta
 
 - **PK** `PK_DEF_SERVICE_CATEGORY`: SERVICE_CATEGORY_ID
 - **FK** `FK_DEF_SERVICE_CATEGORY_1`: (SERVICE_CATEGORY_GROUP_ID) -> DEFINITIONS.SERVICE_CATEGORY_GROUP(SERVICE_CATEGORY_GROUP_ID) [disabled]
-- **CHECK** `CK_DEF_SERVICE_CATEGORY_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_DEF_SERVICE_CATEGORY_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `DEF_SERVICE_CATEGORY_CEA` (before insert or update or delete), `DEF_SERVICE_CATEGORY_DEL` (after delete), `DEF_SERVICE_CATEGORY_INS` (before insert), `DEF_SERVICE_CATEGORY_UPD` (before update), `TRG_WS_ZYZ_DG_TM_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DEF_SYS_CONSTANTS_TYPE
@@ -6997,7 +6997,7 @@ _No standard audit columns._
 - **PK** `PK_DESIGNATION_ROLE`: DESIGNATION_ID, ROLE_ID
 - **FK** `FK_DESIGNATION_ROLE_1`: (DESIGNATION_ID) -> DEFINITIONS.DESIGNATION(DESIGNATION_ID)
 - **FK** `FK_DESIGNATION_ROLE_2`: (ROLE_ID) -> SECURITY.ROLE(ROLE_ID) [disabled]
-- **CHECK** `CHK_USER_ROLE_1`: PRIMARY_ROLE IN ('N','C','A','G'
+- **CHECK** `CHK_USER_ROLE_1`: PRIMARY_ROLE IN ('N','C','A','G')
 - **Triggers**: `DESIGNATION_ROLE_CEA` (before insert or update or delete), `DESIGNATION_ROLE_DEL` (after delete), `DESIGNATION_ROLE_DELETE` (before delete), `DESIGNATION_ROLE_INS` (before insert), `DESIGNATION_ROLE_UPD` (before update), `TRG_WS_WCJ_HB_RZ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DESIGNATION_STRUCTURE
@@ -7122,9 +7122,9 @@ _No standard audit columns._
 - **FK** `FK_DESIG_SPECIALITY_PRIV_3`: (DOCUMENT_ID) -> LOB.DOCUMENTS_STORE(DOCUMENT_ID) [disabled]
 - **FK** `FK_DESIG_SPECIALITY_PRIV_4`: (ATTACHED_BY) -> HRD.INFORMATION(MRNO) [disabled]
 - **FK** `FK_DESIG_SPECIALITY_PRIV_5`: (DESIGNATION_ID) -> DEFINITIONS.DESIGNATION(DESIGNATION_ID) [disabled]
-- **CHECK** `CHK_DESIG_SPECIALITY_PRIV_1`: ACTIVE IN ('Y','N'
-- **CHECK** `CHK_DESIG_SPECIALITY_PRIV_2`: ON_PROBATION IN ('Y','N'
-- **CHECK** `CHK_DESIG_SPECIALITY_PRIV_3`: DISPLAY IN ('Y','N'
+- **CHECK** `CHK_DESIG_SPECIALITY_PRIV_1`: ACTIVE IN ('Y','N')
+- **CHECK** `CHK_DESIG_SPECIALITY_PRIV_2`: ON_PROBATION IN ('Y','N')
+- **CHECK** `CHK_DESIG_SPECIALITY_PRIV_3`: DISPLAY IN ('Y','N')
 - **Triggers**: `DESIG_SPLY_PRIVILEGES_DEL` (after delete), `DESIG_SPLY_PRIVILEGES_INS` (before insert), `DESIG_SPLY_PRIVILEGES_UPD` (before update)
 
 ## DEFINITIONS.DETAIL_TEMPLATE_SETUP
@@ -7175,8 +7175,8 @@ _No standard audit columns._
 | PATIENT_TO_BE_EXAMINED_BY | CHAR(1) | N | IT MAY CONTAIN VALUES LIKE R/F/O "R" FOR RESIDENT, "F" FOR FELLOW AND "O" FOR ONCOLOGIST |
 
 - **PK** `PK_DIAGNOSIS`: DIAGNOSIS_ID
-- **CHECK** `CK_DIAGNOSIS_1`: ACTIVE IN ('Y', 'N'
-- **CHECK** `CK_DIAGNOSIS_2`: PATIENT_TO_BE_EXAMINED_BY IN ('R','F','O'
+- **CHECK** `CK_DIAGNOSIS_1`: ACTIVE IN ('Y', 'N')
+- **CHECK** `CK_DIAGNOSIS_2`: PATIENT_TO_BE_EXAMINED_BY IN ('R','F','O')
 - **Triggers**: `DIAGNOSIS_CEA` (before insert or update or delete), `DIAGNOSIS_DEL` (after delete), `DIAGNOSIS_INS` (before insert), `DIAGNOSIS_UPD` (before update), `TRG_WS_DWE_KO_OV_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DIAGNOSIS_REPORT_SETUP
@@ -7221,10 +7221,10 @@ _No standard audit columns._
 | ORGANIZATION_ID | VARCHAR2(3) | Y |  |
 
 - **PK** `PK_ICD_1`: ICDNO, VERSION, LOCATION_ID
-- **CHECK** `CHECK_ICD`: ADDITIONAL_ICD IN ('Y','N'
-- **CHECK** `CHECK_ICD_1`: ACTIVE IN ('Y','N'
-- **CHECK** `CHK_ICD_TYPE`: ICD_TYPE IN ('SURGICAL PROCEDURE','DIAGNOSTIC CODE','PROCEDURE','E CODE','V CODE'))
-- **CHECK** `CK_ICD_001`: ICDNO_FOR_CANCER IN ('N','Y'
+- **CHECK** `CHECK_ICD`: ADDITIONAL_ICD IN ('Y','N')
+- **CHECK** `CHECK_ICD_1`: ACTIVE IN ('Y','N')
+- **CHECK** `CHK_ICD_TYPE`: ICD_TYPE IN ('SURGICAL PROCEDURE','DIAGNOSTIC CODE','PROCEDURE','E CODE','V CODE')
+- **CHECK** `CK_ICD_001`: ICDNO_FOR_CANCER IN ('N','Y')
 - **Triggers**: `ICD_CEA` (before insert or update or delete), `ICD_DEL` (after delete), `ICD_INS` (before insert), `ICD_INSRT` (before insert), `ICD_UPD` (before update), `MAINTAIN_ICD_VERSION_HISTORY` (after update of long_desc), `TRG_WS_RNV_BL_VA_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DIAGNOSIS_REPORT_DETAIL
@@ -7278,8 +7278,8 @@ _No standard audit columns._
 
 - **PK** `PK_PHONE_TYPE`: PHONE_TYPE_ID
 - **UK** `UK_PHONE_TYPE_1`: DESCRIPTION
-- **CHECK** `CHK_PHONE_TYPE_1`: ACTIVE IN ('N','Y'
-- **CHECK** `CK_PHONE_TYPE_001`: FLAG IN ('C','A'
+- **CHECK** `CHK_PHONE_TYPE_1`: ACTIVE IN ('N','Y')
+- **CHECK** `CK_PHONE_TYPE_001`: FLAG IN ('C','A')
 - **Triggers**: `PHONE_TYPE_CEA` (before insert or update or delete), `PHONE_TYPE_DEL` (after delete), `PHONE_TYPE_INS` (before insert), `PHONE_TYPE_UPD` (before update), `TRG_WS_ALS_RD_TG_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DIALING_CODES
@@ -7382,7 +7382,7 @@ _No standard audit columns._
 | DISEASES_CATEGORY | NUMBER(2) | Y | 1 = Cancer Patient, 2=Non Cancer Patient, 3=Indigent Patient, 4= LOU Patient,  5= Query Cancer, 6=Undiagnosed |
 
 - **PK** `PK_DISEASES`: DISEASE_ID
-- **CHECK** `CHK_DISEASES_ACTIVE`: ACTIVE IN ('Y','N'
+- **CHECK** `CHK_DISEASES_ACTIVE`: ACTIVE IN ('Y','N')
 - **Triggers**: `DISEASES_CEA` (before insert or update or delete), `DISEASES_DEL` (after delete), `DISEASES_INS` (before insert), `DISEASES_UPD` (before update), `TRG_WS_WUL_UK_FZ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DISEASE_AGE_LIMIT
@@ -7396,7 +7396,7 @@ _No standard audit columns._
 
 - **PK** `PK_DISEASE_AGE_LIMIT`: DISEASE_ID, FROM_AGE, TO_AGE
 - **FK** `FK_DISEASE_AGE_LIMIT_1`: (DISEASE_ID) -> DEFINITIONS.DISEASES(DISEASE_ID)
-- **CHECK** `CHK_DIEASE_AGE_LIMIT`: RESTRICTED_FLAG IN ('N','Y'
+- **CHECK** `CHK_DIEASE_AGE_LIMIT`: RESTRICTED_FLAG IN ('N','Y')
 - **Triggers**: `DISEASE_AGE_LIMIT_DEL` (after delete), `DISEASE_AGE_LIMIT_INS` (before insert), `DISEASE_AGE_LIMIT_UPD` (before update)
 
 ## DEFINITIONS.DISEASE_FLOWSHEET_PARAMS
@@ -7486,7 +7486,7 @@ _No standard audit columns._
 | ACTIVE | CHAR(1) default 'Y' | Y |  |
 
 - **PK** `PK_DISEASE_GROUP`: DISEASE_GROUP_ID
-- **CHECK** `CHK_DISEASE_GROUP_ACTIVE`: ACTIVE IN ('Y','N'
+- **CHECK** `CHK_DISEASE_GROUP_ACTIVE`: ACTIVE IN ('Y','N')
 
 ## DEFINITIONS.DISPENSARY
 
@@ -7742,8 +7742,8 @@ This table will be used to define the CPT Doctor Wise
 
 - **FK** `FK_MARKETING_DOCOTOR_1`: (HOSPITAL_ID) -> DEFINITIONS.SERVICE_HOSPITAL(HOSPITAL_ID) [disabled]
 - **FK** `FK_MARKETING_DOCOTOR_2`: (CLINIC_SPECIALITY_ID) -> DEFINITIONS.CLINIC_SPECIALITY(CLINIC_SPECIALITY_ID) [disabled]
-- **CHECK** `CK_DOCOTR_MARKETING_1`: ACTIVE IN ('Y', 'N'
-- **CHECK** `CK_MARKETING_DOCTOR_1`: MARKETING_DOCTOR IN ('Y', 'N'
+- **CHECK** `CK_DOCOTR_MARKETING_1`: ACTIVE IN ('Y', 'N')
+- **CHECK** `CK_MARKETING_DOCTOR_1`: MARKETING_DOCTOR IN ('Y', 'N')
 
 ## DEFINITIONS.DOCTOR_MULTI_SPECIALTY
 
@@ -7768,7 +7768,7 @@ This table will be used to define the CPT Doctor Wise
 | ACTIVE | CHAR(1) default 'Y' | Y |  |
 
 - **PK** `PK_DOCTOR_SPECIALITY`: SPECIALITY_ID
-- **CHECK** `CK_DOCTOR_SPECIALITY_1`: ACTIVE IN('N','Y'
+- **CHECK** `CK_DOCTOR_SPECIALITY_1`: ACTIVE IN('N','Y')
 - **Triggers**: `DOCTOR_SPECIALITY_CEA` (before insert or update or delete), `TRG_WS_OAN_XS_UQ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.DOCUMENT_TYPE
@@ -7995,7 +7995,7 @@ This table contains information of list of Email Events
 
 - **PK** `PK_EMAIL_ALERT_DETAIL`: LIST_ID, EMAIL_SERIAL
 - **FK** `FK_EMAIL_ALERT_DETAIL_1`: (LIST_ID) -> DEFINITIONS.EMAIL_ALERT(LIST_ID)
-- **CHECK** `CK_EMAIL_ALERT_DETAIL_1`: SEND_SMS_YN IN ('Y','N'
+- **CHECK** `CK_EMAIL_ALERT_DETAIL_1`: SEND_SMS_YN IN ('Y','N')
 - **Triggers**: `EMAIL_ALERT_DETAIL_DEL` (after delete), `EMAIL_ALERT_DETAIL_INS` (before insert), `EMAIL_ALERT_DETAIL_UPD` (before update)
 
 ## DEFINITIONS.EMPLOYER
@@ -8007,7 +8007,7 @@ This table contains information of list of Email Events
 | ACTIVE | CHAR(1) default 'Y' | Y |  |
 
 - **PK** `PK_EMPLOYER`: EMPLOYER_ID
-- **CHECK** `CK_EMPLOYER_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_EMPLOYER_1`: ACTIVE IN ('Y','N')
 
 ## DEFINITIONS.EMP_TRAINING_DOCUMENT_TYPE
 
@@ -8173,7 +8173,7 @@ This table will be used to save ESI Priority
 | CUSTOM_REMINDER_DAYS | CHAR(1) default 'N' | Y | This column is used to save a flag for customizr reminder days(manually enter by any authority) |
 
 - **PK** `PK_EVENT`: EVENT_ID
-- **CHECK** `CHK_EVENT_USER`: USER_RUNTIME IN ('N','Y'
+- **CHECK** `CHK_EVENT_USER`: USER_RUNTIME IN ('N','Y')
 - **Triggers**: `EVENT_CEA` (before insert or update or delete), `EVENT_DEL` (after delete), `EVENT_INS` (before insert), `EVENT_UPD` (before update), `TRG_WS_LWB_MW_YA_Q` (after insert or update or delete)
 
 ## DEFINITIONS.EVENT_DECISION
@@ -8202,9 +8202,9 @@ This table will be used to save ESI Priority
 | LOG_DEPT | CHAR(1) | N | This column contains Flag Information to log Department (C=CPT, U=User, O=Order) |
 
 - **PK** `PK_EVENT_GROUPS`: NATURE_ID, EVENT_ID
-- **CHECK** `CK_EVENT_GROUPS_1`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_EVENT_GROUPS_2`: LOG_EVENT IN ('O','D'
-- **CHECK** `CK_EVENT_GROUPS_3`: LOG_DEPT IN ('C','U','O'
+- **CHECK** `CK_EVENT_GROUPS_1`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_EVENT_GROUPS_2`: LOG_EVENT IN ('O','D')
+- **CHECK** `CK_EVENT_GROUPS_3`: LOG_DEPT IN ('C','U','O')
 
 ## DEFINITIONS.EVENT_USER
 
@@ -8339,7 +8339,7 @@ This table will be used to save ESI Priority
 
 - **PK** `PK_FILES_EXTENSIONS`: EXT_ID
 - **UK** `UK_FILES_EXTENSIONS`: EXT_DESC
-- **CHECK** `CK_FILES_EXTENSIONS_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_FILES_EXTENSIONS_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `FILES_EXTENSIONS_DEL` (after delete), `FILES_EXTENSIONS_INS` (before insert), `FILES_EXTENSIONS_UPD` (before update), `TRG_WS_MVM_OZ_RC_Q` (after insert or update or delete)
 
 ## DEFINITIONS.FILES_SERVERS_SYNC_SETUP
@@ -8359,9 +8359,9 @@ This table contains Servers Replication Setup for Attached/Uploaded FILES
 - **PK** `PK_FILES_SERVERS_SYNC_SETUP`: SOURCE_SERVER_ID, TARGET_SERVER_ID
 - **FK** `FK_FILES_SERVERS_SYNC_SETUP_1`: (SOURCE_SERVER_ID) -> DEFINITIONS.FILES_SERVERS(SERVER_ID)
 - **FK** `FK_FILES_SERVERS_SYNC_SETUP_2`: (TARGET_SERVER_ID) -> DEFINITIONS.FILES_SERVERS(SERVER_ID) [disabled]
-- **CHECK** `CK_FILES_SERVERS_SYNC_SETUP_1`: ACCESS_MODE IN ('L','W'
-- **CHECK** `CK_FILES_SERVERS_SYNC_SETUP_2`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_FILES_SERVERS_SYNC_SETUP_3`: SYNC_MODE IN ('N','A','M'
+- **CHECK** `CK_FILES_SERVERS_SYNC_SETUP_1`: ACCESS_MODE IN ('L','W')
+- **CHECK** `CK_FILES_SERVERS_SYNC_SETUP_2`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_FILES_SERVERS_SYNC_SETUP_3`: SYNC_MODE IN ('N','A','M')
 - **Triggers**: `FILES_SERVERS_SYNC_SETUP_DEL` (after delete), `FILES_SERVERS_SYNC_SETUP_INS` (before insert), `FILES_SERVERS_SYNC_SETUP_UPD` (before update), `TRG_WS_YHA_JH_AB_Q` (after insert or update or delete)
 
 ## DEFINITIONS.FILES_TEMPORARY_PATHS
@@ -8429,7 +8429,7 @@ It is setup table; and contains Associated Files Type
 - **PK** `PK_FILES_TYPES_DET`: TYPE_ID, FILE_TYPE_ID
 - **UK** `UK_FILES_TYPES_DET`: FILE_TYPE_ID, TYPE_DESC
 - **FK** `FK_FILES_TYPES_DET_1`: (FILE_TYPE_ID) -> DEFINITIONS.FILES_TYPES(FILE_TYPE_ID) [disabled]
-- **CHECK** `CK_FILES_TYPES_DET_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_FILES_TYPES_DET_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `FILES_TYPES_DET_DEL` (after delete), `FILES_TYPES_DET_INS` (before insert), `FILES_TYPES_DET_UPD` (before update), `TRG_WS_TYZ_EL_JR_Q` (after insert or update or delete)
 
 ## DEFINITIONS.FILES_VIEWERS
@@ -8444,7 +8444,7 @@ This is setup table and is used to define softwares to be used to view specific 
 | ACTIVE | CHAR(1) | N | Flag column to contain status Y=Active,N=Inactive |
 
 - **PK** `PK_FILES_VIEWERS`: VIEWER_ID
-- **CHECK** `CK_FILES_VIEWERS_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_FILES_VIEWERS_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `FILES_VIEWERS_DEL` (after delete), `FILES_VIEWERS_INS` (before insert), `FILES_VIEWERS_UPD` (before update), `TRG_WS_ROZ_KT_IB_Q` (after insert or update or delete)
 
 ## DEFINITIONS.FILE_UPLOADS
@@ -8481,7 +8481,7 @@ _No standard audit columns._
 | TO_DATE | DATE | Y |  |
 | ACTIVE | CHAR(1) default 'Y' | Y |  |
 
-- **CHECK** `CK_FINANCIAL_YEAR_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_FINANCIAL_YEAR_1`: ACTIVE IN ('Y','N')
 
 ## DEFINITIONS.FONT_ATTRIBUTE
 
@@ -8621,7 +8621,7 @@ THIS TABLE IS USED TO DEFINE MULTILINGUAL FREQUENCY INSTRUCTIONS WHICH WILL BE P
 | ACTIVE | VARCHAR2(1) default 'N' | Y |  |
 
 - **UK** `UK_GENDER_MAP`: SEX_ID
-- **CHECK** `CHK_ACTIVE_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CHK_ACTIVE_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `GENDER_MAP_DEL` (after delete), `GENDER_MAP_INS` (before insert), `GENDER_MAP_NEW_ID` (before insert), `GENDER_MAP_UPD` (before update)
 
 ## DEFINITIONS.GENERIC_CATEGORY_MASTER
@@ -8680,10 +8680,10 @@ This table contains definitions of Global variable those are mainatained at Appl
 
 - **PK** `PK_GLOBAL_VARIABLES`: VARIABLE_ID
 - **UK** `UK_GLOBAL_VARIABLES_1`: VARIABLE_NAME
-- **CHECK** `CK_GLOBAL_VARIABLES_1`: CHANGEABLE IN ('N','Y'
-- **CHECK** `CK_GLOBAL_VARIABLES_2`: VARIABLE_NAME = UPPER(VARIABLE_NAME
-- **CHECK** `CK_GLOBAL_VARIABLES_3`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_GLOBAL_VARIABLES_4`: DATA_SOURCE IN ('F','C','Q'
+- **CHECK** `CK_GLOBAL_VARIABLES_1`: CHANGEABLE IN ('N','Y')
+- **CHECK** `CK_GLOBAL_VARIABLES_2`: VARIABLE_NAME = UPPER(VARIABLE_NAME)
+- **CHECK** `CK_GLOBAL_VARIABLES_3`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_GLOBAL_VARIABLES_4`: DATA_SOURCE IN ('F','C','Q')
 - **Triggers**: `GLOBAL_VARIABLES_CEA` (before insert or update or delete), `GLOBAL_VARIABLES_DEL` (after delete), `GLOBAL_VARIABLES_INS` (before insert), `GLOBAL_VARIABLES_UPD` (before update), `TRG_WS_QUS_UA_HQ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.GL_DIVISION_LOC_HEADS
@@ -8698,7 +8698,7 @@ This table contains definitions of Global variable those are mainatained at Appl
 - **PK** `PK_GL_DIVISION_LOC_HEADS`: DIVISION_CODE, LOCATION_ID
 - **FK** `FK_GL_DIVISION_LOC_HEADS_1`: (LOCATION_ID) -> DEFINITIONS.LOCATION(LOCATION_ID) [disabled]
 - **FK** `FK_GL_DIVISION_LOC_HEADS_2`: (DIVISION_CODE) -> DEFINITIONS.GL_DIVISIONS(DIVISION_CODE)
-- **CHECK** `CK_GL_DIVISION_LOC_HEADS`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_GL_DIVISION_LOC_HEADS`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `GL_DIVISION_LOC_HEADS_DEL` (after delete), `GL_DIVISION_LOC_HEADS_INS` (before insert), `GL_DIVISION_LOC_HEADS_UPD` (before update)
 
 ## DEFINITIONS.GRADES
@@ -8712,7 +8712,7 @@ This table contains definitions of Global variable those are mainatained at Appl
 | OVER_TIME_ALLOWED | VARCHAR2(1) default 'N' | Y |  |
 
 - **PK** `PK_GRADES`: GRADE_ID
-- **CHECK** `CK_GRADES_001`: OVER_TIME_ALLOWED IN ('Y','N'
+- **CHECK** `CK_GRADES_001`: OVER_TIME_ALLOWED IN ('Y','N')
 - **Triggers**: `GRADES_CEA` (before insert or update or delete), `GRADES_DEL` (after delete), `GRADES_INS` (before insert), `GRADES_UPD` (before update), `TRG_WS_FFF_LL_CP_Q` (after insert or update or delete)
 
 ## DEFINITIONS.GRANT_TABS
@@ -8743,9 +8743,9 @@ This table contains definitions of Global variable those are mainatained at Appl
 
 - **PK** `PK_GROUP_ALERT`: LIST_ID, DESIGNATION_CATEGORY_ID
 - **FK** `FK_GROUP_ALERT_3`: (LIST_ID) -> DEFINITIONS.EMAIL_ALERT(LIST_ID)
-- **CHECK** `CK_GROUP_ALERT_1`: EMAIL IN ('Y','N'
-- **CHECK** `CK_GROUP_ALERT_2`: SMS IN ('Y','N'
-- **CHECK** `CK_GROUP_ALERT_3`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_GROUP_ALERT_1`: EMAIL IN ('Y','N')
+- **CHECK** `CK_GROUP_ALERT_2`: SMS IN ('Y','N')
+- **CHECK** `CK_GROUP_ALERT_3`: ACTIVE IN ('Y','N')
 
 ## DEFINITIONS.GROUP_CPT
 
@@ -8972,7 +8972,7 @@ _No standard audit columns._
 | ACTIVE | CHAR(1) default 'N' | N |  |
 
 - **PK** `PK_HIS_DOWNTIME_REASON`: REASON_ID
-- **CHECK** `CHK_HIS_DOWNTIME_REASON`: ACTIVE IN ('Y','N'
+- **CHECK** `CHK_HIS_DOWNTIME_REASON`: ACTIVE IN ('Y','N')
 
 ## DEFINITIONS.HIS_PROCESS
 
@@ -9017,8 +9017,8 @@ _No standard audit columns._
 
 - **PK** `PK_SCHEMAS`: SCHEMA_ID
 - **UK** `UK_SCHEMAS_01`: NAME
-- **CHECK** `CK_SCHEMA_02`: NAME = UPPER(NAME
-- **CHECK** `CK_SCHEMA_1`: SCHEMA_TYPE_FLAG IN ('T','D'
+- **CHECK** `CK_SCHEMA_02`: NAME = UPPER(NAME)
+- **CHECK** `CK_SCHEMA_1`: SCHEMA_TYPE_FLAG IN ('T','D')
 - **Triggers**: `SCHEMAS_CEA` (before insert or update or delete), `SCHEMAS_DEL` (after delete), `SCHEMAS_INS` (before insert), `SCHEMAS_UPD` (before update), `TRG_WS_CFE_JL_HL_Q` (after insert or update or delete)
 
 ## DEFINITIONS.HIS_SETUP_FORMS
@@ -9338,7 +9338,7 @@ _No standard audit columns._
 | SR_NO | NUMBER(9) | N |  |
 
 - **PK** `PK_ICD_DATA_UPDATE`: SR_NO
-- **CHECK** `CHCK_ICD_TYPE`: ICD_TYPE IN('SURGICAL PROCEDURE','V CODE','PROCEDURE','E CODE','DIAGNOSTIC CODE','DIAGNOSIS CODE'
+- **CHECK** `CHCK_ICD_TYPE`: ICD_TYPE IN('SURGICAL PROCEDURE','V CODE','PROCEDURE','E CODE','DIAGNOSTIC CODE','DIAGNOSIS CODE')
 - **Triggers**: `ICD_DATA_UPDATE_DEL` (after delete), `ICD_DATA_UPDATE_INS` (before insert), `ICD_DATA_UPDATE_SR_NO` (before insert), `ICD_DATA_UPDATE_UPD` (before update)
 
 ## DEFINITIONS.ICD_GROUP
@@ -9383,7 +9383,7 @@ _No standard audit columns._
 | ICD_TYPE | VARCHAR2(25) | N |  |
 
 - **PK** `PK_SR_OLDNEW_ICDNO`: SERIAL_NO, OLD_ICDNO, OLD_VERSION, NEW_ICDNO, NEW_VERSION
-- **CHECK** `CHK_MAP_ICD_TYPE`: ICD_TYPE IN ('SURGICAL PROCEDURE','DIAGNOSTIC CODE','PROCEDURE','E CODE','V CODE'))
+- **CHECK** `CHK_MAP_ICD_TYPE`: ICD_TYPE IN ('SURGICAL PROCEDURE','DIAGNOSTIC CODE','PROCEDURE','E CODE','V CODE')
 - **Triggers**: `ICD_MAPPING_CEA` (before insert or update or delete), `ICD_MAPPING_DEL` (after delete), `ICD_MAPPING_INS` (before insert), `ICD_MAPPING_UPD` (before update), `TRG_WS_KTT_RS_KU_Q` (after insert or update or delete)
 
 ## DEFINITIONS.ICD_O_3_ACTIVE_YEAR
@@ -9396,7 +9396,7 @@ _No standard audit columns._
 
 - **PK** `PK_ICD_O_3_ACTIVE_YEAR`: YEAR_ID
 - **UK** `UK_ICD_O_3_ACTIVE_YEAR_1`: ACTIVE_YEAR
-- **CHECK** `CK_ICD_O_3_ACTIVE_YEAR_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_ICD_O_3_ACTIVE_YEAR_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `ICD_O_3_ACTIVE_YEAR_CEA` (before insert or update or delete), `TRG_WS_QDP_RW_TU_Q` (after insert or update or delete)
 
 ## DEFINITIONS.ICD_TEST_R
@@ -9600,7 +9600,7 @@ _No standard audit columns._
 - **PK** `PK_INV_TOKEN_PRINT`: INVOICE_TYPE_ID, STORE_ID, LOCATION_ID, ORDER_LOCATION_ID
 - **FK** `FK_INVOICE_TOKEN_PRINT_1`: (LOCATION_ID, ORDER_LOCATION_ID) -> DEFINITIONS.ORDER_LOCATION(LOCATION_ID, ORDER_LOCATION_ID)
 - **FK** `FK_INVOICE_TOKEN_PRINT_2`: (STORE_ID) -> ITEM.STORE(STORE_ID)
-- **CHECK** `CK_INV_TOKEN_PRINT_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_INV_TOKEN_PRINT_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `INVOICE_TOKEN_PRINT_DEL` (after delete), `INVOICE_TOKEN_PRINT_INS` (before insert), `INVOICE_TOKEN_PRINT_UPD` (before update)
 
 ## DEFINITIONS.IPD_DISCHARGE_EVENT
@@ -9651,8 +9651,8 @@ _No standard audit columns._
 - **PK** `PK_ITEM_PROPERTY`: PROPERTY_ID
 - **UK** `UK_ITEM_PROPERTY_1`: KEY_NAME
 - **CHECK** `CK_ITEM_PROPERTY_1`: UPPER(KEY_NAME) = KEY_NAME
-- **CHECK** `CK_ITEM_PROPERTY_2`: STATIC_VALUE IN ('Y','N'
-- **CHECK** `CK_ITEM_PROPERTY_3`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_ITEM_PROPERTY_2`: STATIC_VALUE IN ('Y','N')
+- **CHECK** `CK_ITEM_PROPERTY_3`: ACTIVE IN ('Y','N')
 - **Triggers**: `ITEM_PROPERTY_DEL` (after delete), `ITEM_PROPERTY_INS` (before insert), `ITEM_PROPERTY_UPD` (before update)
 
 ## DEFINITIONS.ITEM_PROPERTY_SOURCES
@@ -9679,7 +9679,7 @@ _No standard audit columns._
 - **PK** `PK_ITEM_PROPERTY_VALUES`: PROPERTY_ID, SERIAL_NO
 - **UK** `UK_ITEM_PROPERTY_VALUE_1`: PROPERTY_ID, VALUE_KEY
 - **FK** `FK_ITEM_PROPERTY_VALUES_1`: (PROPERTY_ID) -> DEFINITIONS.ITEM_PROPERTY(PROPERTY_ID)
-- **CHECK** `CK_ITEM_PROPERTY_VALUES_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_ITEM_PROPERTY_VALUES_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `ITEM_PROPERTY_VALUES_DEL` (after delete), `ITEM_PROPERTY_VALUES_INS` (before insert), `ITEM_PROPERTY_VALUES_UPD` (before update)
 
 ## DEFINITIONS.ITEM_TYPES
@@ -9692,7 +9692,7 @@ _No standard audit columns._
 
 - **PK** `PK_ITEM_TYPES`: TYPE_ID
 - **UK** `UK_ITEM_TYPES`: TYPE_NAME
-- **CHECK** `CK_ITEM_TYPES_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_ITEM_TYPES_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `ITEM_TYPES_DEL` (after delete), `ITEM_TYPES_INS` (before insert), `ITEM_TYPES_UPD` (before update)
 
 ## DEFINITIONS.ITEM_TYPES_PROPERTY
@@ -9707,8 +9707,8 @@ _No standard audit columns._
 - **PK** `PK_ITEM_TYPES_PROPERTY`: TYPE_ID, PROPERTY_ID
 - **FK** `FK_ITEM_TYPES_PROPERTY_1`: (TYPE_ID) -> DEFINITIONS.ITEM_TYPES(TYPE_ID)
 - **FK** `FK_ITEM_TYPES_PROPERTY_2`: (PROPERTY_ID) -> DEFINITIONS.ITEM_PROPERTY(PROPERTY_ID) [disabled]
-- **CHECK** `CK_ITEM_TYPES_PROPERTY_1`: VALUE_SOURCE IN ('O','D','S'
-- **CHECK** `CK_ITEM_TYPES_PROPERTY_2`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_ITEM_TYPES_PROPERTY_1`: VALUE_SOURCE IN ('O','D','S')
+- **CHECK** `CK_ITEM_TYPES_PROPERTY_2`: ACTIVE IN ('Y','N')
 - **Triggers**: `ITEM_TYPES_PROPERTY_DEL` (after delete), `ITEM_TYPES_PROPERTY_INS` (before insert), `ITEM_TYPES_PROPERTY_UPD` (before update)
 
 ## DEFINITIONS.JU
@@ -9766,7 +9766,7 @@ _No standard audit columns._
 - **UK** `UK_ZONES_1`: DESCRIPTION
 - **UK** `UK_ZONES_2`: SHORT_DESC
 - **FK** `FK_ZONES_1`: (ORGANIZATION_ID) -> DEFINITIONS.ORGANIZATION(ORGANIZATION_ID) [disabled]
-- **CHECK** `CHK_ZONES_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CHK_ZONES_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `ZONES_DEL` (after delete), `ZONES_INS` (before insert), `ZONES_UPD` (before update)
 
 ## DEFINITIONS.LABEL_TYPE
@@ -9977,7 +9977,7 @@ This table is used to insert list detail values
 
 - **PK** `PK_LOV_TYPE_ID`: LOV_TYPE_ID
 - **UK** `UK_LOV_TYPE_DESC`: LOV_TYPE_DESC
-- **CHECK** `CH_ACTIVE_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CH_ACTIVE_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `LIST_ITEM_TYPE_CEA` (before insert or update or delete), `LIST_ITEM_TYPE_DEL` (after delete), `LIST_ITEM_TYPE_INS` (before insert), `LIST_ITEM_TYPE_UPD` (before update), `LOV_TYPE_NEW_ID` (before insert), `TRG_WS_TGT_QH_HN_Q` (after insert or update or delete)
 
 ## DEFINITIONS.LIST_ITEM_DETAIL
@@ -9993,7 +9993,7 @@ This table is used to insert list detail values
 - **PK** `PK_LIST_ITEM_DETAIL_01`: LOV_ID
 - **UK** `UK_LIST_ITEM_DETAIL_01`: LOV_TYPE_ID, LOV_DESC
 - **FK** `FK_LIST_ITEM_DETAIL_01`: (LOV_TYPE_ID) -> DEFINITIONS.LIST_ITEM_TYPE(LOV_TYPE_ID)
-- **CHECK** `CK_LIST_ITEM_DETAIL_01`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_LIST_ITEM_DETAIL_01`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `LIST_ITEM_DETAIL_CEA` (before insert or update or delete), `LIST_ITEM_DETAIL_DEL` (after delete), `LIST_ITEM_DETAIL_INS` (before insert), `LIST_ITEM_DETAIL_UPD` (before update), `LOV_NEW_ID` (before insert), `TRG_WS_FOR_GD_BS_Q` (after insert or update or delete)
 
 ## DEFINITIONS.LIST_ITEM_DETAIL_SETUP
@@ -10010,7 +10010,7 @@ This table is used to insert list detail values
 
 - **PK** `PK_LIST_ITEM_DETAIL_S`: LOV_DETAIL
 - **FK** `FK_LIST_ITEM_DETAIL_S_01`: (LOV_ID) -> DEFINITIONS.LIST_ITEM_DETAIL(LOV_ID)
-- **CHECK** `CK_LIST_ITEM_DETAIL_S_01`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_LIST_ITEM_DETAIL_S_01`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `LIST_ITEM_DETAIL_SETUP_CEA` (before insert or update or delete), `LIST_ITEM_DETAIL_SETUP_DEL` (after delete), `LIST_ITEM_DETAIL_SETUP_INS` (before insert), `LIST_ITEM_DETAIL_SETUP_UPD` (before update)
 
 ## DEFINITIONS.LLM_API_KEYS
@@ -10064,7 +10064,7 @@ This table will be used to link the Package Type with the Location
 - **PK** `PK_LOCATION_PACKAGE_TYPE`: LOCATION_ID, PACKAGE_TYPE_ID
 - **FK** `FK_LOCATION_PACKAGE_TYPE_1`: (LOCATION_ID) -> DEFINITIONS.LOCATION(LOCATION_ID)
 - **FK** `FK_LOCATION_PACKAGE_TYPE_2`: (PACKAGE_TYPE_ID) -> DEFINITIONS.PACKAGE_TYPE(PACKAGE_TYPE_ID) [disabled]
-- **CHECK** `CK_LOCATION_PACKAGE_TYPE_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_LOCATION_PACKAGE_TYPE_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `LOCATION_PACKAGE_TYPE_DEL` (after delete), `LOCATION_PACKAGE_TYPE_INS` (before insert), `LOCATION_PACKAGE_TYPE_UPD` (before update)
 
 ## DEFINITIONS.PATIENT_CATEGORY
@@ -10078,7 +10078,7 @@ This Table will be used to define the Patient Categories, This table will be con
 
 - **PK** `PK_PATIENT_CATEGORY`: PATIENT_CATEGORY_ID
 - **UK** `UK_CATEGORY_DESC`: DESCRIPTION
-- **CHECK** `CK_CATEGORY_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_CATEGORY_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `PATIENT_CATEGORY_CEA` (before insert or update or delete), `PATIENT_CATEGORY_DEL` (after delete), `PATIENT_CATEGORY_INS` (before insert), `PATIENT_CATEGORY_UPD` (before update), `TRG_WS_JYY_CD_FM_Q` (after insert or update or delete)
 
 ## DEFINITIONS.LOCATION_PATIENT_CATEGORY
@@ -10093,7 +10093,7 @@ This table will be used to link the Patient Category with the Location
 - **PK** `PK_LOCATION_PATIENT_CATEGORY`: LOCATION_ID, PATIENT_CATEGORY_ID
 - **FK** `FK_LOCATION_PATIENT_CATEGORY_1`: (LOCATION_ID) -> DEFINITIONS.LOCATION(LOCATION_ID)
 - **FK** `FK_LOCATION_PATIENT_CATEGORY_2`: (PATIENT_CATEGORY_ID) -> DEFINITIONS.PATIENT_CATEGORY(PATIENT_CATEGORY_ID) [disabled]
-- **CHECK** `CK_LOCATION_PATIENT_CATEGORY_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_LOCATION_PATIENT_CATEGORY_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `LOCATION_PATIENT_CATEGORY_DEL` (after delete), `LOCATION_PATIENT_CATEGORY_INS` (before insert), `LOCATION_PATIENT_CATEGORY_UPD` (before update)
 
 ## DEFINITIONS.LOCATION_RADIOLOGY
@@ -10113,11 +10113,11 @@ This table will be used to link the Patient Category with the Location
 
 - **PK** `PK_LOCATION_RADIOLOGY`: LOCATION_ID
 - **FK** `FK_LOCATION_RADIOLOGY_1`: (LOCATION_ID) -> DEFINITIONS.LOCATION(LOCATION_ID)
-- **CHECK** `CK_LOCATION_RADIOLOGY_1`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_LOCATION_RADIOLOGY_2`: CONTINGENCY_FLAG IN ('Y','N'
-- **CHECK** `CK_LOCATION_RADIOLOGY_3`: REPORTS_ONLINE IN ('Y','N'
-- **CHECK** `CK_LOCATION_RADIOLOGY_4`: SEND_REPORTS IN ('Y','N'
-- **CHECK** `CK_LOCATION_RADIOLOGY_5`: SEND_ALERTS IN ('Y','N'
+- **CHECK** `CK_LOCATION_RADIOLOGY_1`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_LOCATION_RADIOLOGY_2`: CONTINGENCY_FLAG IN ('Y','N')
+- **CHECK** `CK_LOCATION_RADIOLOGY_3`: REPORTS_ONLINE IN ('Y','N')
+- **CHECK** `CK_LOCATION_RADIOLOGY_4`: SEND_REPORTS IN ('Y','N')
+- **CHECK** `CK_LOCATION_RADIOLOGY_5`: SEND_ALERTS IN ('Y','N')
 
 ## DEFINITIONS.LOCATION_SCHEMAS
 
@@ -10148,7 +10148,7 @@ This table will be used to link the Patient Category with the Location
 | ACTIVE | CHAR(1) default 'Y' | N |  |
 
 - **PK** `PK_LOCATION_WISE_BRAND`: LOCATION_ID, BRAND_ID
-- **CHECK** `CK_LOCATION_WISE_BRAND_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_LOCATION_WISE_BRAND_1`: ACTIVE IN ('Y','N')
 
 ## DEFINITIONS.LOCATION_WISE_CC_RIDERS
 
@@ -10181,7 +10181,7 @@ This table will be used to link the Patient Category with the Location
 | PRICE_ACTIVE | CHAR(1) | Y | This column will be used to activate/ de-activate price of a cpt at specific location. |
 
 - **PK** `PK_LOCATION_WISE_CPT`: LOCATION_ID, CPT_ID
-- **CHECK** `CK_LOCATION_WISE_CPT_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_LOCATION_WISE_CPT_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `LOCATION_WISE_CPT_CEA` (before insert or update or delete), `LOCATION_WISE_CPT_DEL` (after delete), `LOCATION_WISE_CPT_INS` (before insert), `LOCATION_WISE_CPT_TS` (before insert or update or delete), `LOCATION_WISE_CPT_UPD` (before update), `TRG_WS_RMM_UV_FZ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.LOCATION_WISE_CPT_DEPT_SECT
@@ -10256,7 +10256,7 @@ _No standard audit columns._
 | ACTIVE | CHAR(1) default 'Y' | N |  |
 
 - **PK** `PK_LOCATION_WISE_GENERIC`: LOCATION_ID, GENERIC_ID
-- **CHECK** `CK_LOCATION_WISE_GENERIC_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_LOCATION_WISE_GENERIC_1`: ACTIVE IN ('Y','N')
 
 ## DEFINITIONS.LOCATION_WISE_MONTHS
 
@@ -10353,14 +10353,14 @@ _No standard audit columns._
 - **FK** `FK_LOCATION_WISE_PATIENT_1`: (LOCATION_ID) -> DEFINITIONS.LOCATION(LOCATION_ID)
 - **FK** `FK_LOCATION_WISE_PATIENT_2`: (PATIENT_TYPE_ID) -> DEFINITIONS.PATIENT_TYPE(PATIENT_TYPE_ID) [disabled]
 - **FK** `FK_LOCATION_WISE_PATIENT_4`: (CONSTANT_ID) -> DEFINITIONS.PATIENT_TYPE_CONSTANT(CONSTANT_ID) [disabled]
-- **CHECK** `CK_LOC_WISE_PATIENT_TYPES_01`: YEAR_WISE_COUNTER IN ('Y','N'
+- **CHECK** `CK_LOC_WISE_PATIENT_TYPES_01`: YEAR_WISE_COUNTER IN ('Y','N')
 - **CHECK** `CK_PATIENT_TYPE_09`: CREDIT_LIMIT_SAL_PERCENT BETWEEN 0 AND 100
-- **CHECK** `CK_PATIENT_TYPE_10`: CAFE_FACILITY_ALLOWED IN ('Y','N'
-- **CHECK** `CK_PATIENT_TYPE_11`: EMP_SALARY_CHECK IN ('Y','N'
-- **CHECK** `CK_PATIENT_TYPE_12`: PROVIDENT_FUND_CHECK IN ('Y','N'
-- **CHECK** `CK_PATIENT_TYPE_13`: PI_PAYMENT_GL_PAYROLL IN ('P','G','N'
-- **CHECK** `CK_PATIENT_TYPE_14`: CAFE_DEDUCTION_GL_PAYROLL IN ('P','G'
-- **CHECK** `CK_PATIENT_TYPE_8`: CONTRACT_AT_RUNTIME IN ('N','Y'
+- **CHECK** `CK_PATIENT_TYPE_10`: CAFE_FACILITY_ALLOWED IN ('Y','N')
+- **CHECK** `CK_PATIENT_TYPE_11`: EMP_SALARY_CHECK IN ('Y','N')
+- **CHECK** `CK_PATIENT_TYPE_12`: PROVIDENT_FUND_CHECK IN ('Y','N')
+- **CHECK** `CK_PATIENT_TYPE_13`: PI_PAYMENT_GL_PAYROLL IN ('P','G','N')
+- **CHECK** `CK_PATIENT_TYPE_14`: CAFE_DEDUCTION_GL_PAYROLL IN ('P','G')
+- **CHECK** `CK_PATIENT_TYPE_8`: CONTRACT_AT_RUNTIME IN ('N','Y')
 - **Triggers**: `LOC_WISE_PATIENT_DEL` (after delete), `LOC_WISE_PATIENT_INS` (before insert), `LOC_WISE_PATIENT_UPD` (before update)
 
 ## DEFINITIONS.LOCATION_WISE_RELATION
@@ -10503,7 +10503,7 @@ _No standard audit columns._
 | ORGANIZATION_ID | VARCHAR2(3) | Y |  |
 
 - **PK** `PK_LOC_WISE_RECEIVE_SETUP`: LOCATION_ID, CPT_ID
-- **CHECK** `CK_LOC_WISE_RECEIVE_SETUP_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_LOC_WISE_RECEIVE_SETUP_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `LOC_WISE_RECEIVE_SETUP_DEL` (after delete), `LOC_WISE_RECEIVE_SETUP_INS` (before insert), `LOC_WISE_RECEIVE_SETUP_UPD` (before update)
 
 ## DEFINITIONS.LOOKUP_TYPE
@@ -10623,7 +10623,7 @@ _No standard audit columns._
 | MARRIED_STATUS | VARCHAR2(1) default 'Y' | Y |  |
 
 - **PK** `PK_MARITAL_STATUS`: MARITAL_STATUS_ID
-- **CHECK** `CK_MARITAL_STATUS_001`: STATUS IN ('M','U'
+- **CHECK** `CK_MARITAL_STATUS_001`: STATUS IN ('M','U')
 - **Triggers**: `MARITAL_STATUS_CEA` (before insert or update or delete), `MARITAL_STATUS_DEL` (after delete), `MARITAL_STATUS_INS` (before insert), `MARITAL_STATUS_UPD` (before update), `TRG_WS_CQI_NW_TT_Q` (after insert or update or delete)
 
 ## DEFINITIONS.MASTER_TEMPLATE_SETUP
@@ -10774,7 +10774,7 @@ This table is used to store then setup data of medicine devices.
 | METHOD | VARCHAR2(20) | N | WEBLOGIC/API Name |
 
 - **PK** `PK_METHOD`: METHOD
-- **CHECK** `CK_PK_METHOD_1`: METHOD = UPPER(METHOD
+- **CHECK** `CK_PK_METHOD_1`: METHOD = UPPER(METHOD)
 - **Triggers**: `METHOD_CEA` (before insert or update or delete), `TRG_WS_JLD_IS_HJ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.MI
@@ -10860,7 +10860,7 @@ This table is used to store then setup data of medicine devices.
 | DESCRIPTION | VARCHAR2(255) | Y |  |
 
 - **PK** `PK_MOBILE_CODES`: MOBILE_CODE_NO
-- **CHECK** `CHK_MOBILE_CODES`: DESCRIPTION IN ('MOBILINK','WARID','INSTAPHONE','TELENOR','ZONG','UFONE','SCOM','ETISALAT','OTHERS'
+- **CHECK** `CHK_MOBILE_CODES`: DESCRIPTION IN ('MOBILINK','WARID','INSTAPHONE','TELENOR','ZONG','UFONE','SCOM','ETISALAT','OTHERS')
 
 ## DEFINITIONS.MOBILITY_STATUS
 
@@ -10940,10 +10940,10 @@ This table is used to store then setup data of medicine devices.
 | CISCO_POST_DATE | DATE | Y |  |
 
 - **PK** `PK_MONTHS`: START_DATE, END_DATE
-- **CHECK** `CK_MONTHS_001`: MONTH_CLOSED IN ('N','Y'
-- **CHECK** `CK_MONTHS_002`: NEXT_MONTH IN ('N','Y'
-- **CHECK** `CK_MONTHS_003`: CURRENT_MONTH IN ('N','Y'
-- **CHECK** `CK_MONTHS_004`: LEAVE_BALANCE_CALC IN ('Y','N'
+- **CHECK** `CK_MONTHS_001`: MONTH_CLOSED IN ('N','Y')
+- **CHECK** `CK_MONTHS_002`: NEXT_MONTH IN ('N','Y')
+- **CHECK** `CK_MONTHS_003`: CURRENT_MONTH IN ('N','Y')
+- **CHECK** `CK_MONTHS_004`: LEAVE_BALANCE_CALC IN ('Y','N')
 - **Triggers**: `LOC_WISE_MONTHS_SYNC_INS` (after insert), `MONTHS_DEL` (after delete), `MONTHS_INS` (before insert), `MONTHS_UPD` (before update)
 
 ## DEFINITIONS.MONTH_RFID_DATA_TRANSFER
@@ -10987,7 +10987,7 @@ This table is used to store then setup data of medicine devices.
 
 - **PK** `PK_MOVEMENT`: MOVEMENT_ID
 - **UK** `UK_MOVEMENT_1`: DESCRIPTION
-- **CHECK** `CK_MOVEMENT_1`: ACTIVE IN ('N','Y'
+- **CHECK** `CK_MOVEMENT_1`: ACTIVE IN ('N','Y')
 - **Triggers**: `MOVEMENT_CEA` (before insert or update or delete), `TRG_WS_DFB_TO_XX_Q` (after insert or update or delete)
 
 ## DEFINITIONS.MRN_TRAN_TYPE
@@ -11083,8 +11083,8 @@ This table is used to store then setup data of medicine devices.
 _No standard audit columns._
 
 - **PK** `PK_APPLICATIONS`: APP_NAME
-- **CHECK** `CHK_ACTIVE_YN`: ACTIVE IN ('Y', 'N'
-- **CHECK** `CHK_CONFIG_TYPE_DS`: CONFIG_TYPE IN ('D', 'S'
+- **CHECK** `CHK_ACTIVE_YN`: ACTIVE IN ('Y', 'N')
+- **CHECK** `CHK_CONFIG_TYPE_DS`: CONFIG_TYPE IN ('D', 'S')
 
 ## DEFINITIONS.NHSN_SETUP_RATIO_M
 
@@ -11483,8 +11483,8 @@ This Table contains Object Items List that are used in Forms
 - **UK** `UK_OBJECT_ITEM_2`: ITEM_ID, ITEM_TYPE_ID
 - **FK** `FK_OBJECT_ITEM_01`: (ITEM_TYPE_ID) -> DEFINITIONS.ITEM_TYPES(TYPE_ID) [disabled]
 - **FK** `FK_OBJECT_ITEM_02`: (OBJECT_CODE) -> DEFINITIONS.OBJECTS(OBJECT_CODE)
-- **CHECK** `FK_OBJECT_ITEM_1`: ITEM_NAME = UPPER(ITEM_NAME
-- **CHECK** `FK_OBJECT_ITEM_2`: ACTIVE IN ('Y','N'
+- **CHECK** `FK_OBJECT_ITEM_1`: ITEM_NAME = UPPER(ITEM_NAME)
+- **CHECK** `FK_OBJECT_ITEM_2`: ACTIVE IN ('Y','N')
 - **Triggers**: `OBJECT_ITEM_DEL` (after delete), `OBJECT_ITEM_INS` (before insert), `OBJECT_ITEM_UPD` (before update)
 
 ## DEFINITIONS.OBJECT_ITEM_PROPERTY
@@ -11500,8 +11500,8 @@ This Table contains Object Items List that are used in Forms
 - **FK** `FK_OBJECT_ITEM_PROPERTY_1`: (ITEM_ID) -> DEFINITIONS.OBJECT_ITEM(ITEM_ID)
 - **FK** `FK_OBJECT_ITEM_PROPERTY_2`: (PROPERTY_ID) -> DEFINITIONS.ITEM_PROPERTY(PROPERTY_ID) [disabled]
 - **FK** `FK_OBJECT_ITEM_PROPERTY_3`: (VALUE_SOURCE) -> DEFINITIONS.ITEM_PROPERTY_SOURCES(VALUE_SOURCE) [disabled]
-- **CHECK** `CK_OBJECT_ITEM_PROPERTY_1`: VALUE_SOURCE IN ('X','D','O'
-- **CHECK** `CK_OBJECT_ITEM_PROPERTY_2`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_OBJECT_ITEM_PROPERTY_1`: VALUE_SOURCE IN ('X','D','O')
+- **CHECK** `CK_OBJECT_ITEM_PROPERTY_2`: ACTIVE IN ('Y','N')
 - **Triggers**: `OBJECT_ITEM_PROPERTY_DEL` (after delete), `OBJECT_ITEM_PROPERTY_INS` (before insert), `OBJECT_ITEM_PROPERTY_UPD` (before update)
 
 ## DEFINITIONS.OBJECT_MAPPING_APEX
@@ -11550,7 +11550,7 @@ This table will be used to Add the Different Notes which will be printed on Repo
 
 - **PK** `PK_OBJECT_PARAMETERS_DETAIL`: PARAM_ID, PARAM_NAME
 - **FK** `FK_OBJECT_PARAMETERS_DETAIL_1`: (PARAM_ID) -> DEFINITIONS.OBJECT_PARAMETERS(PARAM_ID)
-- **CHECK** `CHK_OBJECT_PARAMETERS_01`: PARAM_DATA_TYPE IN ('N','C','D'
+- **CHECK** `CHK_OBJECT_PARAMETERS_01`: PARAM_DATA_TYPE IN ('N','C','D')
 - **Triggers**: `OBJECT_PARAMETERS_DETAIL_CEA` (before insert or update or delete), `TRG_WS_CYX_JG_MD_Q` (after insert or update or delete)
 
 ## DEFINITIONS.OBJECT_PARAMETERS_DETAIL_COPY_R
@@ -11579,8 +11579,8 @@ This table contains parent/calling object wise front end value source of paramet
 
 - **PK** `PK_OBJECT_PARAMETERS_SOURCE`: PARAM_ID, CALLING_OBJECT_CODE
 - **FK** `FK_OBJECT_PARAMETERS_SOURCE_1`: (PARAM_ID) -> DEFINITIONS.OBJECT_PARAMETERS(PARAM_ID)
-- **CHECK** `CK_OBJECT_PARAMETERS_SOURCE_1`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_OBJECT_PARAMETERS_SOURCE_2`: CHECK_DEFAULT IN ('Y','N'
+- **CHECK** `CK_OBJECT_PARAMETERS_SOURCE_1`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_OBJECT_PARAMETERS_SOURCE_2`: CHECK_DEFAULT IN ('Y','N')
 
 ## DEFINITIONS.OBJECT_PARAMETERS_SOURCE_COPY_R
 
@@ -11712,7 +11712,7 @@ This table contains parent/calling object wise front end value source of paramet
 | DISPLAY_ORDER | NUMBER(3) | Y |  |
 
 - **PK** `PK_ONLINE_SURVEY_ANSWERS`: ANSWER_ID
-- **CHECK** `CK_ONLINE_SURVEY_ANSWERS_1`: ACTIVE IN ('N','Y'
+- **CHECK** `CK_ONLINE_SURVEY_ANSWERS_1`: ACTIVE IN ('N','Y')
 
 ## DEFINITIONS.ONLINE_SURVEY_MASTER
 
@@ -11743,7 +11743,7 @@ This table contains parent/calling object wise front end value source of paramet
 | ACTIVE | CHAR(1) default 'Y' | Y |  |
 
 - **PK** `PK_ONLINE_SURVEY_QUESTIONS`: QUESTION_ID
-- **CHECK** `CK_ONLINE_SURVEY_QUESTIONS_1`: ACTIVE IN ('N','Y'
+- **CHECK** `CK_ONLINE_SURVEY_QUESTIONS_1`: ACTIVE IN ('N','Y')
 
 ## DEFINITIONS.OPEN_QUESTION_TYPE
 
@@ -12045,8 +12045,8 @@ This is a System Constant Table, We shall define the Service Types in this table
 - **PK** `PK_SERVICE_TYPE`: SERVICE_TYPE_ID
 - **UK** `UK_SERVICE_TYPE_01`: DESCRIPTION, SERVICE_CATEGORY_ID
 - **FK** `FK_SERVICE_TYPE_1`: (SERVICE_CATEGORY_ID) -> DEFINITIONS.DEF_SERVICE_CATEGORY(SERVICE_CATEGORY_ID) [disabled]
-- **CHECK** `CK_SERVICE_TYPE_1`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_SERVICE_TYPE_2`: ACTIVE=UPPER(ACTIVE
+- **CHECK** `CK_SERVICE_TYPE_1`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_SERVICE_TYPE_2`: ACTIVE=UPPER(ACTIVE)
 - **Triggers**: `SERVICE_TYPE_CEA` (before insert or update or delete), `SERVICE_TYPE_DEL` (after delete), `SERVICE_TYPE_INS` (before insert), `SERVICE_TYPE_UPD` (before update), `TRG_WS_WUX_LS_BM_Q` (after insert or update or delete)
 
 ## DEFINITIONS.PACKAGE_CPT_INCLUDE_ITEM
@@ -12091,7 +12091,7 @@ This table is almost parallel of definitions.package (1:1 relation), ADF team wa
 
 - **PK** `PK_PACKAGE_DETAIL`: PACKAGE_ID, TREATMENT_COVER
 - **FK** `FK_PACKAGE_DETAIL_1`: (PACKAGE_ID) -> DEFINITIONS.PACKAGES(PACKAGE_ID)
-- **CHECK** `CK_PACKAGE_DETAIL_1`: PRICE_SOURCE IN ('P','I'))
+- **CHECK** `CK_PACKAGE_DETAIL_1`: PRICE_SOURCE IN ('P','I')
 - **Triggers**: `PACKAGE_DETAIL_CEA` (before insert or update or delete), `PACKAGE_DETAIL_DEL` (after delete), `PACKAGE_DETAIL_INS` (before insert), `PACKAGE_DETAIL_UPD` (before update), `TRG_WS_GGE_OE_HP_Q` (after insert or update or delete)
 
 ## DEFINITIONS.PACKAGE_EXCLUDE
@@ -12127,7 +12127,7 @@ This table will be used to save the Free Items within Package, This table should
 - **PK** `PK_PACKAGE_FREE_ITEM`: PACKAGE_ID, ITEM_ID
 - **FK** `FK_PACKAGE_FREE_ITEM_1`: (PACKAGE_ID) -> DEFINITIONS.PACKAGES(PACKAGE_ID)
 - **CHECK** `CK_PACKAGE_FREE_ITEM_1`: NO_OF_ITEM BETWEEN 0 AND 9999
-- **CHECK** `CK_PACKAGE_FREE_ITEM_2`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_PACKAGE_FREE_ITEM_2`: ACTIVE IN ('Y','N')
 - **Triggers**: `PACKAGE_FREE_ITEM_CEA` (before insert or update or delete), `PACKAGE_FREE_ITEM_DEL` (after delete), `PACKAGE_FREE_ITEM_INS` (before insert), `PACKAGE_FREE_ITEM_UPD` (before update), `TRG_WS_ZJX_AK_ZK_Q` (after insert or update or delete)
 
 ## DEFINITIONS.PACKAGE_FUND
@@ -12144,7 +12144,7 @@ This table will be used to define funds of a package(to be shared by service typ
 - **PK** `PK_PACKAGE_FUND`: PACKAGE_ID, PACKAGE_FUND_ID
 - **FK** `FK_PACKAGE_FUND_1`: (PACKAGE_ID) -> DEFINITIONS.PACKAGES(PACKAGE_ID)
 - **CHECK** `CK_PACKAGE_FUND_1`: AMOUNT>0
-- **CHECK** `CK_PACKAGE_FUND_2`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_PACKAGE_FUND_2`: ACTIVE IN ('Y','N')
 - **Triggers**: `PACKAGE_FUND_CEA` (before insert or update or delete), `PACKAGE_FUND_DEL` (after delete), `PACKAGE_FUND_INS` (before insert), `PACKAGE_FUND_UPD` (before update), `TRG_WS_WAW_FW_GD_Q` (after insert or update or delete)
 
 ## DEFINITIONS.PACKAGE_FUND_DETAIL
@@ -12159,7 +12159,7 @@ This table will be used to define package fund details
 
 - **PK** `PK_PACKAGE_FUND_DETAIL`: PACKAGE_ID, PACKAGE_FUND_ID, SERVICE_TYPE_ID
 - **FK** `FK_PACKAGE_FUND_DETAIL_1`: (PACKAGE_ID, PACKAGE_FUND_ID) -> DEFINITIONS.PACKAGE_FUND(PACKAGE_ID, PACKAGE_FUND_ID)
-- **CHECK** `CK_PACKAGE_FUND_DETAIL_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_PACKAGE_FUND_DETAIL_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `PACKAGE_FUND_DETAIL_CEA` (before insert or update or delete), `PACKAGE_FUND_DETAIL_DEL` (after delete), `PACKAGE_FUND_DETAIL_INS` (before insert), `PACKAGE_FUND_DETAIL_UPD` (before update), `TRG_WS_NXP_NI_IZ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.PACKAGE_INCLUDE
@@ -12195,7 +12195,7 @@ This table will be used to link the Items with the package
 - **CHECK** `CK_PACKAGE_ITEM_1`: QUANTITY>=1
 - **CHECK** `CK_PACKAGE_ITEM_2`: NO_OF_ITEM_ALLOWED>=1
 - **CHECK** `CK_PACKAGE_ITEM_3`: NO_OF_ITEM_ALLOWED>=NO_OF_ITEM_AVAILED
-- **CHECK** `CK_PACKAGE_ITEM_4`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_PACKAGE_ITEM_4`: ACTIVE IN ('Y','N')
 - **Triggers**: `PACKAGE_ITEM_CEA` (before insert or update or delete), `PACKAGE_ITEM_DEL` (after delete), `PACKAGE_ITEM_INS` (before insert), `PACKAGE_ITEM_UPD` (before update), `TRG_WS_YTP_YK_UT_Q` (after insert or update or delete)
 
 ## DEFINITIONS.PACKAGE_ITEM_ERRLOG
@@ -12256,7 +12256,7 @@ This table will be used to link the Packages with the performer
 | COPIED_FROM | VARCHAR2(14) | Y | User Mrno from where favourites is copied. |
 
 - **PK** `PK_PACKAGE_PERFORMER`: PACKAGE_ID, PERFORMER_MRNO
-- **CHECK** `CK_PACKAGE_PERFORMER_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_PACKAGE_PERFORMER_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `PACKAGE_PERFORMER_CEA` (before insert or update or delete), `PACKAGE_PERFORMER_DEL` (after delete), `PACKAGE_PERFORMER_INS` (before insert), `PACKAGE_PERFORMER_UPD` (before update), `TRG_WS_DMB_IT_HG_Q` (after insert or update or delete)
 
 ## DEFINITIONS.PACKAGE_SERVICES
@@ -12276,9 +12276,9 @@ This table will be used link the Services Type with the Package
 - **PK** `PK_PACKAGE_SERVICES`: PACKAGE_ID, SERVICE_TYPE_ID
 - **FK** `FK_PACKAGE_SERVICES_1`: (PACKAGE_ID) -> DEFINITIONS.PACKAGES(PACKAGE_ID)
 - **FK** `FK_PACKAGE_SERVICES_2`: (SERVICE_TYPE_ID) -> DEFINITIONS.SERVICE_TYPE(SERVICE_TYPE_ID) [disabled]
-- **CHECK** `CK_PACKAGE_SERVICES_1`: ALL_SERVICES IN ('Y','N'
-- **CHECK** `CK_PACKAGE_SERVICES_2`: TREATMENT_LIMIT_APPLY IN ('Y','N'
-- **CHECK** `CK_PACKAGE_SERVICES_3`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_PACKAGE_SERVICES_1`: ALL_SERVICES IN ('Y','N')
+- **CHECK** `CK_PACKAGE_SERVICES_2`: TREATMENT_LIMIT_APPLY IN ('Y','N')
+- **CHECK** `CK_PACKAGE_SERVICES_3`: ACTIVE IN ('Y','N')
 - **Triggers**: `PACKAGE_SERVICES_CEA` (before insert or update or delete), `PACKAGE_SERVICES_DEL` (after delete), `PACKAGE_SERVICES_INS` (before insert), `PACKAGE_SERVICES_UPD` (before update), `TRG_WS_JRW_FO_RA_Q` (after insert or update or delete)
 
 ## DEFINITIONS.ROOM_PAYMENT_CATEGORY
@@ -12295,7 +12295,7 @@ This table will be used link the Services Type with the Package
 - **PK** `PK_ROOM_PAYMENT_CATEGORY`: ROOM_PAYMENT_CATEGORY_ID
 - **UK** `UK_ROOM_PAYMENT_CATEGORY`: DESCRIPTION
 - **FK** `FK_ROOM_PAYMENT_CATEGORY_1`: (CPT_ID) -> DEFINITIONS.CPT(CPT_ID) [disabled]
-- **CHECK** `CK_ROOM_PAYMENT_CATEGORY`: ACTIVE IN ('N','Y'
+- **CHECK** `CK_ROOM_PAYMENT_CATEGORY`: ACTIVE IN ('N','Y')
 - **Triggers**: `ROOM_PAYMENT_CATEGORY_CEA` (before insert or update or delete), `ROOM_PAYMENT_CATEGORY_DEL` (after delete), `ROOM_PAYMENT_CATEGORY_INS` (before insert), `ROOM_PAYMENT_CATEGORY_UPD` (before update), `TRG_WS_HAF_RS_JO_Q` (after insert or update or delete)
 
 ## DEFINITIONS.PACKAGE_STAY
@@ -12441,7 +12441,7 @@ This table is child of DEFINITIONS.PACKAGE_DETAIL, which contains information ab
 
 - **PK** `PK_PATIENT_DESIGNATION`: PATIENT_DESIGNATION_ID
 - **UK** `UK_PATIENT_DESIGNATION`: DESCRIPTION
-- **CHECK** `CHK_PATIENT_DESIGNATION`: ACTIVE IN ('N','Y'
+- **CHECK** `CHK_PATIENT_DESIGNATION`: ACTIVE IN ('N','Y')
 
 ## DEFINITIONS.PATIENT_DOC_ATTACHMENT
 
@@ -12489,8 +12489,8 @@ This table is child of DEFINITIONS.PACKAGE_DETAIL, which contains information ab
 - **PK** `PK_PATIENT_GROUPS`: GROUP_ID
 - **UK** `UK_PATIENT_GROUPS_1`: CATEGORY_ID, GROUP_DESC
 - **FK** `FK_PATIENT_GROUPS_1`: (DEPARTMENT_ID) -> DEFINITIONS.DEPARTMENT(DEPARTMENT_ID) [disabled]
-- **CHECK** `CK_PATIENT_GROUPS_1`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_PATIENT_GROUPS_2`: GROUP_DESC = UPPER(GROUP_DESC
+- **CHECK** `CK_PATIENT_GROUPS_1`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_PATIENT_GROUPS_2`: GROUP_DESC = UPPER(GROUP_DESC)
 - **Triggers**: `PATIENT_GROUPS_CEA` (before insert or update or delete), `TRG_WS_PCT_TP_WZ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.PATIENT_GROUPS_DETAIL
@@ -12505,7 +12505,7 @@ This table is child of DEFINITIONS.PACKAGE_DETAIL, which contains information ab
 - **PK** `PK_PATIENT_GROUPS_DETAIL`: GROUP_ID, PATIENT_TYPE_ID
 - **UK** `UK_PATIENT_GROUPS_DETAIL_1`: DEPARTMENT_ID, PATIENT_TYPE_ID
 - **FK** `FK_PATIENT_GROUPS_DETAIL_2`: (PATIENT_TYPE_ID) -> DEFINITIONS.PATIENT_TYPE(PATIENT_TYPE_ID) [disabled]
-- **CHECK** `CK_PATIENT_GROUPS_DETAIL_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_PATIENT_GROUPS_DETAIL_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `PATIENT_GROUPS_DETAIL_CEA` (before insert or update or delete), `TRG_WS_DBN_KP_DU_Q` (after insert or update or delete)
 
 ## DEFINITIONS.PATIENT_RESULT_VALUE_SETUP
@@ -12572,7 +12572,7 @@ This table is child of DEFINITIONS.PACKAGE_DETAIL, which contains information ab
 | ACTIVE | CHAR(1) default 'Y' | Y |  |
 
 - **PK** `PK_PATIENT_TRANSFER_MODE`: SERIAL_NO
-- **CHECK** `CHK_1`: ACTIVE IN ('N','Y'
+- **CHECK** `CHK_1`: ACTIVE IN ('N','Y')
 - **Triggers**: `PATIENT_TRANSFER_MODE_CEA` (before insert or update or delete), `TRG_WS_KTM_JC_EQ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.PATIENT_TYPE_BASE
@@ -12703,7 +12703,7 @@ This table is child of DEFINITIONS.PACKAGE_DETAIL, which contains information ab
 | ACTIVE | CHAR(1) default 'N' | Y |  |
 
 - **PK** `PK_PATIENT_TYPE_EMPLOYER`: PATIENT_TYPE_ID, EMPLOYER_ID
-- **CHECK** `CHK_PATIENT_TYPE_EMPLOYER_1`: ACTIVE IN ('N','Y'
+- **CHECK** `CHK_PATIENT_TYPE_EMPLOYER_1`: ACTIVE IN ('N','Y')
 
 ## DEFINITIONS.PATIENT_TYPE_GROUP
 
@@ -12983,10 +12983,10 @@ This setup table will be used to enable the patient vitals information object wi
 - **PK** `PK_TRANSACTION_TYPE`: TRANSACTION_TYPE_ID
 - **FK** `FK_TRANSACTION_GROUP`: (TRANSACTION_GROUP_ID) -> DEFINITIONS.TRANSACTION_GROUP(TRANSACTION_GROUP_ID) [disabled]
 - **FK** `FK_TRANSACTION_TYPE`: (MOVE_TYPE_ID) -> MMS.DEF_MOVE_TYPE(MOVE_TYPE_ID) [disabled]
-- **CHECK** `CHK_TRANSACTION_TYPE_01`: INVOICE IN ('Y','N'
-- **CHECK** `CHK_TRANSACTION_TYPE_02`: INVOICE_TYPE IN ('Y','N'
-- **CHECK** `CHK_TRANSACTION_TYPE_03`: PHARMACY IN ('Y','N'
-- **CHECK** `CHK_TRANSACTION_TYPE_04`: ACTIVE IN ('Y','N','A'
+- **CHECK** `CHK_TRANSACTION_TYPE_01`: INVOICE IN ('Y','N')
+- **CHECK** `CHK_TRANSACTION_TYPE_02`: INVOICE_TYPE IN ('Y','N')
+- **CHECK** `CHK_TRANSACTION_TYPE_03`: PHARMACY IN ('Y','N')
+- **CHECK** `CHK_TRANSACTION_TYPE_04`: ACTIVE IN ('Y','N','A')
 - **Triggers**: `TRANSACTION_TYPE_DEL` (after delete), `TRANSACTION_TYPE_INS` (before insert), `TRANSACTION_TYPE_UPD` (before update)
 
 ## DEFINITIONS.PHARMACY_DISPENSING_SETUP
@@ -13143,7 +13143,7 @@ _No standard audit columns._
 - **PK** `PK_PREFERENCES`: PREFERENCE_ID
 - **UK** `UK_PREFERENCES_1`: DESCRIPTION
 - **FK** `FK_PREFERENCES_1`: (APPLICATION_ID) -> DEFINITIONS.APPLICATION_SETUP(APPLICATION_ID) [disabled]
-- **CHECK** `CHK_PREFERENCES_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CHK_PREFERENCES_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `PREFERENCES_DEL` (after delete), `PREFERENCES_INS` (before insert), `PREFERENCES_UPD` (before update)
 
 ## DEFINITIONS.PREFERENCE_VALUES
@@ -13159,7 +13159,7 @@ _No standard audit columns._
 
 - **PK** `PK_PREFERENCE_VALUES`: PREFERENCE_ID, VALUE_ID
 - **FK** `FK_PREFERENCE_VALUES_1`: (PREFERENCE_ID) -> DEFINITIONS.PREFERENCES(PREFERENCE_ID)
-- **CHECK** `CHK_PK_PREFERENCE_VALUES_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CHK_PK_PREFERENCE_VALUES_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `PREFERENCE_VALUES_DEL` (after delete), `PREFERENCE_VALUES_INS` (before insert), `PREFERENCE_VALUES_UPD` (before update)
 
 ## DEFINITIONS.PREGNANCY_RISK_FACTORS
@@ -13286,8 +13286,8 @@ This table contains information of priority definitons to perform/teart orderequ
 
 - **PK** `PK_PRIORITY`: PRIORITY_ID
 - **CHECK** `CK_PRIORITY_1`: PRIORITY_ID BETWEEN '0' AND '9'
-- **CHECK** `CK_PRIORITY_2`: SHOW_SIGN IN ('Y','N'
-- **CHECK** `CK_PRIORITY_3`: BY_DEFAULT IN ('Y','N'
+- **CHECK** `CK_PRIORITY_2`: SHOW_SIGN IN ('Y','N')
+- **CHECK** `CK_PRIORITY_3`: BY_DEFAULT IN ('Y','N')
 - **Triggers**: `PRIORITY_CEA` (before insert or update or delete), `TRG_WS_WLR_DF_UB_Q` (after insert or update or delete)
 
 ## DEFINITIONS.PROBLEM_HLP_OBJECT
@@ -13438,8 +13438,8 @@ This table contains information of priority definitons to perform/teart orderequ
 - **FK** `FK_WORK_FLOW`: (ORGANIZATION_ID) -> DEFINITIONS.ORGANIZATION(ORGANIZATION_ID) [disabled]
 - **FK** `FK_WORK_FLOW_1`: (LOCATION_ID) -> DEFINITIONS.LOCATION(LOCATION_ID) [disabled]
 - **FK** `FK_WORK_FLOW_2`: (ZONE_ID) -> DEFINITIONS.ZONES(ZONE_ID) [disabled]
-- **CHECK** `CK_BUDGETED`: BUDGETED IN ('N','Y'
-- **CHECK** `CK_MEDICAL_ITEM`: MEDICAL_ITEM IN ('N','Y'
+- **CHECK** `CK_BUDGETED`: BUDGETED IN ('N','Y')
+- **CHECK** `CK_MEDICAL_ITEM`: MEDICAL_ITEM IN ('N','Y')
 - **Triggers**: `TRG_WS_LAH_YM_MZ_Q` (after insert or update or delete), `WORK_FLOW_CEA` (before insert or update or delete), `WORK_FLOW_DEL` (after delete), `WORK_FLOW_INS` (before insert), `WORK_FLOW_UPD` (before update)
 
 ## DEFINITIONS.PR_TYPE_FLOW
@@ -13531,9 +13531,9 @@ This table contains information of differnt queues types
 | RETAIN_LIMIT | NUMBER(5) | Y | Thic column contains Expiry of Limit wrt retain Unit Type (Applicable for Auto Delete =Yes) |
 
 - **PK** `PK_QUEUE_TYPES`: QUEUE_TYPE_ID
-- **CHECK** `CK_QUEUE_TYPES_1`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_QUEUE_TYPES_2`: AUTO_DEL IN ('Y','N'
-- **CHECK** `CK_QUEUE_TYPES_3`: RETAIN_LIMIT_TYPE IN ('X','D','H','M'
+- **CHECK** `CK_QUEUE_TYPES_1`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_QUEUE_TYPES_2`: AUTO_DEL IN ('Y','N')
+- **CHECK** `CK_QUEUE_TYPES_3`: RETAIN_LIMIT_TYPE IN ('X','D','H','M')
 
 ## DEFINITIONS.RACKS
 
@@ -13603,7 +13603,7 @@ This table contains information of differnt queues types
 
 - **PK** `PK_RADIOLOGY_EVENTS`: EVENT_TYPE_ID
 - **UK** `UK_RADIOLOGY_EVENTS_01`: EVENT_NAME
-- **CHECK** `CHK_RADIOLOGY_EVENTS_01`: ACTIVE IN ('N','Y'
+- **CHECK** `CHK_RADIOLOGY_EVENTS_01`: ACTIVE IN ('N','Y')
 - **Triggers**: `RADIOLOGY_EVENTS_CEA` (before insert or update or delete), `RADIOLOGY_EVENTS_DEL` (after delete), `RADIOLOGY_EVENTS_INS` (before insert), `RADIOLOGY_EVENTS_UPD` (before update), `TRG_WS_QKB_ZJ_XM_Q` (after insert or update or delete)
 
 ## DEFINITIONS.RADIOLOGY_IMAGE_GUIDELINE
@@ -13667,7 +13667,7 @@ This table contains information of differnt queues types
 | FORCE_TYPE_ID | VARCHAR2(6) | N |  |
 
 - **PK** `PK_RANK_CATEGORY`: RANK_CAT_ID
-- **CHECK** `CHK_RANK_CATEGORY`: ACTIVE IN ('N','Y'
+- **CHECK** `CHK_RANK_CATEGORY`: ACTIVE IN ('N','Y')
 
 ## DEFINITIONS.RANK_TYPE
 
@@ -13729,8 +13729,8 @@ This table contains information of differnt queues types
 | ACTIVE | CHAR(1) default 'Y' | N |  |
 
 - **PK** `PK_REFERENCE`: REFERENCE_ID
-- **CHECK** `CK_REFERENCE_1`: REFERENCE_TYPE IN ('I','O','B'
-- **CHECK** `CK_REFERENCE_2`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_REFERENCE_1`: REFERENCE_TYPE IN ('I','O','B')
+- **CHECK** `CK_REFERENCE_2`: ACTIVE IN ('Y','N')
 - **Triggers**: `REFERENCE_INS` (before insert)
 
 ## DEFINITIONS.UNIT
@@ -13823,10 +13823,10 @@ This table contains definitions of relations of persons (System Constant Level t
 | RELATION_CATEGORY_ID | VARCHAR2(3) | Y | This column contains Relation Category Id Ref. DEFINITIONS.RELATION_CATEGORY |
 
 - **PK** `PK_RELATION`: RELATION_ID
-- **CHECK** `CK_RELATION_1`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_RELATION_2`: DEFAULTS IN ('Y','N'
-- **CHECK** `CK_RELATION_3`: EMP_DEPENDANT IN ('N','Y'
-- **CHECK** `CK_RELATION_4`: FOR_QA_CONSENTS IN ('N','Y'
+- **CHECK** `CK_RELATION_1`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_RELATION_2`: DEFAULTS IN ('Y','N')
+- **CHECK** `CK_RELATION_3`: EMP_DEPENDANT IN ('N','Y')
+- **CHECK** `CK_RELATION_4`: FOR_QA_CONSENTS IN ('N','Y')
 - **Triggers**: `RELATION_CEA` (before insert or update or delete), `RELATION_DEL` (after delete), `RELATION_INS` (before insert), `RELATION_TS` (before insert or update or delete), `RELATION_UPD` (before update), `TRG_WS_IED_GD_KW_Q` (after insert or update or delete)
 
 ## DEFINITIONS.RELATIONSHIP_CATEGORY
@@ -13877,7 +13877,7 @@ This table contains definitions of relations of persons (System Constant Level t
 
 - **PK** `PK_REPORTING_PANEL_WISE_DOCTOR`: PANEL_ID, DOCTOR_MRNO
 - **FK** `FK_REPORTING_PANEL_WISE_DOC_1`: (PANEL_ID) -> DEFINITIONS.DEPARTMENTAL_REPORTING_PANEL(PANEL_ID)
-- **CHECK** `CHK_ACTIVE`: ACTIVE IN ('H','Y','N'
+- **CHECK** `CHK_ACTIVE`: ACTIVE IN ('H','Y','N')
 - **Triggers**: `REPORTING_PANEL_WISE_DOCTOR_CEA` (before insert or update or delete), `REPORTING_PANEL_WISE_DR_DEL` (after delete), `REPORTING_PANEL_WISE_DR_INS` (before insert), `REPORTING_PANEL_WISE_DR_UPD` (before update), `TRG_WS_BBN_AG_AM_Q` (after insert or update or delete)
 
 ## DEFINITIONS.REPORT_CONFIGURATION
@@ -13909,9 +13909,9 @@ This table contains definitions of relations of persons (System Constant Level t
 
 - **PK** `PK_REPORT_DESFORMAT`: FORMAT_ID
 - **UK** `UK_REPORT_DESFORMAT_1`: KEYWORD
-- **CHECK** `CK_REPORT_DESFORMAT_1`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_REPORT_DESFORMAT_2`: RP2RRO IN ('Y','N'
-- **CHECK** `CK_REPORT_DESFORMAT_3`: DIAGNOSTIC IN ('Y','N'
+- **CHECK** `CK_REPORT_DESFORMAT_1`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_REPORT_DESFORMAT_2`: RP2RRO IN ('Y','N')
+- **CHECK** `CK_REPORT_DESFORMAT_3`: DIAGNOSTIC IN ('Y','N')
 - **Triggers**: `REPORT_DESFORMAT_CEA` (before insert or update or delete), `REPORT_DESFORMAT_DEL` (after delete), `REPORT_DESFORMAT_INS` (before insert), `REPORT_DESFORMAT_UPD` (before update), `TRG_WS_WAC_DZ_YN_Q` (after insert or update or delete)
 
 ## DEFINITIONS.REPORT_DESTINATION
@@ -13944,9 +13944,9 @@ This table contains definitions of relations of persons (System Constant Level t
 
 - **PK** `PK_REPORT_DESTYPES`: TYPE_ID
 - **FK** `FK_REPORT_DESTYPES_1`: (FORMAT_ID) -> DEFINITIONS.REPORT_DESFORMAT(FORMAT_ID) [disabled]
-- **CHECK** `CK_REPORT_DESTYPES_1`: OUTPUT_AT IN ('SCREEN','PRINTER','FILE','CACHE'
-- **CHECK** `CK_REPORT_DESTYPES_2`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_REPORT_DESTYPES_3`: DEFAULT_TYPE IN ('Y','N'
+- **CHECK** `CK_REPORT_DESTYPES_1`: OUTPUT_AT IN ('SCREEN','PRINTER','FILE','CACHE')
+- **CHECK** `CK_REPORT_DESTYPES_2`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_REPORT_DESTYPES_3`: DEFAULT_TYPE IN ('Y','N')
 - **Triggers**: `REPORT_DESTYPES_CEA` (before insert or update or delete), `REPORT_DESTYPES_DEL` (after delete), `REPORT_DESTYPES_INS` (before insert), `REPORT_DESTYPES_UPD` (before update), `TRG_WS_XDK_AF_KH_Q` (after insert or update or delete)
 
 ## DEFINITIONS.REPORT_DEST_RESTRICTION_TYPE
@@ -14061,8 +14061,8 @@ This table contains definitions of relations of persons (System Constant Level t
 
 - **PK** `PK_REPORT_TIMINGS_OFFSET`: PERFORM_LOCATION_ID, LOCATION_ID, SERIAL_NO
 - **FK** `FK_REPORT_TIMINGS_OFFSET_1`: (LOCATION_ID) -> DEFINITIONS.LOCATION(LOCATION_ID) [disabled]
-- **CHECK** `CK_REPORT_TIMINGS_OFFSET_1`: SAMPLE_REPORT IN ('S', 'R'
-- **CHECK** `CK_REPORT_TIMINGS_OFFSET_5`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_REPORT_TIMINGS_OFFSET_1`: SAMPLE_REPORT IN ('S', 'R')
+- **CHECK** `CK_REPORT_TIMINGS_OFFSET_5`: ACTIVE IN ('Y','N')
 - **Triggers**: `REPORT_TIMINGS_OFFSET_DEL` (after delete), `REPORT_TIMINGS_OFFSET_INS` (before insert), `REPORT_TIMINGS_OFFSET_UPD` (before update)
 
 ## DEFINITIONS.REPORT_TIMINGS_OFFSET_IDR_R
@@ -14207,7 +14207,7 @@ This table used to enter Return Reasons
 | CATEGORY_COLOR | VARCHAR2(20) default 'Black' | Y |  |
 
 - **PK** `PK_ROOM_CAT`: CATEGORY_ID, ORGANIZATION_ID
-- **CHECK** `CK_ROOM_CATEGORY_001`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_ROOM_CATEGORY_001`: ACTIVE IN ('Y','N')
 - **Triggers**: `ROOM_CATEGORY_CEA` (before insert or update or delete), `ROOM_CATEGORY_DEL` (after delete), `ROOM_CATEGORY_INS` (before insert), `ROOM_CATEGORY_UPD` (before update), `TRG_WS_XWO_KL_AM_Q` (after insert or update or delete)
 
 ## DEFINITIONS.ROOM_CATEGORY_CPT_PRICE
@@ -14261,8 +14261,8 @@ This table will be used to define the Ward Wise Prices
 - **FK** `FK_ROOM_PC_CPT_01`: (CPT_RESTRICTION_TYPE_ID) -> DEFINITIONS.CPT_RESTRICTION_TYPE(CPT_RESTRICTION_TYPE_ID)
 - **FK** `FK_ROOM_PC_CPT_02`: (CPT_ID) -> DEFINITIONS.CPT(CPT_ID) [disabled]
 - **FK** `FK_ROOM_PC_CPT_03`: (ROOM_PAYMENT_CATEGORY_ID) -> DEFINITIONS.ROOM_PAYMENT_CATEGORY(ROOM_PAYMENT_CATEGORY_ID) [disabled]
-- **CHECK** `CHK_ROOM_PC_CPT_01`: P_DUTY_TIME IN ('ON','OFF'
-- **CHECK** `CHK_ROOM_PC_CPT_02`: FIRST_FOLLOW_UP IN ('FIRST','FOLLOW_UP'
+- **CHECK** `CHK_ROOM_PC_CPT_01`: P_DUTY_TIME IN ('ON','OFF')
+- **CHECK** `CHK_ROOM_PC_CPT_02`: FIRST_FOLLOW_UP IN ('FIRST','FOLLOW_UP')
 - **Triggers**: `ROOM_PAYMENT_CAT_CPT_DEL` (after delete), `ROOM_PAYMENT_CAT_CPT_INS` (before insert), `ROOM_PAYMENT_CAT_CPT_UPD` (before update)
 
 ## DEFINITIONS.ROOM_PAYMENT_CAT_ROLE_CPT
@@ -14283,8 +14283,8 @@ This table will be used to define the Ward Wise Prices
 - **FK** `FK_ROOM_PCR_CPT_02`: (CPT_ID) -> DEFINITIONS.CPT(CPT_ID) [disabled]
 - **FK** `FK_ROOM_PCR_CPT_03`: (ROOM_PAYMENT_CATEGORY_ID) -> DEFINITIONS.ROOM_PAYMENT_CATEGORY(ROOM_PAYMENT_CATEGORY_ID) [disabled]
 - **FK** `FK_ROOM_PCR_CPT_04`: (USER_ROLE_ID) -> SECURITY.ROLE(ROLE_ID) [disabled]
-- **CHECK** `CHK_ROOM_PCR_CPT_01`: P_DUTY_TIME IN ('ON','OFF'
-- **CHECK** `CHK_ROOM_PCR_CPT_02`: FIRST_FOLLOW_UP IN ('FIRST','FOLLOW_UP'
+- **CHECK** `CHK_ROOM_PCR_CPT_01`: P_DUTY_TIME IN ('ON','OFF')
+- **CHECK** `CHK_ROOM_PCR_CPT_02`: FIRST_FOLLOW_UP IN ('FIRST','FOLLOW_UP')
 - **Triggers**: `ROOM_PAYMENT_CAT_ROLE_CPT_DEL` (after delete), `ROOM_PAYMENT_CAT_ROLE_CPT_INS` (before insert), `ROOM_PAYMENT_CAT_ROLE_CPT_UPD` (before update)
 
 ## DEFINITIONS.ROOM_PAYMENT_CAT_USER_CPT
@@ -14305,8 +14305,8 @@ This table will be used to define the Ward Wise Prices
 - **FK** `FK_ROOM_PCU_CPT_02`: (CPT_ID) -> DEFINITIONS.CPT(CPT_ID) [disabled]
 - **FK** `FK_ROOM_PCU_CPT_03`: (ROOM_PAYMENT_CATEGORY_ID) -> DEFINITIONS.ROOM_PAYMENT_CATEGORY(ROOM_PAYMENT_CATEGORY_ID) [disabled]
 - **FK** `FK_ROOM_PCU_CPT_04`: (USER_MRNO) -> HRD.INFORMATION(MRNO) [disabled]
-- **CHECK** `CHK_ROOM_PCUC_01`: P_DUTY_TIME IN ('ON','OFF'
-- **CHECK** `CHK_ROOM_PCUC_02`: FIRST_FOLLOW_UP IN ('FIRST','FOLLOW_UP'
+- **CHECK** `CHK_ROOM_PCUC_01`: P_DUTY_TIME IN ('ON','OFF')
+- **CHECK** `CHK_ROOM_PCUC_02`: FIRST_FOLLOW_UP IN ('FIRST','FOLLOW_UP')
 - **Triggers**: `ROOM_PAYMENT_CAT_USER_CPT_DEL` (after delete), `ROOM_PAYMENT_CAT_USER_CPT_INS` (before insert), `ROOM_PAYMENT_CAT_USER_CPT_UPD` (before update)
 
 ## DEFINITIONS.ROOM_SEQUENCE_SETUP
@@ -14371,9 +14371,9 @@ This table contains info about  Cpt setup Room Payment Cat wise
 - **UK** `UK_RPC_CPT_1`: RPC_ID, RESTRICTION_TYPE_ID, ORGANIZATION_ID, VISIT_TYPE, DUTY_TIME, CPT_ID
 - **FK** `FK_RPC_CPT_1`: (RPC_ID) -> DEFINITIONS.ROOM_PAYMENT_CATEGORY(ROOM_PAYMENT_CATEGORY_ID)
 - **FK** `FK_RPC_CPT_2`: (RESTRICTION_TYPE_ID) -> DEFINITIONS.CPT_RESTRICTION_TYPE(CPT_RESTRICTION_TYPE_ID) [disabled]
-- **CHECK** `CK_RPC_CPT_1`: VISIT_TYPE IN ('F','O'
-- **CHECK** `CK_RPC_CPT_2`: DUTY_TIME IN ('0','1'
-- **CHECK** `CK_RPC_CPT_3`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_RPC_CPT_1`: VISIT_TYPE IN ('F','O')
+- **CHECK** `CK_RPC_CPT_2`: DUTY_TIME IN ('0','1')
+- **CHECK** `CK_RPC_CPT_3`: ACTIVE IN ('Y','N')
 - **Triggers**: `RPC_CPT_INS` (before insert)
 
 ## DEFINITIONS.RPC_ROLE
@@ -14396,9 +14396,9 @@ This table contains info about Role Level Cpt setup Room Payment Cat wise
 - **UK** `UK_RPC_ROLE_1`: RPC_ID, RESTRICTION_TYPE_ID, ORGANIZATION_ID, VISIT_TYPE, DUTY_TIME, ROLE_ID, CPT_ID
 - **FK** `FK_RPC_ROLE_1`: (RPC_ID) -> DEFINITIONS.ROOM_PAYMENT_CATEGORY(ROOM_PAYMENT_CATEGORY_ID)
 - **FK** `FK_RPC_ROLE_2`: (RESTRICTION_TYPE_ID) -> DEFINITIONS.CPT_RESTRICTION_TYPE(CPT_RESTRICTION_TYPE_ID) [disabled]
-- **CHECK** `CK_RPC_ROLE_1`: VISIT_TYPE IN ('F','O'
-- **CHECK** `CK_RPC_ROLE_2`: DUTY_TIME IN ('0','1'
-- **CHECK** `CK_RPC_ROLE_3`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_RPC_ROLE_1`: VISIT_TYPE IN ('F','O')
+- **CHECK** `CK_RPC_ROLE_2`: DUTY_TIME IN ('0','1')
+- **CHECK** `CK_RPC_ROLE_3`: ACTIVE IN ('Y','N')
 - **Triggers**: `RPC_ROLE_DEL` (after delete), `RPC_ROLE_INS` (before insert), `RPC_ROLE_UPD` (before update)
 
 ## DEFINITIONS.RPC_USER
@@ -14421,9 +14421,9 @@ This table contains info about User Level Cpt setup Room Payment Cat wise
 - **UK** `UK_RPC_USER_1`: RPC_ID, RESTRICTION_TYPE_ID, ORGANIZATION_ID, VISIT_TYPE, DUTY_TIME, USER_MRNO, CPT_ID
 - **FK** `FK_RPC_USER_1`: (RPC_ID) -> DEFINITIONS.ROOM_PAYMENT_CATEGORY(ROOM_PAYMENT_CATEGORY_ID)
 - **FK** `FK_RPC_USER_2`: (RESTRICTION_TYPE_ID) -> DEFINITIONS.CPT_RESTRICTION_TYPE(CPT_RESTRICTION_TYPE_ID) [disabled]
-- **CHECK** `CK_RPC_USER_1`: VISIT_TYPE IN ('F','O'
-- **CHECK** `CK_RPC_USER_2`: DUTY_TIME IN ('0','1'
-- **CHECK** `CK_RPC_USER_3`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_RPC_USER_1`: VISIT_TYPE IN ('F','O')
+- **CHECK** `CK_RPC_USER_2`: DUTY_TIME IN ('0','1')
+- **CHECK** `CK_RPC_USER_3`: ACTIVE IN ('Y','N')
 - **Triggers**: `RPC_USER_DEL` (after delete), `RPC_USER_INS` (before insert), `RPC_USER_UPD` (before update)
 
 ## DEFINITIONS.SALUTATION
@@ -14599,8 +14599,8 @@ This table contains definitions of Army Service Status (System Constant Level ta
 
 - **PK** `PK_SERVICE_STATUS`: STATUS_ID
 - **UK** `UK_SERVICE_STATUS`: DESCRIPTION
-- **CHECK** `CHK_SERVICE_STATUS_1`: ACTIVE IN ('N','Y'
-- **CHECK** `CHK_SERVICE_STATUS_2`: RETIRED IN ('N','Y'
+- **CHECK** `CHK_SERVICE_STATUS_1`: ACTIVE IN ('N','Y')
+- **CHECK** `CHK_SERVICE_STATUS_2`: RETIRED IN ('N','Y')
 - **Triggers**: `SERVICE_STATUS_CEA` (before insert or update or delete), `SERVICE_STATUS_DEL` (after delete), `SERVICE_STATUS_INS` (before insert), `SERVICE_STATUS_UPD` (before update), `TRG_WS_UWO_MF_CI_Q` (after insert or update or delete)
 
 ## DEFINITIONS.SERVICE_CATEGORY_RELATION
@@ -14631,7 +14631,7 @@ _No standard audit columns._
 
 - **PK** `PK_SERVICE_STATUS_PAT_TYPE`: PATIENT_TYPE_ID, STATUS_ID
 - **FK** `FK_SERVICE_STATUS_PAT_TYPE_1`: (PATIENT_TYPE_ID) -> DEFINITIONS.PATIENT_TYPE(PATIENT_TYPE_ID)
-- **CHECK** `CHK_SERVICE_STATUS_PAT_TYPE_1`: ACTIVE IN ('N','Y'
+- **CHECK** `CHK_SERVICE_STATUS_PAT_TYPE_1`: ACTIVE IN ('N','Y')
 
 ## DEFINITIONS.SERVICE_SUB_GROUP
 
@@ -14675,7 +14675,7 @@ This table will be used to define the Service Type wise CPTs
 - **PK** `PK_SERVICE_TYPE_CPT`: SERVICE_TYPE_ID, CPT_ID
 - **FK** `FK_SERVICE_TYPE_CPT_1`: (SERVICE_TYPE_ID) -> DEFINITIONS.SERVICE_TYPE(SERVICE_TYPE_ID)
 - **FK** `FK_SERVICE_TYPE_CPT_2`: (CPT_ID) -> DEFINITIONS.CPT(CPT_ID) [disabled]
-- **CHECK** `CK_SERVICE_TYPE_CPT_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_SERVICE_TYPE_CPT_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `SERVICE_TYPE_CPT_CEA` (before insert or update or delete), `SERVICE_TYPE_CPT_DEL` (after delete), `SERVICE_TYPE_CPT_INS` (before insert), `SERVICE_TYPE_CPT_UPD` (before update), `TRG_WS_RYO_LP_GS_Q` (after insert or update or delete)
 
 ## DEFINITIONS.SERVICE_TYPE_DEPARTMENT_NATURE
@@ -14691,8 +14691,8 @@ This table will be used to link the Service Type with the Department Nature
 - **PK** `PK_SERVICE_TYPE_DEPT_NATURE`: SERVICE_TYPE_ID, DEPARTMENT_NATURE_ID
 - **FK** `FK_SERVICE_TYPE_DEPT_NATURE_1`: (SERVICE_TYPE_ID) -> DEFINITIONS.SERVICE_TYPE(SERVICE_TYPE_ID)
 - **FK** `FK_SERVICE_TYPE_DEPT_NATURE_2`: (DEPARTMENT_NATURE_ID) -> DEFINITIONS.DEPARTMENT_NATURE(DEPARTMENT_NATURE_ID) [disabled]
-- **CHECK** `CK_SERVICE_TYPE_DEPT_NATURE_1`: ALL_SERVICES IN ('Y','N'
-- **CHECK** `CK_SERVICE_TYPE_DEPT_NATURE_2`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_SERVICE_TYPE_DEPT_NATURE_1`: ALL_SERVICES IN ('Y','N')
+- **CHECK** `CK_SERVICE_TYPE_DEPT_NATURE_2`: ACTIVE IN ('Y','N')
 - **Triggers**: `SERVICE_TYPE_DEPARTMENT_NATURE_CEA` (before insert or update or delete), `SERV_TYPE_DEP_NATURE_DEL` (after delete), `SERV_TYPE_DEP_NATURE_INS` (before insert), `SERV_TYPE_DEP_NATURE_UPD` (before update), `TRG_WS_HOZ_NV_IZ_Q` (after insert or update or delete)
 
 ## DEFINITIONS.SERVICE_TYPE_ITEM
@@ -14709,7 +14709,7 @@ This Table will be used to define the Service Type wise Item / Brand
 - **FK** `FK_SERVICE_TYPE_ITEM_1`: (SERVICE_TYPE_ID) -> DEFINITIONS.SERVICE_TYPE(SERVICE_TYPE_ID)
 - **FK** `FK_SERVICE_TYPE_ITEM_2`: (ITEM_GROUP_ID) -> ITEM.ITEM_GROUP(ITEM_GROUP_ID) [disabled]
 - **FK** `FK_SERVICE_TYPE_ITEM_3`: (ITEM_ID) -> ITEM.ITEM(ITEM_ID) [disabled]
-- **CHECK** `CK_SERVICE_TYPE_ITEM_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_SERVICE_TYPE_ITEM_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `SERVICE_TYPE_ITEM_CEA` (before insert or update or delete), `SERVICE_TYPE_ITEM_DEL` (after delete), `SERVICE_TYPE_ITEM_INS` (before insert), `SERVICE_TYPE_ITEM_UPD` (before update), `TRG_WS_VJQ_SQ_BG_Q` (after insert or update or delete)
 
 ## DEFINITIONS.SERVICE_TYPE_ITEM_GROUP
@@ -14740,8 +14740,8 @@ This table will be used to define the Section Nature wise Service Type
 
 - **PK** `PK_SERVICE_TYPE_SEC_NATURE`: SERVICE_TYPE_ID, DEPARTMENT_NATURE_ID, SECTION_NATURE_ID
 - **FK** `FK_SERVICE_TYPE_SEC_NATURE_1`: (SERVICE_TYPE_ID) -> DEFINITIONS.SERVICE_TYPE(SERVICE_TYPE_ID)
-- **CHECK** `CK_SERVICE_TYPE_SEC_NATURE_1`: ALL_SERVICES IN ('Y','N'
-- **CHECK** `CK_SERVICE_TYPE_SEC_NATURE_2`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_SERVICE_TYPE_SEC_NATURE_1`: ALL_SERVICES IN ('Y','N')
+- **CHECK** `CK_SERVICE_TYPE_SEC_NATURE_2`: ACTIVE IN ('Y','N')
 - **Triggers**: `SERVICE_TYPE_SECTION_NATURE_CEA` (before insert or update or delete), `SERVICE_TYP_SEC_NATURE_DEL` (after delete), `SERVICE_TYP_SEC_NATURE_INS` (before insert), `SERVICE_TYP_SEC_NATURE_UPD` (before update), `TRG_WS_YEX_WN_BM_Q` (after insert or update or delete)
 
 ## DEFINITIONS.SERVICE_TYPE_STORE
@@ -14755,7 +14755,7 @@ This table will be used to define the Service Type Stores
 
 - **PK** `PK_SERVICE_TYPE_STORE`: SERVICE_TYPE_ID, STORE_ID
 - **FK** `FK_SERVICE_TYPE_STORE1`: (SERVICE_TYPE_ID) -> DEFINITIONS.SERVICE_TYPE(SERVICE_TYPE_ID)
-- **CHECK** `CK_SERVICE_TYPE_STORE_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_SERVICE_TYPE_STORE_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `SERVICE_TYPE_STORE_CEA` (before insert or update or delete), `SERVICE_TYPE_STORE_DEL` (after delete), `SERVICE_TYPE_STORE_INS` (before insert), `SERVICE_TYPE_STORE_UPD` (before update), `TRG_WS_KVI_RK_JK_Q` (after insert or update or delete)
 
 ## DEFINITIONS.SESSION_TYPE
@@ -14922,8 +14922,8 @@ _No standard audit columns._
 | CANCER | CHAR(1) default 'N' | Y | This column contains flag information Cancer Code  ('Y' = 'Yes','N' = 'No') |
 
 - **PK** `PK_SNOMED_CODES`: CODES, SER
-- **CHECK** `CK_SNOMED_CODES_1`: PUNJAB_CANCER_REGISTRY IN ('Y','N'
-- **CHECK** `CK_SNOMED_CODES_2`: CANCER IN ('Y','N'
+- **CHECK** `CK_SNOMED_CODES_1`: PUNJAB_CANCER_REGISTRY IN ('Y','N')
+- **CHECK** `CK_SNOMED_CODES_2`: CANCER IN ('Y','N')
 - **Triggers**: `SNOMED_CODES_CEA` (before insert or update or delete), `SNOMED_CODES_DEL` (after delete), `SNOMED_CODES_INS` (before insert), `SNOMED_CODES_UPD` (before update), `TRG_WS_BEP_YV_UX_Q` (after insert or update or delete)
 
 ## DEFINITIONS.SOFTWARE_CATEGORY
@@ -15050,7 +15050,7 @@ _No standard audit columns._
 - **PK** `PK_SPECIMEN_APPEARANCE`: SPECIMEN_ID, APPEARANCE_ID
 - **FK** `FK_SPECIMEN_APPEARANCE_1`: (SPECIMEN_ID) -> DEFINITIONS.SPECIMEN(SPECIMEN_ID)
 - **FK** `FK_SPECIMEN_APPEARANCE_2`: (APPEARANCE_ID) -> DEFINITIONS.APPEARANCE(APPEARANCE_ID)
-- **CHECK** `CK_SPECIMEN_APPEARANCE_001`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_SPECIMEN_APPEARANCE_001`: ACTIVE IN ('Y','N') 
 - **Triggers**: `SPECIMEN_APPEARANCE_CEA` (before insert or update or delete), `TRG_WS_XEJ_QG_OE_Q` (after insert or update or delete)
 
 ## DEFINITIONS.SPECIMEN_COLOURS
@@ -15065,8 +15065,8 @@ _No standard audit columns._
 - **PK** `PK_SPECIMEN_COLOURS`: SPECIMEN_ID, COLOUR_ID
 - **FK** `FK_SPECIMEN_COLOURS_1`: (SPECIMEN_ID) -> DEFINITIONS.SPECIMEN(SPECIMEN_ID)
 - **FK** `FK_SPECIMEN_COLOURS_2`: (COLOUR_ID) -> DEFINITIONS.COLOURS(COLOUR_ID)
-- **CHECK** `SPECIMEN_COLOURS_1`: ACTIVE IN ('Y','N'
-- **CHECK** `SPECIMEN_COLOURS_2`: DEFAULTS IN ('Y','N'
+- **CHECK** `SPECIMEN_COLOURS_1`: ACTIVE IN ('Y','N')
+- **CHECK** `SPECIMEN_COLOURS_2`: DEFAULTS IN ('Y','N')
 - **Triggers**: `SPECIMEN_COLOURS_CEA` (before insert or update or delete), `TRG_WS_GFC_BD_UA_Q` (after insert or update or delete)
 
 ## DEFINITIONS.STATE_ZONE
@@ -15196,7 +15196,7 @@ Any user working in a sub location will have all powers as of its PROJECT/MAIN L
 | ORGANIZATION_ID | VARCHAR2(3) | N |  |
 
 - **PK** `PK_SURGERY_REGIONS`: SURGERY_REGION_ID, LOCATION_ID
-- **CHECK** `CK_SURGERY_REGIONS_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_SURGERY_REGIONS_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `SURGERY_REGIONS_CEA` (before insert or update or delete), `SURGERY_REGIONS_DEL` (after delete), `SURGERY_REGIONS_INS` (before insert), `SURGERY_REGIONS_INSERT` (before insert), `SURGERY_REGIONS_UPD` (before update), `TRG_WS_XPV_AF_DN_Q` (after insert or update or delete)
 
 ## DEFINITIONS.SURGERY_SETUP
@@ -15320,7 +15320,7 @@ Any user working in a sub location will have all powers as of its PROJECT/MAIN L
 
 - **PK** `PK_TABLE_TYPES`: TABLE_TYPE_ID
 - **UK** `UK_TABLE_TYPES_01`: TABLE_TYPE_DESCRIPTION
-- **CHECK** `CK_TABLE_TYPES_01`: TABLE_TYPE_ID = UPPER(TABLE_TYPE_ID
+- **CHECK** `CK_TABLE_TYPES_01`: TABLE_TYPE_ID = UPPER(TABLE_TYPE_ID)
 
 ## DEFINITIONS.TTMT_MATRIX
 
@@ -15364,7 +15364,7 @@ Any user working in a sub location will have all powers as of its PROJECT/MAIN L
 - **FK** `FK_TABLES_02`: (MODEL_TYPE_ID) -> DEFINITIONS.DATA_SYNC_MODEL_TYPES(MODEL_TYPE_ID) [disabled]
 - **FK** `FK_TABLES_03`: (TABLE_TYPE_FLAG) -> DEFINITIONS.TABLE_TYPES(TABLE_TYPE_ID) [disabled]
 - **FK** `FK_TABLES_04`: (TABLE_TYPE_FLAG, MODEL_TYPE_ID) -> DEFINITIONS.TTMT_MATRIX(TABLE_TYPE_ID, MODEL_TYPE_ID) [disabled]
-- **CHECK** `CK_TABLE_03`: NAME = UPPER(NAME
+- **CHECK** `CK_TABLE_03`: NAME = UPPER(NAME)
 - **Triggers**: `TABLES_TRG` (before insert or update), `TRG_WS_TAZ_CS_MU_Q` (after insert or update or delete)
 
 ## DEFINITIONS.TABLES_FMH
@@ -15526,7 +15526,7 @@ Any user working in a sub location will have all powers as of its PROJECT/MAIN L
 | USER_DEFINED_DESCRIPTION | VARCHAR2(500) | Y |  |
 
 - **PK** `PK_TABLE_COLUMNS`: SCHEMA_ID, TABLE_ID, COLUMN_ID
-- **CHECK** `CHK_TABLE_COLUMNS_1`: COUNTER_COLUMN IN ('Y','N'
+- **CHECK** `CHK_TABLE_COLUMNS_1`: COUNTER_COLUMN IN ('Y','N')
 - **Triggers**: `TABLE_COLUMNS_CEA` (before insert or update or delete), `TABLE_COLUMNS_DEL` (after delete), `TABLE_COLUMNS_INS` (before insert), `TABLE_COLUMNS_UPD` (before update), `TRG_WS_FOJ_CU_AB_Q` (after insert or update or delete)
 
 ## DEFINITIONS.TABLE_NAME
@@ -15550,7 +15550,7 @@ _No standard audit columns._
 - **UK** `UK_TABLE_TIME_STAMP_1`: TABLE_ID, TABLE_NAME
 - **FK** `FK_TABLE_TIME_STAMP_1`: (TABLE_ID) -> DEFINITIONS.TABLE_MAPPING(TABLE_ID)
 - **FK** `FK_TABLE_TIME_STAMP_2`: (TABLE_NAME) -> DEFINITIONS.CC_SOURCE_TABLES(SOURCE_TABLE) [disabled]
-- **CHECK** `CHK_TABLE_TIME_STAMP_1`: TABLE_NAME = UPPER(TABLE_NAME
+- **CHECK** `CHK_TABLE_TIME_STAMP_1`: TABLE_NAME = UPPER(TABLE_NAME)
 - **Triggers**: `TABLE_TIME_STAMP_CEA` (before insert or update or delete), `TRG_WS_EGB_BQ_IT_Q` (after insert or update or delete)
 
 ## DEFINITIONS.TAX_PAYMENT_SECTIONS
@@ -15813,8 +15813,8 @@ This table was created on temporary basis and will be dropped soon when CPTs wil
 - **PK** `PK_TERMINALS1`: TERMINAL_ID
 - **UK** `UK_TERMINAL_NAME`: NAME
 - **FK** `FK_S01_T016_S01_T067_1`: (LOCATION_ID, ORDER_LOCATION_ID) -> DEFINITIONS.ORDER_LOCATION(LOCATION_ID, ORDER_LOCATION_ID)
-- **CHECK** `CHK_TERMINALS_2`: NETWORK_CONTINGENCY IN ('N','Y'
-- **CHECK** `CHK_TERMINALS_JDK`: JDK_STATUS IN ('N','Y'
+- **CHECK** `CHK_TERMINALS_2`: NETWORK_CONTINGENCY IN ('N','Y')
+- **CHECK** `CHK_TERMINALS_JDK`: JDK_STATUS IN ('N','Y')
 - **Triggers**: `TERMINALS_DEL` (after delete), `TERMINALS_INS` (before insert), `TERMINALS_UPD` (before update)
 
 ## DEFINITIONS.TERMINAL_TYPE
@@ -16197,7 +16197,7 @@ This table will be used to define the Territories within an organization
 
 - **PK** `PK_TREATMENT_GUIDELINES`: FILE_ID
 - **FK** `FK_TREATMENT_GUIDELINES_1`: (DOC_TYPE_ID) -> DEFINITIONS.DOCUMENT_TYPE(DOC_TYPE_ID) [disabled]
-- **CHECK** `CHK_TREATMENT_GUIDELINES`: ACTIVE IN ('Y','N'
+- **CHECK** `CHK_TREATMENT_GUIDELINES`: ACTIVE IN ('Y','N')
 - **Triggers**: `TREATMENT_GUIDELINES_CEA` (before insert or update or delete), `TREATMENT_GUIDELINES_DEL` (after delete), `TREATMENT_GUIDELINES_INS` (before insert), `TREATMENT_GUIDELINES_UPD` (before update), `TRG_WS_FSM_SV_MG_Q` (after insert or update or delete)
 
 ## DEFINITIONS.TRIAGE_LEVELS
@@ -16409,7 +16409,7 @@ _No standard audit columns._
 
 - **PK** `PK_USER_OBJECT_PATIENT_TYPE`: USER_MRNO, SERIAL_NO
 - **FK** `FK_USER_OBJECT_PATIENT_TYPE_01`: (SERIAL_NO) -> DEFINITIONS.OBJECT_PATIENT_TYPE(SERIAL_NO) [disabled]
-- **CHECK** `CHK_USER_OBJECT_PAT_TYPE_01`: INCLUDE_IN_REPORT IN ('N','Y'
+- **CHECK** `CHK_USER_OBJECT_PAT_TYPE_01`: INCLUDE_IN_REPORT IN ('N','Y')
 
 ## DEFINITIONS.VACANCY_SOURCE
 
@@ -16700,7 +16700,7 @@ This table will be used to define the Ward wise CPTs
 - **PK** `PK_WARD_WISE_CPT`: ROOM_ID, CPT_ID
 - **FK** `FK_WARD_WISE_CPT_1`: (ROOM_ID) -> DEFINITIONS.ROOMS(ROOM_ID)
 - **FK** `FK_WARD_WISE_CPT_2`: (CPT_ID) -> DEFINITIONS.CPT(CPT_ID) [disabled]
-- **CHECK** `CK_WARD_WISE_CPT_1`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_WARD_WISE_CPT_1`: ACTIVE IN ('Y','N')
 - **Triggers**: `WARD_WISE_CPT_DEL` (after delete), `WARD_WISE_CPT_INS` (before insert), `WARD_WISE_CPT_UPD` (before update)
 
 ## DEFINITIONS.WEB_REPORT_SERVER_R
@@ -16787,8 +16787,8 @@ _No standard audit columns._
 | ACTIVE | CHAR(1) default 'Y' | N |  |
 | ORDER_BY | NUMBER(3) | Y |  |
 
-- **CHECK** `CK_WORKING_AREA_1`: ACTIVE IN ('Y','N'
-- **CHECK** `CK_WORKING_AREA_2`: DESCRIPTION IS NOT NULL)
+- **CHECK** `CK_WORKING_AREA_1`: ACTIVE IN ('Y','N')
+- **CHECK** `CK_WORKING_AREA_2`: DESCRIPTION IS NOT NULL
 - **Triggers**: `TRG_WS_HVF_MV_UH_Q` (after insert or update or delete), `WORKING_AREA_CEA` (before insert or update or delete)
 
 ## DEFINITIONS.WORK_FLOW_EVENTS

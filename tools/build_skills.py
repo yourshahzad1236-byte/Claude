@@ -46,8 +46,8 @@ def parse(path, schema):
         if not t: continue
         kind = m.group(3).lower(); cols = re.sub(r'\s+', ' ', m.group(4)).upper()
         if kind == 'check':
-            e = text.find(';', m.start(4)); cols = re.sub(r'\s+', ' ', text[m.start(4):e]).strip().rstrip(')').upper()
-            cols = re.sub(r'\s*(DISABLE|NOVALIDATE)\b', '', cols).strip()
+            e = text.find(';', m.start(4)); cols = re.sub(r'\s+', ' ', text[m.start(4):e]).strip().upper()
+            cols = re.sub(r'\s*(DISABLE|NOVALIDATE)\b', '', cols).strip()[:-1]
         rest = text[m.end():m.end()+80].lower()
         disabled = bool(re.match(r'\s*\n\s*disable', rest))
         if kind == 'primary key': t['pk'] = (m.group(2), cols)

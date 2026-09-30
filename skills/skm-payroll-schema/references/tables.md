@@ -46,8 +46,8 @@ Audit/multi-location columns (user_id, terminal, trn_date, original_user_id, ori
 | AD_LOCATION_ID | VARCHAR2(3) | Y |  |
 
 - **PK** `PK_DEF_AD_GROUP`: AD_GROUP_CODE
-- **CHECK** `CK_DAG_ACTIVE`: ACTIVE IN ('N','Y'
-- **CHECK** `CK_DEF_AD_GROUP_1`: AD_TYPE IN ('A','D'
+- **CHECK** `CK_DAG_ACTIVE`: ACTIVE IN ('N','Y')
+- **CHECK** `CK_DEF_AD_GROUP_1`: AD_TYPE IN ('A','D')
 - **CHECK** `CK_DEF_AD_GROUP_NN`: AD_TYPE IS NOT NULL
 - **Triggers**: `DEF_AD_GROUP_CEA` (before insert or update or delete), `DEF_AD_GROUP_DEL` (after delete), `DEF_AD_GROUP_INS` (before insert), `DEF_AD_GROUP_UPD` (before update), `TRG_WS_KZL_DN_VB_Q` (after insert or update or delete)
 
@@ -80,16 +80,16 @@ This table is used to define different types of allowances / deductions which ar
 - **FK** `FK_DEF_ALLOWANCE_DEDUCTION_1`: (AD_GROUP_CODE) -> PAYROLL.DEF_AD_GROUP(AD_GROUP_CODE) [disabled]
 - **FK** `FK_DEF_ALLOWANCE_DEDUCTION_2`: (LOCATION_ID) -> DEFINITIONS.LOCATION(LOCATION_ID) [disabled]
 - **FK** `FK_DEF_ALLOWANCE_DEDUCTION_3`: (ORGANIZATION_ID) -> DEFINITIONS.ORGANIZATION(ORGANIZATION_ID) [disabled]
-- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_1`: AD_TYPE IN ('A', 'D'
-- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_10`: TAXABLE_ANNUALLY IN ('Y', 'N'
-- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_2`: CALC_TYPE IN ('A', 'O'
-- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_3`: DED_TYPE IN ('I','P','B','M','C','E','O','R'
-- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_4`: VALUE_TYPE IN ('A', 'P'
-- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_5`: INCLUDE_IN_GROSS IN ('Y', 'N'
-- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_6`: ACTIVE IN ('Y', 'N'
-- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_7`: OT_CALC_BASE IN ('G', 'B'
-- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_8`: PRACTICE_INCOME IN ('Y', 'N', 'G'
-- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_9`: ENTRY_TYPE IN ('S','T'
+- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_1`: AD_TYPE IN ('A', 'D')
+- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_10`: TAXABLE_ANNUALLY IN ('Y', 'N')
+- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_2`: CALC_TYPE IN ('A', 'O')
+- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_3`: DED_TYPE IN ('I','P','B','M','C','E','O','R')
+- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_4`: VALUE_TYPE IN ('A', 'P')
+- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_5`: INCLUDE_IN_GROSS IN ('Y', 'N')
+- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_6`: ACTIVE IN ('Y', 'N')
+- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_7`: OT_CALC_BASE IN ('G', 'B')
+- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_8`: PRACTICE_INCOME IN ('Y', 'N', 'G')
+- **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_9`: ENTRY_TYPE IN ('S','T')
 - **CHECK** `CK_DEF_ALLOWANCE_DEDUCTION_NN`: AD_GROUP_CODE IS NOT NULL
 - **Triggers**: `DEF_ALLOWANCE_DEDUCTION_DEL` (after delete), `DEF_ALLOWANCE_DEDUCTION_INS` (before insert), `DEF_ALLOWANCE_DEDUCTION_UPD` (before update)
 
@@ -147,8 +147,8 @@ This table is used to define different types of allowances / deductions which ar
 | CBR_AMOUNT_CODE | VARCHAR2(4) | Y |  |
 
 - **PK** `PK_DEF_ARREAR`: ARREAR_CODE
-- **CHECK** `CK_DEF_ARREAR_1`: ACTIVE IN ('Y', 'N'
-- **CHECK** `CK_DEF_ARREAR_2`: AD_TYPE IN ('A','D'
+- **CHECK** `CK_DEF_ARREAR_1`: ACTIVE IN ('Y', 'N')
+- **CHECK** `CK_DEF_ARREAR_2`: AD_TYPE IN ('A','D')
 - **Triggers**: `DEF_ARREAR_CEA` (before insert or update or delete), `DEF_ARREAR_DEL` (after delete), `DEF_ARREAR_INS` (before insert), `DEF_ARREAR_UPD` (before update), `TRG_WS_WVB_PD_FA_Q` (after insert or update or delete)
 
 ## PAYROLL.ARREAR_DETAIL
@@ -498,11 +498,11 @@ This table is used to location wise define def_allowances_deduction.
 - **FK** `FK_DEF_AD_SETUP_1`: (AD_GROUP_CODE) -> PAYROLL.DEF_AD_GROUP(AD_GROUP_CODE) [disabled]
 - **FK** `FK_DEF_AD_SETUP_2`: (AD_NATURE_TYPE_ID) -> PAYROLL.DEF_AD_NATURE_TYPE(AD_NATURE_TYPE_ID) [disabled]
 - **FK** `FK_DEF_AD_SETUP_3`: (SLAB_ID) -> BILLING.DEF_SLAB(SLAB_ID) [disabled]
-- **CHECK** `CK_DEF_AD_SETUP_1`: TAXABLE_ANNUALLY IN ('Y', 'N'
-- **CHECK** `CK_DEF_AD_SETUP_2`: ATTENDANCE_BASED IN ('A', 'O'
-- **CHECK** `CK_DEF_AD_SETUP_4`: INCLUDE_IN_GROSS IN ('Y', 'N'
-- **CHECK** `CK_DEF_AD_SETUP_5`: ACTIVE IN ('Y', 'N'
-- **CHECK** `CK_DEF_AD_SETUP_6`: ENTRY_TYPE IN ('S','T'
+- **CHECK** `CK_DEF_AD_SETUP_1`: TAXABLE_ANNUALLY IN ('Y', 'N')
+- **CHECK** `CK_DEF_AD_SETUP_2`: ATTENDANCE_BASED IN ('A', 'O')
+- **CHECK** `CK_DEF_AD_SETUP_4`: INCLUDE_IN_GROSS IN ('Y', 'N')
+- **CHECK** `CK_DEF_AD_SETUP_5`: ACTIVE IN ('Y', 'N')
+- **CHECK** `CK_DEF_AD_SETUP_6`: ENTRY_TYPE IN ('S','T')
 - **CHECK** `CK_DEF_AD_SETUP_NN`: AD_GROUP_CODE IS NOT NULL
 - **Triggers**: `DEF_AD_SETUP_CEA` (before insert or update or delete), `DEF_AD_SETUP_DEL` (after delete), `DEF_AD_SETUP_INS` (before insert), `DEF_AD_SETUP_UPD` (before update), `TRG_WS_WKA_UZ_BE_Q` (after insert or update or delete)
 
@@ -578,7 +578,7 @@ This table is used to define different setups for payroll jornal voucher
 | LOCATION_ID | VARCHAR2(3) | N |  |
 
 - **PK** `PK_S_GL_SETUP_MASTER`: GL_SETUP_CODE
-- **CHECK** `CK_S_GL_SETUP_MASTER_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_S_GL_SETUP_MASTER_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `DEF_GL_SETUP_MASTER_CEA` (before insert or update or delete), `DEF_GL_SETUP_MASTER_DEL` (after delete), `DEF_GL_SETUP_MASTER_INS` (before insert), `DEF_GL_SETUP_MASTER_UPD` (before update), `TRG_WS_TTB_AI_IF_Q` (after insert or update or delete)
 
 ## PAYROLL.DEF_INCOME_TAX
@@ -641,11 +641,11 @@ This table is used to define financial parameters of empoyee which are used to e
 - **FK** `FK_DEF_EMP_FINANCIAL_5`: (CURRENCY_ID) -> DEFINITIONS.CURRENCY(CURRENCY_ID)
 - **FK** `FK_DEF_EMP_FINANCIAL_6`: (JOB_CODE) -> PAYROLL.DEF_EMP_JOB(JOB_CODE)
 - **FK** `FK_DEF_EMP_FINANCIAL_7`: (GL_SETUP_CODE) -> PAYROLL.DEF_GL_SETUP_MASTER(GL_SETUP_CODE)
-- **CHECK** `CK_DEF_EMP_FINANCIAL_1`: PAYMENT_MODE IN ('C', 'B', 'Q'
-- **CHECK** `CK_DEF_EMP_FINANCIAL_2`: INCLUDE_IN_EOBI IN ('Y', 'N'
-- **CHECK** `CK_DEF_EMP_FINANCIAL_3`: INCLUDE_IN_ESSI IN ('Y', 'N'
-- **CHECK** `CK_DEF_EMP_FINANCIAL_4`: INCLUDE_IN_ED_CESS IN ('Y', 'N'
-- **CHECK** `CK_DEF_EMP_FINANCIAL_5`: EMP_TYPE IN ('D','C','O'
+- **CHECK** `CK_DEF_EMP_FINANCIAL_1`: PAYMENT_MODE IN ('C', 'B', 'Q')
+- **CHECK** `CK_DEF_EMP_FINANCIAL_2`: INCLUDE_IN_EOBI IN ('Y', 'N')
+- **CHECK** `CK_DEF_EMP_FINANCIAL_3`: INCLUDE_IN_ESSI IN ('Y', 'N')
+- **CHECK** `CK_DEF_EMP_FINANCIAL_4`: INCLUDE_IN_ED_CESS IN ('Y', 'N')
+- **CHECK** `CK_DEF_EMP_FINANCIAL_5`: EMP_TYPE IN ('D','C','O')
 - **Triggers**: `DEF_EMP_FINANCIAL_COST_CENTER_NULL` (before update), `DEF_EMP_FINANCIAL_DEL` (after delete), `DEF_EMP_FINANCIAL_INS` (before insert), `DEF_EMP_FINANCIAL_UPD` (before update)
 
 ## PAYROLL.DEF_EXPENSE
@@ -674,9 +674,9 @@ This table is used to define financial parameters of empoyee which are used to e
 - **PK** `PK_DEF_EXPENSE`: EXPENSE_CODE, LOCATION_ID
 - **FK** `FK_DEF_EXPENSE_1`: (LOCATION_ID) -> DEFINITIONS.LOCATION(LOCATION_ID) [disabled]
 - **FK** `FK_DEF_EXPENSE_2`: (ORGANIZATION_ID) -> DEFINITIONS.ORGANIZATION(ORGANIZATION_ID) [disabled]
-- **CHECK** `CK_DEF_EXPENSE_1`: ACTIVE IN ('Y', 'N'
-- **CHECK** `CK_DEF_EXPENSE_2`: TYPE IN ('M','L','O','B','S'
-- **CHECK** `CK_DEF_EXPENSE_3`: GROSS_BASIC IN ('G','B', 'F'
+- **CHECK** `CK_DEF_EXPENSE_1`: ACTIVE IN ('Y', 'N')
+- **CHECK** `CK_DEF_EXPENSE_2`: TYPE IN ('M','L','O','B','S')
+- **CHECK** `CK_DEF_EXPENSE_3`: GROSS_BASIC IN ('G','B', 'F')
 - **Triggers**: `DEF_EXPENSE_CEA` (before insert or update or delete), `DEF_EXPENSE_DEL` (after delete), `DEF_EXPENSE_INS` (before insert), `DEF_EXPENSE_UPD` (before update), `TRG_WS_BAN_JP_PG_Q` (after insert or update or delete)
 
 ## PAYROLL.DEF_EXPENSE_CONSTANT
@@ -796,11 +796,11 @@ This table is used to define different formulas and rules applied to Govt. and c
 | LFA_PAYMENT_DAYS | NUMBER(3) | Y | Number of days for LFA payment before LFA scheduled leave |
 
 - **PK** `PK_DEF_FINANCIAL_SETUP`: FROM_DATE
-- **CHECK** `CK_DEF_FINANCIAL_SETUP_1`: OT_CALC_BASE IN ('G', 'B'
-- **CHECK** `CK_DEF_FINANCIAL_SETUP_2`: NIGHT_CALC_BASE IN ('G', 'B'
-- **CHECK** `CK_DEF_FINANCIAL_SETUP_3`: GRP_INS_CALC_BASE IN ('G', 'B'
-- **CHECK** `CK_DEF_FINANCIAL_SETUP_4`: PF_CALC_BASE IN ('G', 'B'
-- **CHECK** `CK_DEF_FINANCIAL_SETUP_5`: LFA_CALC_BASE IN ('G', 'B'
+- **CHECK** `CK_DEF_FINANCIAL_SETUP_1`: OT_CALC_BASE IN ('G', 'B')
+- **CHECK** `CK_DEF_FINANCIAL_SETUP_2`: NIGHT_CALC_BASE IN ('G', 'B')
+- **CHECK** `CK_DEF_FINANCIAL_SETUP_3`: GRP_INS_CALC_BASE IN ('G', 'B')
+- **CHECK** `CK_DEF_FINANCIAL_SETUP_4`: PF_CALC_BASE IN ('G', 'B')
+- **CHECK** `CK_DEF_FINANCIAL_SETUP_5`: LFA_CALC_BASE IN ('G', 'B')
 - **Triggers**: `DEF_FINANCIAL_SETUP_DEL` (after delete), `DEF_FINANCIAL_SETUP_INS` (before insert), `DEF_FINANCIAL_SETUP_UPD` (before update)
 
 ## PAYROLL.DEF_FS_ELEMENT
@@ -893,7 +893,7 @@ This table is used to define different setups for automatic payroll jornal vouch
 - **FK** `FK_S_GL_SETUP_DETAIL_3`: (LEDGER_TYPE_CODE_DR, SUB_LDGR_ITEM_CODE_DR) -> FINANCE.GL_SUB_LEDGERS(LEDGER_TYPE_CODE, SUB_LDGR_ITEM_CODE) [disabled]
 - **FK** `FK_S_GL_SETUP_DETAIL_4`: (COA_CODE_DR) -> FINANCE.GL_COA(COA_CODE) [disabled]
 - **FK** `FK_S_GL_SETUP_DETAIL_5`: (GL_SETUP_CODE) -> PAYROLL.DEF_GL_SETUP_MASTER(GL_SETUP_CODE)
-- **CHECK** `CK_S_GL_SETUP_DETAIL_3`: TRANSACTION_TYPE IN ('S', 'L', 'A', 'D', 'O', 'R', 'E'
+- **CHECK** `CK_S_GL_SETUP_DETAIL_3`: TRANSACTION_TYPE IN ('S', 'L', 'A', 'D', 'O', 'R', 'E')
 - **Triggers**: `DEF_GL_SETUP_DETAIL_DEL` (after delete), `DEF_GL_SETUP_DETAIL_INS` (before insert), `DEF_GL_SETUP_DETAIL_UPD` (before update)
 
 ## PAYROLL.DEF_GL_SETUP_DETAIL_FS
@@ -967,7 +967,7 @@ This table is used to define different types of increments such as Annual, promo
 | NO_OF_JOB_MONTH | NUMBER(2) | Y | Number of months that must be completed to be part of this increment |
 
 - **PK** `PK_DEF_INCREMENT_TYPE`: INCREMENT_CODE
-- **CHECK** `CK_DEF_INCREMENT_TYPE_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_DEF_INCREMENT_TYPE_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `DEF_INCREMENT_TYPE_CEA` (before insert or update or delete), `DEF_INCREMENT_TYPE_DEL` (after delete), `DEF_INCREMENT_TYPE_INS` (before insert), `DEF_INCREMENT_TYPE_UPD` (before update), `TRG_WS_LHW_SF_PB_Q` (after insert or update or delete)
 
 ## PAYROLL.DEF_ITAX_ADJUSTMENT
@@ -983,7 +983,7 @@ This table is used to define different types of increments such as Annual, promo
 | PERCENT_LIMIT | NUMBER(5,2) | Y |  |
 
 - **PK** `PK_DEF_ITAX_ADJUSTMENT`: ADJUSTMENT_CODE
-- **CHECK** `CK_DEF_ITAX_ADJUSTMENT`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_DEF_ITAX_ADJUSTMENT`: ACTIVE IN ('Y','N')
 - **Triggers**: `DEF_ITAX_ADJUSTMENT_CEA` (before insert or update or delete), `TRG_WS_NEL_OY_ZL_Q` (after insert or update or delete)
 
 ## PAYROLL.PAY_FINANCIAL_YEAR
@@ -1012,12 +1012,12 @@ This table is used to define different types of increments such as Annual, promo
 | ITAX_SURCHARGE | NUMBER(5,2) default 0 | Y |  |
 
 - **PK** `PK_PAY_FINANCIAL_YEAR`: YEAR_CODE
-- **CHECK** `CK_PAY_FINANCIAL_YEAR_1`: YEAR_STATUS IN ('O', 'C', 'S'
-- **CHECK** `CK_PAY_FINANCIAL_YEAR_2`: CURRENT_YEAR IN ('Y', 'N'
-- **CHECK** `CK_PAY_FINANCIAL_YEAR_3`: FROM_DATE = TRUNC(FROM_DATE
-- **CHECK** `CK_PAY_FINANCIAL_YEAR_4`: TO_DATE = TRUNC(TO_DATE
-- **CHECK** `CK_PAY_FINANCIAL_YEAR_5`: MARGINAL_RELIEF IN( 'Y','N'
-- **CHECK** `CK_PAY_FINANCIAL_YEAR_6`: PF_EXEMPT_BASE IN ('G', 'B'
+- **CHECK** `CK_PAY_FINANCIAL_YEAR_1`: YEAR_STATUS IN ('O', 'C', 'S')
+- **CHECK** `CK_PAY_FINANCIAL_YEAR_2`: CURRENT_YEAR IN ('Y', 'N')
+- **CHECK** `CK_PAY_FINANCIAL_YEAR_3`: FROM_DATE = TRUNC(FROM_DATE)
+- **CHECK** `CK_PAY_FINANCIAL_YEAR_4`: TO_DATE = TRUNC(TO_DATE)
+- **CHECK** `CK_PAY_FINANCIAL_YEAR_5`: MARGINAL_RELIEF IN( 'Y','N')
+- **CHECK** `CK_PAY_FINANCIAL_YEAR_6`: PF_EXEMPT_BASE IN ('G', 'B')
 - **Triggers**: `PAY_FINANCIAL_YEAR_CEA` (before insert or update or delete), `PAY_FINANCIAL_YEAR_DEL` (after delete), `PAY_FINANCIAL_YEAR_INS` (before insert), `PAY_FINANCIAL_YEAR_UPD` (before update), `TRG_WS_WNQ_VQ_RO_Q` (after insert or update or delete)
 
 ## PAYROLL.DEF_ITAX_DETAIL_AD
@@ -1039,9 +1039,9 @@ This table is used to define different types of increments such as Annual, promo
 - **PK** `PK_DEF_ITAX_DETAIL_AD`: YEAR_CODE, AD_CODE
 - **FK** `DEF_ITAX_DETAIL_AD_1`: (YEAR_CODE) -> PAYROLL.PAY_FINANCIAL_YEAR(YEAR_CODE)
 - **FK** `FK_DEF_ITAX_DETAIL_AD`: (AD_CODE, AD_ORGANIZATION_ID, AD_LOCATION_ID) -> PAYROLL.DEF_ALLOWANCE_DEDUCTION(AD_CODE, ORGANIZATION_ID, LOCATION_ID) [disabled]
-- **CHECK** `CK_DEF_ITAX_DETAIL_AD_001`: TAXABLE IN ('Y','N'
-- **CHECK** `CK_DEF_ITAX_DETAIL_AD_002`: GROSS_BASIC_OTHER IN ('B','G','O'
-- **CHECK** `CK_DEF_ITAX_DETAIL_AD_003`: ACTIVE IN ('Y','N'
+- **CHECK** `CK_DEF_ITAX_DETAIL_AD_001`: TAXABLE IN ('Y','N')
+- **CHECK** `CK_DEF_ITAX_DETAIL_AD_002`: GROSS_BASIC_OTHER IN ('B','G','O')
+- **CHECK** `CK_DEF_ITAX_DETAIL_AD_003`: ACTIVE IN ('Y','N')
 - **Triggers**: `DEF_ITAX_DETAIL_AD_CEA` (before insert or update or delete), `TRG_WS_ACE_JF_AP_Q` (after insert or update or delete)
 
 ## PAYROLL.DEF_ITAX_MR_SLAB
@@ -1084,7 +1084,7 @@ This table is used to define different letter types
 | ACTIVE | CHAR(1) default 'Y' | Y | Either record is available currently for transactions or not |
 
 - **PK** `PK_DEF_LETTER_TYPE`: LETTER_CODE
-- **CHECK** `CK_DEF_LETTER_TYPE_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_DEF_LETTER_TYPE_1`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `DEF_LETTER_TYPE_DEL` (after delete), `DEF_LETTER_TYPE_INS` (before insert), `DEF_LETTER_TYPE_UPD` (before update)
 
 ## PAYROLL.DEF_LETTER_TEMPLATE
@@ -1103,7 +1103,7 @@ This table is used to define different letter templates to be issued to employee
 
 - **PK** `PK_DEF_LETTER_TEMPLATE`: TEMPLATE_CODE
 - **FK** `FK_DEF_LETTER_TEMPLATE_1`: (LETTER_CODE) -> PAYROLL.DEF_LETTER_TYPE(LETTER_CODE)
-- **CHECK** `CK_DEF_LETTER_TEMPLATE_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_DEF_LETTER_TEMPLATE_1`: ACTIVE IN ('Y', 'N')
 
 ## PAYROLL.DEF_LIABILITY
 
@@ -1170,10 +1170,10 @@ This table is used to define different types of loan such as Advance against sal
 - **FK** `FK_DEF_LOAN_1`: (ORGANIZATION_ID) -> DEFINITIONS.ORGANIZATION(ORGANIZATION_ID) [disabled]
 - **FK** `FK_DEF_LOAN_TYPE_1`: (LEDGER_TYPE_CODE, SUB_LDGR_ITEM_CODE) -> FINANCE.GL_SUB_LEDGERS(LEDGER_TYPE_CODE, SUB_LDGR_ITEM_CODE) [disabled]
 - **FK** `FK_DEF_LOAN_TYPE_2`: (COA_CODE) -> FINANCE.GL_COA(COA_CODE) [disabled]
-- **CHECK** `CK_DEF_LOAN_TYPE_1`: MEDICAL_OTHER IN ('M', 'O'
-- **CHECK** `CK_DEF_LOAN_TYPE_2`: INSTALLMENT_ALLOW IN ('Y', 'N'
-- **CHECK** `CK_DEF_LOAN_TYPE_3`: DEDUCTION_FROM_SALARY IN ('Y', 'N'
-- **CHECK** `CK_DEF_LOAN_TYPE_4`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_DEF_LOAN_TYPE_1`: MEDICAL_OTHER IN ('M', 'O')
+- **CHECK** `CK_DEF_LOAN_TYPE_2`: INSTALLMENT_ALLOW IN ('Y', 'N')
+- **CHECK** `CK_DEF_LOAN_TYPE_3`: DEDUCTION_FROM_SALARY IN ('Y', 'N')
+- **CHECK** `CK_DEF_LOAN_TYPE_4`: ACTIVE IN ('Y', 'N')
 - **Triggers**: `DEF_LOAN_TYPE_CEA` (before insert or update or delete), `DEF_LOAN_TYPE_DEL` (after delete), `DEF_LOAN_TYPE_INS` (before insert), `DEF_LOAN_TYPE_UPD` (before update), `TRG_WS_IAP_QA_QL_Q` (after insert or update or delete)
 
 ## PAYROLL.DEF_LOAN_TYPE_CONSTANT
@@ -1494,7 +1494,7 @@ This table is used to link employees with different types of allowances and dedu
 
 - **PK** `PK_EMP_ALLOWANCE_DED_DETAIL`: AD_CODE, MRNO, FROM_DATE
 - **FK** `FK_EMP_ALLOW_DED`: (AD_CODE, AD_ORGANIZATION_ID, AD_LOCATION_ID) -> PAYROLL.DEF_ALLOWANCE_DEDUCTION(AD_CODE, ORGANIZATION_ID, LOCATION_ID) [disabled]
-- **CHECK** `CK_EMP_ALL_DED_DETAIL_1`: POSTED IN ('Y','N'
+- **CHECK** `CK_EMP_ALL_DED_DETAIL_1`: POSTED IN ('Y','N')
 - **Triggers**: `EMP_ALLOWANCE_DEDUCTION_DE_DEL` (after delete), `EMP_ALLOWANCE_DEDUCTION_DE_INS` (before insert), `EMP_ALLOWANCE_DEDUCTION_DE_UPD` (before update)
 
 ## PAYROLL.EMP_AWARDS
@@ -1581,9 +1581,9 @@ This table is used to link employees with different types of allowances and dedu
 - **FK** `FK_EMP_EXPENSE_1`: (VOUCHER_TYPE, VOUCHER_NO) -> FINANCE.GL_TRAN_MASTER(VOUCHER_TYPE, VOUCHER_NO) [disabled]
 - **FK** `FK_EMP_EXPENSE_2`: (CANCELED_VOUCHER_TYPE, CANCELED_VOUCHER_NO) -> FINANCE.GL_TRAN_MASTER(VOUCHER_TYPE, VOUCHER_NO) [disabled]
 - **FK** `FK_EMP_EXPENSE_4`: (MRNO) -> HRD.INFORMATION(MRNO) [disabled]
-- **CHECK** `CK_EMP_EXPENSE_1`: SELF_DEPEND IN ('S', 'D'
-- **CHECK** `CK_EMP_EXPENSE_2`: CANCELLED IN ('Y', 'N'
-- **CHECK** `CK_EMP_EXPENSE_3`: INCLUDE_IN_TAX IN ('Y', 'N'
+- **CHECK** `CK_EMP_EXPENSE_1`: SELF_DEPEND IN ('S', 'D')
+- **CHECK** `CK_EMP_EXPENSE_2`: CANCELLED IN ('Y', 'N')
+- **CHECK** `CK_EMP_EXPENSE_3`: INCLUDE_IN_TAX IN ('Y', 'N')
 - **Triggers**: `EMP_EXPENSE_DEL` (after delete), `EMP_EXPENSE_INS` (before insert), `EMP_EXPENSE_UPD` (before update)
 
 ## PAYROLL.EMP_EXPENSE_LIST
@@ -1652,7 +1652,7 @@ This table is used to link employees with different types of allowances and dedu
 - **PK** `PK_EMP_INCREMENT_MASTER`: MRNO, INCREMENT_DATE
 - **FK** `FK_EMP_INCREMENT_MASTER_1`: (INCREMENT_CODE) -> PAYROLL.DEF_INCREMENT_TYPE(INCREMENT_CODE)
 - **FK** `FK_EMP_INCREMENT_MASTER_2`: (MRNO) -> HRD.INFORMATION(MRNO)
-- **CHECK** `CK_EMP_INCREMENT_MASTER_1`: POSTED IN ('Y','N'
+- **CHECK** `CK_EMP_INCREMENT_MASTER_1`: POSTED IN ('Y','N')
 - **Triggers**: `EMP_INCREMENT_MASTER_DEL` (after delete), `EMP_INCREMENT_MASTER_INS` (before insert), `EMP_INCREMENT_MASTER_UPD` (before update)
 
 ## PAYROLL.EMP_INCREMENT_DETAIL
@@ -1763,7 +1763,7 @@ _No standard audit columns._
 - **PK** `PK_EMP_LIABILITY`: LIABILITY_CODE, MRNO
 - **FK** `FK_EMP_LIABILITY_1`: (MRNO) -> HRD.INFORMATION(MRNO)
 - **FK** `FK_EMP_LIABILITY_2`: (LIABILITY_CODE) -> PAYROLL.DEF_LIABILITY(LIABILITY_CODE)
-- **CHECK** `CK_EMP_LIABILITY_1`: STATUS IN ('C', 'N'
+- **CHECK** `CK_EMP_LIABILITY_1`: STATUS IN ('C', 'N')
 - **Triggers**: `EMP_LIABILITY_DEL` (after delete), `EMP_LIABILITY_INS` (before insert), `EMP_LIABILITY_UPD` (before update)
 
 ## PAYROLL.EMP_NEW_SAL
@@ -2137,7 +2137,7 @@ _No standard audit columns._
 _No standard audit columns._
 
 - **PK** `PK_LEAVE_DAYS_TEST`: MRNO, LEAVE_DATE
-- **CHECK** `CHK_LEAVE_DAYS_TEST`: UNPAID_STATUS IN ('N','D','U'
+- **CHECK** `CHK_LEAVE_DAYS_TEST`: UNPAID_STATUS IN ('N','D','U')
 
 ## PAYROLL.LOAN_INSTALLMENT_DETAIL
 
@@ -2221,9 +2221,9 @@ This table is used to entertain opening balances and transactions of staff advan
 - **PK** `PK_LOAN_PAYMENT_MASTER`: LOAN_NO
 - **FK** `FK_LOAN_PAYMENT_MASTER_1`: (MRNO) -> HRD.INFORMATION(MRNO) [disabled]
 - **FK** `FK_LOAN_PAYMENT_MASTER_3`: (VOUCHER_TYPE, VOUCHER_NO) -> FINANCE.GL_TRAN_MASTER(VOUCHER_TYPE, VOUCHER_NO) [disabled]
-- **CHECK** `CK_LOAN_PAYMENT_MASTER_1`: TRANS_TYPE IN ('O', 'L'
-- **CHECK** `CK_LOAN_PAYMENT_MASTER_2`: CANCELLED IN ('Y', 'N'
-- **CHECK** `CK_LOAN_PAYMENT_MASTER_3`: STOP_AUTO_DEDUCTION IN ('Y', 'N'
+- **CHECK** `CK_LOAN_PAYMENT_MASTER_1`: TRANS_TYPE IN ('O', 'L')
+- **CHECK** `CK_LOAN_PAYMENT_MASTER_2`: CANCELLED IN ('Y', 'N')
+- **CHECK** `CK_LOAN_PAYMENT_MASTER_3`: STOP_AUTO_DEDUCTION IN ('Y', 'N')
 - **Triggers**: `LOAN_PAYMENT_MASTER_DEL` (after delete), `LOAN_PAYMENT_MASTER_INS` (before insert), `LOAN_PAYMENT_MASTER_UPD` (before update)
 
 ## PAYROLL.LOAN_PAYMENT_MASTER_N
@@ -2263,8 +2263,8 @@ This table is used to entertain opening balances and transactions of staff advan
 | PAID_INTEREST | NUMBER(20,2) | Y |  |
 
 - **PK** `PK_LOAN_PAYMENT_MASTER_N`: LOAN_NO
-- **CHECK** `CK_LOAN_PAYMENT_MASTER_N_1`: TRANS_TYPE IN ('O', 'L', 'R'
-- **CHECK** `CK_LOAN_PAYMENT_MASTER_N_3`: STOP_AUTO_DEDUCTION IN ('Y', 'N'
+- **CHECK** `CK_LOAN_PAYMENT_MASTER_N_1`: TRANS_TYPE IN ('O', 'L', 'R')
+- **CHECK** `CK_LOAN_PAYMENT_MASTER_N_3`: STOP_AUTO_DEDUCTION IN ('Y', 'N')
 - **Triggers**: `LOAN_PAYMENT_MASTER_N_DEL` (after delete), `LOAN_PAYMENT_MASTER_N_INS` (before insert), `LOAN_PAYMENT_MASTER_N_UPD` (before update)
 
 ## PAYROLL.LOAN_PAYMENT_MASTER_TEST
@@ -2301,8 +2301,8 @@ This table is used to entertain opening balances and transactions of staff advan
 | LOAN_LOCATION_ID | VARCHAR2(3) | Y |  |
 
 - **PK** `PK_LOAN_PAYMENT_MASTER_TEST`: LOAN_NO
-- **CHECK** `CK_LOAN_PAYMENT_MASTER_TEST_2`: CANCELLED IN ('Y', 'N'
-- **CHECK** `CK_LOAN_PAYMENT_MASTER_TEST_3`: STOP_AUTO_DEDUCTION IN ('Y', 'N'
+- **CHECK** `CK_LOAN_PAYMENT_MASTER_TEST_2`: CANCELLED IN ('Y', 'N')
+- **CHECK** `CK_LOAN_PAYMENT_MASTER_TEST_3`: STOP_AUTO_DEDUCTION IN ('Y', 'N')
 
 ## PAYROLL.LOAN_REFUND_MASTER
 This table is used to entertain transactions of refunds advances or deductions of advances against salary
@@ -2326,8 +2326,8 @@ This table is used to entertain transactions of refunds advances or deductions o
 - **PK** `PK_LOAN_REFUND_MASTER`: REFUND_NO
 - **FK** `FK_LOAN_REFUND_MASTER_1`: (MRNO) -> HRD.INFORMATION(MRNO) [disabled]
 - **FK** `FK_LOAN_REFUND_MASTER_2`: (VOUCHER_TYPE, VOUCHER_NO) -> FINANCE.GL_TRAN_MASTER(VOUCHER_TYPE, VOUCHER_NO) [disabled]
-- **CHECK** `CK_LOAN_REFUND_MASTER_1`: CANCELLED IN ('Y', 'N'
-- **CHECK** `CK_LOAN_REFUND_MASTER_2`: REFUND_TYPE IN ('M', 'S'
+- **CHECK** `CK_LOAN_REFUND_MASTER_1`: CANCELLED IN ('Y', 'N')
+- **CHECK** `CK_LOAN_REFUND_MASTER_2`: REFUND_TYPE IN ('M', 'S')
 - **Triggers**: `LOAN_REFUND_MASTER_DEL` (after delete), `LOAN_REFUND_MASTER_INS` (before insert), `LOAN_REFUND_MASTER_UPD` (before update)
 
 ## PAYROLL.LOAN_REFUND_DETAIL
@@ -2374,7 +2374,7 @@ This table is used to entertain transactions of refunds advances or deductions o
 | STATUS_ID | VARCHAR2(3) default '100' | N | 100 -> ENTRY, 101 -> POST, 102 -> CANCEL |
 
 - **PK** `PK_LOAN_REFUND_MASTER_N`: REFUND_NO
-- **CHECK** `CK_LOAN_REFUND_MASTER_N_2`: REFUND_TYPE IN ('M', 'S'
+- **CHECK** `CK_LOAN_REFUND_MASTER_N_2`: REFUND_TYPE IN ('M', 'S')
 - **Triggers**: `LOAN_REFUND_MASTER_N_DEL` (after delete), `LOAN_REFUND_MASTER_N_INS` (before insert), `LOAN_REFUND_MASTER_N_UPD` (before update)
 
 ## PAYROLL.LOAN_REFUND_DETAIL_N
@@ -2412,8 +2412,8 @@ This table is used to entertain transactions of refunds advances or deductions o
 | END_DATE | DATE | Y |  |
 
 - **PK** `PK_LOAN_REFUND_MASTER_TEST`: REFUND_NO
-- **CHECK** `CK_LOAN_REFUND_MASTER_TEST_1`: CANCELLED IN ('Y', 'N'
-- **CHECK** `CK_LOAN_REFUND_MASTER_TEST_5`: REFUND_TYPE IN ('M', 'S'
+- **CHECK** `CK_LOAN_REFUND_MASTER_TEST_1`: CANCELLED IN ('Y', 'N')
+- **CHECK** `CK_LOAN_REFUND_MASTER_TEST_5`: REFUND_TYPE IN ('M', 'S')
 
 ## PAYROLL.LOAN_REFUND_DETAIL_TEST
 
@@ -3094,7 +3094,7 @@ This table is used to define groups of different allowances / deductions, this g
 | ACTIVE | CHAR(1) default 'Y' | Y | Either record is available currently for transactions or not |
 
 - **PK** `PK_DEF_ALLOW_DEDUCT_GROUP`: AD_GROUP_CODE
-- **CHECK** `CK_DEF_ALLOW_DEDUCT_GROUP_1`: ACTIVE IN ('Y', 'N'
+- **CHECK** `CK_DEF_ALLOW_DEDUCT_GROUP_1`: ACTIVE IN ('Y', 'N')
 
 ## PAYROLL.PAY_REPORT_ROUTING
 
@@ -3123,7 +3123,7 @@ This table is used to define groups of different allowances / deductions, this g
 
 - **PK** `PK_PAY_STATUS`: SERIAL_NO
 - **UK** `UK_PAY_STATUS_1`: MRNO, DATE_FROM, DATE_TO
-- **CHECK** `CHK_PAY_STATUS_01`: STATUS IN ('N','S'
+- **CHECK** `CHK_PAY_STATUS_01`: STATUS IN ('N','S')
 - **Triggers**: `PAY_STATUS_DEL` (after delete), `PAY_STATUS_INS` (before insert), `PAY_STATUS_UPD` (before update)
 
 ## PAYROLL.PAY_TMP_BANK
@@ -3251,9 +3251,9 @@ _No standard audit columns._
 - **FK** `FK_PAY_VOUCHER_1`: (PF_VOUCHER_TYPE, PF_VOUCHER_NO) -> FINANCE.GL_TRAN_MASTER(VOUCHER_TYPE, VOUCHER_NO) [disabled]
 - **FK** `FK_PAY_VOUCHER_2`: (GL_VOUCHER_TYPE, GL_VOUCHER_NO) -> FINANCE.GL_TRAN_MASTER(VOUCHER_TYPE, VOUCHER_NO) [disabled]
 - **FK** `FK_PAY_VOUCHER_3`: (START_DATE, END_DATE) -> DEFINITIONS.MONTHS(START_DATE, END_DATE) [disabled]
-- **CHECK** `CK_PAY_VOUCHER_1`: PF_CANCELLED IN ('Y','N'
-- **CHECK** `CK_PAY_VOUCHER_2`: GL_CANCELLED IN ('Y','N'
-- **CHECK** `CK_PAY_VOUCHER_3`: LOAN_CANCELLED IN ('Y','N'
+- **CHECK** `CK_PAY_VOUCHER_1`: PF_CANCELLED IN ('Y','N')
+- **CHECK** `CK_PAY_VOUCHER_2`: GL_CANCELLED IN ('Y','N')
+- **CHECK** `CK_PAY_VOUCHER_3`: LOAN_CANCELLED IN ('Y','N')
 - **Triggers**: `PAY_VOUCHER_DEL` (after delete), `PAY_VOUCHER_INS` (before insert), `PAY_VOUCHER_UPD` (before update)
 
 ## PAYROLL.PAY_VOUCHER_MASTER
@@ -3318,7 +3318,7 @@ _No standard audit columns._
 
 _No standard audit columns._
 
-- **CHECK** `CK_PAY_VOUCHER_TEMP_1`: TRANSACTION_TYPE IN ('S', 'L', 'A', 'D', 'O'
+- **CHECK** `CK_PAY_VOUCHER_TEMP_1`: TRANSACTION_TYPE IN ('S', 'L', 'A', 'D', 'O')
 
 ## PAYROLL.PAY_VOUCHER_TMP
 
