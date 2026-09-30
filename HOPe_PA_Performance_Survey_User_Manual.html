@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HOPe PA Performance Survey – User Manual</title>
+<style>
+:root{--bg:#fff;--fg:#1f2933;--muted:#5f6c7b;--accent:#0b6b4f;--soft:#eef6f3;--line:#d9e2e8;--warn:#fff6e0}
+@media (prefers-color-scheme:dark){:root{--bg:#14191d;--fg:#e6ebef;--muted:#9aa7b3;--accent:#4fc39b;--soft:#1c2a26;--line:#2b353c;--warn:#2d2a1a}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,Segoe UI,Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:32px 16px 64px}
+h1{font-size:2rem;margin:0 0 4px;color:var(--accent)}
+h2{margin-top:2.4rem;padding-bottom:6px;border-bottom:2px solid var(--line)}
+h3{margin-top:1.6rem}
+.sub{color:var(--muted);margin-bottom:24px}
+nav{background:var(--soft);border-radius:8px;padding:12px 20px}
+nav ol{margin:6px 0;columns:2}
+a{color:var(--accent)}
+table{border-collapse:collapse;width:100%;margin:12px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft)}
+.note,.tip{border-left:4px solid var(--accent);background:var(--soft);padding:10px 14px;border-radius:4px;margin:14px 0}
+.note{border-color:#d9a400;background:var(--warn)}
+kbd{border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;font-size:.9em}
+li{margin:4px 0}
+</style>
+</head>
+<body>
+<main>
+<h1>HOPe PA Performance Survey</h1>
+<div class="sub">User Manual · Performance Appraisal (PA) module, SKMCH&amp;RC Hospital Management Information System (HMIS)</div>
+
+<nav>
+<strong>Contents</strong>
+<ol>
+<li><a href="#intro">Introduction</a></li>
+<li><a href="#access">Opening the survey</a></li>
+<li><a href="#layout">Screen layout</a></li>
+<li><a href="#grids">Working with grids</a></li>
+<li><a href="#ba">Behavioral Assessment</a></li>
+<li><a href="#mt">Management Traits</a></li>
+<li><a href="#dp">Discussion Points</a></li>
+<li><a href="#peer">Peer Nomination</a></li>
+<li><a href="#med">Medical Education / Research</a></li>
+<li><a href="#final">Finalization</a></li>
+<li><a href="#grading">Grading scale</a></li>
+<li><a href="#faq">Troubleshooting &amp; FAQ</a></li>
+</ol>
+</nav>
+
+<h2 id="intro">1. Introduction</h2>
+<p>The HOPe PA Performance Survey is the online form used for annual performance appraisals. One survey is opened per employee per review period. The employee (self-appraisal) and each appraiser in the hierarchy complete their parts, then the appraisal is forwarded to the Human Resources (HR) department.</p>
+<p>The page title shows the appraisal reference, for example <em>PA Performance &lt;template code&gt; | &lt;employee MR/ID number&gt; | &lt;employee name&gt;</em>. Always check this header to confirm you are working on the correct person's appraisal.</p>
+
+<h2 id="access">2. Opening the survey</h2>
+<ol>
+<li>Log in to the HMIS with your employee ID and password.</li>
+<li>From the main menu choose <strong>Human Resources</strong> and open the Performance Appraisal entry.</li>
+<li>Select the appraisal from your list. The <strong>PA Performance</strong> page opens.</li>
+<li>Use the <strong>Refresh</strong> icon (top right of the PA Performance region) to reload data at any time.</li>
+</ol>
+<div class="tip"><strong>Tip:</strong> Your name, department, terminal and login time appear in the footer. Click your name to open the profile window (Edit Profile, Change Password, Logout).</div>
+
+<h2 id="layout">3. Screen layout</h2>
+<p>The survey is split into tabs. Which tabs you see depends on your role and the appraisal template.</p>
+<table>
+<tr><th>Tab</th><th>Purpose</th></tr>
+<tr><td>Behavioral Assessment</td><td>Rate behavioral parameters; shows score, grade and deductions.</td></tr>
+<tr><td>Management Traits</td><td>Choose the 4 adjectives that best describe the employee.</td></tr>
+<tr><td>Discussion Points</td><td>Written answers to set questions, with previous years shown for reference.</td></tr>
+<tr><td>Peer Nomination</td><td>Nominate the required number of peers per staff category.</td></tr>
+<tr><td>Medical Education / Research</td><td>Research and education questions (applicable roles only).</td></tr>
+<tr><td>Finalization</td><td>Appraisers' remarks and forwarding to the next person or HR.</td></tr>
+</table>
+
+<h2 id="grids">4. Working with grids</h2>
+<p>Most sections are interactive grids with a common toolbar.</p>
+<table>
+<tr><th>Control</th><th>What it does</th></tr>
+<tr><td>Columns to search / Go</td><td>Filter rows by text in a chosen column.</td></tr>
+<tr><td>Actions</td><td>Grid options: columns, sort, filter, download, etc.</td></tr>
+<tr><td>Edit</td><td>Toggles between view mode and edit mode. You can type only in edit mode.</td></tr>
+<tr><td>Save</td><td>Stores your changes. <strong>Unsaved changes are lost when you leave the page.</strong></td></tr>
+<tr><td>Add Row</td><td>Adds a new line (used for peers).</td></tr>
+<tr><td>Reset</td><td>Discards unsaved edits and reloads the grid.</td></tr>
+<tr><td>Sort Ascending / Descending</td><td>Sorts by the selected column.</td></tr>
+<tr><td>Grid / Single-row view, Previous / Next</td><td>Switch between table and form view for one row; move through rows with the arrows or <kbd>Alt</kbd>+<kbd>Page Up</kbd> / <kbd>Page Down</kbd>.</td></tr>
+</table>
+
+<h2 id="ba">5. Behavioral Assessment</h2>
+<ol>
+<li>Click <strong>Edit</strong> in the grid toolbar.</li>
+<li>For each <em>Parameter</em> (with its <em>Description</em>), pick a rating from the <strong>Rating</strong> list. Use the Rating Scale panel beside the grid to see what each value means.</li>
+<li>Previous-year ratings (e.g. 2025, 2024) are shown beside the current year for comparison.</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+<p>The summary panel updates automatically:</p>
+<table>
+<tr><th>Field</th><th>Meaning</th></tr>
+<tr><td>Total Score</td><td>Maximum possible score for all parameters.</td></tr>
+<tr><td>Obtained Score</td><td>Sum of ratings given.</td></tr>
+<tr><td>Marks After Deduction</td><td>Obtained score after any mark deduction (see below).</td></tr>
+<tr><td>Performance %</td><td>Marks after deduction ÷ total score.</td></tr>
+<tr><td>Grade</td><td>Derived from Performance % (see <a href="#grading">Grading scale</a>).</td></tr>
+<tr><td>FAR (Behavioural Assessment)</td><td>Final Aggregate Rating = Performance × 0.3 (30% weightage).</td></tr>
+</table>
+<p><strong>Mark Deduction:</strong> where applicable, a <em>Mark Deduction</em> button appears to apply a deduction. A previous-year deduction, if any, is shown as <em>Previous Year Deduction</em>.</p>
+<div class="note"><strong>Note:</strong> If Performance % shows <code>NaN</code> or the grid says “No data found”, no rating parameters have been loaded or saved yet. Save your ratings or press Refresh.</div>
+
+<h2 id="mt">6. Management Traits</h2>
+<p>Under <em>“From the below list of adjectives, choose the 4 that best describe you”</em>, tick the checkbox beside exactly <strong>four</strong> adjectives and click <strong>Save</strong>. Selecting more or fewer than four will not be accepted.</p>
+
+<h2 id="dp">7. Discussion Points</h2>
+<p>This tab lists numbered questions, for example:</p>
+<ol>
+<li>How would you describe your professional experience over the past year?</li>
+<li>What elements of your job do you find most difficult?</li>
+<li>What elements of your job interest you the most?</li>
+<li>What do you consider to be your most important aims and tasks in the coming year?</li>
+<li>What action(s) could you take to improve your performance in your current position?</li>
+<li>What action(s) could your supervisor take to improve your performance?</li>
+</ol>
+<p>Steps:</p>
+<ol>
+<li>Click <strong>Edit</strong>.</li>
+<li>Type your answer in the current-year column. Use the editor button to open a larger text window; click <strong>OK</strong> to return.</li>
+<li>Earlier years' answers appear in the adjacent columns (read-only) for reference.</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+<div class="tip"><strong>Tip:</strong> Use <em>Single-row view</em> to read and write long answers comfortably, and Previous/Next to move between questions.</div>
+
+<h2 id="peer">8. Peer Nomination</h2>
+<p>The <em>Peers to be Nominated</em> grid lists staff categories and how many peers are required from each, e.g.:</p>
+<table>
+<tr><th>Category</th><th>Required peers</th></tr>
+<tr><td>Pharmacist / Technician / Technologist</td><td>2</td></tr>
+<tr><td>Consultant / Senior Instructors / Ancillary Health Practitioners</td><td>6</td></tr>
+<tr><td>Nurses</td><td>4</td></tr>
+<tr><td>Health Care Assistant / Secretary</td><td>2</td></tr>
+</table>
+<p><em>(Numbers vary by template.)</em></p>
+<ol>
+<li>Select a category row. The matching “List of Employees to Choose Peers From” grid opens below (internal staff), or an external-peer grid (name, contact details, email) for external nominations.</li>
+<li>Click <strong>Edit</strong>, then <strong>Add Row</strong>.</li>
+<li>Choose the peer from the <strong>Name</strong> pop-up list; Employee Code, Designation and Department fill in automatically. For external peers, type name, contact details and email.</li>
+<li>Repeat until you reach the required number, then click <strong>Save</strong>.</li>
+<li>To remove a peer, use the <strong>Delete</strong> control on that row and Save.</li>
+<li>If a category does not apply, tick <strong>Not Applicable</strong> for that row.</li>
+</ol>
+<div class="note"><strong>Note:</strong> Nominate each person only once and stay within the required count. Use <strong>Refresh</strong> after saving to confirm the totals.</div>
+
+<h2 id="med">9. Medical Education / Research</h2>
+<p>Shown only for eligible medical staff. Open the tab, click <strong>Edit</strong>, complete the education/research entries and <strong>Save</strong>.</p>
+
+<h2 id="final">10. Finalization</h2>
+<p>The Finalization area shows <em>Appraisers' Remarks</em> and a checklist: <em>“Complete the item(s) below before forwarding to HR”</em> (for example Discussion Points, Peer Nomination, Medical Education/Research).</p>
+<ol>
+<li>Complete every tab listed in the checklist.</li>
+<li>Enter your comments under <strong>Add your Remarks</strong> (<em>Appraiser Remarks</em>).</li>
+<li>Choose an action:
+  <ul>
+  <li><strong>To Previous Appraiser</strong> – returns the form for correction.</li>
+  <li><strong>Forward Appraisal to HR Department</strong> – sends the completed appraisal on.</li>
+  </ul>
+</li>
+<li>Use <strong>Preview</strong> to review the full form, <strong>Save</strong> to keep progress, and <strong>Exit</strong> to leave.</li>
+</ol>
+<div class="note"><strong>Important:</strong> Review all tabs before forwarding. Once forwarded, you can no longer edit the appraisal.</div>
+
+<h2 id="grading">11. Grading scale</h2>
+<table>
+<tr><th>Grade</th><th>Performance range</th></tr>
+<tr><td>Needs Improvement</td><td>1% – 39.99%</td></tr>
+<tr><td>Satisfactory</td><td>40% – 59.99%</td></tr>
+<tr><td>Commendable</td><td>60% – 79.99%</td></tr>
+<tr><td>Outstanding</td><td>80% – 100%</td></tr>
+</table>
+
+<h2 id="faq">12. Troubleshooting &amp; FAQ</h2>
+<table>
+<tr><th>Problem</th><th>Solution</th></tr>
+<tr><td>I cannot type in a grid.</td><td>Press <strong>Edit</strong> to switch to edit mode.</td></tr>
+<tr><td>My entries disappeared.</td><td>They were not saved. Always click <strong>Save</strong> before changing tab or leaving; <strong>Reset</strong> also discards edits.</td></tr>
+<tr><td>A tab is missing.</td><td>Tabs depend on your role and template. Contact HR if you believe you need access.</td></tr>
+<tr><td>“No data found” in a grid.</td><td>Nothing has been assigned or saved yet. Press Refresh; if it persists contact HR.</td></tr>
+<tr><td>Performance % shows NaN.</td><td>Ratings have not been saved. Enter and save ratings, then refresh.</td></tr>
+<tr><td>I cannot find a peer.</td><td>Search in the Name list by name or code. If the person is external, use the external-peer grid.</td></tr>
+<tr><td>I forwarded by mistake.</td><td>Contact HR to have the appraisal returned.</td></tr>
+<tr><td>Session timed out.</td><td>Log in again and reopen the appraisal; saved data is retained.</td></tr>
+</table>
+<p class="sub">Support: HR Performance Management / IT Helpdesk. Keep appraisal content confidential.</p>
+</main>
+</body>
+</html>
