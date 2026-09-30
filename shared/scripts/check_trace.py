@@ -14,7 +14,7 @@ import sys
 
 ID_RE = {
     "FR": r"\bFR-\d{3}\b",
-    "NFR": r"\bNFR-[A-Z]{3}-\d{2}\b",
+    "NFR": r"\bNFR-[A-Z]{3,4}-\d{2}\b",
     "BR": r"\bBR-\d{2,3}\b",
     "RULE": r"\bRULE-\d{2,3}\b",
     "DS": r"\bDS-\d{2,3}\b",
@@ -61,7 +61,7 @@ def main():
     ap.add_argument("--ids", default="FR,NFR", help="comma list of ID kinds: " + ",".join(ID_RE))
     a = ap.parse_args()
     src, tgt = gather(a.source), gather(a.target)
-    withdrawn = set(re.findall(r"\b([A-Z]+-(?:[A-Z]{3}-)?\d{2,3})\b[^\n]{0,80}\bWITHDRAWN\b", src))
+    withdrawn = set(re.findall(r"\b([A-Z]+-(?:[A-Z]{3,4}-)?\d{2,3})\b[^\n]{0,80}\bWITHDRAWN\b", src))
     missing_any = False
     for kind in [k.strip().upper() for k in a.ids.split(",") if k.strip()]:
         ids = sorted(set(re.findall(ID_RE[kind], src)) - withdrawn)
