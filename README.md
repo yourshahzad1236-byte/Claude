@@ -50,6 +50,10 @@ All IDs, statuses and rules are defined once in `shared/references/sdlc-conventi
 /plugin marketplace add yourshahzad1236-byte/claude
 /plugin install skmch-sdlc@skmch
 ```
+**Working inside this repository** (Claude Code on the web or locally): no install is needed.
+`.claude/skills` points to `skills/`, so every session in this repo loads the skills
+automatically, and `.claude/settings.json` installs python-docx/openpyxl at session start.
+
 In Claude Code, set `SKMCH_SCHEMA_DIR` to the shared schema folder so the skills can
 read the live source directly.
 
