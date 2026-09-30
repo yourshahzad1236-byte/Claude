@@ -1,0 +1,13 @@
+{
+  "name": "skmch",
+  "owner": { "name": "SKMCH Information Systems" },
+  "metadata": { "description": "Internal Claude plugins for Shaukat Khanum Memorial Cancer Hospital & Research Centre." },
+  "plugins": [
+    {
+      "name": "skmch-sdlc",
+      "source": "./",
+      "description": "SKMCH SDLC skills: MoM to SRS, SRS review, design doc/RFC, Oracle/APEX implementation, QA test cases and execution, system documentation, HRD schema context and naming standards.",
+      "version": "1.0.0"
+    }
+  ]
+}
