@@ -1,6 +1,6 @@
 ---
 name: skm-schema
-description: "Entry point for the SKM Oracle database (schemas DEFINITIONS, HRD, PAYROLL, RFID). Routes to the per-schema skills and explains cross-schema relationships. Use first for any SKM database question, SQL/PL-SQL generation, reporting query or schema change."
+description: "Entry point for the SKM Oracle database (schemas DEFINITIONS, HRD, PAYROLL, RFID). Routes to the four per-schema reference files and explains cross-schema relationships. Use first for any SKM database question, SQL/PL-SQL generation, reporting query or schema change."
 ---
 
 # SKM Schema
