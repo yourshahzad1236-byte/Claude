@@ -1,0 +1,4 @@
+# HRD synonyms
+
+| Synonym | Target |
+|---|---|
