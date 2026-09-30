@@ -1,0 +1,56 @@
+/*******************************************************************************
+ * Script      : CR-YYYY-XXX_99_rollback.sql
+ * CR          : CR-YYYY-XXX  Karachi Transport Allowance & RFID Deduction
+ * Design      : Design v0.1 (DRAFT), section 12.3
+ * Author      : Claude (AI draft) for Solution Architect
+ * Description : Removes every object created by this CR, in reverse order.
+ * WARNING     : Drops all transport allowance data (swipes, trips, adjustments,
+ *               monthly results). Use only before go-live, or after Finance has
+ *               archived the data. After go-live, prefer: disable the jobs,
+ *               revoke the ORDS module and hide the APEX pages.
+ * Prerequisite: Jobs, ORDS module, APEX pages, grants, views and packages are
+ *               removed first (design section 12.3, steps 1-5).
+ ******************************************************************************/
+SET DEFINE OFF
+WHENEVER SQLERROR CONTINUE
+
+DROP TRIGGER HRD.TRG_TRANSPORT_TRIP_BD;
+DROP TRIGGER HRD.TRG_TRANSPORT_SWIPE_BD;
+
+ALTER TABLE HRD.HRD_TRANSPORT_SWIPE_TRN DROP CONSTRAINT FK_TRSWIPE_TRIP;
+
+DROP TABLE HRD.HRD_TRANSPORT_AUDIT_LOG       PURGE;
+DROP TABLE HRD.HRD_TRANSPORT_NOTIFY_LOG      PURGE;
+DROP TABLE HRD.HRD_TRANSPORT_MONTHLY_DTL     PURGE;
+DROP TABLE HRD.HRD_TRANSPORT_TRIP_TRN        PURGE;
+DROP TABLE HRD.HRD_TRANSPORT_ADJ_REQUEST     PURGE;
+DROP TABLE HRD.HRD_TRANSPORT_SWIPE_TRN       PURGE;
+DROP TABLE HRD.HRD_TRANSPORT_PERIOD_MST      PURGE;
+DROP TABLE HRD.HRD_TRANSPORT_EXEMPT_DTL      PURGE;
+DROP TABLE HRD.HRD_TRANSPORT_ELIGIBILITY_DTL PURGE;
+DROP TABLE HRD.HRD_TRANSPORT_TERMINAL_MST    PURGE;
+DROP TABLE HRD.HRD_FUEL_PRICE_HIS            PURGE;
+DROP TABLE HRD.HRD_TRANSPORT_FORMULA_MST     PURGE;
+
+DROP SEQUENCE HRD.TRANSPORT_AUDIT_SEQ;
+DROP SEQUENCE HRD.TRANSPORT_NOTIFY_SEQ;
+DROP SEQUENCE HRD.TRANSPORT_MONTHLY_SEQ;
+DROP SEQUENCE HRD.TRANSPORT_PERIOD_SEQ;
+DROP SEQUENCE HRD.TRANSPORT_ADJ_REQ_SEQ;
+DROP SEQUENCE HRD.TRANSPORT_TRIP_SEQ;
+DROP SEQUENCE HRD.TRANSPORT_SWIPE_SEQ;
+DROP SEQUENCE HRD.TRANSPORT_EXEMPT_SEQ;
+DROP SEQUENCE HRD.TRANSPORT_ELIGIBILITY_SEQ;
+DROP SEQUENCE HRD.TRANSPORT_TERMINAL_SEQ;
+DROP SEQUENCE HRD.FUEL_PRICE_SEQ;
+DROP SEQUENCE HRD.TRANSPORT_FORMULA_SEQ;
+
+-- Verification: expect no rows
+SELECT OBJECT_TYPE, OBJECT_NAME
+FROM   ALL_OBJECTS
+WHERE  OWNER = 'HRD'
+AND   (OBJECT_NAME LIKE 'HRD\_TRANSPORT\_%' ESCAPE '\'
+       OR OBJECT_NAME = 'HRD_FUEL_PRICE_HIS'
+       OR OBJECT_NAME LIKE 'TRANSPORT\_%\_SEQ' ESCAPE '\'
+       OR OBJECT_NAME = 'FUEL_PRICE_SEQ'
+       OR OBJECT_NAME LIKE 'TRG\_TRANSPORT\_%' ESCAPE '\');
