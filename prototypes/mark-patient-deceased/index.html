@@ -13,12 +13,11 @@
   :root{
     --bg:#ffffff; --text:#1d1d1d; --muted:#5b6670; --nav:#1e1e1e; --nav-sub:#2c2c2c; --nav-hover:#3a3a3a;
     --titlebar:#0f4565; --section:#1f6fa8; --label:#1f5f99; --req:#fdf7c8; --border:#9aa7b2;
-    --danger:#d0161b; --danger-dark:#a30f13; --ok:#1e7a3a; --ok-bg:#e6f4ea; --err-bg:#fdecec; --card:#f5f8fb;
+    --danger:#d0161b; --danger-dark:#a30f13; --ok:#1e7a3a; --ok-bg:#e6f4ea; --err-bg:#fdecec;
   }
   *{box-sizing:border-box}
   html,body{margin:0;height:100%}
   body{background:var(--bg);color:var(--text);font:12px/1.4 Tahoma,Verdana,Arial,sans-serif}
-  a{color:inherit}
 
   /* ---------- Top header ---------- */
   .topbar{display:flex;align-items:center;gap:10px;height:46px;padding:0 12px;border-bottom:1px solid #d9dee3;background:#fff}
@@ -26,7 +25,7 @@
   .hamb span{display:block;width:16px;height:2px;background:#333}
   .logo{display:flex;align-items:center;gap:8px}
   .logo-mark{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 40%,#e23 0 30%,transparent 31%),radial-gradient(circle at 65% 40%,#e23 0 30%,transparent 31%);border:2px solid #e23}
-  .logo b{font-size:15px;letter-spacing:.2px;color:#222}
+  .logo b{font-size:15px;color:#222}
   .logo small{display:block;font-size:8px;color:#555;letter-spacing:.4px}
   .topbar .spacer{flex:1}
   .avatar{width:26px;height:26px;border-radius:50%;background:#333;color:#fff;display:grid;place-content:center;font-size:11px}
@@ -34,66 +33,49 @@
   .shell{display:flex;min-height:calc(100% - 46px)}
 
   /* ---------- Sidebar ---------- */
-  .sidebar{width:200px;flex:0 0 200px;background:var(--nav);color:#fff;display:flex;flex-direction:column}
+  .sidebar{width:200px;flex:0 0 200px;background:var(--nav);color:#fff}
   .search{margin:6px;padding:4px 6px;background:#fff;border:1px solid #ccc;display:flex;gap:4px;align-items:center}
-  .search input{border:0;outline:0;width:100%;font:inherit}
-  .nav a{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;text-decoration:none;border-bottom:1px solid #2a2a2a;font-weight:bold;font-size:11.5px}
+  .search input{border:0;outline:0;width:100%;font:inherit;background:#fff}
+  .nav a{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;color:#fff;text-decoration:none;border-bottom:1px solid #2a2a2a;font-weight:bold;font-size:11.5px}
   .nav a:hover{background:var(--nav-hover)}
   .nav a .ic{display:inline-block;width:11px;height:13px;border:1.5px solid #ddd;border-radius:1px;margin-right:8px;vertical-align:-2px}
-  .nav .sub a{background:var(--nav-sub);padding-left:22px;font-size:10.5px;font-weight:bold}
-  .nav .sub .sub a{padding-left:32px;font-weight:normal}
+  .nav .sub a{background:var(--nav-sub);padding-left:22px;font-size:10.5px}
   .nav a.active{background:#fff;color:#0f4565;border-left:4px solid var(--danger);padding-left:18px}
   .nav .chev{font-size:9px;opacity:.8}
-  .badge-new{background:var(--danger);color:#fff;font-size:9px;padding:1px 5px;border-radius:8px;font-weight:bold}
 
   /* ---------- Main ---------- */
   main{flex:1;min-width:0;display:flex;flex-direction:column}
 
-  .banner{display:grid;grid-template-columns:1fr 270px 70px;gap:10px;padding:8px 10px;border-bottom:1px solid #e3e7ea}
+  .banner{display:grid;grid-template-columns:1fr 250px;gap:10px;padding:8px 10px;border-bottom:1px solid #e3e7ea}
   .pfields{display:grid;grid-template-columns:150px 1fr 80px 80px 170px;gap:2px 6px;align-items:end}
   .pfields label{color:var(--label);font-weight:bold;font-size:10.5px}
-  .pfields .v{border:1px solid var(--border);padding:2px 5px;min-height:20px;background:#fff;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pfields .v{border:1px solid var(--border);padding:2px 5px;min-height:20px;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .pfields .v.name{background:#0b1f8f;color:#fff;font-weight:bold}
-  .pfields .full{grid-column:2 / span 4}
   .status{border:1px solid #e1e5e9;padding:4px 8px;font-size:10px;line-height:1.75}
   .status b{color:var(--label);display:inline-block;width:92px}
   .status .login{color:var(--danger);font-weight:bold}
-  .photo{display:flex;flex-direction:column;gap:3px}
-  .photo .img{height:60px;background:linear-gradient(#cfd6dc,#9aa6b0);display:grid;place-content:center;color:#fff;font-size:22px}
-  .photo button{font:inherit;font-size:9.5px;border:0;color:#fff;padding:3px;cursor:pointer}
-  .photo .b1{background:#1f6fa8}.photo .b2{background:var(--danger)}
-  .deceased-flag{display:none;margin-left:6px;background:var(--danger);color:#fff;font-weight:bold;padding:1px 6px;font-size:10px;border-radius:2px;letter-spacing:.5px}
+  .deceased-flag{display:none;margin-left:6px;background:var(--danger);color:#fff;font-weight:bold;padding:1px 6px;font-size:10px;border-radius:2px}
   body.is-deceased .deceased-flag{display:inline-block}
-  body.is-deceased .pfields .v.name{background:#3b3b3b;text-decoration:line-through;text-decoration-color:#ff8a8a}
 
-  .titlebar{background:var(--titlebar);color:#fff;font-weight:bold;padding:6px 10px;font-size:12px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
-  .titlebar .crumb{opacity:.85;font-weight:normal;font-size:11px}
+  .titlebar{background:var(--titlebar);color:#fff;font-weight:bold;padding:6px 10px;font-size:12px}
 
-  .content{padding:14px 18px 80px;flex:1}
-  .alert{display:none;padding:8px 12px;margin:0 0 12px;border-left:4px solid;font-size:12px}
+  .content{padding:18px 18px 80px;flex:1}
+  .alert{display:none;padding:8px 12px;margin:0 0 14px;border-left:4px solid;max-width:900px}
   .alert.show{display:block}
   .alert.err{background:var(--err-bg);border-color:var(--danger);color:#7a0d10}
   .alert.ok{background:var(--ok-bg);border-color:var(--ok);color:#124d24}
   .alert ul{margin:4px 0 0 18px;padding:0}
-  .info{background:#fff8e1;border:1px solid #f0d78c;padding:7px 10px;margin-bottom:14px;color:#6b5200}
 
-  .form{display:grid;grid-template-columns:170px minmax(0,500px) auto;gap:8px 10px;align-items:center;max-width:900px}
-  .form > label,.form .cond > label,.form .lbl{color:var(--label);font-weight:bold;text-align:right;font-size:11px}
-  .form .lbl.req::after,.form > label.req::after,.form .cond > label.req::after{content:" *";color:var(--danger)}
-  .form .full{grid-column:2 / span 2}
-  input[type=text],input[type=datetime-local],input[type=password],select,textarea{font:inherit;width:100%;border:1px solid var(--border);padding:3px 6px;min-height:22px;background:#fff}
-  .req-in{background:var(--req)!important}
-  textarea{min-height:60px;resize:vertical}
-  .withlov{display:flex}
-  .withlov button{border:1px solid var(--border);border-left:0;background:#f4f4f4;width:26px;cursor:pointer}
-  .radios{display:flex;gap:16px;flex-wrap:wrap}
-  .radios label,.chk{display:inline-flex;align-items:center;gap:5px;color:var(--label);font-weight:bold;font-size:11px;cursor:pointer}
-  .hint{color:var(--muted);font-size:10.5px}
+  .form{display:grid;grid-template-columns:200px minmax(0,500px);gap:10px;align-items:start;max-width:900px}
+  .form label{color:var(--label);font-weight:bold;text-align:right;font-size:11px;padding-top:4px}
+  .form label::after{content:" *";color:var(--danger)}
+  .form label.opt::after{content:""}
+  input,select,textarea{font:inherit;width:100%;border:1px solid var(--border);padding:3px 6px;min-height:22px;background:var(--req)}
+  textarea{min-height:60px;resize:vertical;background:#fff}
+  input:disabled,select:disabled,textarea:disabled{background:#eee;color:#555}
   .invalid{outline:2px solid var(--danger);outline-offset:-1px}
-  .cond{display:contents}
-  .cond[hidden]{display:none}
 
-  .section{margin:18px 0 0;max-width:900px}
+  .section{margin:22px 0 0;max-width:900px}
   .section > summary{list-style:none;background:var(--section);color:#fff;font-weight:bold;padding:6px 10px;cursor:pointer;display:flex;align-items:center;gap:8px}
   .section > summary::-webkit-details-marker{display:none}
   .section > summary::before{content:"▶";font-size:9px;background:#fff;color:var(--section);width:14px;height:14px;display:grid;place-content:center}
@@ -101,43 +83,24 @@
   .section .body{border:1px solid #cfd8e0;border-top:0;padding:10px;overflow-x:auto}
   table{border-collapse:collapse;width:100%;font-size:11px}
   th,td{border:1px solid #d6dde3;padding:4px 6px;text-align:left;white-space:nowrap}
-  th{background:#e9eff4;color:#123}
-  .pill{display:inline-block;padding:1px 6px;border-radius:8px;font-size:10px;font-weight:bold}
-  .pill.sch{background:#e3f0fb;color:#1f5f99}.pill.can{background:#fde4e4;color:#a30f13}
-  .pill.act{background:#fde4e4;color:#a30f13}.pill.rev{background:#eee;color:#555}
+  th{background:#e9eff4}
+  .hint{color:var(--muted)}
 
-  .footer{position:sticky;bottom:0;background:#fff;border-top:1px solid #e3e7ea;padding:8px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-  .btn{font:inherit;font-size:11px;padding:4px 12px;border:1px solid #bbb;background:#fafafa;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+  .footer{position:sticky;bottom:0;background:#fff;border-top:1px solid #e3e7ea;padding:8px;display:flex;justify-content:center;gap:8px}
+  .btn{font:inherit;font-size:11px;padding:4px 12px;border:1px solid #bbb;background:#fafafa;cursor:pointer}
   .btn:hover{background:#f0f0f0}
-  .btn.danger{background:var(--danger);border-color:var(--danger-dark);color:#fff;font-weight:bold}
-  .btn.danger:hover{background:var(--danger-dark)}
-  .btn.exit{background:var(--danger);border-color:var(--danger-dark);color:#fff}
+  .btn.red{background:var(--danger);border-color:var(--danger-dark);color:#fff;font-weight:bold}
+  .btn.red:hover{background:var(--danger-dark)}
   .btn:disabled{opacity:.5;cursor:not-allowed}
 
-  /* ---------- Modal ---------- */
-  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:16px;z-index:10}
-  .overlay.show{display:flex}
-  .modal{background:#fff;width:min(520px,100%);box-shadow:0 10px 30px rgba(0,0,0,.3)}
-  .modal h3{margin:0;background:var(--danger);color:#fff;padding:8px 12px;font-size:13px}
-  .modal .mb{padding:12px;display:grid;gap:8px}
-  .modal dl{display:grid;grid-template-columns:150px 1fr;gap:3px 8px;margin:0;background:var(--card);padding:8px;border:1px solid #e1e7ec}
-  .modal dt{color:var(--label);font-weight:bold}
-  .modal dd{margin:0}
-  .modal .mf{display:flex;justify-content:flex-end;gap:8px;padding:10px 12px;border-top:1px solid #eee}
-
-  /* ---------- Responsive ---------- */
   @media (max-width:900px){
     .sidebar{position:fixed;z-index:5;left:-210px;top:46px;bottom:0;transition:left .2s;overflow:auto}
     body.nav-open .sidebar{left:0}
     .banner{grid-template-columns:1fr}
-    .photo{display:none}
     .pfields{grid-template-columns:1fr 1fr}
-    .pfields .full{grid-column:1 / -1}
-    .form{grid-template-columns:1fr}
-    .form > label,.form .cond > label,.form .lbl{text-align:left}
-    .form .full{grid-column:1}
-    .content{padding:12px 16px 80px}
-    .modal dl{grid-template-columns:1fr}
+    .form{grid-template-columns:1fr;gap:4px}
+    .form label{text-align:left;padding-top:8px}
+    .content{padding:14px 16px 80px}
   }
 </style>
 </head>
@@ -147,12 +110,11 @@
   <button class="hamb" id="hamb" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   <div class="logo"><div class="logo-mark" aria-hidden="true"></div><div><b>SHAUKAT KHANUM MEMORIAL</b><small>CANCER HOSPITAL &amp; RESEARCH CENTRE</small></div></div>
   <div class="spacer"></div>
-  <div class="avatar" title="Logged-in consultant">DR</div>
+  <div class="avatar">DR</div>
 </header>
 
 <div class="shell">
-  <!-- ======== Left menu ======== -->
-  <aside class="sidebar" id="sidebar">
+  <aside class="sidebar">
     <div class="search">🔍<input type="text" placeholder="Search"></div>
     <nav class="nav">
       <a href="#"><span><span class="ic"></span>Patient Select</span></a>
@@ -160,360 +122,117 @@
       <a href="#"><span><span class="ic"></span>Reports</span></a>
       <a href="#"><span><span class="ic"></span>Order</span><span class="chev">›</span></a>
       <a href="#"><span><span class="ic"></span>Clinical</span><span class="chev">⌄</span></a>
-      <div class="sub">
-        <a href="#">Clinical Summary</a>
-        <a href="#">Problem List</a>
-        <a href="#" class="active">Mark Patient Deceased <span class="badge-new">NEW</span></a>
-      </div>
+      <div class="sub"><a href="#" class="active">Mark Patient Deceased</a></div>
       <a href="#"><span><span class="ic"></span>Future Appointments</span></a>
       <a href="#"><span><span class="ic"></span>Diagnosis</span></a>
       <a href="#"><span><span class="ic"></span>Demographics</span></a>
-      <a href="#"><span><span class="ic"></span>Archived Chart</span></a>
     </nav>
   </aside>
 
   <main>
-    <!-- ======== Patient banner (same as template) ======== -->
     <section class="banner">
       <div class="pfields">
         <label>MRNO</label><label>Name</label><label>Age</label><label>Gender</label><label>Attending Consultant</label>
-        <div class="v" id="bMrn">MRN-TEST-0001</div>
-        <div class="v name" id="bName">TEST PATIENT ONE</div>
+        <div class="v">MRN-TEST-0001</div>
+        <div class="v name">TEST PATIENT ONE</div>
         <div class="v">58Y 3M 12D</div>
         <div class="v">Male</div>
-        <div class="v" id="bCons">DR. TEST CONSULTANT</div>
-        <label>Allergies</label><label class="full">Flag <span class="deceased-flag">DECEASED</span></label>
-        <div class="v">NKDA</div>
-        <div class="v full" id="bFlag">&nbsp;</div>
+        <div class="v">DR. TEST CONSULTANT</div>
       </div>
       <div class="status">
         <div><b>Login:</b> <span class="login">Dr. Test Consultant</span></div>
-        <div><b>Cancer Status:</b> NC</div>
-        <div><b>Code Status:</b> <span style="color:var(--danger)">R</span></div>
-        <div><b>Isolation Status:</b> Standard Precautions</div>
-        <div><b>Bed No:</b> —</div>
-        <div><b>Patient Status:</b> <span id="bStatus" style="font-weight:bold;color:var(--ok)">Alive</span></div>
+        <div><b>Patient Status:</b> <span id="bStatus" style="font-weight:bold;color:var(--ok)">Alive</span><span class="deceased-flag">DECEASED</span></div>
       </div>
-      <div class="photo"><div class="img">👤</div><button class="b1" type="button">Clear</button><button class="b2" type="button">Exit</button></div>
     </section>
 
-    <div class="titlebar">
-      <span>Mark Patient Deceased || ENC-TEST-00048 || MRN-TEST-0001 || TEST PATIENT ONE</span>
-      <span class="crumb">Clinical › Mark Patient Deceased</span>
-    </div>
+    <div class="titlebar">Mark Patient Deceased || ENC-TEST-00048 || MRN-TEST-0001 || TEST PATIENT ONE</div>
 
     <div class="content">
       <div class="alert err" id="errBox" role="alert"></div>
       <div class="alert ok" id="okBox" role="status"></div>
 
-      <div class="info" id="infoBox">
-        ⚠ Use this screen only when you have reliable information that the patient has passed away.
-        Saving will flag the patient as <b>Deceased</b> across HOPe and cancel the selected future appointments.
-      </div>
-
-      <!-- ======== Form ======== -->
       <form id="deathForm" class="form" novalidate autocomplete="off">
-        <span class="lbl req">Place of Death</span>
-        <div class="radios full">
-          <label><input type="radio" name="place" value="IN_HOSPITAL"> In Hospital</label>
-          <label><input type="radio" name="place" value="OUTSIDE" checked> Outside Hospital / Home</label>
-          <label><input type="radio" name="place" value="OTHER_HOSPITAL"> Other Hospital</label>
-        </div>
+        <label for="dod">Date &amp; Time of Death</label>
+        <input type="datetime-local" id="dod">
 
-        <label for="dod" class="req">Date &amp; Time of Death</label>
-        <input type="datetime-local" id="dod" class="req-in">
-        <label class="chk"><input type="checkbox" id="dodApprox"> Approximate</label>
-
-        <label for="cause" class="req">Cause of Death</label>
-        <div class="withlov"><input type="text" id="cause" class="req-in" list="causeList" placeholder="Select or type…"><button type="button" title="List of values">☰</button></div>
-        <datalist id="causeList">
-          <option>Disease progression (primary malignancy)</option>
+        <label for="cause">Cause of Death</label>
+        <select id="cause">
+          <option value="">— Select —</option>
+          <option>Disease progression</option>
           <option>Sepsis</option>
           <option>Cardiac arrest</option>
           <option>Respiratory failure</option>
           <option>Unknown / not reported</option>
-        </datalist>
-        <span></span>
+        </select>
 
-        <!-- In-hospital only -->
-        <div class="cond" id="condIn" hidden>
-          <label for="ward" class="req">Ward / Bed</label>
-          <div class="withlov"><input type="text" id="ward" class="req-in" placeholder="e.g. Ward 3 / Bed 12"><button type="button">☰</button></div>
-          <span></span>
-          <label for="certNo">Death Certificate No.</label>
-          <input type="text" id="certNo" placeholder="Optional">
-          <span></span>
-        </div>
-
-        <!-- Outside / other hospital -->
-        <div class="cond" id="condOut">
-          <label for="hospName" id="hospLbl" hidden class="req">Hospital Name</label>
-          <input type="text" id="hospName" class="req-in" hidden>
-          <span id="hospSp" hidden></span>
-
-          <label for="infoSrc" class="req">Information Source</label>
-          <select id="infoSrc" class="req-in">
-            <option value="">— Select —</option>
-            <option>Family member (phone call)</option>
-            <option>Family member (in person)</option>
-            <option>Death certificate received</option>
-            <option>Referring hospital / physician</option>
-            <option>Other</option>
-          </select>
-          <span></span>
-
-          <label for="informant" class="req">Informant Name / Relation</label>
-          <input type="text" id="informant" class="req-in" placeholder="e.g. Son">
-          <span></span>
-
-          <label for="informantPh">Informant Contact</label>
-          <input type="text" id="informantPh" placeholder="Optional" inputmode="tel">
-          <span></span>
-        </div>
-
-        <label for="remarks">Remarks</label>
-        <textarea id="remarks" class="full" maxlength="1000" placeholder="Any additional clinical notes (max 1000 characters)"></textarea>
-
-        <span class="lbl">Future Appointments</span>
-        <div class="full">
-          <label class="chk"><input type="checkbox" id="cancelAppts" checked> Cancel all future appointments, orders &amp; reminders</label>
-          <div class="hint" id="apptHint">3 future appointments found — see list below.</div>
-        </div>
-
-        <span class="lbl">Notify</span>
-        <div class="full radios">
-          <label><input type="checkbox" id="nPrimary" checked> Primary team</label>
-          <label><input type="checkbox" id="nMR" checked> Medical Records</label>
-          <label><input type="checkbox" id="nSW"> Social Work / Palliative</label>
-        </div>
-
-        <span class="lbl req">Declaration</span>
-        <label class="chk full" style="font-weight:normal;color:var(--text)">
-          <input type="checkbox" id="declare">
-          I confirm, to the best of my knowledge, that this patient is deceased and that the above information is accurate.
-        </label>
+        <label for="remarks" class="opt">Remarks</label>
+        <textarea id="remarks" maxlength="1000"></textarea>
       </form>
 
-      <!-- ======== Future appointments ======== -->
-      <details class="section" open>
-        <summary>Future Appointments (will be cancelled)</summary>
-        <div class="body">
-          <table>
-            <thead><tr><th>Date / Time</th><th>Clinic</th><th>Consultant</th><th>Type</th><th>Status</th></tr></thead>
-            <tbody id="apptBody"></tbody>
-          </table>
-        </div>
-      </details>
-
-      <!-- ======== History ======== -->
       <details class="section">
-        <summary>Deceased Marking History</summary>
+        <summary>Deceased History</summary>
         <div class="body">
           <table>
-            <thead><tr><th>Marked On</th><th>Marked By</th><th>Date of Death</th><th>Place</th><th>Cause</th><th>Status</th><th>Action</th></tr></thead>
-            <tbody id="histBody"><tr><td colspan="7" class="hint">No records.</td></tr></tbody>
+            <thead><tr><th>Marked On</th><th>Marked By</th><th>Date of Death</th><th>Cause</th><th>Remarks</th></tr></thead>
+            <tbody id="histBody"><tr><td colspan="5" class="hint">No records.</td></tr></tbody>
           </table>
         </div>
       </details>
     </div>
 
     <div class="footer">
-      <button class="btn danger" id="btnSave" type="button">✝ Mark as Deceased</button>
-      <button class="btn" id="btnClear" type="button">🗑 Clear</button>
-      <button class="btn exit" type="button">✖ Exit</button>
+      <button class="btn red" id="btnSave" type="button">Mark Deceased</button>
+      <button class="btn" id="btnClear" type="button">Clear</button>
+      <button class="btn red" type="button">Exit</button>
     </div>
   </main>
-</div>
-
-<!-- ======== Confirm modal ======== -->
-<div class="overlay" id="confirmOv" role="dialog" aria-modal="true" aria-labelledby="cTitle">
-  <div class="modal">
-    <h3 id="cTitle">Confirm: Mark Patient as Deceased</h3>
-    <div class="mb">
-      <div>This action flags the patient as deceased in all modules. Please review:</div>
-      <dl id="cSummary"></dl>
-      <label for="cPwd" style="color:var(--label);font-weight:bold">Re-enter your password to sign</label>
-      <input type="password" id="cPwd" class="req-in" placeholder="Password (any value in prototype)">
-      <div class="hint">Signed as Dr. Test Consultant · recorded in audit trail</div>
-    </div>
-    <div class="mf">
-      <button class="btn" id="cCancel" type="button">Cancel</button>
-      <button class="btn danger" id="cOk" type="button">Confirm &amp; Save</button>
-    </div>
-  </div>
-</div>
-
-<!-- ======== Revoke modal ======== -->
-<div class="overlay" id="revokeOv" role="dialog" aria-modal="true" aria-labelledby="rTitle">
-  <div class="modal">
-    <h3 id="rTitle" style="background:#555">Revoke Deceased Status (Entered in Error)</h3>
-    <div class="mb">
-      <label for="rReason" style="color:var(--label);font-weight:bold">Reason for revoking *</label>
-      <textarea id="rReason" class="req-in" placeholder="e.g. Wrong patient selected"></textarea>
-      <label for="rPwd" style="color:var(--label);font-weight:bold">Re-enter your password *</label>
-      <input type="password" id="rPwd" class="req-in">
-      <div class="hint">Cancelled appointments are NOT re-booked automatically.</div>
-    </div>
-    <div class="mf">
-      <button class="btn" id="rCancel" type="button">Cancel</button>
-      <button class="btn" id="rOk" type="button" style="background:#555;color:#fff">Revoke</button>
-    </div>
-  </div>
 </div>
 
 <script>
 (function(){
   const $ = id => document.getElementById(id);
   const fmt = d => d.toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
-  const now = new Date();
-  const lastVisit = new Date(now.getTime() - 20*864e5); // synthetic: last hospital contact 20 days ago
-
-  // ---- synthetic future appointments
-  const appts = [
-    {d: new Date(now.getTime()+3*864e5+9*36e5), clinic:'Medical Oncology OPD', cons:'Dr. Test Consultant', type:'Follow-up'},
-    {d: new Date(now.getTime()+10*864e5+11*36e5), clinic:'Radiology – CT', cons:'—', type:'Investigation'},
-    {d: new Date(now.getTime()+24*864e5+14*36e5), clinic:'Pain Clinic', cons:'Dr. Test Pain', type:'Follow-up'}
-  ].map(a => ({...a, status:'Scheduled'}));
-  const history = [];
-
-  function renderAppts(){
-    $('apptBody').innerHTML = appts.map(a =>
-      `<tr><td>${fmt(a.d)}</td><td>${a.clinic}</td><td>${a.cons}</td><td>${a.type}</td>
-       <td><span class="pill ${a.status==='Scheduled'?'sch':'can'}">${a.status}</span></td></tr>`).join('');
-  }
-  function renderHist(){
-    if(!history.length){ $('histBody').innerHTML = '<tr><td colspan="7" class="hint">No records.</td></tr>'; return; }
-    $('histBody').innerHTML = history.map((h,i) =>
-      `<tr><td>${fmt(h.on)}</td><td>${h.by}</td><td>${h.dod}</td><td>${h.place}</td><td>${h.cause}</td>
-       <td><span class="pill ${h.active?'act':'rev'}">${h.active?'Active':'Revoked'}</span>${h.reason?` <span class="hint">(${h.reason})</span>`:''}</td>
-       <td>${h.active?`<button class="btn" data-rev="${i}" type="button">Revoke</button>`:''}</td></tr>`).join('');
-  }
-
-  // ---- max date = now
   const pad = n => String(n).padStart(2,'0');
-  const toLocal = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
-  $('dod').max = toLocal(now);
+  const now = new Date();
+  $('dod').max = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
 
-  // ---- place-of-death conditional fields
-  function place(){ return document.querySelector('input[name=place]:checked').value; }
-  function syncPlace(){
-    const p = place();
-    $('condIn').hidden = p !== 'IN_HOSPITAL';
-    $('condOut').hidden = p === 'IN_HOSPITAL';
-    const other = p === 'OTHER_HOSPITAL';
-    ['hospLbl','hospName','hospSp'].forEach(id => $(id).hidden = !other);
-  }
-  document.querySelectorAll('input[name=place]').forEach(r => r.addEventListener('change', syncPlace));
-  syncPlace();
-
-  $('cancelAppts').addEventListener('change', e => {
-    $('apptHint').textContent = e.target.checked
-      ? `${appts.filter(a=>a.status==='Scheduled').length} future appointments found — see list below.`
-      : 'Appointments will be kept. The booking team will be notified to review them.';
-  });
-
-  // ---- validation
-  function showErr(list){
-    const box = $('errBox');
-    if(!list.length){ box.classList.remove('show'); return; }
-    box.innerHTML = `<b>${list.length} error${list.length>1?'s':''} have occurred</b><ul>${list.map(e=>`<li>${e.msg}</li>`).join('')}</ul>`;
-    box.classList.add('show');
-    list[0].el && list[0].el.focus();
-  }
   function validate(){
-    document.querySelectorAll('.invalid').forEach(e=>e.classList.remove('invalid'));
-    const errs = [], need = (el,msg) => { if(!el.value.trim()){ errs.push({el,msg}); el.classList.add('invalid'); } };
-    const dod = $('dod');
-    need(dod,'Date & Time of Death must have some value.');
-    if(dod.value){
-      const d = new Date(dod.value);
-      if(d > new Date()){ errs.push({el:dod,msg:'Date of Death cannot be in the future.'}); dod.classList.add('invalid'); }
-      if(place()==='IN_HOSPITAL' && d < lastVisit){ errs.push({el:dod,msg:'In-hospital death cannot be before the last hospital encounter ('+fmt(lastVisit)+').'}); dod.classList.add('invalid'); }
-    }
-    need($('cause'),'Cause of Death must have some value.');
-    if(place()==='IN_HOSPITAL'){ need($('ward'),'Ward / Bed must have some value for in-hospital death.'); }
-    else{
-      if(place()==='OTHER_HOSPITAL') need($('hospName'),'Hospital Name must have some value.');
-      need($('infoSrc'),'Information Source must have some value.');
-      need($('informant'),'Informant Name / Relation must have some value.');
-    }
-    if(!$('declare').checked){ errs.push({el:$('declare'),msg:'Please tick the declaration to confirm.'}); }
-    showErr(errs);
+    document.querySelectorAll('.invalid').forEach(e => e.classList.remove('invalid'));
+    const errs = [];
+    if(!$('dod').value) errs.push([$('dod'),'Date & Time of Death must have some value.']);
+    else if(new Date($('dod').value) > new Date()) errs.push([$('dod'),'Date of Death cannot be in the future.']);
+    if(!$('cause').value) errs.push([$('cause'),'Cause of Death must have some value.']);
+    errs.forEach(e => e[0].classList.add('invalid'));
+    const box = $('errBox');
+    box.innerHTML = errs.length ? `<b>${errs.length} error(s) have occurred</b><ul>${errs.map(e=>`<li>${e[1]}</li>`).join('')}</ul>` : '';
+    box.classList.toggle('show', !!errs.length);
+    if(errs.length) errs[0][0].focus();
     return !errs.length;
   }
 
-  // ---- save flow
-  const placeTxt = () => ({IN_HOSPITAL:'In Hospital',OUTSIDE:'Outside Hospital / Home',OTHER_HOSPITAL:'Other Hospital'})[place()];
   $('btnSave').addEventListener('click', () => {
     $('okBox').classList.remove('show');
     if(!validate()) return;
-    const d = new Date($('dod').value);
-    const rows = [
-      ['Patient','MRN-TEST-0001 · TEST PATIENT ONE'],
-      ['Date & Time of Death', fmt(d) + ($('dodApprox').checked?' (approx.)':'')],
-      ['Place of Death', placeTxt() + (place()==='OTHER_HOSPITAL' ? ' – '+$('hospName').value : '')],
-      ['Cause of Death', $('cause').value],
-      ['Appointments', $('cancelAppts').checked ? appts.filter(a=>a.status==='Scheduled').length+' will be cancelled' : 'Kept (booking team notified)']
-    ];
-    $('cSummary').innerHTML = rows.map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('');
-    $('cPwd').value=''; $('confirmOv').classList.add('show'); $('cPwd').focus();
-  });
-  $('cCancel').addEventListener('click', () => $('confirmOv').classList.remove('show'));
-  $('cOk').addEventListener('click', () => {
-    if(!$('cPwd').value){ $('cPwd').classList.add('invalid'); $('cPwd').focus(); return; }
-    $('confirmOv').classList.remove('show');
-    const d = new Date($('dod').value);
-    let n = 0;
-    if($('cancelAppts').checked) appts.forEach(a => { if(a.status==='Scheduled'){ a.status='Cancelled – Patient Deceased'; n++; } });
-    history.unshift({on:new Date(), by:'Dr. Test Consultant', dod:fmt(d), place:placeTxt(), cause:$('cause').value, active:true});
-    setDeceased(true);
-    $('okBox').innerHTML = `✔ Patient marked as <b>Deceased</b>. ${n} appointment(s) cancelled. Notifications sent.`;
+    if(!confirm('Are you sure you want to mark this patient as deceased?')) return;
+    const dod = fmt(new Date($('dod').value));
+    $('histBody').innerHTML = `<tr><td>${fmt(new Date())}</td><td>Dr. Test Consultant</td><td>${dod}</td>
+      <td>${esc($('cause').value)}</td><td>${esc($('remarks').value) || '—'}</td></tr>`;
+    document.body.classList.add('is-deceased');
+    $('bStatus').textContent = 'Deceased'; $('bStatus').style.color = 'var(--danger)';
+    document.querySelectorAll('#deathForm input,#deathForm select,#deathForm textarea').forEach(e => e.disabled = true);
+    $('btnSave').disabled = $('btnClear').disabled = true;
+    $('okBox').textContent = 'Patient marked as deceased. Future appointments cancelled.';
     $('okBox').classList.add('show');
-    renderAppts(); renderHist();
-    document.querySelectorAll('.section')[1].open = true;
+    document.querySelector('.section').open = true;
   });
 
-  function setDeceased(on){
-    document.body.classList.toggle('is-deceased', on);
-    $('bStatus').textContent = on ? 'Deceased' : 'Alive';
-    $('bStatus').style.color = on ? 'var(--danger)' : 'var(--ok)';
-    $('bFlag').textContent = on ? 'Deceased — ' + history[0].dod : ' ';
-    document.querySelectorAll('#deathForm input,#deathForm select,#deathForm textarea').forEach(e => e.disabled = on);
-    $('btnSave').disabled = on; $('btnClear').disabled = on;
-    $('infoBox').innerHTML = on
-      ? '🔒 This patient is marked as <b>Deceased</b>. The record is read-only. Use <b>Revoke</b> in the history below if it was entered in error.'
-      : '⚠ Use this screen only when you have reliable information that the patient has passed away. Saving will flag the patient as <b>Deceased</b> across HOPe and cancel the selected future appointments.';
-  }
-
-  // ---- revoke
-  let revIdx = null;
-  $('histBody').addEventListener('click', e => {
-    const b = e.target.closest('[data-rev]'); if(!b) return;
-    revIdx = +b.dataset.rev; $('rReason').value=''; $('rPwd').value='';
-    $('revokeOv').classList.add('show'); $('rReason').focus();
-  });
-  $('rCancel').addEventListener('click', () => $('revokeOv').classList.remove('show'));
-  $('rOk').addEventListener('click', () => {
-    let ok = true;
-    ['rReason','rPwd'].forEach(id => { const el=$(id); el.classList.toggle('invalid', !el.value.trim()); if(!el.value.trim()) ok=false; });
-    if(!ok) return;
-    history[revIdx].active = false; history[revIdx].reason = $('rReason').value.trim();
-    $('revokeOv').classList.remove('show');
-    setDeceased(false); renderHist();
-    $('okBox').innerHTML = 'Deceased status revoked. Patient is active again. Please re-book appointments if required.';
-    $('okBox').classList.add('show');
-  });
-
-  // ---- clear / misc
   $('btnClear').addEventListener('click', () => {
-    $('deathForm').reset(); syncPlace(); showErr([]);
-    document.querySelectorAll('.invalid').forEach(e=>e.classList.remove('invalid'));
-    $('okBox').classList.remove('show');
+    $('deathForm').reset();
+    document.querySelectorAll('.invalid').forEach(e => e.classList.remove('invalid'));
+    $('errBox').classList.remove('show'); $('okBox').classList.remove('show');
   });
   $('hamb').addEventListener('click', () => document.body.classList.toggle('nav-open'));
-  document.addEventListener('keydown', e => { if(e.key==='Escape') document.querySelectorAll('.overlay.show').forEach(o=>o.classList.remove('show')); });
-
-  renderAppts(); renderHist();
 })();
 </script>
 </body>
