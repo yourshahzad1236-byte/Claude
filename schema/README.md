@@ -2,7 +2,7 @@
 
 SKMCH staff have no direct database access, so the skills work from schema export files.
 The master copy lives on the SKMCH workstation at **`D:\SKM_SCHEMA`**. It currently
-holds one export per schema: HRD, PAYROLL, REGISTRATION, DEFINITIONS and RFID (PL/SQL
+holds one export per schema: HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID, HIS and TRAINING (PL/SQL
 Developer "Export User Objects" `.txt`/`.sql` files).
 
 Accepted files: table DDL, package specs/bodies, procedures, functions, triggers, views,

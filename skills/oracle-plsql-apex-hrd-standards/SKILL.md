@@ -36,7 +36,7 @@ Before proposing any new name, check the schema files (schema files or a zip the
 attached, the local folder `D:\SKM_SCHEMA`, or the `skmch-hrd-system-context` skill):
 
 * The new name must not already exist in **any** schema (HRD, PAYROLL, REGISTRATION,
-  DEFINITIONS, RFID), including as a synonym.
+  DEFINITIONS, RFID, HIS, TRAINING), including as a synonym.
 * Existing objects keep their current names, even when they predate these conventions
   (for example legacy `VU_` views or `<TABLE>_INS` triggers). Never rename an existing
   object to fit the standard. Refer to it exactly as it appears in the schema.

@@ -1,9 +1,9 @@
 ---
 name: skmch-hrd-system-context
-description: Reference knowledge of the SKMCH Oracle schemas (HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID) and applications, built from schema files with no direct database access. Covers tables and columns, keys, indexes, triggers, packages and their procedures/functions, views, sequences, APEX applications and pages, and which code, views and APEX pages reference each table (dependency / where-used), plus system documents. Use whenever an SKMCH task needs to know what currently exists in the HRD database or applications. That includes impact analysis for an SRS or design doc, finding which packages or APEX pages use a table or column, checking whether a table/column/procedure exists and its exact name and data type, verifying object names in a review, or answering "where is X stored / handled" questions about HRD.
+description: Reference knowledge of the SKMCH Oracle schemas (HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID, HIS, TRAINING) and applications, built from schema files with no direct database access. Covers tables and columns, keys, indexes, triggers, packages and their procedures/functions, views, sequences, APEX applications and pages, and which code, views and APEX pages reference each table (dependency / where-used), plus system documents. Use whenever an SKMCH task needs to know what currently exists in the HRD database or applications. That includes impact analysis for an SRS or design doc, finding which packages or APEX pages use a table or column, checking whether a table/column/procedure exists and its exact name and data type, verifying object names in a review, or answering "where is X stored / handled" questions about HRD.
 ---
 
-# SKMCH system context (HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID)
+# SKMCH system context (HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID, HIS, TRAINING)
 
 This skill is a searchable snapshot of the SKMCH schemas. The SDLC skills (SRS, review,
 design, development, QA, system documentation) use it for impact analysis. SKMCH staff

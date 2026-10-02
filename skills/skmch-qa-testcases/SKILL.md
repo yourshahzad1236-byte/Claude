@@ -45,7 +45,7 @@ Also add a **regression** set for existing functions listed in the SRS impact an
 the schema, not only from the SRS:** load the schema (conventions §7; index attached
 files, a zip or `D:\SKM_SCHEMA` with `python <skill-dir>/scripts/build_schema_index.py <files / zip / folder> --out <temp>/schema-index --copy-src`), and for every
 table and column the change touches, add regression tests for the packages, views,
-triggers, reports and other-schema code (PAYROLL, REGISTRATION, DEFINITIONS, RFID) in
+triggers, reports and other-schema code (PAYROLL, REGISTRATION, DEFINITIONS, RFID, HIS, TRAINING) in
 its "Referenced by" list. Mention the regression scope (count of dependents found) in
 the chat summary.
 

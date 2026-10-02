@@ -59,7 +59,7 @@ This is the SA's value-add. Go through checklist §C:
 
 ### 5. Impact analysis verification (against the schema)
 Load the schema (conventions §7). Index attached files, a zip or `D:\SKM_SCHEMA` first:
-`python <skill-dir>/scripts/build_schema_index.py <files / zip / folder> --out <temp>/schema-index --copy-src`. Check all schemas (HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID).
+`python <skill-dir>/scripts/build_schema_index.py <files / zip / folder> --out <temp>/schema-index --copy-src`. Check all schemas (HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID, HIS, TRAINING).
 If the SRS has no **Impact Analysis** section, or it isn't highlighted, that is a Major
 finding. For each impact row:
 - Does the object actually exist? Is the column name and type right?

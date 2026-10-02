@@ -18,7 +18,7 @@ The cover, version history and approvals come from the Word template.
 <!-- Done BEFORE the design, from the schema files (conventions §7–8). Keep the highlight markers so the section renders shaded and boxed in Word. If no schema was available, start with: > WARNING: PROVISIONAL – impact analysis done without schema files. -->
 ## 2.1 Schema source used
 | Source | Schemas covered | Snapshot / export date | Notes |
-<!-- e.g. "D:\SKM_SCHEMA (HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID)", attached files, or "None – PROVISIONAL". -->
+<!-- e.g. "D:\SKM_SCHEMA (HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID, HIS, TRAINING)", attached files, or "None – PROVISIONAL". -->
 ## 2.2 Impact summary
 | Measure | Count |
 |---|---|

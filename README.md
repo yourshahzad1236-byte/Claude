@@ -18,7 +18,7 @@ anything APPROVED.
 ## Schema first, impact analysis first
 
 Staff have no direct database access, so every skill works from the schema export files
-(HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID):
+(HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID, HIS, TRAINING):
 
 1. **Find the schema:** files or a zip attached to the chat or Project, the local folder
    `D:\SKM_SCHEMA`, or the `skmch-hrd-system-context` skill. Attached files and the

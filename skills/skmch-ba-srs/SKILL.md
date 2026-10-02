@@ -50,7 +50,7 @@ Watch for:
 Follow §7 of `references/sdlc-conventions.md`. If the schema comes as attached files, a
 zip or the `D:\SKM_SCHEMA` folder, index it first:
 `python <skill-dir>/scripts/build_schema_index.py <files / zip / folder> --out <temp>/schema-index --copy-src`.
-The schema covers HRD, PAYROLL, REGISTRATION, DEFINITIONS and RFID. From the business nouns in the notes
+The schema covers HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID, HIS and TRAINING. From the business nouns in the notes
 (employee, leave, roster, payroll, attendance, department, patient, appointment,
 billing …), search the context for matching tables, packages, views, APEX pages and
 reports. Write down what you found and where. Evidence feeds Step 5.

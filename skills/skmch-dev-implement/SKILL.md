@@ -36,7 +36,7 @@ Load the schema (conventions §7). Index attached files, a zip or `D:\SKM_SCHEMA
   signatures as the design assumes. Get their **current source** from the schema files.
 - Confirm that objects marked NEW don't already exist (name clash) in any schema.
 - Re-check dependents (where-used) of every modified table, column and package across
-  HRD, PAYROLL, REGISTRATION, DEFINITIONS and RFID, against the design's §2.5. Anything
+  HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID, HIS and TRAINING, against the design's §2.5. Anything
   the design missed is a **deviation**.
 Post an **Impact re-check summary** in chat before the code: confirmed items,
 differences from the design, extra dependents to recompile/retest. Stop and ask if the

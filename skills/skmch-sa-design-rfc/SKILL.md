@@ -24,7 +24,7 @@ Read first:
 - **Required for real impact analysis:** the schema files (conventions §7): schema
   files or a zip the user attached, the local folder `D:\SKM_SCHEMA`, or the
   `skmch-hrd-system-context` skill. The schema covers HRD, PAYROLL, REGISTRATION,
-  DEFINITIONS and RFID, so check cross-schema use too. Without schema files the design is
+  DEFINITIONS, RFID, HIS and TRAINING, so check cross-schema use too. Without schema files the design is
   still produced, but every existing-object reference is `PROVISIONAL`, section 2 starts
   with a PROVISIONAL warning, and the change inventory carries a "verify against schema"
   task.
@@ -54,7 +54,7 @@ terms for step 2.
      constraints, indexes, triggers).
    - **Dependents (where-used):** views, triggers, packages/procedures/functions, APEX
      pages, reports, jobs, synonyms, and code in **other schemas** (PAYROLL, REGISTRATION,
-     DEFINITIONS, RFID) that read or write those tables and columns. Use each table
+     DEFINITIONS, RFID, HIS, TRAINING) that read or write those tables and columns. Use each table
      file's "Referenced by" list and grep the source.
    - Existing program units that already do part of the job. **Reuse or extend before
      creating new.**
@@ -120,7 +120,7 @@ Follow `references/design-structure.md` exactly. Key rules:
 - [ ] `python scripts/check_trace.py --source <SRS> --target design.md --ids FR,NFR` reports no missing IDs.
 - [ ] Section 2 Impact Analysis is present, highlighted, and lists the schema source and date.
 - [ ] Every object named as existing has evidence. Everything else is `NEW` or `PROVISIONAL`.
-- [ ] Cross-schema dependents (PAYROLL, REGISTRATION, DEFINITIONS, RFID) were checked.
+- [ ] Cross-schema dependents (PAYROLL, REGISTRATION, DEFINITIONS, RFID, HIS, TRAINING) were checked.
 - [ ] All new names comply with HRD standards (prefixes/suffixes, `_SEQ`, `TRG_…_BI`, `IDX_`, `VW_`).
 - [ ] Every modified table lists its dependents to retest.
 - [ ] DDL has rollback. Migration is re-runnable or guarded.
