@@ -63,7 +63,8 @@ The cover, version history and approvals come from the Word template.
 <!-- Short description of new and changed entities and relationships (text or table). -->
 ## 5.2 New tables
 ### DS-NN HRD.<TABLE_NAME> (satisfies FR-…)
-Purpose: …  Estimated volume: … rows/year.
+Purpose: …  Estimated volume: … rows/year.  Tablespace: … (schema default).  Partitioning: … / none (reason).
+Relationships: <parent> 1:N <this table> …  Audit pattern copied from: <OWNER.TABLE>.
 | Column | Data type | Null | Default | Constraint | Description |
 ## 5.3 Modified tables
 ### DS-NN HRD.<TABLE_NAME>

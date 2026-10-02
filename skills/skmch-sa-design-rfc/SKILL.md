@@ -13,6 +13,12 @@ deployment order. The SA approves it. You never mark it approved.
 Read first:
 - `references/sdlc-conventions.md`: IDs, statuses, rules.
 - `references/hrd-naming-standards.md`: HRD naming conventions. **Every new object must comply.**
+- `references/architect/GUIDE.md`: the organization's **Architect standards** (data
+  modeling, ERD and normalization, partitioning, tablespace design) plus the SKMCH rules
+  that override them. **Apply them to every data-design decision in section 5.** Its
+  routing table says which detailed guide to open:
+  `references/architect/erd-design.md`, `references/architect/data-modeling.md`,
+  `references/architect/partitioning-strategy.md`, `references/architect/tablespace-design.md`.
 - If an Oracle SQL/PL-SQL development-standards skill is available (e.g. `oracle-developer`),
   apply it for SQL/PL-SQL quality: bind variables, bulk processing, exception handling
   and injection safety.
@@ -80,9 +86,20 @@ reply.
 ### 3. Design decisions
 - Choose the approach. For non-trivial choices, record alternatives considered and why
   they were rejected (short).
-- Data model: prefer extending existing entities over parallel tables. Add audit columns
-  (`CREATED_BY`, `CREATED_ON`, `MODIFIED_BY`, `MODIFIED_ON`) and history (`_HIS`) tables
-  where AUD NFRs apply. Use soft delete for regulated data.
+- Data model (per `references/architect/GUIDE.md`): prefer extending existing entities
+  over parallel tables. Model new entities to 3NF, with explicit cardinality, named
+  PK/FK/unique/check constraints and an index on every FK (`erd-design.md`). Copy the
+  audit and multi-location columns and triggers that similar tables in the same schema
+  use (`USER_ID`, `TERMINAL`, `TRN_DATE`, `ORIGINAL_*`, `ORG_ID`, `ZON_ID`, `LOC_ID`,
+  `WS_SYNC_DATE`), and add history (`_HIS`) tables where AUD NFRs apply. Use soft
+  delete for regulated data. Reporting needs: say whether an existing table, a view, a
+  materialized view or a separate reporting model fits (`data-modeling.md`).
+- Physical design: for every new table give the tablespace (the schema's existing one),
+  estimated rows/year and growth, PCTFREE if it isn't the default, and LOB placement.
+  For large or fast-growing tables (logs, history, attendance, transactions), decide
+  partitioning explicitly (type, key, interval, local vs global indexes) using
+  `partitioning-strategy.md` §8, or state why not. Flag licensed options (partitioning,
+  Advanced Compression) as assumptions to confirm.
 - Logic in packages (`PKG_<MODULE>`), not in APEX page processes. APEX calls package
   procedures.
 - Security: authorization schemes per role from the SRS access matrix. VPD/row filtering
@@ -123,6 +140,10 @@ Follow `references/design-structure.md` exactly. Key rules:
 - [ ] Cross-schema dependents (PAYROLL, REGISTRATION, DEFINITIONS, RFID, HIS, TRAINING) were checked.
 - [ ] All new names comply with HRD standards (prefixes/suffixes, `_SEQ`, `TRG_…_BI`, `IDX_`, `VW_`).
 - [ ] Every modified table lists its dependents to retest.
+- [ ] Architect standards: new entities normalized (3NF) with cardinality stated; all
+      constraints named; every FK indexed; no reserved words as column names; tablespace,
+      volume and growth given per new table; partitioning decided for large tables;
+      19c compatibility and licensed options flagged (`references/architect/GUIDE.md`).
 - [ ] DDL has rollback. Migration is re-runnable or guarded.
 - [ ] Security, audit, performance and availability NFRs each map to a concrete design element.
 - [ ] Open design questions are listed with owner.
@@ -147,6 +168,7 @@ skmch-dev-implement and QA can use skmch-qa-testcases (from the SRS)."
 ## Reference files
 - `references/sdlc-conventions.md`, `references/hrd-naming-standards.md`
 - `references/design-structure.md`: exact design document layout.
+- `references/architect/`: Architect standards (`GUIDE.md` first, then the matching guide).
 - `references/examples/`: past SKMCH design docs/RFCs when available. Match their depth and style.
 - `templates/design_rfc_template.docx`, `scripts/render_docx.py`, `scripts/check_trace.py`
 - `scripts/build_schema_index.py`: indexes attached schema files, a zip or `D:\SKM_SCHEMA`.

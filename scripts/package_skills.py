@@ -24,8 +24,8 @@ STANDARDS = os.path.join(SKILLS, "oracle-plsql-apex-hrd-standards", "SKILL.md")
 # skill -> (shared references, shared scripts)
 MANIFEST = {
     "skmch-ba-srs": (["sdlc-conventions.md", "srs-structure.md", "hrd-naming-standards.md"], ["render_docx.py", "build_schema_index.py"]),
-    "skmch-sa-srs-review": (["sdlc-conventions.md", "srs-structure.md", "hrd-naming-standards.md"], ["render_docx.py", "check_trace.py", "build_schema_index.py"]),
-    "skmch-sa-design-rfc": (["sdlc-conventions.md", "hrd-naming-standards.md"], ["render_docx.py", "check_trace.py", "build_schema_index.py"]),
+    "skmch-sa-srs-review": (["sdlc-conventions.md", "srs-structure.md", "hrd-naming-standards.md", "architect/GUIDE.md", "architect/data-modeling.md", "architect/erd-design.md", "architect/partitioning-strategy.md", "architect/tablespace-design.md"], ["render_docx.py", "check_trace.py", "build_schema_index.py"]),
+    "skmch-sa-design-rfc": (["sdlc-conventions.md", "hrd-naming-standards.md", "architect/GUIDE.md", "architect/data-modeling.md", "architect/erd-design.md", "architect/partitioning-strategy.md", "architect/tablespace-design.md"], ["render_docx.py", "check_trace.py", "build_schema_index.py"]),
     "skmch-dev-implement": (["sdlc-conventions.md", "hrd-naming-standards.md"], ["render_docx.py", "check_trace.py", "build_schema_index.py"]),
     "skmch-qa-testcases": (["sdlc-conventions.md"], ["render_xlsx.py", "check_trace.py", "build_schema_index.py"]),
     "skmch-qa-execute": (["sdlc-conventions.md"], ["render_xlsx.py", "check_trace.py", "build_schema_index.py"]),

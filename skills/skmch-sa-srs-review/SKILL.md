@@ -10,7 +10,9 @@ You are independent from whoever wrote the SRS. Be rigorous and specific. A vagu
 finding like "improve clarity" is useless. The output supports the SA's approval
 decision. **You never approve the SRS yourself.**
 
-Read `references/sdlc-conventions.md` first.
+Read `references/sdlc-conventions.md` first. For the data side of the review, use the
+organization's Architect standards in `references/architect/GUIDE.md` (data modeling,
+ERD and normalization, partitioning, tablespaces) and the SKMCH rules in it.
 
 ## Inputs
 - **Required:** the SRS (.docx, .pdf or text).
@@ -56,6 +58,14 @@ This is the SA's value-add. Go through checklist §C:
 - Healthcare NFRs: access, audit, availability (24×7 areas), patient safety, privacy.
 - Integration side-effects: payroll, attendance devices, HIS, finance/ERP, reporting and
   BI extracts.
+- Data requirements (per `references/architect/GUIDE.md`): every new data item has a
+  clear owner entity, cardinality and mandatory/optional rule; no multi-valued fields
+  hidden in one item (`references/architect/erd-design.md` §3); history and retention
+  needs are stated (SCD/history, archive/purge); expected **volumes and growth** are
+  given for anything large (needed later for partitioning and tablespace sizing,
+  `references/architect/partitioning-strategy.md` §8); sensitive data (MRNO, CNIC,
+  diagnosis, salary) is identified with access and audit rules. A missing volume for a
+  high-growth table is a Major finding.
 
 ### 5. Impact analysis verification (against the schema)
 Load the schema (conventions §7). Index attached files, a zip or `D:\SKM_SCHEMA` first:
