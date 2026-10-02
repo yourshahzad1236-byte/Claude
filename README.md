@@ -34,7 +34,7 @@ Staff have no direct database access, so every skill works from the schema expor
 
 | Skill | Who uses it | Example prompt | Output |
 |---|---|---|---|
-| `skmch-ba-srs` | BA | "Here are the minutes from today's meeting with Nursing. Create the SRS." | SRS .docx: FR/NFR, acceptance criteria, impact analysis, open questions |
+| `skmch-ba-srs` | BA | "Here are the minutes from today's meeting with Nursing. Create the SRS." / "Make the CR requirement study." | SRS in template MIS\REQM\DOC-SRS v1.3 (.docx + .md): estimation, FR/NFR, acceptance criteria, sanity tests, highlighted impact analysis; CR Requirement Study; other senior-BA deliverables |
 | `skmch-sa-srs-review` | Solution Architect | "Review this SRS. Is it ready for approval?" | Review report (Blocker/Major/Minor) + revised SRS |
 | `skmch-sa-design-rfc` | Solution Architect | "Create the design doc for this approved SRS." | Design .docx: DDL, packages, APEX changes, change inventory, deployment/rollback |
 | `skmch-dev-implement` | Developer | "Implement this design doc." | Ordered SQL/PLSQL scripts, rollback, unit tests, implementation notes |
@@ -75,6 +75,7 @@ Set `SKMCH_SCHEMA_DIR` only if the folder is somewhere else.
 | Change a skill's behaviour | Edit `skills/<skill>/SKILL.md` or its `references/` |
 | Change shared rules (IDs, statuses, gates, schema-first) | Edit `shared/references/sdlc-conventions.md` (never the copies inside skills). Shared scripts live in `shared/scripts/`. |
 | Change naming standards | Edit `skills/oracle-plsql-apex-hrd-standards/SKILL.md` |
+| Update the senior-business-analyst skill (Multica) or the CR Requirement Study template used by `skmch-ba-srs` | Replace `skills/skmch-ba-srs/references/senior-ba/GUIDE.md` (keep its "SKMCH rules" section on top) or `references/senior-ba/templates/`. The SRS layout (template MIS\REQM\DOC-SRS v1.3) is in `shared/references/srs-structure.md`; its Word cover is built by `scripts/build_templates.py`. |
 | Update the Architect standards (data modeling, ERD, partitioning, tablespaces) used by `skmch-sa-design-rfc` and `skmch-sa-srs-review` | Edit or replace the guides in `shared/references/architect/` (SKMCH overrides are in `GUIDE.md`), then run `python scripts/package_skills.py` |
 | Update the oracle-developer standards used by `skmch-dev-implement` | Replace `skills/skmch-dev-implement/references/oracle-developer/` with the new copy of the skill (`SKILL.md` → `GUIDE.md`, flatten `plsql/plsql/` → `plsql/`, `sql-dev/sql-dev/` → `sql-dev/`, `performance/performance/` → `performance/`), then run `python scripts/package_skills.py` |
 | Use the official hospital template | Replace `skills/<skill>/templates/<name>.docx/.xlsx` (same file name). In Word templates, put `{{BODY}}` on its own line where content goes, and use `{{DOC_ID}} {{TITLE}} {{VERSION}} {{STATUS}} {{DATE}} {{AUTHOR}} {{SOURCE}} {{CHANGE_SUMMARY}}` where those values go. Excel templates need header rows whose names match the columns in the skill. If section headings differ from the template, update the matching `references/*-structure.md`. |

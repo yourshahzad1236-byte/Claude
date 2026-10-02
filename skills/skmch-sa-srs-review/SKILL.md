@@ -84,6 +84,16 @@ items wrong, dependencies the SRS missed, names not found in the schema. Then co
 with the report. In the revised SRS, the corrected section 8 Impact Analysis stays
 wrapped in `<!-- highlight -->` … `<!-- /highlight -->`.
 
+### 5a. SRS v1.3 template checks
+The SRS follows the SKMCH template MIS\REQM\DOC-SRS v1.3 (`references/srs-structure.md`).
+Check that sections 1–7 keep the template order and headings, Section 2 has exactly one
+estimation band with a believable basis (compare with the impact analysis), and Section 6
+has sanity test cases for every Must FR. For **Section 5 Requirement Acceptance
+Criteria**, give a proposed reviewer verdict (Met / Not met + reason) for each of the
+seven criteria in the report. Check every Author tick against the evidence: a tick
+without evidence is a finding. Don't tick the Reviewer column yourself; the Solution
+Architect does that.
+
 ### 6. Classify findings
 | Severity | Meaning |
 |---|---|

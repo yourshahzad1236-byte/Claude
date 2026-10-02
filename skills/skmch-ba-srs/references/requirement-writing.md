@@ -64,3 +64,12 @@ treat it as high-risk.
 - [ ] No real patient or employee identifiers anywhere. Examples are synthetic.
 - [ ] Conflicting stakeholder statements became Q-NNs, not silent choices.
 - [ ] Open questions state who must answer them and whether they block.
+- [ ] SRS v1.3 acceptance criteria (Section 5) checked one by one: Clear (one
+      interpretation, examples/decision tables/formulas instead of loose prose), Unique
+      (no two FRs specify the same function), Traceable (every requirement cites M-NN,
+      policy, standard or email), Complete (all sections filled or "Not applicable"/TBD
+      with owner, every acronym in Section 7), Testable (≥1 acceptance criterion each),
+      Implementable, Consistent (no conflict with each other or with earlier SRSs, rules,
+      policies). Tick the Author column only for the ones met.
+- [ ] Section 2 has exactly one estimation band with its basis; Section 6 has sanity test
+      cases for every Must FR; Sections 1–7 keep the template order and headings.

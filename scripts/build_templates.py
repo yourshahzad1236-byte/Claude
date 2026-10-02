@@ -88,6 +88,76 @@ def doc_template(path, doc_type, extra_approvers):
     print("wrote", os.path.relpath(path))
 
 
+def srs_v13_template(path):
+    """SRS cover laid out like the SKMCH template MIS\\REQM\\DOC-SRS Version 1.3."""
+    d = docx.Document()
+    st = d.styles["Normal"]
+    st.font.name = "Calibri"
+    st.font.size = Pt(10.5)
+    for lvl, size in ((1, 16), (2, 13), (3, 11.5), (4, 10.5)):
+        h = d.styles[f"Heading {lvl}"]
+        h.font.color.rgb = NAVY
+        h.font.size = Pt(size)
+    sec = d.sections[0]
+    sec.header.paragraphs[0].text = f"{ORG}  |  {{{{DOC_ID}}}}  |  {{{{TITLE}}}}"
+    sec.header.paragraphs[0].runs[0].font.size = Pt(8)
+    sec.footer.paragraphs[0].text = ("Software Requirements Specification | MIS\\REQM\\DOC-SRS | Version 1.3"
+                                     "  |  Status: {{STATUS}}")
+    sec.footer.paragraphs[0].runs[0].font.size = Pt(8)
+
+    for text, size, bold in ((ORG, 12, False), ("Management Information Systems", 11, False), ("", 11, False),
+                             ("SOFTWARE REQUIREMENTS SPECIFICATION", 20, True),
+                             ("MIS\\REQM\\DOC-SRS  |  Version 1.3", 11, False), ("", 11, False),
+                             ("{{TITLE}}", 16, True), ("{{DOC_ID}}  –  version {{VERSION}}", 11, False)):
+        p = d.add_paragraph()
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        r = p.add_run(text)
+        r.font.size = Pt(size)
+        r.bold = bold
+        r.font.color.rgb = NAVY
+
+    def grid(headers, rows):
+        t = d.add_table(rows=1, cols=len(headers))
+        t.style = "Table Grid"
+        for i, h in enumerate(headers):
+            t.cell(0, i).text = h
+            t.cell(0, i).paragraphs[0].runs[0].bold = True
+        for row in rows:
+            cells = t.add_row().cells
+            for i, v in enumerate(row):
+                cells[i].text = v
+        return t
+
+    d.add_paragraph("Document Information", style="Heading 2")
+    info = grid(("Category", "Information"),
+                (("Document", "Software Requirements Specification"), ("Lead Author", "{{AUTHOR}}"),
+                 ("Status", "{{STATUS}}"), ("Reviewer", "{{REVIEWER}}"), ("Approver(s)", "{{APPROVER}}"),
+                 ("Issue Date", "{{DATE}}"), ("Distribution", "{{DISTRIBUTION}}"),
+                 ("Source documents", "{{SOURCE}}")))
+    for row in info.rows[1:]:
+        row.cells[0].paragraphs[0].runs[0].bold = True
+
+    d.add_paragraph("Document Revision History", style="Heading 2")
+    grid(("Author", "Version", "Description", "Rationale of change"),
+         (("{{AUTHOR}}", "{{VERSION}}", "{{DATE}}", "{{CHANGE_SUMMARY}}"),))
+
+    d.add_paragraph("Document Approval / Sign Off Sheet", style="Heading 2")
+    d.add_paragraph("I have reviewed the whole (related parts of) document.")
+    d.add_paragraph("I agree and approve all of the (related) contents of this document.")
+    grid(("Name", "Designation", "Department", "Date [dd/mmm/yy]", "Signature"),
+         (("", "", "", "", "______________"), ("", "", "", "", "______________")))
+    note = d.add_paragraph()
+    r = note.add_run("Sign-off is recorded by the named person only. AI-drafted documents remain Draft until then.")
+    r.italic = True
+    r.font.size = Pt(8)
+
+    d.add_page_break()
+    d.add_paragraph("{{BODY}}")
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    d.save(path)
+    print("wrote", os.path.relpath(path))
+
+
 THIN = Side(style="thin", color="999999")
 BORDER = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
 HDR_FILL = PatternFill("solid", fgColor="1F3A5F")
@@ -157,9 +227,7 @@ def xlsx_execution(path):
 
 if __name__ == "__main__":
     j = os.path.join
-    doc_template(j(ROOT, "skmch-ba-srs/templates/srs_template.docx"),
-                 "Software Requirements Specification",
-                 ["Business Analyst (author)", "Solution Architect", "Business Owner / Department Head"])
+    srs_v13_template(j(ROOT, "skmch-ba-srs/templates/srs_template.docx"))
     doc_template(j(ROOT, "skmch-sa-srs-review/templates/srs_review_template.docx"),
                  "SRS Review Report", ["Solution Architect (reviewer)"])
     doc_template(j(ROOT, "skmch-sa-design-rfc/templates/design_rfc_template.docx"),

@@ -47,6 +47,9 @@ Rules:
 ## 3. Document status and versioning
 
 - Status values: `DRAFT` → `IN REVIEW` → `APPROVED` → `SUPERSEDED`.
+  The SRS uses the SKMCH template MIS\REQM\DOC-SRS v1.3 values: `Draft` (= DRAFT),
+  `Rework` (= DRAFT, revised after review), `Reviewed` (= IN REVIEW, reviewed by the SA),
+  `Approved` (= APPROVED).
 - Claude-produced documents are always `DRAFT`, or `IN REVIEW` when a human asks for that. Only a named human sets `APPROVED`, and the approver's name and date are recorded in the approval table.
 - Versions: drafts use `0.x` (0.1, 0.2 …). The first approved version is `1.0`. Changes after approval go to `1.1`, `1.2` … and every change is logged in the version-history table.
 
