@@ -76,3 +76,9 @@ this file can be updated.
 - [ ] Unit tests: happy path + each exception + SRS acceptance criteria. Synthetic data only.
 - [ ] No real patient or employee data anywhere.
 - [ ] Headers carry CR/DS/FR IDs.
+- [ ] oracle-developer core standards (`oracle-developer/GUIDE.md`) met: set-based or
+      BULK COLLECT … LIMIT + FORALL SAVE EXCEPTIONS (no row-by-row over large sets), binds
+      only (`DBMS_ASSERT` for dynamic identifiers), no `WHEN OTHERS` without re-raise,
+      errors logged with `FORMAT_ERROR_STACK`/`FORMAT_ERROR_BACKTRACE` and no patient data
+      in messages, `%TYPE` anchors, explicit date format masks, no implicit conversion in
+      predicates, `DBMS_APPLICATION_INFO` in batch code, thin triggers.

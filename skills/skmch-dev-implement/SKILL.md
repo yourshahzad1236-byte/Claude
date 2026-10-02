@@ -12,7 +12,16 @@ Read first:
 - `references/sdlc-conventions.md`
 - `references/hrd-naming-standards.md`: mandatory naming for every object, variable and parameter.
 - `references/coding-standards.md`: SKMCH PL/SQL and APEX coding rules.
-- If an Oracle SQL/PL-SQL development-standards skill is available (e.g. `oracle-developer`), apply it too.
+- `references/oracle-developer/GUIDE.md`: the organization's **oracle-developer** standards,
+  bundled into this skill. **Apply its core standards to every line of SQL and PL/SQL you
+  write** (set-based first, BULK COLLECT … LIMIT with FORALL, bind variables, no swallowed
+  errors, caller owns the transaction, `%TYPE`/`%ROWTYPE`, deliberate NULL handling,
+  packages over standalone units, instrumentation, conscious AUTHID, thin triggers).
+  Use its routing table to open the one to three detailed guides that match the task.
+  Target Oracle 19c unless the user says otherwise.
+- Precedence when rules overlap: HRD naming standards and the SKMCH coding standards decide
+  **names and file layout**. The oracle-developer guides decide **technical quality**
+  (performance, error handling, security, transactions).
 
 ## Inputs
 - **Required:** the design doc. Check its status. If it is not APPROVED, warn and continue
@@ -65,6 +74,11 @@ for a new PK). That is a **deviation** and must be logged.
 ```
 
 ### 3. Write the code
+- Before writing a package, open `references/oracle-developer/plsql/plsql-package-design.md`
+  and `references/oracle-developer/plsql/plsql-error-handling.md`. For loops over data, also
+  open `references/oracle-developer/plsql/plsql-performance.md`. For dynamic SQL, open
+  `references/oracle-developer/sql-dev/sql-injection-avoidance.md`. For new indexes, open
+  `references/oracle-developer/performance/index-strategy.md`.
 - Follow the design's signatures exactly (names, parameter order and types). If a
   signature can't work as designed, implement the closest correct version and log the
   deviation with the reason.
@@ -109,6 +123,8 @@ executed by Claude. Run in DEV first, then code review before promotion."
 ## Reference files
 - `references/sdlc-conventions.md`, `references/hrd-naming-standards.md`
 - `references/coding-standards.md`: SKMCH PL/SQL, SQL and APEX rules plus the self-review checklist.
+- `references/oracle-developer/GUIDE.md`: oracle-developer core standards and routing table to
+  the detailed guides in `references/oracle-developer/plsql/`, `sql-dev/` and `performance/`.
 - `references/impl-notes-structure.md`: implementation notes layout.
 - `references/examples/`: real SKMCH code samples when available. Match their style exactly.
 - `templates/impl_notes_template.docx`, `scripts/render_docx.py`, `scripts/check_trace.py`
