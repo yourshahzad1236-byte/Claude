@@ -20,11 +20,20 @@ Read `references/sdlc-conventions.md` first.
 ## Inputs
 - **Required:** at least the design doc or the implementation (code/notes), plus the SRS.
 - **Recommended:** test execution report (QA sign-off status), the current system
-  document section(s) for the affected module, HRD system context.
+  document section(s) for the affected module.
+- **Schema (always looked for):** schema files or a zip the user attached, the local
+  folder `D:\SKM_SCHEMA`, or the `skmch-hrd-system-context` skill (conventions §7).
+  Never ask the user to query the database: they have no direct DB access.
 - If QA sign-off (Gate 3) isn't evidenced, produce the update but mark it
   `DRAFT – pending QA sign-off`.
 
 ## Workflow
+0. **Schema first:** load the schema (conventions §7; index attached files, a zip or
+   `D:\SKM_SCHEMA` with `python <skill-dir>/scripts/build_schema_index.py <files / zip / folder> --out <temp>/schema-index --copy-src`). Take
+   data-dictionary entries (column types, nullability, comments) from the schema, not
+   from memory. Note whether the snapshot is before or after the release. Post a short
+   **Impact Analysis Summary** in chat (what changed, dependents affected, schemas
+   touched) before the document.
 1. **Build the change set:** from the code/change inventory, list every object that was
    created, modified or retired, and every screen, report, job, interface and role that
    changed. Tie each item to CR, DS and FR IDs.
@@ -34,7 +43,8 @@ Read `references/sdlc-conventions.md` first.
    columns only for modified ones), program-unit reference (purpose, parameters, called
    from), jobs, interfaces, roles/authorization, operations and support (monitoring,
    common errors and resolution, rollback reference), known limitations (from open
-   defects and deviations).
+   defects and deviations), and section 12 **Impact Analysis** wrapped in
+   `<!-- highlight -->` … `<!-- /highlight -->`.
 3. **Merge mode** (when the current system document is provided): update the affected
    sections in place. Keep the existing structure and style, add a change-log row, and
    mark new or changed paragraphs with `[CR-ID]` in the change log (not inline noise).
@@ -61,3 +71,4 @@ Read `references/sdlc-conventions.md` first.
 - `references/sysdoc-structure.md`: documentation delta layout.
 - `references/examples/`: real SKMCH system documentation sections when available. **Match their structure closely**; the org's existing system doc format wins over this skill's default layout.
 - `templates/sysdoc_update_template.docx`, `scripts/render_docx.py`, `scripts/check_trace.py`
+- `scripts/build_schema_index.py`: indexes attached schema files, a zip or `D:\SKM_SCHEMA` (conventions §7).

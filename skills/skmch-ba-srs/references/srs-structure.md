@@ -60,8 +60,18 @@ repeat them in the Markdown.
 ## 7.5 Interfaces
 | System | Direction (in/out) | Data exchanged | Frequency | Related FR |
 
-# 8. Impact analysis
-> Schema context used: <source name / "none: impact analysis is PROVISIONAL">
+<!-- highlight -->
+# 8. Impact Analysis
+> Schema context used: <source, schemas covered and snapshot date / "none: impact analysis is PROVISIONAL">
+## 8.0 Impact summary
+| Measure | Count |
+|---|---|
+| Existing tables / columns affected | n |
+| Existing packages / views / triggers / APEX pages affected | n |
+| New objects proposed | n |
+| Schemas touched | HRD, … |
+| High-risk items | n |
+| Names from the MoM not found in schema | n |
 ## 8.1 Business impact
 | ID | Area / department / process | Impact | Related FR | Patient-safety relevant (Y/N) |
 ## 8.2 System impact
@@ -70,6 +80,9 @@ repeat them in the Markdown.
 | ID | Table / column / object | Change type | Description | Dependent objects | Data migration | Related FR | Evidence | Confidence |
 ## 8.4 Risks
 | Risk | Likelihood | Impact | Mitigation |
+## 8.5 Not found in schema
+| Name used in MoM | Searched where | Result | Action (Q-NN / NEW) |
+<!-- /highlight -->
 
 # 9. Assumptions, constraints and dependencies
 ## 9.1 Assumptions

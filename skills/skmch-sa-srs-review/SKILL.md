@@ -14,8 +14,11 @@ Read `references/sdlc-conventions.md` first.
 
 ## Inputs
 - **Required:** the SRS (.docx, .pdf or text).
-- **Strongly recommended:** the original MoM (to check coverage), HRD system context (to
-  verify impact analysis).
+- **Strongly recommended:** the original MoM (to check coverage).
+- **Schema (always looked for):** schema files or a zip the user attached, the local
+  folder `D:\SKM_SCHEMA`, or the `skmch-hrd-system-context` skill (conventions §7).
+  The review always verifies the SRS impact analysis against the schema. Never ask the
+  user to query the database.
 - **Optional:** reviewer's own comments to apply, earlier review report (for re-review).
 
 If the MoM isn't available, say so, skip the MoM-coverage checks (don't fake them), and
@@ -54,8 +57,11 @@ This is the SA's value-add. Go through checklist §C:
 - Integration side-effects: payroll, attendance devices, HIS, finance/ERP, reporting and
   BI extracts.
 
-### 5. Impact analysis verification
-Load HRD system context (conventions §7). For each impact row:
+### 5. Impact analysis verification (against the schema)
+Load the schema (conventions §7). Index attached files, a zip or `D:\SKM_SCHEMA` first:
+`python <skill-dir>/scripts/build_schema_index.py <files / zip / folder> --out <temp>/schema-index --copy-src`. Check all schemas (HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID).
+If the SRS has no **Impact Analysis** section, or it isn't highlighted, that is a Major
+finding. For each impact row:
 - Does the object actually exist? Is the column name and type right?
 - **Find what the SRS missed:** other packages, views, triggers, APEX pages, reports or
   jobs that reference the same tables or columns. Search the schema index's
@@ -63,6 +69,10 @@ Load HRD system context (conventions §7). For each impact row:
 - Is any proposed new object already there under another name (duplication)?
 - Is data migration or backfill needed and not mentioned?
 Each missed dependency is a finding, with evidence (file/object where you found it).
+Share the result in chat first, as an **Impact verification summary**: items confirmed,
+items wrong, dependencies the SRS missed, names not found in the schema. Then continue
+with the report. In the revised SRS, the corrected section 8 Impact Analysis stays
+wrapped in `<!-- highlight -->` … `<!-- /highlight -->`.
 
 ### 6. Classify findings
 | Severity | Meaning |
@@ -97,7 +107,7 @@ Exactly one of:
    version-history row. If the original is a .docx and tracked changes are wanted, use a
    docx skill that supports tracked changes. Otherwise produce a clean revised document
    and a change log table.
-3. Chat summary: recommendation, finding counts by severity, top 5 Blocker/Major
+3. Chat summary: impact verification summary (step 5) first, then recommendation, finding counts by severity, top 5 Blocker/Major
    findings in one line each, and "Approval decision rests with the Solution
    Architect; record approval in the SRS approvals table (version 1.0)."
 
@@ -108,3 +118,4 @@ Exactly one of:
 - `references/examples/`: past SKMCH SA review comments, if supplied. Mirror their focus areas.
 - `templates/srs_review_template.docx`, `scripts/render_docx.py`, `scripts/check_trace.py`
   (run `check_trace.py --source <MoM or SRS> --target <SRS> --ids FR,NFR` to find ID gaps).
+- `scripts/build_schema_index.py`: indexes attached schema files, a zip or `D:\SKM_SCHEMA` (conventions §7).

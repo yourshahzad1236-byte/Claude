@@ -49,4 +49,10 @@ Purpose: …
 
 # 11. Change log
 | Date | CR | Section(s) changed | Summary | Author |
+
+<!-- highlight -->
+# 12. Impact Analysis (as released)
+> Schema source: <source, schemas covered, snapshot date>
+| IMP | Object (OWNER.NAME) | Change | Dependents affected (other modules / schemas) | Retested (TC IDs) |
+<!-- /highlight -->
 ```

@@ -11,26 +11,52 @@ The cover, version history and approvals come from the Word template.
 <!-- If SRS is not APPROVED, add: > WARNING: based on unapproved SRS; design may change. -->
 ## 1.3 Scope of this design / out of scope
 ## 1.4 Schema context used
-<!-- Source of schema info, date/version of export, or "None – PROVISIONAL". -->
+<!-- One line; details are in section 2.1. -->
 
-# 2. Solution approach
-## 2.1 Approach
-## 2.2 Alternatives considered
+<!-- highlight -->
+# 2. Impact Analysis
+<!-- Done BEFORE the design, from the schema files (conventions §7–8). Keep the highlight markers so the section renders shaded and boxed in Word. If no schema was available, start with: > WARNING: PROVISIONAL – impact analysis done without schema files. -->
+## 2.1 Schema source used
+| Source | Schemas covered | Snapshot / export date | Notes |
+<!-- e.g. "D:\SKM_SCHEMA (HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID)", attached files, or "None – PROVISIONAL". -->
+## 2.2 Impact summary
+| Measure | Count |
+|---|---|
+| Objects to create (NEW) | n |
+| Objects to modify | n |
+| Dependent objects to recompile | n |
+| Dependent objects / screens to retest | n |
+| Schemas touched | HRD, … |
+| High-risk impact items | n |
+| Objects referenced by the SRS but NOT found in schema | n |
+**Overall impact rating:** High / Medium / Low, with a one-line reason.
+## 2.3 Existing objects impacted
+| IMP | Object (OWNER.NAME) | Type | Current role | Change (Modify / Read-only / None) | Risk (H/M/L) | Related FR | Evidence (schema file / index entry) |
+## 2.4 Column-level impact
+| IMP | OWNER.TABLE.COLUMN | Current definition | Proposed change | Code that reads / writes it | Data migration needed |
+## 2.5 Dependency (where-used) analysis
+| Changed object | Dependent object | Dependent type (package / view / trigger / APEX page / job / synonym / other schema) | Impact | Action (Modify / Recompile / Retest) |
+## 2.6 Cross-schema and integration impact
+| Schema / interface | Objects involved | Impact | Action |
+<!-- e.g. PAYROLL reads HRD employee tables; DEFINITIONS synonyms; RFID attendance feeds. -->
+## 2.7 Reuse of existing code
+| Existing unit | What it does | How reused / extended |
+## 2.8 Not found in schema
+| Name used in SRS / MoM | Searched where | Result | Action (Q-NN / NEW) |
+## 2.9 Impact risks
+| IMP | Risk | Likelihood | Impact | Mitigation | Patient-safety relevant (Y/N) |
+<!-- /highlight -->
+
+# 3. Solution approach
+## 3.1 Approach
+## 3.2 Alternatives considered
 | Option | Pros | Cons | Decision |
-## 2.3 Key design decisions
+## 3.3 Key design decisions
 | ID | Decision | Rationale | Related FR/NFR |
 
-# 3. Requirements-to-design traceability
+# 4. Requirements-to-design traceability
 | Requirement | Design elements (DS-NN) | Notes |
 <!-- EVERY FR and NFR from the SRS, no exceptions. -->
-
-# 4. Current-state impact analysis
-## 4.1 Existing objects involved
-| Object | Type | Current role | Change (Modify / Read-only / None) | Evidence |
-## 4.2 Dependency analysis
-| Changed object | Dependent object | Dependent type | Impact | Action (Modify / Recompile / Retest) |
-## 4.3 Reuse
-| Existing unit | What it does | How reused / extended |
 
 # 5. Data design
 ## 5.1 Entity changes overview

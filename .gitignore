@@ -2,3 +2,13 @@ __pycache__/
 *.pyc
 .DS_Store
 ~$*
+
+# Real schema files and the snapshot generated from them stay private (this repo is public)
+schema/*
+!schema/README.md
+skills/skmch-hrd-system-context/references/tables/
+skills/skmch-hrd-system-context/references/programs/
+skills/skmch-hrd-system-context/references/schemas/
+skills/skmch-hrd-system-context/references/apex/
+skills/skmch-hrd-system-context/references/src/
+skills/skmch-hrd-system-context/references/src.zip

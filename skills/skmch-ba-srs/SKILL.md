@@ -17,7 +17,10 @@ patient data, humans approve).
 
 - **Required:** the MoM or notes (pasted text, .docx, .pdf, email, image of handwritten notes).
 - **Helpful (use if present, don't demand):** CR/ticket number, department, meeting date and
-  attendees, an earlier SRS version (for updates), related screenshots, HRD system context.
+  attendees, an earlier SRS version (for updates), related screenshots.
+- **Schema (always looked for):** schema files or a zip the user attached, the local
+  folder `D:\SKM_SCHEMA`, or the `skmch-hrd-system-context` skill (conventions §7).
+  Never ask the user to query the database: they have no direct DB access.
 
 Only stop to ask before drafting when the notes contain no identifiable requirement at
 all. Otherwise draft immediately. Record every gap as an open question `Q-NN` in the
@@ -43,8 +46,11 @@ Watch for:
 - "Same as existing X" or "like the old screen". Pull X from the system context if you
   can. Otherwise raise a `Q-NN`.
 
-### Step 2: Load HRD system context
-Follow §7 of `references/sdlc-conventions.md`. From the business nouns in the notes
+### Step 2: Load and analyse the schema (before writing any requirement)
+Follow §7 of `references/sdlc-conventions.md`. If the schema comes as attached files, a
+zip or the `D:\SKM_SCHEMA` folder, index it first:
+`python <skill-dir>/scripts/build_schema_index.py <files / zip / folder> --out <temp>/schema-index --copy-src`.
+The schema covers HRD, PAYROLL, REGISTRATION, DEFINITIONS and RFID. From the business nouns in the notes
 (employee, leave, roster, payroll, attendance, department, patient, appointment,
 billing …), search the context for matching tables, packages, views, APEX pages and
 reports. Write down what you found and where. Evidence feeds Step 5.
@@ -96,9 +102,17 @@ Name new objects with `oracle-plsql-apex-hrd-standards` conventions, marked `NEW
 Run the checklist in `references/requirement-writing.md` §6. Fix what you can. Anything
 you can't fix becomes a `Q-NN`.
 
+### Step 6a: Share the impact analysis first
+Before producing the file, post an **Impact Analysis Summary** in chat (conventions §8):
+schema source and date, counts of affected existing objects and proposed new ones,
+High-risk items, names from the MoM not found in the schema, and patient-safety relevant
+impacts. Then continue to the document in the same reply, unless a missing object or a
+High-risk item needs the BA's decision first.
+
 ### Step 7: Produce the document
 1. Write the full SRS as Markdown following `references/srs-structure.md` exactly
-   (headings, numbering, tables).
+   (headings, numbering, tables). Section 8 **Impact Analysis** stays wrapped in
+   `<!-- highlight -->` … `<!-- /highlight -->` so it is highlighted in Word.
 2. Render it to Word with the template:
    ```bash
    python <skill-dir>/scripts/render_docx.py srs.md "<CR-ID>_SRS_v0.1.docx" \
@@ -115,6 +129,7 @@ you can't fix becomes a `Q-NN`.
 
 ### Step 8: Reply in chat
 Keep it short:
+- The Impact Analysis Summary (step 6a) comes before the file links.
 - File link(s).
 - Counts: BR / FR / NFR / rules / impact items (how many confirmed vs provisional).
 - **Top open questions for the client/stakeholders** (max 10, most blocking first).
@@ -129,3 +144,4 @@ Keep it short:
 - `references/examples/`: real SKMCH MoM→SRS pairs when available. If present, match their tone, depth and section content.
 - `templates/srs_template.docx`: Word template (placeholder until the official one is supplied).
 - `scripts/render_docx.py`: Markdown → Word renderer.
+- `scripts/build_schema_index.py`: indexes attached schema files, a zip or `D:\SKM_SCHEMA` (conventions §7).

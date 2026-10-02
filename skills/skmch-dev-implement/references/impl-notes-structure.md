@@ -8,6 +8,7 @@
 | Objects created / modified | n / n |
 | Deviations from design | n |
 | Unit tests | n (all expected to PASS in DEV) |
+| Impact re-check | n confirmed / n differences from design (see section 8) |
 
 # 2. Files produced
 | # | File | Object | Change type | DS | FR |
@@ -29,4 +30,10 @@
 | Test | Program unit | Scenario | Covers (FR/AC) | Expected |
 
 # 7. Known limitations and follow-ups
+
+<!-- highlight -->
+# 8. Impact Analysis (re-verified against schema at build time)
+> Schema source: <source, schemas covered, snapshot date>
+| IMP | Object (OWNER.NAME) | Change | Dependents recompiled / retest needed | Matches design §2? (Y / N: deviation #) | Evidence |
+<!-- /highlight -->
 ```

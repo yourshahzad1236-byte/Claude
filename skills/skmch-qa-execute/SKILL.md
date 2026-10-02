@@ -18,6 +18,9 @@ Read `references/sdlc-conventions.md` first.
 - **Depending on mode:** implementation files / install scripts (for script generation),
   tester's results (sheet, pasted notes, screenshots, error messages), previous execution
   report (for re-test cycles).
+- **Schema (always looked for):** schema files or a zip the user attached, the local
+  folder `D:\SKM_SCHEMA`, or the `skmch-hrd-system-context` skill (conventions §7).
+  Never ask the user to query the database: they have no direct DB access.
 
 ## Modes (pick from what the user asks; several can be combined)
 
@@ -32,8 +35,11 @@ Read `references/sdlc-conventions.md` first.
    SELECT CASE WHEN COUNT(*) = 0 THEN 'PASS' ELSE 'FAIL' END AS TC_007, COUNT(*) AS FOUND
    FROM   HRD.<request_table> WHERE EMPLOYEE_ID = :emp_test_014;
    ```
-   Only use table and column names from the design, the implementation or the schema
-   context. Mark any guessed name `-- VERIFY NAME`.
+   Load the schema first (conventions §7; index attached files, a zip or
+   `D:\SKM_SCHEMA` with `python <skill-dir>/scripts/build_schema_index.py <files / zip / folder> --out <temp>/schema-index --copy-src`) and
+   check every table and column name used in a script against it. Only use names from
+   the design, the implementation or the schema. Mark any name not found `-- VERIFY NAME`.
+   Data scripts must satisfy the real constraints (NOT NULL, FKs, checks) found in the schema.
 3. **Manual run sheet:** the Execution sheet pre-filled with TC ID, Covers, Title and
    Cycle, and blank Actual/Status columns for UI tests.
 4. If a DB connection or MCP tool is actually available **and** the user explicitly asks
@@ -79,3 +85,4 @@ system documentation."
 - `references/sdlc-conventions.md`
 - `templates/test_execution_template.xlsx`, `scripts/render_xlsx.py`, `scripts/check_trace.py`
 - `references/examples/`: real SKMCH execution/defect sheets when available.
+- `scripts/build_schema_index.py`: indexes attached schema files, a zip or `D:\SKM_SCHEMA` (conventions §7).

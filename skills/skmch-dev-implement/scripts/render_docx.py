@@ -8,7 +8,9 @@ The template is any .docx that contains:
 
 Supported Markdown: '#'..'####' headings, paragraphs, '-'/'*' bullets (nested by
 2-space indent), '1.' numbered lists, pipe tables, fenced ``` code blocks,
-'> ' notes, **bold**, *italic*, `code`, and '<!-- pagebreak -->'.
+'> ' notes, **bold**, *italic*, `code`, '<!-- pagebreak -->', and
+'<!-- highlight -->' ... '<!-- /highlight -->', which renders everything between the
+markers (headings, text, tables) shaded and boxed, e.g. the Impact Analysis section.
 
 Usage:
   python render_docx.py content.md out.docx --template templates/srs_template.docx \
@@ -32,6 +34,9 @@ except ImportError:
 
 INLINE = re.compile(r"(\*\*[^*]+\*\*|`[^`]+`|\*[^*\s][^*]*\*)")
 TOKEN = re.compile(r"\{\{([A-Z0-9_]+)\}\}")
+HIGHLIGHT_FILL = "FFF2CC"      # light amber background for highlighted content
+HIGHLIGHT_HEAD = "F4B183"      # stronger amber for highlighted table headers
+HIGHLIGHT_BORDER = "C55A11"    # dark orange border
 
 
 def style_or_default(doc, name, fallback="Normal"):
@@ -65,6 +70,25 @@ def shade(cell, hex_fill):
     shd.set(qn("w:color"), "auto")
     shd.set(qn("w:fill"), hex_fill)
     tc_pr.append(shd)
+
+
+def highlight_paragraph(paragraph):
+    """Shade a paragraph and draw a box border around it."""
+    p_pr = paragraph._p.get_or_add_pPr()
+    borders = OxmlElement("w:pBdr")
+    for side in ("top", "left", "bottom", "right"):
+        b = OxmlElement(f"w:{side}")
+        b.set(qn("w:val"), "single")
+        b.set(qn("w:sz"), "12" if side == "left" else "4")
+        b.set(qn("w:space"), "4")
+        b.set(qn("w:color"), HIGHLIGHT_BORDER)
+        borders.append(b)
+    p_pr.append(borders)
+    shd = OxmlElement("w:shd")
+    shd.set(qn("w:val"), "clear")
+    shd.set(qn("w:color"), "auto")
+    shd.set(qn("w:fill"), HIGHLIGHT_FILL)
+    p_pr.append(shd)
 
 
 def replace_tokens_in_paragraph(paragraph, meta):
@@ -102,6 +126,7 @@ class Renderer:
     def __init__(self, doc, anchor):
         self.doc = doc
         self.anchor = anchor  # paragraph to insert before (None = append)
+        self.highlight = False  # inside <!-- highlight --> ... <!-- /highlight -->
 
     def _place(self, element):
         if self.anchor is not None:
@@ -110,12 +135,16 @@ class Renderer:
     def paragraph(self, text="", style="Normal"):
         p = self.doc.add_paragraph(style=style_or_default(self.doc, style))
         add_inline(p, text)
+        if self.highlight and text:
+            highlight_paragraph(p)
         self._place(p._p)
         return p
 
     def heading(self, text, level):
         p = self.doc.add_paragraph(style=style_or_default(self.doc, f"Heading {level}"))
         add_inline(p, text)
+        if self.highlight:
+            highlight_paragraph(p)
         self._place(p._p)
 
     def code(self, lines):
@@ -124,6 +153,8 @@ class Renderer:
             run = p.add_run(line)
             run.font.name = "Consolas"
             run.font.size = Pt(8.5)
+            if self.highlight:
+                highlight_paragraph(p)
             self._place(p._p)
 
     def note(self, text):
@@ -131,6 +162,8 @@ class Renderer:
         run = p.add_run(text)
         run.italic = True
         run.font.color.rgb = RGBColor(0x55, 0x55, 0x55)
+        if self.highlight:
+            highlight_paragraph(p)
 
     def pagebreak(self):
         p = self.doc.add_paragraph()
@@ -151,7 +184,9 @@ class Renderer:
                     if i == 0:
                         run.bold = True
                 if i == 0:
-                    shade(cell, "D9E2F3")
+                    shade(cell, HIGHLIGHT_HEAD if self.highlight else "D9E2F3")
+                elif self.highlight:
+                    shade(cell, HIGHLIGHT_FILL)
         self._place(t._tbl)
         # spacer after table
         self.paragraph("")
@@ -173,6 +208,15 @@ def render(md, r):
             continue
         if stripped == "<!-- pagebreak -->":
             r.pagebreak(); i += 1; continue
+        if stripped == "<!-- highlight -->":
+            r.highlight = True; i += 1; continue
+        if stripped == "<!-- /highlight -->":
+            r.highlight = False; i += 1; continue
+        if stripped.startswith("<!--"):
+            # authoring comments are not rendered
+            while i < len(lines) and "-->" not in lines[i]:
+                i += 1
+            i += 1; continue
         if stripped.startswith("```"):
             block = []
             i += 1

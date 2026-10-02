@@ -22,8 +22,26 @@ Read first:
   rewrite an existing package from memory.** If the current source isn't available, produce
   only the delta (new procedures plus exact instructions for where they go) and say so.
 - **Optional:** the SRS (for acceptance criteria and unit tests), the repo's existing folder layout.
+- **Schema (always looked for):** schema files or a zip the user attached, the local
+  folder `D:\SKM_SCHEMA`, or the `skmch-hrd-system-context` skill (conventions §7).
+  Never ask the user to query the database: they have no direct DB access.
+  The current source of MODIFIED objects is usually in the schema files: take it from there.
 
 ## Workflow
+
+### 0. Schema check and impact re-verification (before writing any code)
+Load the schema (conventions §7). Index attached files, a zip or `D:\SKM_SCHEMA` first:
+`python <skill-dir>/scripts/build_schema_index.py <files / zip / folder> --out <temp>/schema-index --copy-src`. Then, for every object in the design's change inventory:
+- Confirm that objects marked existing really exist, with the same columns, types and
+  signatures as the design assumes. Get their **current source** from the schema files.
+- Confirm that objects marked NEW don't already exist (name clash) in any schema.
+- Re-check dependents (where-used) of every modified table, column and package across
+  HRD, PAYROLL, REGISTRATION, DEFINITIONS and RFID, against the design's §2.5. Anything
+  the design missed is a **deviation**.
+Post an **Impact re-check summary** in chat before the code: confirmed items,
+differences from the design, extra dependents to recompile/retest. Stop and ask if the
+schema contradicts the design in a way that changes the code (e.g. a column the design
+modifies is used by PAYROLL code the design didn't list).
 
 ### 1. Build the task list from the design's Change inventory (§11)
 One task per row. Add any object the design forgot but you need (for example a sequence
@@ -84,7 +102,7 @@ python <skill-dir>/scripts/render_docx.py impl.md "<CR-ID>_ImplNotes_v1.docx" \
 ```
 
 ### 7. Reply in chat
-Files produced (tree). Deviations from design (all of them). What the developer must do
+The impact re-check summary (step 0) first. Then files produced (tree). Deviations from design (all of them). What the developer must do
 manually (APEX builder steps, compile in DEV, run tests). Reminder: "Scripts are not
 executed by Claude. Run in DEV first, then code review before promotion."
 
@@ -94,3 +112,4 @@ executed by Claude. Run in DEV first, then code review before promotion."
 - `references/impl-notes-structure.md`: implementation notes layout.
 - `references/examples/`: real SKMCH code samples when available. Match their style exactly.
 - `templates/impl_notes_template.docx`, `scripts/render_docx.py`, `scripts/check_trace.py`
+- `scripts/build_schema_index.py`: indexes attached schema files, a zip or `D:\SKM_SCHEMA` (conventions §7).

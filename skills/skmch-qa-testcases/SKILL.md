@@ -17,6 +17,9 @@ Read `references/sdlc-conventions.md` and `references/test-design.md` first.
 - **Optional:** the design doc (adds screen names, error messages and codes; use it to
   sharpen expected results, never to replace SRS-based expectations), existing regression
   suites, the SRS review report.
+- **Schema (always looked for):** schema files or a zip the user attached, the local
+  folder `D:\SKM_SCHEMA`, or the `skmch-hrd-system-context` skill (conventions §7).
+  Never ask the user to query the database: they have no direct DB access.
 
 ## Workflow
 
@@ -38,7 +41,13 @@ Per NFR: a concrete, measurable test (performance with stated volume, audit reco
 check, access denial, availability/timeout behaviour). Anything not testable by QA
 (e.g. 24×7 availability) gets `Type = Review/Inspection` with how it will be verified.
 Also add a **regression** set for existing functions listed in the SRS impact analysis
-(existing screens, reports and interfaces that touch changed tables).
+(existing screens, reports and interfaces that touch changed tables). **Build it from
+the schema, not only from the SRS:** load the schema (conventions §7; index attached
+files, a zip or `D:\SKM_SCHEMA` with `python <skill-dir>/scripts/build_schema_index.py <files / zip / folder> --out <temp>/schema-index --copy-src`), and for every
+table and column the change touches, add regression tests for the packages, views,
+triggers, reports and other-schema code (PAYROLL, REGISTRATION, DEFINITIONS, RFID) in
+its "Referenced by" list. Mention the regression scope (count of dependents found) in
+the chat summary.
 
 ### 3. Write each test case
 Columns (from the template): TC ID, Covers, Module / Screen, Title, Type
@@ -83,3 +92,4 @@ is ready, use skmch-qa-execute to generate scripts and record results."
 - `references/test-design.md`: techniques, healthcare-specific scenarios, examples.
 - `references/examples/`: real SKMCH test case sheets when available. Match their columns and style.
 - `templates/testcases_template.xlsx`, `scripts/render_xlsx.py`, `scripts/check_trace.py`
+- `scripts/build_schema_index.py`: indexes attached schema files, a zip or `D:\SKM_SCHEMA` (conventions §7).

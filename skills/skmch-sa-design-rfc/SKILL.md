@@ -21,32 +21,61 @@ Read first:
 - **Required:** the SRS. Check its status. If it is not APPROVED, continue, but put a
   prominent warning in the design ("Based on SRS vX in status DRAFT; design may change")
   and mention it in chat.
-- **Required for real impact analysis:** HRD system context (conventions §7). Without it
-  the design is still produced, but every existing-object reference is `PROVISIONAL`
-  and the change inventory carries a "verify against schema" task.
+- **Required for real impact analysis:** the schema files (conventions §7): schema
+  files or a zip the user attached, the local folder `D:\SKM_SCHEMA`, or the
+  `skmch-hrd-system-context` skill. The schema covers HRD, PAYROLL, REGISTRATION,
+  DEFINITIONS and RFID, so check cross-schema use too. Without schema files the design is
+  still produced, but every existing-object reference is `PROVISIONAL`, section 2 starts
+  with a PROVISIONAL warning, and the change inventory carries a "verify against schema"
+  task.
 - **Optional:** SRS review report (resolve its design-relevant findings), existing
   package/APEX source the user attaches, the architect's preferred approach.
 
 ## Workflow
 
+The order is fixed: **schema → impact analysis → share impact analysis → design document.**
+Never write the design before the impact analysis is done and shown to the user.
+
 ### 1. Understand the requirement set
 List every FR, NFR and RULE with a one-line interpretation. Mark items that are unclear
-enough to block design as `Q-NN`. Never design around a guess silently.
+enough to block design as `Q-NN`. Never design around a guess silently. Write down every
+table, column, screen, package or report name the SRS mentions. These are the search
+terms for step 2.
 
-### 2. Code-level impact analysis (the core of this document)
-For every business entity and requirement, locate the current implementation in the
-schema context:
-- Tables and columns involved (exact names and data types from the schema). Current row
-  volume if known.
-- **Dependents:** views, triggers, packages/procedures/functions, APEX pages/processes,
-  reports, scheduled jobs (DBMS_SCHEDULER) and external interfaces that read or write
-  those tables and columns. Use the schema index "referenced by" lists and grep the
-  sources for the table name, column name and synonyms.
-- Existing program units that already do part of the job. **Reuse or extend before
-  creating new.**
-- Constraints/indexes that will be affected by the change.
-Record each impacted object with evidence (file path / index entry). Every modified
-object also gets a "dependents to retest/recompile" list.
+### 2. Load and analyse the schema (always first)
+1. Find the schema (conventions §7). For attached files, a zip or `D:\SKM_SCHEMA`, index
+   them first:
+   `python <skill-dir>/scripts/build_schema_index.py <files / zip / folder> --out <temp>/schema-index --copy-src`.
+   Read `INDEX.md`, then `schemas/<OWNER>.md`, then only the table and program files
+   you need. Grep the raw source (`<temp>/schema-index/src` or the folder) for column
+   names and literals that the index can't show.
+2. For every SRS entity and requirement, locate the current implementation:
+   - Tables and columns involved (exact `OWNER.TABLE.COLUMN`, data types, keys,
+     constraints, indexes, triggers).
+   - **Dependents (where-used):** views, triggers, packages/procedures/functions, APEX
+     pages, reports, jobs, synonyms, and code in **other schemas** (PAYROLL, REGISTRATION,
+     DEFINITIONS, RFID) that read or write those tables and columns. Use each table
+     file's "Referenced by" list and grep the source.
+   - Existing program units that already do part of the job. **Reuse or extend before
+     creating new.**
+   - Names from the SRS that are **not found** in the schema.
+3. Record each impacted object as `IMP-NN` with change type, risk (High/Medium/Low),
+   related FR and evidence (schema file / index entry). Every modified object gets a
+   "dependents to recompile/retest" list.
+
+### 2a. Share the impact analysis BEFORE the design
+Post an **Impact Analysis Summary** in chat before creating any file:
+- Schema source, schemas covered and snapshot date.
+- Counts: objects to create, modify, recompile and retest; schemas touched.
+- A table of the High-risk impact items, with evidence.
+- Names from the SRS not found in the schema, and the proposed action.
+- Patient-safety relevant impacts.
+- Overall impact rating (High / Medium / Low) with a one-line reason.
+
+Then **stop and ask** if an object the SRS relies on is missing from the schema, or a
+High-risk impact needs an architect decision (e.g. change a column used by PAYROLL
+programs). Otherwise say "Proceeding to the design document" and continue in the same
+reply.
 
 ### 3. Design decisions
 - Choose the approach. For non-trivial choices, record alternatives considered and why
@@ -65,6 +94,9 @@ object also gets a "dependents to retest/recompile" list.
 
 ### 4. Write the design
 Follow `references/design-structure.md` exactly. Key rules:
+- **Section 2 is the Impact Analysis**, built from step 2 and wrapped in
+  `<!-- highlight -->` … `<!-- /highlight -->` so it renders shaded and boxed in Word.
+  It must match what you showed in chat.
 - Every design element has an ID `DS-NN` and lists the FR/NFR/RULE IDs it satisfies.
   The traceability table must cover **every** FR and NFR: either a DS-NN, or "No design
   change needed: reason".
@@ -86,7 +118,9 @@ Follow `references/design-structure.md` exactly. Key rules:
 
 ### 5. Self-check before output
 - [ ] `python scripts/check_trace.py --source <SRS> --target design.md --ids FR,NFR` reports no missing IDs.
+- [ ] Section 2 Impact Analysis is present, highlighted, and lists the schema source and date.
 - [ ] Every object named as existing has evidence. Everything else is `NEW` or `PROVISIONAL`.
+- [ ] Cross-schema dependents (PAYROLL, REGISTRATION, DEFINITIONS, RFID) were checked.
 - [ ] All new names comply with HRD standards (prefixes/suffixes, `_SEQ`, `TRG_…_BI`, `IDX_`, `VW_`).
 - [ ] Every modified table lists its dependents to retest.
 - [ ] DDL has rollback. Migration is re-runnable or guarded.
@@ -105,7 +139,7 @@ Also save the DDL and rollback as separate `.sql` files (`<CR-ID>_01_ddl.sql`,
 `<CR-ID>_99_rollback.sql`) so the developer can start from them.
 
 ### 7. Reply in chat
-File links. Counts (DS elements, new/modified tables, program units, APEX pages, files in
+The Impact Analysis Summary comes first (step 2a), then: file links. Counts (DS elements, new/modified tables, program units, APEX pages, files in
 change inventory). **Top risks** and **open design questions**. Then: "Design is DRAFT
 pending Solution Architect approval. After approval, developers can use
 skmch-dev-implement and QA can use skmch-qa-testcases (from the SRS)."
@@ -115,3 +149,4 @@ skmch-dev-implement and QA can use skmch-qa-testcases (from the SRS)."
 - `references/design-structure.md`: exact design document layout.
 - `references/examples/`: past SKMCH design docs/RFCs when available. Match their depth and style.
 - `templates/design_rfc_template.docx`, `scripts/render_docx.py`, `scripts/check_trace.py`
+- `scripts/build_schema_index.py`: indexes attached schema files, a zip or `D:\SKM_SCHEMA`.

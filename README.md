@@ -15,6 +15,21 @@ produces an SRS in Word using the hospital template.
 Humans still approve at every gate. Claude drafts, checks and traces, and never marks
 anything APPROVED.
 
+## Schema first, impact analysis first
+
+Staff have no direct database access, so every skill works from the schema export files
+(HRD, PAYROLL, REGISTRATION, DEFINITIONS, RFID):
+
+1. **Find the schema:** files or a zip attached to the chat or Project, the local folder
+   `D:\SKM_SCHEMA`, or the `skmch-hrd-system-context` skill. Attached files and the
+   folder are indexed on the fly by `scripts/build_schema_index.py`, which is inside every skill.
+2. **Analyse impact** against the schema: tables, columns, dependents (packages, views,
+   triggers, APEX pages, synonyms) and cross-schema use.
+3. **Share the Impact Analysis Summary in chat first**, then produce the document.
+4. The SRS, design doc/RFC, implementation notes and system-doc update each contain an
+   **Impact Analysis** section that is **highlighted** (shaded and boxed) in Word. In the
+   design doc it is section 2, before the solution design.
+
 ## The skills
 
 | Skill | Who uses it | Example prompt | Output |
@@ -50,18 +65,18 @@ All IDs, statuses and rules are defined once in `shared/references/sdlc-conventi
 /plugin marketplace add yourshahzad1236-byte/claude
 /plugin install skmch-sdlc@skmch
 ```
-In Claude Code, set `SKMCH_SCHEMA_DIR` to the shared schema folder so the skills can
-read the live source directly.
+In Claude Code on the SKMCH workstation the skills read the schema from `D:\SKM_SCHEMA`.
+Set `SKMCH_SCHEMA_DIR` only if the folder is somewhere else.
 
 ## Maintaining the skills
 
 | Task | How |
 |---|---|
 | Change a skill's behaviour | Edit `skills/<skill>/SKILL.md` or its `references/` |
-| Change shared rules (IDs, statuses, gates) | Edit `shared/references/sdlc-conventions.md` (never the copies inside skills) |
+| Change shared rules (IDs, statuses, gates, schema-first) | Edit `shared/references/sdlc-conventions.md` (never the copies inside skills). Shared scripts live in `shared/scripts/`. |
 | Change naming standards | Edit `skills/oracle-plsql-apex-hrd-standards/SKILL.md` |
 | Use the official hospital template | Replace `skills/<skill>/templates/<name>.docx/.xlsx` (same file name). In Word templates, put `{{BODY}}` on its own line where content goes, and use `{{DOC_ID}} {{TITLE}} {{VERSION}} {{STATUS}} {{DATE}} {{AUTHOR}} {{SOURCE}} {{CHANGE_SUMMARY}}` where those values go. Excel templates need header rows whose names match the columns in the skill. If section headings differ from the template, update the matching `references/*-structure.md`. |
-| Refresh schema knowledge | Put the schema folder in `schema/`, run `python scripts/build_schema_index.py schema --copy-src` |
+| Refresh schema knowledge | Update the exports in `D:\SKM_SCHEMA`. For a built-in snapshot (private upload only, never commit it: this repo is public), run `python shared/scripts/build_schema_index.py D:\SKM_SCHEMA --zip-src`, then `python scripts/package_skills.py`. See `schema/README.md`. |
 | Add real examples | Curate masked files from `samples/` into `skills/<skill>/references/examples/` |
 | Release | `python scripts/package_skills.py`, commit, re-upload the changed `dist/*.skill` files |
 

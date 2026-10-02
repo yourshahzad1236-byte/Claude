@@ -62,7 +62,7 @@ this file can be updated.
 ## 8. Scripts
 - `install.sql` starts with `SET DEFINE OFF`, `WHENEVER SQLERROR EXIT FAILURE ROLLBACK`, `SPOOL <CR-ID>_install.log`.
 - Recompile invalid objects at the end (`DBMS_UTILITY.COMPILE_SCHEMA` only if the DBA
-  allows it; otherwise list `ALTER … COMPILE` for dependents from the design §4.2).
+  allows it; otherwise list `ALTER … COMPILE` for dependents from the design §2.5).
 - End with a verification query listing the new objects and their status.
 
 ## 9. Self-review checklist

@@ -24,6 +24,13 @@ and the approval gate. Keep it short. Useful routing table:
 
 If the user has already given the input the next step needs, offer to do it right away.
 
+Every stage starts from the schema (conventions §7–8): the skills look for schema files
+the user attached, the local folder `D:\SKM_SCHEMA`, or the `skmch-hrd-system-context`
+skill, and share the impact analysis before producing the document. If the user asks
+where to put the schema, tell them: attach the files (or a zip of `D:\SKM_SCHEMA`) to the
+conversation or the Claude Project, or on the SKMCH workstation keep them in
+`D:\SKM_SCHEMA`.
+
 ## 2. CR status and traceability audit
 When given a set of CR documents (any subset of MoM, SRS, review, design, code, test
 cases, execution report, system-doc update):
@@ -37,9 +44,13 @@ cases, execution report, system-doc update):
    - SRS → System doc: `--ids FR`
 4. Check version alignment: design cites the approved SRS version, test cases cite the same
    SRS version, the execution report covers the latest TC version.
-5. Report as a short table: Check | Result | Gaps | Action/owner. End with "Ready for
+5. Check that the SRS, design doc, implementation notes and system-doc update each have
+   a highlighted **Impact Analysis** section that cites a schema source and date, and that
+   the design's impact items are consistent with the SRS's.
+6. Report as a short table: Check | Result | Gaps | Action/owner. End with "Ready for
    <next gate>: Yes/No, because …".
 
 ## Reference files
 - `references/sdlc-conventions.md`
 - `scripts/check_trace.py`
+- `scripts/build_schema_index.py`: indexes attached schema files, a zip or `D:\SKM_SCHEMA` (conventions §7).

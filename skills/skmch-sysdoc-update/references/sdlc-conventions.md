@@ -73,7 +73,7 @@ Example: `CR-2026-014_Design_v0.1.docx`.
 1. **Don't guess.** When the input does not support a statement, record it as an
    assumption (`A-NN`) or an open question (`Q-NN`). Never state it as fact.
 2. **Don't invent schema.** Name an existing table, column, package or APEX page only
-   if it appears in the HRD system context (see §7) or in material the user supplied.
+   if it appears in the HRD schema files or system context (see §7) or in material the user supplied.
    Everything else is marked `NEW` or `TO BE CONFIRMED`.
 3. **No patient data.** Never copy patient identifiers (MR number, name, CNIC, phone,
    diagnosis) from inputs into examples or test data. Use synthetic values such as
@@ -83,20 +83,61 @@ Example: `CR-2026-014_Design_v0.1.docx`.
 6. **Standards.** Every new or changed HRD object follows the
    `oracle-plsql-apex-hrd-standards` naming conventions.
 
-## 7. Finding HRD system context (schema, packages, APEX, system docs)
+## 7. Schema first: finding HRD system context
 
-Before any impact analysis, look for context in this order and say which one you used:
-1. Files the user attached in this conversation, or the Claude Project's knowledge.
-2. The `skmch-hrd-system-context` skill, if it is available. Read its `INDEX.md` first
-   and then open only the object files you need.
-3. In Claude Code: the folder named by the `SKMCH_SCHEMA_DIR` environment variable, or
-   `schema/` in the repository.
+**Analyse the schema before producing any output.** SKMCH staff have no direct database
+access, so the schema files are the only view of what exists. Every SKMCH skill (SRS,
+review, design, code, test cases, test execution, system documentation) loads and
+searches the schema *before* writing its document. Look for context in this order and
+say which one you used (name and date of the snapshot):
 
-If none of these is available, continue, but mark every impact item `PROVISIONAL`,
-add a prominent note in the document that impact analysis was done without schema
-access, and tell the user.
+1. **Schema files the user attached** in this conversation (`.sql`, `.pks`, `.pkb`,
+   `.trg`, `.vw`, APEX `f<app>.sql`, a data-dictionary `.csv`, or a `.zip` of the
+   schema folder), or files in the Claude Project's knowledge. Index them first:
+   ```bash
+   python <skill-dir>/scripts/build_schema_index.py <attached file, .zip or folder> --out <temp>/schema-index --copy-src
+   ```
+   Then read `<temp>/schema-index/INDEX.md` and open only the object files you need.
+2. **The local schema folder `D:\SKM_SCHEMA`** (Claude Code / Claude Desktop on the
+   SKMCH workstation), or the folder in the `SKMCH_SCHEMA_DIR` environment variable if
+   it is set, or `schema/` in the repository. Index it the same way (point the script at
+   the folder) or grep it directly.
+3. The `skmch-hrd-system-context` skill, if it is available and indexed. Read its
+   `INDEX.md` first, then open only the object files you need.
 
-## 8. Healthcare-specific checks (apply at every stage)
+Rules:
+- Never ask the user to run queries against the live database to fill a gap. Work from
+  the files. If something can't be determined from them, record a `Q-NN`.
+- When attached files and the indexed snapshot disagree, the attached files win (they
+  are newer). Note the difference.
+- If none of these sources is available, continue, but mark every impact item
+  `PROVISIONAL`, put a prominent warning at the top of the Impact Analysis section, and
+  tell the user to attach the schema files (or a zip of `D:\SKM_SCHEMA`).
+
+## 8. Impact analysis comes first
+
+Impact analysis is done **before** the document is written, and its result is shown to
+the user **before** the document.
+
+1. **Analyse.** From the schema, find every table, column, constraint, index, trigger,
+   view, package/procedure/function, APEX page, scheduled job and interface that the
+   change touches, and everything that depends on those objects (where-used). Each item
+   gets an `IMP-NN` ID, a change type, a risk rating (High / Medium / Low) and evidence
+   (schema file and line, or index entry).
+2. **Share the impact analysis in chat first.** Before generating the document, post an
+   *Impact Analysis Summary*: schema source and date, counts (objects to create, modify,
+   recompile, retest), the High-risk items, objects referenced by the input but **not
+   found** in the schema, and patient-safety relevant impacts.
+3. **Stop and ask** only when the analysis finds something that changes the document:
+   an object the input relies on is not in the schema, or a High-risk impact needs a
+   human decision. Otherwise continue straight to the document in the same reply.
+4. **Highlight it in the document.** Every document that contains impact analysis (SRS,
+   design doc/RFC, implementation notes, system-doc update) has a section titled
+   **Impact Analysis**, wrapped in `<!-- highlight -->` … `<!-- /highlight -->` so
+   `render_docx.py` renders it shaded and boxed. In the design doc it is section 2,
+   straight after the overview.
+
+## 9. Healthcare-specific checks (apply at every stage)
 
 - Patient safety: can a defect here cause a clinical, medication or billing error? If
   so, flag it and require negative tests.

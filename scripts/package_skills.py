@@ -6,7 +6,7 @@ references and scripts are COPIED into each skill that needs them. Edit the orig
 shared/ (or skills/oracle-plsql-apex-hrd-standards/SKILL.md), never the copies.
 
 Usage:
-  python scripts/package_skills.py            # sync + validate + build dist/
+  python scripts/package_skills.py            # sync + validate + build dist/ (+ bundle zips)
   python scripts/package_skills.py --check    # verify copies are in sync + validate (CI); no writes
 """
 import argparse
@@ -23,14 +23,15 @@ STANDARDS = os.path.join(SKILLS, "oracle-plsql-apex-hrd-standards", "SKILL.md")
 
 # skill -> (shared references, shared scripts)
 MANIFEST = {
-    "skmch-ba-srs": (["sdlc-conventions.md", "srs-structure.md", "hrd-naming-standards.md"], ["render_docx.py"]),
-    "skmch-sa-srs-review": (["sdlc-conventions.md", "srs-structure.md", "hrd-naming-standards.md"], ["render_docx.py", "check_trace.py"]),
-    "skmch-sa-design-rfc": (["sdlc-conventions.md", "hrd-naming-standards.md"], ["render_docx.py", "check_trace.py"]),
-    "skmch-dev-implement": (["sdlc-conventions.md", "hrd-naming-standards.md"], ["render_docx.py", "check_trace.py"]),
-    "skmch-qa-testcases": (["sdlc-conventions.md"], ["render_xlsx.py", "check_trace.py"]),
-    "skmch-qa-execute": (["sdlc-conventions.md"], ["render_xlsx.py", "check_trace.py"]),
-    "skmch-sysdoc-update": (["sdlc-conventions.md"], ["render_docx.py", "check_trace.py"]),
-    "skmch-sdlc-guide": (["sdlc-conventions.md"], ["check_trace.py"]),
+    "skmch-ba-srs": (["sdlc-conventions.md", "srs-structure.md", "hrd-naming-standards.md"], ["render_docx.py", "build_schema_index.py"]),
+    "skmch-sa-srs-review": (["sdlc-conventions.md", "srs-structure.md", "hrd-naming-standards.md"], ["render_docx.py", "check_trace.py", "build_schema_index.py"]),
+    "skmch-sa-design-rfc": (["sdlc-conventions.md", "hrd-naming-standards.md"], ["render_docx.py", "check_trace.py", "build_schema_index.py"]),
+    "skmch-dev-implement": (["sdlc-conventions.md", "hrd-naming-standards.md"], ["render_docx.py", "check_trace.py", "build_schema_index.py"]),
+    "skmch-qa-testcases": (["sdlc-conventions.md"], ["render_xlsx.py", "check_trace.py", "build_schema_index.py"]),
+    "skmch-qa-execute": (["sdlc-conventions.md"], ["render_xlsx.py", "check_trace.py", "build_schema_index.py"]),
+    "skmch-sysdoc-update": (["sdlc-conventions.md"], ["render_docx.py", "check_trace.py", "build_schema_index.py"]),
+    "skmch-sdlc-guide": (["sdlc-conventions.md"], ["check_trace.py", "build_schema_index.py"]),
+    "skmch-hrd-system-context": ([], ["build_schema_index.py"]),
 }
 NAME_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,63}$")
 
@@ -113,6 +114,34 @@ def build():
                     full = os.path.join(root, fn)
                     z.write(full, os.path.join(skill, os.path.relpath(full, base)))
         print(f"built dist/{skill}.skill ({os.path.getsize(out) // 1024} KB)")
+    bundle()
+
+
+# Generated schema snapshot inside skmch-hrd-system-context (kept out of git and the plugin zip).
+PRIVATE = ("skills/skmch-hrd-system-context/references/tables/", "skills/skmch-hrd-system-context/references/programs/",
+           "skills/skmch-hrd-system-context/references/schemas/", "skills/skmch-hrd-system-context/references/apex/",
+           "skills/skmch-hrd-system-context/references/src", "schema/")
+
+
+def bundle():
+    skills_zip = os.path.join(DIST, "skmch-sdlc-all-skills.zip")
+    with zipfile.ZipFile(skills_zip, "w", zipfile.ZIP_DEFLATED) as z:
+        for f in sorted(os.listdir(DIST)):
+            if f.endswith(".skill"):
+                z.write(os.path.join(DIST, f), f)
+    plugin_zip = os.path.join(DIST, "skmch-sdlc-plugin.zip")
+    with zipfile.ZipFile(plugin_zip, "w", zipfile.ZIP_DEFLATED) as z:
+        for root, dirs, files in os.walk(ROOT):
+            dirs[:] = sorted(d for d in dirs if d not in (".git", "__pycache__", "demo"))
+            for fn in sorted(files):
+                full = os.path.join(root, fn)
+                rel = os.path.relpath(full, ROOT).replace(os.sep, "/")
+                if fn.endswith((".pyc", ".zip")) or fn == ".DS_Store" or fn.startswith("~$"):
+                    continue
+                if rel.startswith(PRIVATE) and rel != "schema/README.md":
+                    continue
+                z.write(full, rel)
+    print("built dist/skmch-sdlc-all-skills.zip and dist/skmch-sdlc-plugin.zip")
 
 
 def main():
