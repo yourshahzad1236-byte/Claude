@@ -139,7 +139,9 @@ When the user asks for a CR, or for requirements "in my template", produce the C
 per `references/cr-template.md`: Client Needs (all sub-sections), Workflow (graphical swimlane
 diagram), Functional Requirements (GUI prototype images in the SKMCH GUI template + detailed
 FRs), Business Rules/Data/Access as bullets (data items needed for development only),
-Impact Analysis as bullets (Business/System/Database, no Risks). Exclude Non-functional
+Impact Analysis as bullets (Business/System/Database, no Risks). FR blocks in the CR have no "Notes / open
+questions" line. GUI screens have no Approval History / Finalization tabs; evaluation forms
+start with an Evaluation Criteria tab. Exclude Non-functional
 Requirements, Risks, System Interfaces, Assumptions, Open Points and the appendices; give open
 questions in chat. Never use ASCII diagrams or screens.
 When the user asks for the "DD", it means the Design Document (see `cr-template.md`).

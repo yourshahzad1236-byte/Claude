@@ -1,239 +1,288 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1060" viewBox="0 0 1700 1060" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" font-family="Segoe UI, Arial, sans-serif">
 <defs><marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#455a64"/></marker></defs>
-<rect width="1700" height="1060" fill="#fff"/>
+<rect width="1700" height="1200" fill="#fff"/>
 <text x="30" y="40" font-size="22" font-weight="700" fill="#1f78a8">Probation Evaluation – ER Diagram (DB Structure)</text>
 <text x="30" y="62" font-size="13" fill="#546e7a">CR-2026-XXX-PEV · blue = NEW tables (proposed) · grey = existing HRD / DEFINITIONS tables (verified in schema) · arrow points to parent (1 → N)</text>
 <rect x="30" y="90" width="330" height="181" rx="4" fill="#f5f5f5" stroke="#78909c" stroke-width="1.6"/>
 <rect x="30" y="90" width="330" height="30" rx="4" fill="#78909c"/>
 <text x="40" y="110" font-size="13" font-weight="700" fill="#fff">HRD.INFORMATION</text>
 <text x="40" y="139" font-size="12" font-weight="700" fill="#c62828">MRNO</text>
-<text x="220" y="139" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="230" y="139" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
 <text x="352" y="139" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
 <text x="40" y="160" font-size="12" font-weight="400" fill="#263238">MANAGER_MRNO</text>
-<text x="220" y="160" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="230" y="160" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
 <text x="40" y="181" font-size="12" font-weight="400" fill="#1565c0">DEPARTMENT_ID</text>
-<text x="220" y="181" font-size="11" fill="#607d8b">VARCHAR2(7)</text>
+<text x="230" y="181" font-size="11" fill="#607d8b">VARCHAR2(7)</text>
 <text x="352" y="181" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
 <text x="40" y="202" font-size="12" font-weight="400" fill="#263238">DESIGNATION</text>
-<text x="220" y="202" font-size="11" fill="#607d8b">VARCHAR2(255)</text>
+<text x="230" y="202" font-size="11" fill="#607d8b">VARCHAR2(255)</text>
 <text x="40" y="223" font-size="12" font-weight="400" fill="#263238">JOINING_DATE</text>
-<text x="220" y="223" font-size="11" fill="#607d8b">DATE</text>
+<text x="230" y="223" font-size="11" fill="#607d8b">DATE</text>
 <text x="40" y="244" font-size="12" font-weight="400" fill="#263238">CONFIRMATION_DATE</text>
-<text x="220" y="244" font-size="11" fill="#607d8b">DATE</text>
+<text x="230" y="244" font-size="11" fill="#607d8b">DATE</text>
 <text x="40" y="265" font-size="12" font-weight="400" fill="#263238">ACTIVE</text>
-<text x="220" y="265" font-size="11" fill="#607d8b">VARCHAR2(1)</text>
+<text x="230" y="265" font-size="11" fill="#607d8b">VARCHAR2(1)</text>
 <rect x="30" y="340" width="330" height="160" rx="4" fill="#f5f5f5" stroke="#78909c" stroke-width="1.6"/>
 <rect x="30" y="340" width="330" height="30" rx="4" fill="#78909c"/>
 <text x="40" y="360" font-size="13" font-weight="700" fill="#fff">HRD.EMPLOYEE_PROBATION_HISTORY</text>
 <text x="40" y="389" font-size="12" font-weight="700" fill="#c62828">MRNO</text>
-<text x="220" y="389" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="230" y="389" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
 <text x="352" y="389" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK FK</text>
 <text x="40" y="410" font-size="12" font-weight="700" fill="#c62828">START_DATE</text>
-<text x="220" y="410" font-size="11" fill="#607d8b">DATE</text>
+<text x="230" y="410" font-size="11" fill="#607d8b">DATE</text>
 <text x="352" y="410" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
 <text x="40" y="431" font-size="12" font-weight="400" fill="#263238">END_DATE</text>
-<text x="220" y="431" font-size="11" fill="#607d8b">DATE</text>
+<text x="230" y="431" font-size="11" fill="#607d8b">DATE</text>
 <text x="40" y="452" font-size="12" font-weight="400" fill="#263238">PROBATION_PERIOD</text>
-<text x="220" y="452" font-size="11" fill="#607d8b">NUMBER(7,2)</text>
+<text x="230" y="452" font-size="11" fill="#607d8b">NUMBER(7,2)</text>
 <text x="40" y="473" font-size="12" font-weight="400" fill="#1565c0">PROBATION_REASON_ID</text>
-<text x="220" y="473" font-size="11" fill="#607d8b">VARCHAR2(3)</text>
+<text x="230" y="473" font-size="11" fill="#607d8b">VARCHAR2(3)</text>
 <text x="352" y="473" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
 <text x="40" y="494" font-size="12" font-weight="400" fill="#263238">PROBATION_STATUS</text>
-<text x="220" y="494" font-size="11" fill="#607d8b">VARCHAR2(1)</text>
+<text x="230" y="494" font-size="11" fill="#607d8b">VARCHAR2(1)</text>
 <rect x="30" y="570" width="330" height="97" rx="4" fill="#f5f5f5" stroke="#78909c" stroke-width="1.6"/>
 <rect x="30" y="570" width="330" height="30" rx="4" fill="#78909c"/>
 <text x="40" y="590" font-size="13" font-weight="700" fill="#fff">HRD.PROBATION_REASONS</text>
 <text x="40" y="619" font-size="12" font-weight="700" fill="#c62828">PROBATION_REASON_ID</text>
-<text x="220" y="619" font-size="11" fill="#607d8b">VARCHAR2(3)</text>
+<text x="230" y="619" font-size="11" fill="#607d8b">VARCHAR2(3)</text>
 <text x="352" y="619" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
 <text x="40" y="640" font-size="12" font-weight="400" fill="#263238">DESCRIPTION</text>
-<text x="220" y="640" font-size="11" fill="#607d8b">VARCHAR2(60)</text>
+<text x="230" y="640" font-size="11" fill="#607d8b">VARCHAR2(60)</text>
 <text x="40" y="661" font-size="12" font-weight="400" fill="#263238">ACTIVE</text>
-<text x="220" y="661" font-size="11" fill="#607d8b">VARCHAR2(1)</text>
+<text x="230" y="661" font-size="11" fill="#607d8b">VARCHAR2(1)</text>
 <rect x="30" y="720" width="330" height="118" rx="4" fill="#f5f5f5" stroke="#78909c" stroke-width="1.6"/>
 <rect x="30" y="720" width="330" height="30" rx="4" fill="#78909c"/>
 <text x="40" y="740" font-size="13" font-weight="700" fill="#fff">DEFINITIONS.DEPARTMENT</text>
 <text x="40" y="769" font-size="12" font-weight="700" fill="#c62828">DEPARTMENT_ID</text>
-<text x="220" y="769" font-size="11" fill="#607d8b">VARCHAR2(7)</text>
+<text x="230" y="769" font-size="11" fill="#607d8b">VARCHAR2(7)</text>
 <text x="352" y="769" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
 <text x="40" y="790" font-size="12" font-weight="400" fill="#263238">DESCRIPTION</text>
-<text x="220" y="790" font-size="11" fill="#607d8b">VARCHAR2(60)</text>
+<text x="230" y="790" font-size="11" fill="#607d8b">VARCHAR2(60)</text>
 <text x="40" y="811" font-size="12" font-weight="400" fill="#263238">DEPARTMENT_HEAD</text>
-<text x="220" y="811" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="230" y="811" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
 <text x="40" y="832" font-size="12" font-weight="400" fill="#263238">DEPARTMENT_MANAGER</text>
-<text x="220" y="832" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="230" y="832" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
 <rect x="30" y="895" width="330" height="118" rx="4" fill="#f5f5f5" stroke="#78909c" stroke-width="1.6"/>
 <rect x="30" y="895" width="330" height="30" rx="4" fill="#78909c"/>
 <text x="40" y="915" font-size="13" font-weight="700" fill="#fff">HRD.ACTING_FOR</text>
 <text x="40" y="944" font-size="12" font-weight="700" fill="#c62828">EMP_MRNO</text>
-<text x="220" y="944" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="230" y="944" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
 <text x="352" y="944" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
 <text x="40" y="965" font-size="12" font-weight="400" fill="#263238">ACTOR_MRNO</text>
-<text x="220" y="965" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="230" y="965" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
 <text x="40" y="986" font-size="12" font-weight="700" fill="#c62828">LEAVE_FROM_DATE</text>
-<text x="220" y="986" font-size="11" fill="#607d8b">DATE</text>
+<text x="230" y="986" font-size="11" fill="#607d8b">DATE</text>
 <text x="352" y="986" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
 <text x="40" y="1007" font-size="12" font-weight="400" fill="#263238">LEAVE_TO_DATE</text>
-<text x="220" y="1007" font-size="11" fill="#607d8b">DATE</text>
+<text x="230" y="1007" font-size="11" fill="#607d8b">DATE</text>
 <rect x="580" y="90" width="360" height="454" rx="4" fill="#f4f9fc" stroke="#1f78a8" stroke-width="1.6"/>
 <rect x="580" y="90" width="360" height="30" rx="4" fill="#1f78a8"/>
 <text x="590" y="110" font-size="13" font-weight="700" fill="#fff">HRD.HRD_PROBATION_EVAL_MST</text>
 <text x="590" y="139" font-size="12" font-weight="700" fill="#c62828">PROBATION_EVAL_ID</text>
-<text x="770" y="139" font-size="11" fill="#607d8b">NUMBER(12)</text>
+<text x="780" y="139" font-size="11" fill="#607d8b">NUMBER(12)</text>
 <text x="932" y="139" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
 <text x="590" y="160" font-size="12" font-weight="400" fill="#263238">EVAL_NO</text>
-<text x="770" y="160" font-size="11" fill="#607d8b">VARCHAR2(20)</text>
+<text x="780" y="160" font-size="11" fill="#607d8b">VARCHAR2(20)</text>
 <text x="932" y="160" font-size="10" font-weight="700" fill="#263238" text-anchor="end">UK</text>
 <text x="590" y="181" font-size="12" font-weight="400" fill="#1565c0">MRNO</text>
-<text x="770" y="181" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="780" y="181" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
 <text x="932" y="181" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
 <text x="590" y="202" font-size="12" font-weight="400" fill="#1565c0">PROB_START_DATE</text>
-<text x="770" y="202" font-size="11" fill="#607d8b">DATE</text>
+<text x="780" y="202" font-size="11" fill="#607d8b">DATE</text>
 <text x="932" y="202" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
 <text x="590" y="223" font-size="12" font-weight="400" fill="#263238">PROB_END_DATE</text>
-<text x="770" y="223" font-size="11" fill="#607d8b">DATE</text>
+<text x="780" y="223" font-size="11" fill="#607d8b">DATE</text>
 <text x="590" y="244" font-size="12" font-weight="400" fill="#1565c0">DEPARTMENT_ID</text>
-<text x="770" y="244" font-size="11" fill="#607d8b">VARCHAR2(7)</text>
+<text x="780" y="244" font-size="11" fill="#607d8b">VARCHAR2(7)</text>
 <text x="932" y="244" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
 <text x="590" y="265" font-size="12" font-weight="400" fill="#1565c0">EVALUATOR_MRNO</text>
-<text x="770" y="265" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="780" y="265" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
 <text x="932" y="265" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
 <text x="590" y="286" font-size="12" font-weight="400" fill="#263238">EVAL_STATUS</text>
-<text x="770" y="286" font-size="11" fill="#607d8b">VARCHAR2(2)</text>
+<text x="780" y="286" font-size="11" fill="#607d8b">VARCHAR2(2)</text>
 <text x="590" y="307" font-size="12" font-weight="400" fill="#263238">CURRENT_LEVEL_NO</text>
-<text x="770" y="307" font-size="11" fill="#607d8b">NUMBER(2)</text>
+<text x="780" y="307" font-size="11" fill="#607d8b">NUMBER(2)</text>
 <text x="590" y="328" font-size="12" font-weight="400" fill="#263238">CURRENT_APPROVER_MRNO</text>
-<text x="770" y="328" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="780" y="328" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
 <text x="590" y="349" font-size="12" font-weight="400" fill="#263238">RECOMMENDATION</text>
-<text x="770" y="349" font-size="11" fill="#607d8b">CHAR(1)</text>
+<text x="780" y="349" font-size="11" fill="#607d8b">CHAR(1)</text>
 <text x="590" y="370" font-size="12" font-weight="400" fill="#263238">EXTEND_DAYS</text>
-<text x="770" y="370" font-size="11" fill="#607d8b">NUMBER(4)</text>
-<text x="590" y="391" font-size="12" font-weight="400" fill="#263238">EVALUATOR_COMMENTS</text>
-<text x="770" y="391" font-size="11" fill="#607d8b">VARCHAR2(4000)</text>
+<text x="780" y="370" font-size="11" fill="#607d8b">NUMBER(4)</text>
+<text x="590" y="391" font-size="12" font-weight="400" fill="#263238">NON_CONFIRM_REASONS</text>
+<text x="780" y="391" font-size="11" fill="#607d8b">VARCHAR2(4000)</text>
 <text x="590" y="412" font-size="12" font-weight="400" fill="#263238">TOTAL_SCORE / OBTAINED</text>
-<text x="770" y="412" font-size="11" fill="#607d8b">NUMBER(5)</text>
+<text x="780" y="412" font-size="11" fill="#607d8b">NUMBER(5)</text>
 <text x="590" y="433" font-size="12" font-weight="400" fill="#263238">PERFORMANCE_PCT</text>
-<text x="770" y="433" font-size="11" fill="#607d8b">NUMBER(5,2)</text>
-<text x="590" y="454" font-size="12" font-weight="400" fill="#263238">DOCUMENT_ID</text>
-<text x="770" y="454" font-size="11" fill="#607d8b">VARCHAR2(15)</text>
+<text x="780" y="433" font-size="11" fill="#607d8b">NUMBER(5,2)</text>
+<text x="590" y="454" font-size="12" font-weight="400" fill="#263238">VERSION_NO</text>
+<text x="780" y="454" font-size="11" fill="#607d8b">NUMBER(6)</text>
 <text x="590" y="475" font-size="12" font-weight="400" fill="#263238">HR_DECISION</text>
-<text x="770" y="475" font-size="11" fill="#607d8b">CHAR(1)</text>
+<text x="780" y="475" font-size="11" fill="#607d8b">CHAR(1)</text>
 <text x="590" y="496" font-size="12" font-weight="400" fill="#1565c0">EXTENSION_REASON_ID</text>
-<text x="770" y="496" font-size="11" fill="#607d8b">VARCHAR2(3)</text>
+<text x="780" y="496" font-size="11" fill="#607d8b">VARCHAR2(3)</text>
 <text x="932" y="496" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
 <text x="590" y="517" font-size="12" font-weight="400" fill="#263238">HR_DECISION_BY / _DATE</text>
-<text x="770" y="517" font-size="11" fill="#607d8b">…</text>
+<text x="780" y="517" font-size="11" fill="#607d8b">…</text>
 <text x="590" y="538" font-size="12" font-weight="400" fill="#263238">+ audit columns</text>
-<text x="770" y="538" font-size="11" fill="#607d8b"></text>
-<rect x="1340" y="90" width="330" height="160" rx="4" fill="#f4f9fc" stroke="#1f78a8" stroke-width="1.6"/>
+<text x="780" y="538" font-size="11" fill="#607d8b"></text>
+<rect x="1340" y="90" width="330" height="139" rx="4" fill="#f4f9fc" stroke="#1f78a8" stroke-width="1.6"/>
 <rect x="1340" y="90" width="330" height="30" rx="4" fill="#1f78a8"/>
-<text x="1350" y="110" font-size="13" font-weight="700" fill="#fff">HRD.HRD_PROBATION_CRITERIA_MST</text>
-<text x="1350" y="139" font-size="12" font-weight="700" fill="#c62828">CRITERIA_ID</text>
-<text x="1530" y="139" font-size="11" fill="#607d8b">NUMBER(5)</text>
+<text x="1350" y="110" font-size="13" font-weight="700" fill="#fff">HRD.HRD_PROBATION_TRAINING_DTL</text>
+<text x="1350" y="139" font-size="12" font-weight="700" fill="#c62828">PROBATION_TRAINING_ID</text>
+<text x="1540" y="139" font-size="11" fill="#607d8b">NUMBER(12)</text>
 <text x="1662" y="139" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
-<text x="1350" y="160" font-size="12" font-weight="400" fill="#263238">PARAMETER_NAME</text>
-<text x="1530" y="160" font-size="11" fill="#607d8b">VARCHAR2(100)</text>
-<text x="1350" y="181" font-size="12" font-weight="400" fill="#263238">DESCRIPTION</text>
-<text x="1530" y="181" font-size="11" fill="#607d8b">VARCHAR2(500)</text>
-<text x="1350" y="202" font-size="12" font-weight="400" fill="#263238">SORT_ORDER</text>
-<text x="1530" y="202" font-size="11" fill="#607d8b">NUMBER(3)</text>
-<text x="1350" y="223" font-size="12" font-weight="400" fill="#263238">MANDATORY</text>
-<text x="1530" y="223" font-size="11" fill="#607d8b">CHAR(1)</text>
-<text x="1350" y="244" font-size="12" font-weight="400" fill="#263238">ACTIVE</text>
-<text x="1530" y="244" font-size="11" fill="#607d8b">CHAR(1)</text>
-<rect x="960" y="90" width="330" height="139" rx="4" fill="#f4f9fc" stroke="#1f78a8" stroke-width="1.6"/>
+<text x="1350" y="160" font-size="12" font-weight="400" fill="#1565c0">PROBATION_EVAL_ID</text>
+<text x="1540" y="160" font-size="11" fill="#607d8b">NUMBER(12)</text>
+<text x="1662" y="160" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
+<text x="1350" y="181" font-size="12" font-weight="400" fill="#263238">SORT_ORDER</text>
+<text x="1540" y="181" font-size="11" fill="#607d8b">NUMBER(3)</text>
+<text x="1350" y="202" font-size="12" font-weight="400" fill="#263238">TRAINING_NEED</text>
+<text x="1540" y="202" font-size="11" fill="#607d8b">VARCHAR2(500)</text>
+<text x="1350" y="223" font-size="12" font-weight="400" fill="#263238">REMARKS</text>
+<text x="1540" y="223" font-size="11" fill="#607d8b">VARCHAR2(1000)</text>
+<rect x="960" y="90" width="330" height="160" rx="4" fill="#f4f9fc" stroke="#1f78a8" stroke-width="1.6"/>
 <rect x="960" y="90" width="330" height="30" rx="4" fill="#1f78a8"/>
-<text x="970" y="110" font-size="13" font-weight="700" fill="#fff">HRD.HRD_PROBATION_EVAL_DTL</text>
-<text x="970" y="139" font-size="12" font-weight="700" fill="#c62828">PROBATION_EVAL_DTL_ID</text>
-<text x="1150" y="139" font-size="11" fill="#607d8b">NUMBER(12)</text>
+<text x="970" y="110" font-size="13" font-weight="700" fill="#fff">HRD.HRD_PROBATION_ASSIGNMENT_DTL</text>
+<text x="970" y="139" font-size="12" font-weight="700" fill="#c62828">PROBATION_ASSIGNMENT_ID</text>
+<text x="1160" y="139" font-size="11" fill="#607d8b">NUMBER(12)</text>
 <text x="1282" y="139" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
 <text x="970" y="160" font-size="12" font-weight="400" fill="#1565c0">PROBATION_EVAL_ID</text>
-<text x="1150" y="160" font-size="11" fill="#607d8b">NUMBER(12)</text>
+<text x="1160" y="160" font-size="11" fill="#607d8b">NUMBER(12)</text>
 <text x="1282" y="160" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
-<text x="970" y="181" font-size="12" font-weight="400" fill="#1565c0">CRITERIA_ID</text>
-<text x="1150" y="181" font-size="11" fill="#607d8b">NUMBER(5)</text>
-<text x="1282" y="181" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
-<text x="970" y="202" font-size="12" font-weight="400" fill="#263238">RATING</text>
-<text x="1150" y="202" font-size="11" fill="#607d8b">NUMBER(1)</text>
-<text x="970" y="223" font-size="12" font-weight="400" fill="#263238">REMARKS</text>
-<text x="1150" y="223" font-size="11" fill="#607d8b">VARCHAR2(1000)</text>
+<text x="970" y="181" font-size="12" font-weight="400" fill="#263238">SORT_ORDER</text>
+<text x="1160" y="181" font-size="11" fill="#607d8b">NUMBER(3)</text>
+<text x="970" y="202" font-size="12" font-weight="400" fill="#263238">ASSIGNMENT_DESC</text>
+<text x="1160" y="202" font-size="11" fill="#607d8b">VARCHAR2(500)</text>
+<text x="970" y="223" font-size="12" font-weight="400" fill="#263238">RATING</text>
+<text x="1160" y="223" font-size="11" fill="#607d8b">NUMBER(1)</text>
+<text x="970" y="244" font-size="12" font-weight="400" fill="#263238">REMARKS</text>
+<text x="1160" y="244" font-size="11" fill="#607d8b">VARCHAR2(1000)</text>
 <rect x="960" y="330" width="330" height="202" rx="4" fill="#f4f9fc" stroke="#1f78a8" stroke-width="1.6"/>
 <rect x="960" y="330" width="330" height="30" rx="4" fill="#1f78a8"/>
 <text x="970" y="350" font-size="13" font-weight="700" fill="#fff">HRD.HRD_PROBATION_APPROVAL_TRN</text>
 <text x="970" y="379" font-size="12" font-weight="700" fill="#c62828">PROBATION_APPROVAL_ID</text>
-<text x="1150" y="379" font-size="11" fill="#607d8b">NUMBER(12)</text>
+<text x="1160" y="379" font-size="11" fill="#607d8b">NUMBER(12)</text>
 <text x="1282" y="379" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
 <text x="970" y="400" font-size="12" font-weight="400" fill="#1565c0">PROBATION_EVAL_ID</text>
-<text x="1150" y="400" font-size="11" fill="#607d8b">NUMBER(12)</text>
+<text x="1160" y="400" font-size="11" fill="#607d8b">NUMBER(12)</text>
 <text x="1282" y="400" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
 <text x="970" y="421" font-size="12" font-weight="400" fill="#263238">LEVEL_NO</text>
-<text x="1150" y="421" font-size="11" fill="#607d8b">NUMBER(2)</text>
+<text x="1160" y="421" font-size="11" fill="#607d8b">NUMBER(2)</text>
 <text x="970" y="442" font-size="12" font-weight="400" fill="#263238">APPROVER_MRNO</text>
-<text x="1150" y="442" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="1160" y="442" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
 <text x="970" y="463" font-size="12" font-weight="400" fill="#263238">ACTING_FOR_MRNO</text>
-<text x="1150" y="463" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="1160" y="463" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
 <text x="970" y="484" font-size="12" font-weight="400" fill="#263238">ACTION</text>
-<text x="1150" y="484" font-size="11" fill="#607d8b">CHAR(1)</text>
+<text x="1160" y="484" font-size="11" fill="#607d8b">CHAR(1)</text>
 <text x="970" y="505" font-size="12" font-weight="400" fill="#263238">ACTION_DATE</text>
-<text x="1150" y="505" font-size="11" fill="#607d8b">DATE</text>
+<text x="1160" y="505" font-size="11" fill="#607d8b">DATE</text>
 <text x="970" y="526" font-size="12" font-weight="400" fill="#263238">COMMENTS</text>
-<text x="1150" y="526" font-size="11" fill="#607d8b">VARCHAR2(4000)</text>
+<text x="1160" y="526" font-size="11" fill="#607d8b">VARCHAR2(4000)</text>
 <rect x="960" y="600" width="330" height="202" rx="4" fill="#f4f9fc" stroke="#1f78a8" stroke-width="1.6"/>
 <rect x="960" y="600" width="330" height="30" rx="4" fill="#1f78a8"/>
 <text x="970" y="620" font-size="13" font-weight="700" fill="#fff">HRD.HRD_PROBATION_EVAL_HIS</text>
 <text x="970" y="649" font-size="12" font-weight="700" fill="#c62828">PROBATION_EVAL_HIS_ID</text>
-<text x="1150" y="649" font-size="11" fill="#607d8b">NUMBER(12)</text>
+<text x="1160" y="649" font-size="11" fill="#607d8b">NUMBER(12)</text>
 <text x="1282" y="649" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
 <text x="970" y="670" font-size="12" font-weight="400" fill="#1565c0">PROBATION_EVAL_ID</text>
-<text x="1150" y="670" font-size="11" fill="#607d8b">NUMBER(12)</text>
+<text x="1160" y="670" font-size="11" fill="#607d8b">NUMBER(12)</text>
 <text x="1282" y="670" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
 <text x="970" y="691" font-size="12" font-weight="400" fill="#263238">OLD_STATUS</text>
-<text x="1150" y="691" font-size="11" fill="#607d8b">VARCHAR2(2)</text>
+<text x="1160" y="691" font-size="11" fill="#607d8b">VARCHAR2(2)</text>
 <text x="970" y="712" font-size="12" font-weight="400" fill="#263238">NEW_STATUS</text>
-<text x="1150" y="712" font-size="11" fill="#607d8b">VARCHAR2(2)</text>
+<text x="1160" y="712" font-size="11" fill="#607d8b">VARCHAR2(2)</text>
 <text x="970" y="733" font-size="12" font-weight="400" fill="#263238">ACTION</text>
-<text x="1150" y="733" font-size="11" fill="#607d8b">VARCHAR2(30)</text>
+<text x="1160" y="733" font-size="11" fill="#607d8b">VARCHAR2(30)</text>
 <text x="970" y="754" font-size="12" font-weight="400" fill="#263238">ACTION_BY</text>
-<text x="1150" y="754" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="1160" y="754" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
 <text x="970" y="775" font-size="12" font-weight="400" fill="#263238">ACTION_DATE</text>
-<text x="1150" y="775" font-size="11" fill="#607d8b">DATE</text>
+<text x="1160" y="775" font-size="11" fill="#607d8b">DATE</text>
 <text x="970" y="796" font-size="12" font-weight="400" fill="#263238">COMMENTS</text>
-<text x="1150" y="796" font-size="11" fill="#607d8b">VARCHAR2(4000)</text>
+<text x="1160" y="796" font-size="11" fill="#607d8b">VARCHAR2(4000)</text>
 <rect x="580" y="640" width="360" height="160" rx="4" fill="#f4f9fc" stroke="#1f78a8" stroke-width="1.6"/>
 <rect x="580" y="640" width="360" height="30" rx="4" fill="#1f78a8"/>
 <text x="590" y="660" font-size="13" font-weight="700" fill="#fff">HRD.HRD_PROBATION_HIERARCHY_MST</text>
 <text x="590" y="689" font-size="12" font-weight="700" fill="#c62828">PROBATION_HIERARCHY_ID</text>
-<text x="770" y="689" font-size="11" fill="#607d8b">NUMBER(6)</text>
+<text x="780" y="689" font-size="11" fill="#607d8b">NUMBER(6)</text>
 <text x="932" y="689" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
 <text x="590" y="710" font-size="12" font-weight="400" fill="#1565c0">DEPARTMENT_ID</text>
-<text x="770" y="710" font-size="11" fill="#607d8b">VARCHAR2(7)</text>
+<text x="780" y="710" font-size="11" fill="#607d8b">VARCHAR2(7)</text>
 <text x="932" y="710" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
 <text x="590" y="731" font-size="12" font-weight="400" fill="#263238">LEVEL_NO</text>
-<text x="770" y="731" font-size="11" fill="#607d8b">NUMBER(2)</text>
+<text x="780" y="731" font-size="11" fill="#607d8b">NUMBER(2)</text>
 <text x="590" y="752" font-size="12" font-weight="400" fill="#263238">APPROVER_SOURCE</text>
-<text x="770" y="752" font-size="11" fill="#607d8b">VARCHAR2(3)</text>
+<text x="780" y="752" font-size="11" fill="#607d8b">VARCHAR2(3)</text>
 <text x="590" y="773" font-size="12" font-weight="400" fill="#263238">APPROVER_MRNO</text>
-<text x="770" y="773" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="780" y="773" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
 <text x="590" y="794" font-size="12" font-weight="400" fill="#263238">ACTIVE</text>
-<text x="770" y="794" font-size="11" fill="#607d8b">CHAR(1)</text>
+<text x="780" y="794" font-size="11" fill="#607d8b">CHAR(1)</text>
+<rect x="1340" y="612" width="330" height="160" rx="4" fill="#f5f5f5" stroke="#78909c" stroke-width="1.6"/>
+<rect x="1340" y="612" width="330" height="30" rx="4" fill="#78909c"/>
+<text x="1350" y="632" font-size="13" font-weight="700" fill="#fff">HRD.EMPLOYEE_PROBATION_ATTACHMENT</text>
+<text x="1350" y="661" font-size="12" font-weight="700" fill="#c62828">SR_NO</text>
+<text x="1540" y="661" font-size="11" fill="#607d8b">NUMBER</text>
+<text x="1662" y="661" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
+<text x="1350" y="682" font-size="12" font-weight="700" fill="#c62828">MRNO</text>
+<text x="1540" y="682" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<text x="1662" y="682" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK FK</text>
+<text x="1350" y="703" font-size="12" font-weight="400" fill="#1565c0">START_DATE</text>
+<text x="1540" y="703" font-size="11" fill="#607d8b">DATE</text>
+<text x="1662" y="703" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
+<text x="1350" y="724" font-size="12" font-weight="400" fill="#263238">DOCUMENT_ID</text>
+<text x="1540" y="724" font-size="11" fill="#607d8b">VARCHAR2(15)</text>
+<text x="1350" y="745" font-size="12" font-weight="400" fill="#263238">DOCUMENT_DESCRIPTION</text>
+<text x="1540" y="745" font-size="11" fill="#607d8b">VARCHAR2(4000)</text>
+<text x="1350" y="766" font-size="12" font-weight="400" fill="#263238">ATTACHED_BY</text>
+<text x="1540" y="766" font-size="11" fill="#607d8b">VARCHAR2(14)</text>
+<rect x="1340" y="850" width="330" height="139" rx="4" fill="#f4f9fc" stroke="#1f78a8" stroke-width="1.6"/>
+<rect x="1340" y="850" width="330" height="30" rx="4" fill="#1f78a8"/>
+<text x="1350" y="870" font-size="13" font-weight="700" fill="#fff">HRD.HRD_PROBATION_CRITERIA_MST</text>
+<text x="1350" y="899" font-size="12" font-weight="700" fill="#c62828">CRITERIA_ID</text>
+<text x="1540" y="899" font-size="11" fill="#607d8b">NUMBER(5)</text>
+<text x="1662" y="899" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
+<text x="1350" y="920" font-size="12" font-weight="400" fill="#263238">PARAMETER_NAME</text>
+<text x="1540" y="920" font-size="11" fill="#607d8b">VARCHAR2(100)</text>
+<text x="1662" y="920" font-size="10" font-weight="700" fill="#263238" text-anchor="end">UK</text>
+<text x="1350" y="941" font-size="12" font-weight="400" fill="#263238">DESCRIPTION</text>
+<text x="1540" y="941" font-size="11" fill="#607d8b">VARCHAR2(500)</text>
+<text x="1350" y="962" font-size="12" font-weight="400" fill="#263238">SORT_ORDER</text>
+<text x="1540" y="962" font-size="11" fill="#607d8b">NUMBER(3)</text>
+<text x="1350" y="983" font-size="12" font-weight="400" fill="#263238">MANDATORY / ACTIVE</text>
+<text x="1540" y="983" font-size="11" fill="#607d8b">CHAR(1)</text>
+<rect x="960" y="850" width="330" height="139" rx="4" fill="#f4f9fc" stroke="#1f78a8" stroke-width="1.6"/>
+<rect x="960" y="850" width="330" height="30" rx="4" fill="#1f78a8"/>
+<text x="970" y="870" font-size="13" font-weight="700" fill="#fff">HRD.HRD_PROBATION_CRITERIA_DTL</text>
+<text x="970" y="899" font-size="12" font-weight="700" fill="#c62828">PROBATION_CRITERIA_DTL_ID</text>
+<text x="1160" y="899" font-size="11" fill="#607d8b">NUMBER(12)</text>
+<text x="1282" y="899" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
+<text x="970" y="920" font-size="12" font-weight="400" fill="#1565c0">PROBATION_EVAL_ID</text>
+<text x="1160" y="920" font-size="11" fill="#607d8b">NUMBER(12)</text>
+<text x="1282" y="920" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
+<text x="970" y="941" font-size="12" font-weight="400" fill="#1565c0">CRITERIA_ID</text>
+<text x="1160" y="941" font-size="11" fill="#607d8b">NUMBER(5)</text>
+<text x="1282" y="941" font-size="10" font-weight="700" fill="#1565c0" text-anchor="end">FK</text>
+<text x="970" y="962" font-size="12" font-weight="400" fill="#263238">RATING</text>
+<text x="1160" y="962" font-size="11" fill="#607d8b">NUMBER(1)</text>
+<text x="970" y="983" font-size="12" font-weight="400" fill="#263238">REMARKS</text>
+<text x="1160" y="983" font-size="11" fill="#607d8b">VARCHAR2(1000)</text>
 <rect x="1340" y="330" width="330" height="181" rx="4" fill="#f4f9fc" stroke="#1f78a8" stroke-width="1.6"/>
 <rect x="1340" y="330" width="330" height="30" rx="4" fill="#1f78a8"/>
 <text x="1350" y="350" font-size="13" font-weight="700" fill="#fff">HRD.HRD_PROBATION_JOB_LOG</text>
 <text x="1350" y="379" font-size="12" font-weight="700" fill="#c62828">PROBATION_JOB_LOG_ID</text>
-<text x="1530" y="379" font-size="11" fill="#607d8b">NUMBER(12)</text>
+<text x="1540" y="379" font-size="11" fill="#607d8b">NUMBER(12)</text>
 <text x="1662" y="379" font-size="10" font-weight="700" fill="#c62828" text-anchor="end">PK</text>
 <text x="1350" y="400" font-size="12" font-weight="400" fill="#263238">RUN_START / RUN_END</text>
-<text x="1530" y="400" font-size="11" fill="#607d8b">DATE</text>
+<text x="1540" y="400" font-size="11" fill="#607d8b">DATE</text>
 <text x="1350" y="421" font-size="12" font-weight="400" fill="#263238">EMPLOYEES_SCANNED</text>
-<text x="1530" y="421" font-size="11" fill="#607d8b">NUMBER(7)</text>
+<text x="1540" y="421" font-size="11" fill="#607d8b">NUMBER(7)</text>
 <text x="1350" y="442" font-size="12" font-weight="400" fill="#263238">QUEUES_CREATED</text>
-<text x="1530" y="442" font-size="11" fill="#607d8b">NUMBER(7)</text>
+<text x="1540" y="442" font-size="11" fill="#607d8b">NUMBER(7)</text>
 <text x="1350" y="463" font-size="12" font-weight="400" fill="#263238">EXCEPTIONS</text>
-<text x="1530" y="463" font-size="11" fill="#607d8b">NUMBER(7)</text>
+<text x="1540" y="463" font-size="11" fill="#607d8b">NUMBER(7)</text>
 <text x="1350" y="484" font-size="12" font-weight="400" fill="#263238">RUN_STATUS</text>
-<text x="1530" y="484" font-size="11" fill="#607d8b">VARCHAR2(10)</text>
+<text x="1540" y="484" font-size="11" fill="#607d8b">VARCHAR2(10)</text>
 <text x="1350" y="505" font-size="12" font-weight="400" fill="#263238">ERROR_MSG</text>
-<text x="1530" y="505" font-size="11" fill="#607d8b">VARCHAR2(4000)</text>
+<text x="1540" y="505" font-size="11" fill="#607d8b">VARCHAR2(4000)</text>
 <path d="M580,176 L470,176 L470,134 L360,134" fill="none" stroke="#455a64" stroke-width="1.5" marker-end="url(#m)"/>
 <text x="366" y="170" font-size="10" fill="#455a64">MRNO / EVALUATOR_MRNO</text>
 <path d="M580,197 L490,197 L490,405 L360,405" fill="none" stroke="#455a64" stroke-width="1.5" marker-end="url(#m)"/>
@@ -243,12 +292,15 @@
 <path d="M580,705 L480,705 L480,764 L360,764" fill="none" stroke="#455a64" stroke-width="1.5" marker-end="url(#m)"/>
 <text x="366" y="758" font-size="10" fill="#455a64">DEPARTMENT_ID</text>
 <path d="M960,155 L940,155" fill="none" stroke="#455a64" stroke-width="1.5" marker-end="url(#m)"/>
-<path d="M1290,176 L1340,134" fill="none" stroke="#455a64" stroke-width="1.5" marker-end="url(#m)"/>
+<path d="M1340,155 L1320,155 L1320,74 L948,74 L948,122 L940,122" fill="none" stroke="#455a64" stroke-width="1.5" marker-end="url(#m)"/>
 <path d="M960,395 L945,395 L945,140 L940,140" fill="none" stroke="#455a64" stroke-width="1.5" marker-end="url(#m)"/>
+<path d="M960,915 L955,915 L955,148 L940,148" fill="none" stroke="#455a64" stroke-width="1.5" marker-end="url(#m)"/>
+<path d="M1290,936 L1340,894" fill="none" stroke="#455a64" stroke-width="1.5" marker-end="url(#m)"/>
 <path d="M960,665 L950,665 L950,130 L940,130" fill="none" stroke="#455a64" stroke-width="1.5" marker-end="url(#m)"/>
-<path d="M360,960 L470,960 L470,1000 L1315,1000 L1315,458 L1292,458" fill="none" stroke="#455a64" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m)"/>
-<text x="560" y="993" font-size="11" fill="#455a64">ACTING_FOR read at routing (approver on leave) → ACTING_FOR_MRNO (logical, no FK)</text>
-<text x="580" y="840" font-size="11" fill="#455a64">Approver resolved from DEPARTMENT_HEAD / DEPARTMENT_MANAGER or APPROVER_MRNO</text>
+<path d="M360,960 L470,960 L470,1140 L1315,1140 L1315,458 L1292,458" fill="none" stroke="#455a64" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m)"/>
+<text x="560" y="1133" font-size="11" fill="#455a64">ACTING_FOR read at routing (approver on leave) → ACTING_FOR_MRNO (logical, no FK)</text>
+<text x="580" y="840" font-size="11" fill="#455a64">Approver = DEPT HEAD, DEPT MANAGER or APPROVER_MRNO</text>
 <text x="1340" y="560" font-size="11" fill="#455a64">Standalone run log of the daily job (NFR-OPS-01)</text>
-<text x="30" y="1045" font-size="11" fill="#78909c">Red = primary key · Blue = foreign key · All new tables also carry USER_ID, TERMINAL, TRN_DATE, ORIGINAL_*, ORG_ID, ZON_ID, LOC_ID, WS_SYNC_DATE (filled by triggers).</text>
+<text x="1340" y="595" font-size="11" fill="#455a64">Evidence files: existing table, reused</text>
+<text x="30" y="1185" font-size="11" fill="#78909c">Red = primary key · Blue = foreign key · All new tables also carry USER_ID, TERMINAL, TRN_DATE, ORIGINAL_*, ORG_ID, ZON_ID, LOC_ID, WS_SYNC_DATE (filled by triggers).</text>
 </svg>

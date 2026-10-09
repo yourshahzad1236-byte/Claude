@@ -24,7 +24,8 @@ session in this repo loads them as project skills.
 - **CR documents:** when the user asks for a CR, use the client CR template and section rules in
   `skills/skmch-ba-srs/references/cr-template.md` (graphical swimlane workflow, GUI prototypes in
   the SKMCH GUI template, bullets for rules/data/impact; NFR, Risks and other excluded sections
-  left out). "DD" means the
+  left out; no "Notes / open questions" in CR FR blocks; no Approval History / Finalization
+  tabs on screens). "DD" means the
   **Design Document**: short, bullet points, ER diagram, technical details and GUI pages, made
   with `skmch-sa-design-rfc` as described in that file.
 - For the other stages use the matching skill in `skills/` (`skmch-sa-srs-review`,

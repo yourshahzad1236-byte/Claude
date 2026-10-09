@@ -5,7 +5,7 @@ template". It is the client-facing document. The detailed SRS (`srs-structure.md
 the internal source of IDs, acceptance criteria and impact analysis. The CR may merge the
 SRS detail into this layout when the user asks for one combined document.
 
-Status: FINAL template agreed with the user on 09-Oct-2026 (reference CR: `docs/CR-2026-XXX-PEV/CR-2026-XXX-PEV_CR_v0.4`).
+Status: FINAL template agreed with the user on 09-Oct-2026 (reference CR: `docs/CR-2026-XXX-PEV/CR-2026-XXX-PEV_CR_v0.5`).
 Use exactly this layout for every new CR.
 GUI template supplied on 09-Oct-2026 (see "GUI template" below).
 
@@ -21,7 +21,9 @@ GUI template supplied on 09-Oct-2026 (see "GUI template" below).
    `scripts/example_workflow_diagram.py`.
 3. **Functional Requirements**: for each client requirement: a short description with summary
    acceptance, **Prototype (GUI)** images in the SKMCH GUI template, then the **detailed FR-NNN**
-   blocks (Given/When/Then acceptance criteria). Generator: `scripts/gui_prototypes_skmch_template.py`.
+   blocks (Description, Priority, Source, Business rules, Given/When/Then acceptance criteria).
+   **Do not include a "Notes / open questions" line in CR FR blocks** (open questions stay in the SRS
+   and go to the user in chat). Generator: `scripts/gui_prototypes_skmch_template.py`.
    Use synthetic data only; never copy real names or codes from screenshots.
 4. **Business Rules, Data and Access**: all **bullets**, no tables:
    - 4.1 Business rules (RULE-NN, one line each)
@@ -60,8 +62,12 @@ Also write `<CR-ID>_01_ddl.sql` and `<CR-ID>_99_rollback.sql`. File: `<CR-ID>_De
   until the page code is assigned.
 - **No left menu.** The screen is full width on a light grey body with a white card.
 - **Tabs** under the header: the active tab is filled blue `#1f78a8` with white text,
-  inactive tabs are bold dark text on light grey (e.g. Evaluation Criteria |
-  Recommendation | Approval History | Finalization).
+  inactive tabs are bold dark text on light grey. Tabs hold **data-entry sections only**:
+  **no "Approval History" or "Finalization" tabs** (show approval history as a routing bar /
+  history region on approval and monitoring pages; HR finalization is its own page).
+  For evaluation forms the first tab is **Evaluation Criteria** (Parameter | Description |
+  Rating | Remarks, Rating Scale panel, score bar), e.g. probation evaluation tabs:
+  Evaluation Criteria | Assignments | Training Needs | Recommendation.
 - **Region header**: slate blue-grey bar `#57768f`, white bold title (e.g. "Behavioral
   Assessment", "Employee Information").
 - **Grid**: thin light-grey cell borders, bold column headers, two-row header when
