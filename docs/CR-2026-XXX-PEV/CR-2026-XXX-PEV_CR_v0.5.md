@@ -44,17 +44,17 @@ HR wants the employee probation evaluation to run automatically, on time and wit
 
 ## 1.2 Background
 
-Employees joining SKMCH serve a probation period. Before the probation end date, the employee's supervisor must evaluate the employee so that HR can decide on confirmation. The requested change automates this: the system starts the evaluation on time, routes it through the approval hierarchy and delivers it to HR, while keeping the probation request status current at every step (M-01 to M-08). How the process is run today (manual forms, e-mail or an existing screen) was not described in the request (Q-02).
+Employees joining SKMCH serve a probation period. Before the probation end date, the employee's supervisor must evaluate the employee so that HR can decide on confirmation. Today this is done through an e-mailed alert with an Excel evaluation form (see 1.3). The requested change moves the evaluation online: the system starts it automatically, routes it through the approval hierarchy, delivers it to HR and keeps its status up to date (M-01 to M-13).
 
 ## 1.3 Current process (As-Is)
 
-1. A probation-ending alert is e-mailed **15 or 30 days before** the probation end date, with an **Excel probation evaluation form** attached (alert 001 in `HRD.ALERTS`; the queue in `HRD.HR_ALERT_QUEUE` is visible to HR users only).
-2. The concerned person (supervisor) fills in the Excel form and sends it back by e-mail as feedback. The form's main sections are:
+- **Step 1:** A probation-ending alert is e-mailed **15 or 30 days before** the probation end date, with an **Excel probation evaluation form** attached (alert 001 in `HRD.ALERTS`; the queue in `HRD.HR_ALERT_QUEUE` is visible to HR users only).
+- **Step 2:** The concerned person (supervisor) fills in the Excel form and sends it back by e-mail as feedback. The form's main sections are:
    - Assignments completed during the probationary period, rated 1 to 5;
    - Employee's assessed training needs;
    - Specific reasons and observations, with evidence, if the employee is not recommended for confirmation.
-3. HR follows up manually, then records the confirm/extend decision on form S07FRM00362 (`PKG_S07FRM00362`, `HRD.EVALUATION_ALERT_QUEUE`).
-4. Approvals above the supervisor are obtained outside the system, and nobody can see where an evaluation stands.
+- **Step 3:** HR follows up manually, then records the confirm/extend decision on form S07FRM00362 (`PKG_S07FRM00362`, `HRD.EVALUATION_ALERT_QUEUE`).
+- **Step 4:** Approvals above the supervisor are obtained outside the system, and nobody can see where an evaluation stands.
 
 Pain points: offline Excel forms, late or missing feedback, no approval routing, no evidence kept with the record, and no status tracking.
 

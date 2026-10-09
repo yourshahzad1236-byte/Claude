@@ -88,6 +88,10 @@ Also write `<CR-ID>_01_ddl.sql` and `<CR-ID>_99_rollback.sql`. File: `<CR-ID>_De
 
 - Schema first (`sdlc-conventions.md` §7). Every object named in the CR must exist in the
   schema or be marked NEW (proposed).
+- Render the CR with **`templates/cr_template.docx`** (cover and header say "Change Request"), not
+  the SRS template. Use bullets (not numbered lists) for any list after the first one, because the
+  renderer continues numbering across lists. Also export a PDF copy (`soffice --headless
+  --convert-to pdf`) for preview.
 - Embed images in Word: render the Markdown with `scripts/render_docx.py`, then replace
   each `![caption](path)` paragraph with the picture at page width (python-docx).
 - Files: `docs/<CR-ID>/<CR-ID>_CR_v<version>.md/.docx`, `<CR-ID>_Workflow.svg/.png`,
