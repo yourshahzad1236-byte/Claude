@@ -39,6 +39,16 @@ Non-functional Requirements, Risks, System Interfaces (hardware/software), Assum
 questions list, Appendix A (MoM breakdown), Appendix B (traceability). Give the blocking open
 questions to the user in chat instead.
 
+## Jira attachment (one file)
+
+When the user asks for one file to attach in Jira, produce `<CR-ID>_CR_Jira_v<ver>.pdf` (and .docx)
+from the CR containing **only**: a short control table, **1. Client Needs / Expectations** (main
+text only), **2. Workflow** (swimlane image + step table), **3. Functional Requirements**, with
+`Requirement N` (summary bullets + acceptance summary) followed by its `Prototype` images. No FR/RULE/
+Q/IMP IDs, no detailed FR blocks, rules, impact analysis or appendices. Render with
+`templates/cr_template.docx` and export to PDF. When sharing several artifacts, bundle them in
+one zip (`<CR-ID>_v<ver>_all.zip`).
+
 ## Design Document (DD) for a CR
 
 When the user asks for the **DD** (it means **Design Document**, not data dictionary), use the

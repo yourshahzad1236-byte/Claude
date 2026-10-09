@@ -1,4 +1,4 @@
--- CR-2026-XXX-PEV_99_rollback.sql : rollback of Automated Employee Probation Evaluation (Design v0.2, DRAFT)
+-- CR-2026-XXX-PEV_99_rollback.sql : rollback of Automated Employee Probation Evaluation (Design v0.3, DRAFT)
 -- Reverse order of deployment. WARNING: drops all probation evaluation data created since go-live.
 -- Export HRD_PROBATION_% tables first if the data must be kept.
 -- EMPLOYEE_PROBATION_HISTORY / INFORMATION changes made by HR finalize are business data and are NOT reverted.

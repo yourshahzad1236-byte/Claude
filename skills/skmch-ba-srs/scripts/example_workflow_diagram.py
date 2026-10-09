@@ -48,7 +48,7 @@ box(300,Y[0],"Daily job finds employees|with probation end date|≤ 15 days away
 box(540,Y[0],"Create evaluation queue|for respective supervisor|+ e-mail notification","sys")
 box(540,Y[1],"Open &amp; fill|Probation Evaluation form")
 dia(790,Y[1],"Save or|Submit?")
-box(1010,Y[2],"Level n approver|reviews evaluation")
+box(1010,Y[2],"Level n approver reviews|(dept probation hierarchy,|else leave hierarchy)")
 dia(1250,Y[2],"Approve or|Return?")
 dia(1470,Y[2],"Last|level?")
 box(1470,Y[0],"Route completed evaluation|to HR Department queue","sys")
@@ -98,7 +98,7 @@ def lg(x,shape,txt):
     a(f'<text x="{x+44}" y="{ly+56}" font-size="13" fill="#37474f">{txt}</text>')
 for i,(s,t) in enumerate([("sys","Automatic system step"),("task","User action"),("dia","Decision"),("ret","Return / correction path"),("exc","Exception handling"),("end","End")]):
     lg(40+i*270,s,t)
-a(f'<text x="40" y="{ly+92}" font-size="12.5" fill="#37474f">Rules: one evaluation per employee per probation period · Draft is visible only to the evaluator · approver on leave → acting-for person (HRD.ACTING_FOR, to be confirmed) ·</text>')
+a(f'<text x="40" y="{ly+92}" font-size="12.5" fill="#37474f">Rules: approvers = department probation hierarchy if set up, otherwise the organizational leave hierarchy · one evaluation per probation period · Draft visible only to evaluator · acting-for on leave</text>')
 a(f'<text x="40" y="{ly+108}" font-size="12.5" fill="#c62828" font-weight="600">PROBATION_STATUS = \'C\' (Confirmed) is written only at the HR step — it sets CONFIRMATION_DATE and starts incentives. Employee separates before HR completes → CANCELLED.</text>')
 a('</svg>')
 open(sys.argv[1],'w').write("\n".join(o))
