@@ -13,6 +13,14 @@ session in this repo loads them as project skills.
   skill for SRS work.
 - Outputs go to `docs/<CR-ID>/` (use `CR-YYYY-XXX` when no CR number is given), named
   `<CR-ID>_SRS_v<version>.docx` per `shared/references/sdlc-conventions.md`.
+- **Schema first (BA and Solution Architect work):** before producing any SRS, SRS review
+  or design output, read the SKMCH database schema per §7 of
+  `shared/references/sdlc-conventions.md`: the DDL exports the user attaches
+  (`HRD_SCHEMA.txt`, `DEFINITIONS_SCHEMA.txt`, `PAYROLL_SCHMA.txt`, `HIS.txt`,
+  `REGISTRATION.txt`), `schema/` (including `schema/skm/*_SCHEMA.md`) and the
+  `skmch-hrd-system-context` index when built. Verify every object name, read the triggers
+  of affected tables, and reuse existing frameworks before proposing new objects. Never
+  copy passwords or host IPs found in package bodies into any document.
 - For the other stages use the matching skill in `skills/` (`skmch-sa-srs-review`,
   `skmch-sa-design-rfc`, `skmch-dev-implement`, `skmch-qa-testcases`, `skmch-qa-execute`,
   `skmch-sysdoc-update`).

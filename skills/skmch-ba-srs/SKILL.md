@@ -29,6 +29,18 @@ summary.
 
 ## Workflow
 
+### Step 0: Load the database schema (mandatory, before anything else)
+Follow §7 of `references/sdlc-conventions.md`. Every time you are given input (MoM, notes,
+an SRS, review comments, a design question), first read the SKMCH schema: DDL exports
+attached in the conversation (`HRD_SCHEMA.txt`, `DEFINITIONS_SCHEMA.txt`,
+`PAYROLL_SCHMA.txt`, `HIS.txt`, `REGISTRATION.txt`), `schema/` in the repository
+(including `schema/skm/*_SCHEMA.md`), and the `skmch-hrd-system-context` index if it is
+built. Search the business nouns in the input, map hits to their owning objects, read the
+triggers of every table involved, and check for existing frameworks (pending tasks,
+alerts, hierarchy/routing, appraisal) before proposing anything new. Use what you find in the As-Is (§2), the open questions and the impact analysis. FRs still say what, not how.
+State in the output which schema sources you used. Only if no schema is available at all,
+continue with every impact item marked PROVISIONAL and ask the user to attach the schema.
+
 ### Step 1: Break the MoM into numbered points
 Split the notes into atomic statements and number them `M-01`, `M-02` … in the order they
 appear. Keep the original wording. Classify each point as one of:

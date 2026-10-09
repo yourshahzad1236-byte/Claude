@@ -85,16 +85,55 @@ Example: `CR-2026-014_Design_v0.1.docx`.
 
 ## 7. Finding HRD system context (schema, packages, APEX, system docs)
 
-Before any impact analysis, look for context in this order and say which one you used:
-1. Files the user attached in this conversation, or the Claude Project's knowledge.
-2. The `skmch-hrd-system-context` skill, if it is available. Read its `INDEX.md` first
-   and then open only the object files you need.
-3. In Claude Code: the folder named by the `SKMCH_SCHEMA_DIR` environment variable, or
-   `schema/` in the repository.
+**Mandatory for the BA (SRS), SA review and SA design skills:** read the SKMCH database
+schema *before* writing any output, not just before the impact analysis. Requirements,
+review findings and design must reflect what already exists (tables, statuses,
+triggers, queues, workflow engines), so that nothing is duplicated and no side effect is
+missed.
 
-If none of these is available, continue, but mark every impact item `PROVISIONAL`,
-add a prominent note in the document that impact analysis was done without schema
-access, and tell the user.
+Look for schema context in this order. Use **every** source that is available, and say
+in the document which ones you used:
+1. Schema files the user attached in this conversation, or the Claude Project's
+   knowledge. The SKMCH DDL exports are PL/SQL Developer exports named like
+   `HRD_SCHEMA.txt`, `DEFINITIONS_SCHEMA.txt`, `PAYROLL_SCHMA.txt`, `HIS.txt` and
+   `REGISTRATION.txt`. They contain tables, triggers, views, sequences, synonyms,
+   package specs **and package bodies**.
+2. In Claude Code: the folder named by the `SKMCH_SCHEMA_DIR` environment variable,
+   `schema/` in the repository (including `schema/skm/*_SCHEMA.md`, the per-schema
+   summary of tables, columns, keys, triggers, view SQL and package specs), and any DDL
+   files placed there.
+3. The `skmch-hrd-system-context` skill, if it has been indexed. Read its `INDEX.md`
+   first, then open only the object files you need.
+
+How to read the large DDL exports efficiently (never read them whole):
+- Every object starts with a header line `prompt Creating <type> <NAME>` (types: table,
+  trigger, view, package, package body, function, procedure, sequence, synonym). Files
+  may have Windows line endings (`\r\n`), so strip `\r` before matching.
+- Search the business nouns from the input (for example probation, leave, appraisal,
+  queue, hierarchy, alert, roster, payroll) and map each hit back to its owning object
+  header. That gives the where-used list of each table or column across packages,
+  triggers and views.
+- For every table you plan to read or change, list its triggers and read their source.
+  Triggers often have side effects (queues, payroll, confirmation dates).
+- Before proposing a new table, package or job, check whether an existing one already
+  does the job: generic pending-task, alert, hierarchy/routing, appraisal or document
+  frameworks. Reuse, or explain why not.
+- Cross-schema links: HRD → DEFINITIONS (lookups, departments, designations),
+  REGISTRATION (`MRNO` is shared with patient registration), PAYROLL, HIS (users,
+  assignments), SECURITY.
+
+Evidence: cite the schema file and object for each impact item, and use the confidence
+values `Confirmed in schema` (with "code-verified" when you read the body),
+`Likely`, or `PROVISIONAL – not verified`. APEX applications and Oracle Forms are usually
+not in the exports. Say so, and keep screen-level items `Likely`/`PROVISIONAL`.
+
+Secrets: the exports can contain hardcoded host IPs and passwords inside package
+bodies. Never copy those values into any document. Mention to the user that they exist
+if relevant.
+
+If no schema source is available at all, continue, but mark every impact item
+`PROVISIONAL`, add a prominent note in the document that impact analysis was done
+without schema access, and ask the user to attach the schema files.
 
 ## 8. Healthcare-specific checks (apply at every stage)
 
