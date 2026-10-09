@@ -1,4 +1,4 @@
--- CR-2026-XXX-PEV_01_ddl.sql : DDL for Automated Employee Probation Evaluation (Design v0.3, DRAFT)
+-- CR-2026-XXX-PEV_01_ddl.sql : DDL for Automated Employee Probation Evaluation (Design v0.4, DRAFT)
 -- Target: Oracle 19c+, schema HRD. Run as HRD (or a DBA with ALTER SESSION SET CURRENT_SCHEMA = HRD).
 -- Run once on a clean schema; pre-check (Design 12.1 step 0) must return 0 rows for all new object names.
 -- Rollback: CR-2026-XXX-PEV_99_rollback.sql
@@ -68,13 +68,13 @@ CREATE TABLE HRD.HRD_PROBATION_HIERARCHY_MST (
   CONSTRAINT FK_PROB_HIER_DEPT FOREIGN KEY (DEPARTMENT_ID) REFERENCES DEFINITIONS.DEPARTMENT (DEPARTMENT_ID),
   CONSTRAINT FK_PROB_HIER_APPROVER FOREIGN KEY (APPROVER_MRNO) REFERENCES HRD.INFORMATION (MRNO),
   CONSTRAINT CK_PROB_HIER_LEVEL CHECK (LEVEL_NO BETWEEN 1 AND 9),
-  CONSTRAINT CK_PROB_HIER_SOURCE CHECK (APPROVER_SOURCE IN ('DH','DM','EMP')),
+  CONSTRAINT CK_PROB_HIER_SOURCE CHECK (APPROVER_SOURCE IN ('SUP','DH','DM','EMP')),
   CONSTRAINT CK_PROB_HIER_EMP CHECK (APPROVER_SOURCE <> 'EMP' OR APPROVER_MRNO IS NOT NULL),
   CONSTRAINT CK_PROB_HIER_ACTIVE CHECK (ACTIVE IN ('Y','N'))
 );
 -- RULE-14: departments with no rows here follow the organizational leave hierarchy (LEAVE_QUEUE_HIERARCHY / supervisor chain)
 CREATE UNIQUE INDEX HRD.IDX_PROB_HIER_DEPT_LEVEL ON HRD.HRD_PROBATION_HIERARCHY_MST (DEPARTMENT_ID, LEVEL_NO);
-COMMENT ON TABLE HRD.HRD_PROBATION_HIERARCHY_MST IS 'CR-2026-XXX-PEV: department probation approval levels (DH=department head, DM=department manager, EMP=named employee); departments without rows use the leave hierarchy';
+COMMENT ON TABLE HRD.HRD_PROBATION_HIERARCHY_MST IS 'CR-2026-XXX-PEV: department probation approval levels (SUP=employee supervisor, DH=department head, DM=department manager, EMP=named employee e.g. director); departments not yet set up use the generic leave hierarchy';
 
 -- DS-01 Evaluation header
 CREATE TABLE HRD.HRD_PROBATION_EVAL_MST (

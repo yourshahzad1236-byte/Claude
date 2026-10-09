@@ -113,7 +113,7 @@ tr="".join(f'<tr class="{"hl" if i==0 else ""}"><td class="lnk">{a}</td><td>{b}<
 page("01_pending_tasks","My Pending Tasks | Probation Evaluation | EMP-TEST-0100 | Nadia Khan",
  reg("Probation Evaluations Assigned to Me",f'<table class="g"><tr><th>Employee No.</th><th>Employee Name</th><th>Department</th><th class="c">Probation End</th><th class="c">Days Left</th><th>Status</th><th>Action</th></tr>{tr}</table>',False)
  +'<div class="sum"><span>Total: <b>3</b></span><span>Returned: <b style="color:#c8102e">1</b></span><span>Due within 7 days: <b style="color:#ef8a17">1</b></span></div>'
- +'<div class="info">Tasks are created automatically 15 days before the probation end date and replace the Excel evaluation form sent with the probation-ending alert.</div>',[("ex","Exit")])
+ +'<div class="info">Tasks are created automatically 15 days before the probation end date. The existing probation-ending alert continues unchanged.</div>',[("ex","Exit")])
 
 # 2 Assignments tab
 page("02_evaluation_criteria",f"Probation Evaluation {T} | EMP-TEST-0001 | Ali Raza",
@@ -143,7 +143,7 @@ page("05_evaluation_recommendation",f"Probation Evaluation {T} | EMP-TEST-0001 |
 # 5 Approver
 ASSIGN[1]=("Completed medication-administration competency assessment",3)
 CRIT[1]=("Quality of Work","Work is accurate, thorough and meets required standards.",3)
-route='<div class="route"><span class="st d">✔ Evaluator · Submitted 15-Oct-2026</span>➜<span class="st c">● Level 1 · HOD Nursing (you)</span>➜<span class="st">Level 2 · Director Nursing</span>➜<span class="st">HR Department</span></div><div style="margin-top:6px;font-size:11px;color:#555">Route source: <b>Department probation hierarchy</b> (if not set up for the department: organizational leave hierarchy)</div>'
+route='<div class="route"><span class="st d">✔ Evaluator · Submitted 15-Oct-2026</span>➜<span class="st c">● Level 1 · HOD Nursing (you)</span>➜<span class="st">Level 2 · Director Nursing</span>➜<span class="st">HR Department</span></div><div style="margin-top:6px;font-size:11px;color:#555">Route source: <b>Department probation hierarchy</b> (if not set up for the department: generic leave hierarchy)</div>'
 page("06_approver",f"Probation Evaluation – Approval {T} | EMP-TEST-0001 | Ali Raza",
  reg("Approval Routing",route)+EMPREG+tabs(TABS,"Evaluation Criteria")
  +reg("Probation Assessment (read-only)",'<div class="row"><div style="flex:1">'+crit_grid(False,False)+'</div>'+SCALE+'</div>'+summary(30,26))
@@ -151,10 +151,10 @@ page("06_approver",f"Probation Evaluation – Approval {T} | EMP-TEST-0001 | Ali
  ,[("pv","Preview"),("rt","Return to Evaluator"),("sv","Approve"),("ex","Exit")])
 
 # 6 Hierarchy setup
-hr=[("Nursing","1","Head of Department","DEPARTMENT_HEAD","Y"),("Nursing","2","Director Nursing","Named employee","Y"),("Pharmacy","1","Head of Department","DEPARTMENT_HEAD","Y"),("Pharmacy","2","Department Manager","DEPARTMENT_MANAGER","Y")]
+hr=[("Nursing","1","Supervisor","Employee supervisor","Y"),("Nursing","2","Head of Department","DEPARTMENT_HEAD","Y"),("Nursing","3","Director Nursing","Named employee","Y"),("Pharmacy","1","Head of Department","DEPARTMENT_HEAD","Y"),("Pharmacy","2","Department Manager","DEPARTMENT_MANAGER","Y")]
 tr="".join(f'<tr><td><div class="in sel">{a}</div></td><td class="c" style="width:80px"><div class="in">{b}</div></td><td><div class="in sel">{c}</div></td><td>{d}</td><td class="c">{chip("Active","#1e8a3c") if e=="Y" else chip("Inactive","#9aa3ab")}</td></tr>' for a,b,c,d,e in hr)
 page("07_hierarchy_setup",f"Probation Approval Hierarchy Setup {T}",
- '<div class="info">Levels are applied in order on Submit. <b>Departments without a probation hierarchy here follow the organizational leave hierarchy</b> already defined in the system (department leave hierarchy, else supervisor chain with Recommend/Approve authority). Approver on leave → acting-for person (HRD.ACTING_FOR).</div>'
+ '<div class="info">Levels are applied in order on Submit. <b>Departments without a probation hierarchy here follow the organizational leave hierarchy</b> already defined in the system (generic reporting chain, e.g. supervisor → HOD → manager → director, then HR). Approver on leave → acting-for person (HRD.ACTING_FOR).</div>'
  +reg("Hierarchy Levels",f'<div style="padding:8px 12px"><span class="b sb">＋ Add Row</span></div><table class="g"><tr><th>Department</th><th class="c">Level</th><th>Approver Role</th><th>Resolved From</th><th class="c">Status</th></tr>{tr}</table>',False)
  ,[("sv","Save"),("ex","Exit")])
 
