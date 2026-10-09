@@ -26,30 +26,9 @@ HR wants the employee probation evaluation to run automatically, on time and wit
 
 # 2. Workflow
 
-```
- Daily job (probation end date - 15 days)
-          |
-          v
- [1] Evaluation queue created  ----------------------------->  Status: EVALUATION PENDING
-     for respective supervisor
-          |
-          v
- [2] Supervisor fills evaluation
-          |--- Save as Draft  ---------------------------------> Status: DRAFT (stays with supervisor)
-          |--- Submit (mandatory fields validated) ------------> Status: PENDING APPROVAL - LEVEL 1
-          v
- [3] Approval hierarchy (Level 1 .. Level n)
-          |--- Approve -> next level --------------------------> Status: PENDING APPROVAL - LEVEL n
-          |--- Return with comments -> back to supervisor -----> Status: RETURNED
-          v
- [4] Last level approves -> routed to HR queue ---------------> Status: FORWARDED TO HR
-          |
-          v
- [5] HR processes (Confirm / Extend / ...) -------------------> Status: COMPLETED
-                                                               (probation record set to Confirmed
-                                                                only at this step)
- Any time before HR: employee separates -> CANCELLED
-```
+![Probation evaluation workflow](CR-2026-XXX-PEV_Workflow.png)
+
+*Editable source: `CR-2026-XXX-PEV_Workflow.svg`.*
 
 | Step | Actor | Action | System result | Status after step |
 |---|---|---|---|---|
