@@ -5,7 +5,8 @@ template". It is the client-facing document. The detailed SRS (`srs-structure.md
 the internal source of IDs, acceptance criteria and impact analysis. The CR may merge the
 SRS detail into this layout when the user asks for one combined document.
 
-Status: agreed with the user on 09-Oct-2026 (reference CR: `docs/CR-2026-XXX-PEV/CR-2026-XXX-PEV_CR_v0.3`).
+Status: FINAL template agreed with the user on 09-Oct-2026 (reference CR: `docs/CR-2026-XXX-PEV/CR-2026-XXX-PEV_CR_v0.4`).
+Use exactly this layout for every new CR.
 GUI template supplied on 09-Oct-2026 (see "GUI template" below).
 
 ## Section layout (final, client-approved rules)
@@ -22,19 +23,17 @@ GUI template supplied on 09-Oct-2026 (see "GUI template" below).
    acceptance, **Prototype (GUI)** images in the SKMCH GUI template, then the **detailed FR-NNN**
    blocks (Given/When/Then acceptance criteria). Generator: `scripts/gui_prototypes_skmch_template.py`.
    Use synthetic data only; never copy real names or codes from screenshots.
-4. **Non-functional Requirements**: **short bullets**, one line each (`NFR-ID Name: requirement +
-   target`). No tables.
-5. **Business Rules, Data and Access**: all **bullets**, no tables:
-   - 5.1 Business rules (RULE-NN, one line each)
-   - 5.2 Data requirements, **only items needed for development**: field, type/length, mandatory,
+4. **Business Rules, Data and Access**: all **bullets**, no tables:
+   - 4.1 Business rules (RULE-NN, one line each)
+   - 4.2 Data requirements, **only items needed for development**: field, type/length, mandatory,
      validation, source table.column. Point to the Design Document for full table definitions.
-   - 5.3 User roles and access (one bullet per role)
-   - 5.4 Reports and notifications (one bullet each)
-6. **Impact Analysis**: **bullets and plain text**, no tables: 6.1 Business, 6.2 System, 6.3 Database,
-   6.4 Risks (with mitigation). Keep the key schema facts (trigger side effects, reused frameworks).
+   - 4.3 User roles and access (one bullet per role)
+   - 4.4 Reports and notifications (one bullet each)
+5. **Impact Analysis**: **bullets and plain text**, no tables: 5.1 Business, 5.2 System, 5.3 Database.
+   Keep the key schema facts (trigger side effects, reused frameworks). **No Risks sub-section.**
 
 **Exclude from the CR** (keep them in the internal SRS or give them in chat):
-System Interfaces (hardware/software), Assumptions/Constraints/Dependencies, Open Points / open
+Non-functional Requirements, Risks, System Interfaces (hardware/software), Assumptions/Constraints/Dependencies, Open Points / open
 questions list, Appendix A (MoM breakdown), Appendix B (traceability). Give the blocking open
 questions to the user in chat instead.
 

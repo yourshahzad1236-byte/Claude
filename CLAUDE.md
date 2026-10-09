@@ -23,7 +23,8 @@ session in this repo loads them as project skills.
   copy passwords or host IPs found in package bodies into any document.
 - **CR documents:** when the user asks for a CR, use the client CR template and section rules in
   `skills/skmch-ba-srs/references/cr-template.md` (graphical swimlane workflow, GUI prototypes in
-  the SKMCH GUI template, bullets for NFR/rules/impact, excluded sections). "DD" means the
+  the SKMCH GUI template, bullets for rules/data/impact; NFR, Risks and other excluded sections
+  left out). "DD" means the
   **Design Document**: short, bullet points, ER diagram, technical details and GUI pages, made
   with `skmch-sa-design-rfc` as described in that file.
 - For the other stages use the matching skill in `skills/` (`skmch-sa-srs-review`,
