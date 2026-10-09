@@ -135,12 +135,13 @@ Keep it short:
   (skmch-sa-srs-review) if you want a pre-check."
 
 ## CR document (client template)
-When the user asks for a CR, or for requirements "in my template", also produce the CR
-document per `references/cr-template.md`: Client Needs / Expectations, Workflow (graphical
-swimlane diagram), Functional Requirements (each with a GUI prototype image), System
-Interfaces (hardware/software), Open Points. Never use ASCII diagrams or ASCII screen
-sketches in a CR. GUI prototypes always follow the SKMCH GUI template in that file. Follow any user-specific rules recorded in that file (sections to
-shorten, sections to exclude, GUI template).
+When the user asks for a CR, or for requirements "in my template", produce the CR document
+per `references/cr-template.md`: Client Needs (all sub-sections), Workflow (graphical swimlane
+diagram), Functional Requirements (GUI prototype images in the SKMCH GUI template + detailed
+FRs), NFR as short bullets, Business Rules/Data/Access as bullets (data items needed for
+development only), Impact Analysis as bullets. Exclude System Interfaces, Assumptions, Open
+Points and the appendices; give open questions in chat. Never use ASCII diagrams or screens.
+When the user asks for the "DD", it means the Design Document (see `cr-template.md`).
 
 ## Reference files
 - `references/cr-template.md`: client CR layout, workflow-diagram and GUI-prototype rules.

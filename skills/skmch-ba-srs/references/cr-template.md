@@ -5,37 +5,54 @@ template". It is the client-facing document. The detailed SRS (`srs-structure.md
 the internal source of IDs, acceptance criteria and impact analysis. The CR may merge the
 SRS detail into this layout when the user asks for one combined document.
 
-Status: agreed with the user on 09-Oct-2026 (reference CR: `docs/CR-2026-XXX-PEV/`).
-**PENDING from the user:** (a) which sections to shorten into bullets and (b) which
-sections to exclude from the CR. Apply those rules here as soon as they are supplied.
-Until then, follow the layout below. The GUI template was supplied on 09-Oct-2026 (see
-"GUI template" below).
+Status: agreed with the user on 09-Oct-2026 (reference CR: `docs/CR-2026-XXX-PEV/CR-2026-XXX-PEV_CR_v0.3`).
+GUI template supplied on 09-Oct-2026 (see "GUI template" below).
 
-## Section layout (client template, in this order)
+## Section layout (final, client-approved rules)
 
-1. **Client Needs / Expectations**: what the client wants and why, the expected benefits,
-   and how it works today (taken from the schema, e.g. existing queues and screens).
-2. **Workflow**: a **graphical swimlane diagram** (PNG embedded, editable SVG beside it),
-   never ASCII. Lanes per actor (System, requester/evaluator, approvers, HR or the owning
-   department). Show decisions, return/correction paths, exception paths and a status tag
-   at each step, plus a legend. After it, a short step table: actor, action, status.
-   Generator to adapt: `scripts/example_workflow_diagram.py` (SVG → PNG with headless
-   Chromium).
-3. **Functional Requirements**: one block per client requirement:
-   - **Requirement N: <title>**: short description and summary acceptance.
-   - **Prototype (GUI)**: real screen mock-ups as images, never ASCII, always in the
-     **SKMCH GUI template** below. Use synthetic data only (`EMP-TEST-0001` etc.); never
-     copy real names or employee codes from screenshots the user shares. Mark form content
-     as indicative until the business supplies it. Generator to adapt:
-     `scripts/gui_prototypes_skmch_template.py` (HTML → PNG with headless Chromium). Keep
-     the HTML sources in `docs/<CR-ID>/prototypes/src/`.
-   - (Merged version only) Detailed FR-NNN with Given/When/Then acceptance criteria.
-4. **System Interfaces**
-   - **Hardware Interfaces**: devices, servers, mail server, biometric/RFID, printers
-     ("no new hardware" is a valid answer).
-   - **Software Interfaces**: table of the real schema objects/systems used (verified
-     against the DDL), direction, data exchanged and purpose.
-5. **Open Points**: blocking questions for the client.
+0. **Control table**: CR No., module/schema, requested by, prepared by, version/status, date, sources.
+   Add one note line: Q-NN / A-NN references point to the internal SRS, and table details are in
+   the Design Document.
+1. **Client Needs / Expectations**: keep all sub-sections: Business requirements, Background,
+   Current process (As-Is, from the schema), Scope (in/out), Stakeholders, Definitions, References.
+2. **Workflow**: **graphical swimlane diagram** (PNG embedded, editable SVG beside it), never
+   ASCII, plus a short step table (actor, action, status) and the status model. Generator:
+   `scripts/example_workflow_diagram.py`.
+3. **Functional Requirements**: for each client requirement: a short description with summary
+   acceptance, **Prototype (GUI)** images in the SKMCH GUI template, then the **detailed FR-NNN**
+   blocks (Given/When/Then acceptance criteria). Generator: `scripts/gui_prototypes_skmch_template.py`.
+   Use synthetic data only; never copy real names or codes from screenshots.
+4. **Non-functional Requirements**: **short bullets**, one line each (`NFR-ID Name: requirement +
+   target`). No tables.
+5. **Business Rules, Data and Access**: all **bullets**, no tables:
+   - 5.1 Business rules (RULE-NN, one line each)
+   - 5.2 Data requirements, **only items needed for development**: field, type/length, mandatory,
+     validation, source table.column. Point to the Design Document for full table definitions.
+   - 5.3 User roles and access (one bullet per role)
+   - 5.4 Reports and notifications (one bullet each)
+6. **Impact Analysis**: **bullets and plain text**, no tables: 6.1 Business, 6.2 System, 6.3 Database,
+   6.4 Risks (with mitigation). Keep the key schema facts (trigger side effects, reused frameworks).
+
+**Exclude from the CR** (keep them in the internal SRS or give them in chat):
+System Interfaces (hardware/software), Assumptions/Constraints/Dependencies, Open Points / open
+questions list, Appendix A (MoM breakdown), Appendix B (traceability). Give the blocking open
+questions to the user in chat instead.
+
+## Design Document (DD) for a CR
+
+When the user asks for the **DD** (it means **Design Document**, not data dictionary), use the
+`skmch-sa-design-rfc` skill, written **short and in bullet points**, and include:
+1. a design summary and key decisions (bullets);
+2. the DB structure: an **ER diagram image** (SVG → PNG), new tables as column bullets (name,
+   type, key, purpose), and the existing objects used, with read/write and trigger side effects;
+3. technical details: package procedures (signature, numbered logic, error codes, commit owner),
+   changes to existing packages, jobs, notifications, authorization schemes;
+4. **GUI pages**: one bullet block per APEX page (regions, items, buttons → package calls,
+   authorization) followed by the prototype image;
+5. requirement coverage (list every FR/NFR ID explicitly, then run `check_trace.py`);
+6. change inventory / deployment order, verification, rollback, dependents to retest;
+7. risks and open questions (bullets).
+Also write `<CR-ID>_01_ddl.sql` and `<CR-ID>_99_rollback.sql`. File: `<CR-ID>_Design_v<ver>.md/.docx`.
 
 ## GUI template (SKMCH APEX screens, from the user's "PA Performance S07APX00340" screen)
 

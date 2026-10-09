@@ -21,10 +21,11 @@ session in this repo loads them as project skills.
   `skmch-hrd-system-context` index when built. Verify every object name, read the triggers
   of affected tables, and reuse existing frameworks before proposing new objects. Never
   copy passwords or host IPs found in package bodies into any document.
-- **CR documents:** when the user asks for a CR, use the client CR template in
-  `skills/skmch-ba-srs/references/cr-template.md`: graphical swimlane workflow and GUI
-  screen prototypes in the SKMCH GUI template (images, never ASCII), plus any section rules
-  recorded there.
+- **CR documents:** when the user asks for a CR, use the client CR template and section rules in
+  `skills/skmch-ba-srs/references/cr-template.md` (graphical swimlane workflow, GUI prototypes in
+  the SKMCH GUI template, bullets for NFR/rules/impact, excluded sections). "DD" means the
+  **Design Document**: short, bullet points, ER diagram, technical details and GUI pages, made
+  with `skmch-sa-design-rfc` as described in that file.
 - For the other stages use the matching skill in `skills/` (`skmch-sa-srs-review`,
   `skmch-sa-design-rfc`, `skmch-dev-implement`, `skmch-qa-testcases`, `skmch-qa-execute`,
   `skmch-sysdoc-update`).
