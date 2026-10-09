@@ -134,7 +134,17 @@ Keep it short:
 - Next step: "Share with the Solution Architect for review. I can also run an SRS review
   (skmch-sa-srs-review) if you want a pre-check."
 
+## CR document (client template)
+When the user asks for a CR, or for requirements "in my template", also produce the CR
+document per `references/cr-template.md`: Client Needs / Expectations, Workflow (graphical
+swimlane diagram), Functional Requirements (each with a GUI prototype image), System
+Interfaces (hardware/software), Open Points. Never use ASCII diagrams or ASCII screen
+sketches in a CR. Follow any user-specific rules recorded in that file (sections to
+shorten, sections to exclude, GUI template).
+
 ## Reference files
+- `references/cr-template.md`: client CR layout, workflow-diagram and GUI-prototype rules.
+- `scripts/example_workflow_diagram.py`, `scripts/example_gui_prototypes.py`: generators to adapt for a new CR.
 - `references/sdlc-conventions.md`: IDs, statuses, file names, rules (read first).
 - `references/srs-structure.md`: exact SRS section layout.
 - `references/requirement-writing.md`: how to write FRs/NFRs, ambiguity list, healthcare NFR checklist, quality gate.
