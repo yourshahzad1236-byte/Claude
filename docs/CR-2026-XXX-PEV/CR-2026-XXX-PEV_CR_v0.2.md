@@ -128,7 +128,7 @@ Allowed statuses and transitions are defined in RULE-08 (section 5.1 below).
 
 # 3. Functional Requirements
 
-Each requirement below follows the client template: a summary, a GUI prototype (Oracle APEX-style screen mock-up; sample data is synthetic and form content is indicative until HR supplies the evaluation form) and the detailed functional requirements (FR-NNN) with acceptance criteria. Editable prototype sources: `prototypes/src/`.
+Each requirement below follows the client template: a summary, a GUI prototype (screen mock-up in the SKMCH APEX GUI template — title bar with page code, tabs, region headers, rating-scale panel, score bar, Preview/Save/Exit buttons; sample data is synthetic and form content is indicative until HR supplies the evaluation form) and the detailed functional requirements (FR-NNN) with acceptance criteria. Editable prototype sources: `prototypes/src/`.
 
 ## 3.1 Requirement 1: Automatic generation of the probation evaluation queue
 
@@ -150,9 +150,9 @@ Each requirement below follows the client template: a summary, a GUI prototype (
 
 ### 3.1.1 Prototype (GUI): Supervisor pending tasks (queue)
 
-**Screen 1 – My Pending Tasks (supervisor queue)**
+**Screen 1 – My Pending Tasks (supervisor)**
 
-![Screen 1 – My Pending Tasks (supervisor queue)](prototypes/01_pending_tasks.png)
+![Screen 1 – My Pending Tasks (supervisor)](prototypes/01_pending_tasks.png)
 
 ### 3.1.2 Detailed functional requirements
 
@@ -245,9 +245,13 @@ Each requirement below follows the client template: a summary, a GUI prototype (
 
 ### 3.2.1 Prototype (GUI): Probation Evaluation form
 
-**Screen 2 – Probation Evaluation form (Save as Draft / Submit)**
+**Screen 2 – Probation Evaluation: Evaluation Criteria tab (Save as Draft / Submit)**
 
-![Screen 2 – Probation Evaluation form (Save as Draft / Submit)](prototypes/02_evaluation_form.png)
+![Screen 2 – Probation Evaluation: Evaluation Criteria tab (Save as Draft / Submit)](prototypes/02_evaluation_form.png)
+
+**Screen 3 – Probation Evaluation: Recommendation tab**
+
+![Screen 3 – Probation Evaluation: Recommendation tab](prototypes/03_evaluation_recommendation.png)
 
 ### 3.2.2 Detailed functional requirements
 
@@ -317,13 +321,13 @@ Each requirement below follows the client template: a summary, a GUI prototype (
 
 ### 3.3.1 Prototype (GUI): Approver screen and hierarchy setup
 
-**Screen 3 – Approver view (Approve / Return)**
+**Screen 4 – Approval view (Approve / Return to Evaluator)**
 
-![Screen 3 – Approver view (Approve / Return)](prototypes/03_approver.png)
+![Screen 4 – Approval view (Approve / Return to Evaluator)](prototypes/04_approver.png)
 
-**Screen 4 – Probation Approval Hierarchy Setup (HR Administrator)**
+**Screen 5 – Probation Approval Hierarchy Setup (HR Administrator)**
 
-![Screen 4 – Probation Approval Hierarchy Setup (HR Administrator)](prototypes/04_hierarchy_setup.png)
+![Screen 5 – Probation Approval Hierarchy Setup (HR Administrator)](prototypes/05_hierarchy_setup.png)
 
 ### 3.3.2 Detailed functional requirements
 
@@ -395,13 +399,13 @@ Each requirement below follows the client template: a summary, a GUI prototype (
 
 ### 3.4.1 Prototype (GUI): HR queue and decision
 
-**Screen 5 – HR queue of completed evaluations**
+**Screen 6 – HR queue of completed evaluations**
 
-![Screen 5 – HR queue of completed evaluations](prototypes/05_hr_queue.png)
+![Screen 6 – HR queue of completed evaluations](prototypes/06_hr_queue.png)
 
-**Screen 6 – HR Decision (Confirm / Extend)**
+**Screen 7 – HR Finalization (Confirm / Extend)**
 
-![Screen 6 – HR Decision (Confirm / Extend)](prototypes/06_hr_decision.png)
+![Screen 7 – HR Finalization (Confirm / Extend)](prototypes/07_hr_decision.png)
 
 ### 3.4.2 Detailed functional requirements
 
@@ -445,9 +449,9 @@ Each requirement below follows the client template: a summary, a GUI prototype (
 
 ### 3.5.1 Prototype (GUI): Monitoring and status history
 
-**Screen 7 – Probation Evaluation Monitoring with status history (HR)**
+**Screen 8 – Probation Evaluation Monitoring and status history (HR)**
 
-![Screen 7 – Probation Evaluation Monitoring with status history (HR)](prototypes/07_monitoring.png)
+![Screen 8 – Probation Evaluation Monitoring and status history (HR)](prototypes/08_monitoring.png)
 
 ### 3.5.2 Detailed functional requirements
 

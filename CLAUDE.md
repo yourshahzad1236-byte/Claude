@@ -23,7 +23,8 @@ session in this repo loads them as project skills.
   copy passwords or host IPs found in package bodies into any document.
 - **CR documents:** when the user asks for a CR, use the client CR template in
   `skills/skmch-ba-srs/references/cr-template.md`: graphical swimlane workflow and GUI
-  screen prototypes (images, never ASCII), plus any section rules recorded there.
+  screen prototypes in the SKMCH GUI template (images, never ASCII), plus any section rules
+  recorded there.
 - For the other stages use the matching skill in `skills/` (`skmch-sa-srs-review`,
   `skmch-sa-design-rfc`, `skmch-dev-implement`, `skmch-qa-testcases`, `skmch-qa-execute`,
   `skmch-sysdoc-update`).

@@ -139,12 +139,12 @@ When the user asks for a CR, or for requirements "in my template", also produce 
 document per `references/cr-template.md`: Client Needs / Expectations, Workflow (graphical
 swimlane diagram), Functional Requirements (each with a GUI prototype image), System
 Interfaces (hardware/software), Open Points. Never use ASCII diagrams or ASCII screen
-sketches in a CR. Follow any user-specific rules recorded in that file (sections to
+sketches in a CR. GUI prototypes always follow the SKMCH GUI template in that file. Follow any user-specific rules recorded in that file (sections to
 shorten, sections to exclude, GUI template).
 
 ## Reference files
 - `references/cr-template.md`: client CR layout, workflow-diagram and GUI-prototype rules.
-- `scripts/example_workflow_diagram.py`, `scripts/example_gui_prototypes.py`: generators to adapt for a new CR.
+- `scripts/example_workflow_diagram.py`, `scripts/gui_prototypes_skmch_template.py`: workflow-diagram and GUI-prototype generators (SKMCH GUI template) to adapt for a new CR.
 - `references/sdlc-conventions.md`: IDs, statuses, file names, rules (read first).
 - `references/srs-structure.md`: exact SRS section layout.
 - `references/requirement-writing.md`: how to write FRs/NFRs, ambiguity list, healthcare NFR checklist, quality gate.
