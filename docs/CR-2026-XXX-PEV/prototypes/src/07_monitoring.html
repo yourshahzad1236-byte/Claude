@@ -1,0 +1,55 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}body{margin:0;background:#e9edf2;font-family:'Segoe UI',Arial,sans-serif;font-size:13px;color:#263238}
+.app{width:1280px;background:#f5f7fa;border:1px solid #cfd8dc}
+.top{height:46px;background:#0b5394;color:#fff;display:flex;align-items:center;padding:0 16px;gap:14px}
+.top .logo{font-weight:700;font-size:15px}.top .sp{flex:1}.top .u{font-size:12px;opacity:.9}
+.top .bell{background:#e53935;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:700}
+.wrap{display:flex}
+.nav{width:200px;background:#263238;color:#cfd8dc;min-height:100%;padding:10px 0}
+.nav div{padding:9px 18px;font-size:13px}.nav .on{background:#0b5394;color:#fff;border-left:4px solid #64b5f6}
+.nav .h{font-size:10px;letter-spacing:1px;color:#78909c;padding-top:14px}
+.main{flex:1;padding:16px 18px 20px}
+.bc{font-size:11px;color:#78909c;margin-bottom:4px}
+h1{font-size:20px;margin:0 0 12px;color:#0b3d6e;display:flex;align-items:center;gap:10px}
+.badge{font-size:11px;font-weight:700;color:#fff;border-radius:11px;padding:3px 10px}
+.b-pend{background:#5c6bc0}.b-draft{background:#78909c}.b-appr{background:#ef6c00}.b-ret{background:#c62828}.b-hr{background:#2e7d32}.b-done{background:#1b5e20}
+.region{background:#fff;border:1px solid #dfe3e8;border-radius:4px;margin-bottom:14px}
+.region .rh{padding:9px 14px;border-bottom:1px solid #e6e9ed;font-weight:700;font-size:14px;color:#37474f;display:flex;align-items:center;gap:8px}
+.region .rb{padding:12px 14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 22px}
+.f label{display:block;font-size:11px;color:#607d8b;margin-bottom:3px}.f label.req:after{content:' *';color:#c62828}
+.v{border:1px solid #cfd8dc;background:#f7f9fb;border-radius:3px;padding:6px 8px;min-height:30px}
+.in{border:1px solid #90a4ae;background:#fff;border-radius:3px;padding:6px 8px;min-height:30px}
+.in.err{border-color:#c62828;background:#fff5f5}
+.sel:after{content:'▾';float:right;color:#607d8b}
+table{border-collapse:collapse;width:100%}th{background:#eef2f6;text-align:left;font-size:12px;color:#455a64;padding:8px;border-bottom:2px solid #d5dbe1}
+td{padding:8px;border-bottom:1px solid #edf0f3;font-size:13px}tr:hover td{background:#f3f8fd}
+.lnk{color:#0b5394;font-weight:600}
+.btns{display:flex;gap:8px;justify-content:flex-end;padding:10px 14px;border-top:1px solid #e6e9ed;background:#fafbfc}
+.btn{padding:7px 16px;border-radius:3px;border:1px solid #b0bec5;background:#fff;font-weight:600;font-size:13px}
+.btn.p{background:#0b5394;color:#fff;border-color:#0b5394}.btn.g{background:#2e7d32;color:#fff;border-color:#2e7d32}.btn.r{background:#fff;color:#c62828;border-color:#c62828}
+.tb{display:flex;gap:8px;align-items:center;margin-bottom:10px}.search{border:1px solid #b0bec5;border-radius:3px;padding:6px 10px;width:260px;color:#90a4ae;background:#fff}
+.chip{display:inline-block;border-radius:10px;padding:2px 9px;font-size:11px;font-weight:700;color:#fff}
+.rating span{display:inline-block;width:28px;height:28px;line-height:26px;text-align:center;border:1px solid #b0bec5;border-radius:3px;margin-right:4px;background:#fff}
+.rating span.on{background:#0b5394;color:#fff;border-color:#0b5394}
+.radio span{margin-right:18px}.radio i{display:inline-block;width:13px;height:13px;border:2px solid #607d8b;border-radius:50%;vertical-align:-2px;margin-right:5px}.radio i.on{border-color:#0b5394;background:radial-gradient(#0b5394 45%,#fff 50%)}
+.note{font-size:12px;color:#607d8b}.alert{background:#fff8e1;border:1px solid #ffe082;border-radius:4px;padding:8px 12px;font-size:12px;margin-bottom:12px}
+.alert.e{background:#ffebee;border-color:#ef9a9a;color:#b71c1c}
+.route{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.step{border:1px solid #cfd8dc;border-radius:16px;padding:5px 12px;font-size:12px;background:#fff}
+.step.done{background:#e8f5e9;border-color:#66bb6a}.step.cur{background:#fff3e0;border-color:#ef6c00;font-weight:700}.arw{color:#90a4ae}
+.kpi{display:flex;gap:12px;margin-bottom:14px}.k{flex:1;background:#fff;border:1px solid #dfe3e8;border-radius:4px;padding:10px 14px}.k b{font-size:22px;display:block}.k span{font-size:11px;color:#607d8b}
+.tl{border-left:2px solid #cfd8dc;margin-left:8px;padding-left:16px}.tl div{position:relative;margin-bottom:10px}.tl div:before{content:'';position:absolute;left:-23px;top:3px;width:10px;height:10px;border-radius:50%;background:#0b5394}
+.ta{min-height:54px}
+</style></head><body><div class="app">
+<div class="top"><span class="logo">SKMCH · HRD</span><span>Human Resource System</span><span class="sp"></span><span class="bell">3</span><span class="u">EMP-TEST-0100 ▾</span></div>
+<div class="wrap"><div class="nav"><div class="h">MENU</div><div class="">Home</div><div class="">My Pending Tasks</div><div class="">Probation Evaluation</div><div class="on">HR Monitoring</div><div class="">Approval Hierarchy Setup</div><div class="">Reports</div></div><div class="main"><div class="bc">HRD ▸ HR ▸ Probation Monitoring</div><h1>Probation Evaluation Monitoring </h1>
+<div class="kpi"><div class="k"><b>42</b><span>Open evaluations</span></div><div class="k"><b style="color:#ef6c00">18</b><span>Pending approval</span></div><div class="k"><b style="color:#c62828">3</b><span>Overdue</span></div><div class="k"><b style="color:#6d4c41">2</b><span>No supervisor</span></div><div class="k"><b style="color:#2e7d32">7</b><span>With HR</span></div></div>
+<div class="region"><div class="rh">Filters</div><div class="rb"><div class="grid" style="grid-template-columns:repeat(5,1fr)">
+<div class="f"><label>Status</label><div class="in sel">All</div></div><div class="f"><label>Department</label><div class="in sel">All</div></div><div class="f"><label>Evaluator</label><div class="in"></div></div><div class="f"><label>Probation end from</label><div class="in">01-Oct-2026</div></div><div class="f"><label>to</label><div class="in">31-Oct-2026</div></div></div></div></div>
+<div class="region"><div class="rh">Evaluations</div><div class="rb" style="padding:0"><table><tr><th>Employee</th><th>Department</th><th>Probation End</th><th>Status</th><th>Currently with</th><th>Flag / Action</th></tr><tr><td class="lnk">EMP-TEST-0001 · Ali Raza</td><td>Nursing</td><td>25-Oct-2026</td><td><span class="chip" style="background:#ef6c00">PENDING APPROVAL – L2</span></td><td>Director Nursing</td><td></td></tr><tr><td class="lnk">EMP-TEST-0005 · Asad Iqbal</td><td>Finance</td><td>08-Oct-2026</td><td><span class="chip" style="background:#78909c">DRAFT</span></td><td>EMP-TEST-0110</td><td><span class="chip" style="background:#c62828">OVERDUE</span></td></tr><tr><td class="lnk">EMP-TEST-0006 · Zoya Haider</td><td>Laboratory</td><td>20-Oct-2026</td><td><span class="chip" style="background:#6d4c41">NO SUPERVISOR</span></td><td>HR exception list</td><td><span class="lnk">Assign evaluator ›</span></td></tr><tr><td class="lnk">EMP-TEST-0004 · Hina Malik</td><td>Administration</td><td>30-Oct-2026</td><td><span class="chip" style="background:#2e7d32">FORWARDED TO HR</span></td><td>HR</td><td></td></tr><tr><td class="lnk">EMP-TEST-0009 · Usman Tariq</td><td>Nursing</td><td>01-Oct-2026</td><td><span class="chip" style="background:#1b5e20">COMPLETED</span></td><td>—</td><td></td></tr></table></div></div>
+<div class="region"><div class="rh">Status History – EMP-TEST-0001 · Ali Raza</div><div class="rb"><div class="tl">
+<div><b>10-Oct-2026 02:00</b> · SYSTEM · Queue created → <span class="chip" style="background:#5c6bc0">EVALUATION PENDING</span></div>
+<div><b>12-Oct-2026 10:15</b> · EMP-TEST-0100 · Saved → <span class="chip" style="background:#78909c">DRAFT</span></div>
+<div><b>15-Oct-2026 09:40</b> · EMP-TEST-0100 · Submitted → <span class="chip" style="background:#ef6c00">PENDING APPROVAL – L1</span></div>
+<div><b>16-Oct-2026 14:05</b> · EMP-TEST-0200 · Approved “Agreed” → <span class="chip" style="background:#ef6c00">PENDING APPROVAL – L2</span></div></div>
+<div class="note">History is read-only and cannot be edited or deleted.</div></div></div></div></div></div></body></html>

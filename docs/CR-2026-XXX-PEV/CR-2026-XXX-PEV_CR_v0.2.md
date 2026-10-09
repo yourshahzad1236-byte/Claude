@@ -128,7 +128,7 @@ Allowed statuses and transitions are defined in RULE-08 (section 5.1 below).
 
 # 3. Functional Requirements
 
-Each requirement below follows the client template: a summary, a prototype and the detailed functional requirements (FR-NNN) with acceptance criteria.
+Each requirement below follows the client template: a summary, a GUI prototype (Oracle APEX-style screen mock-up; sample data is synthetic and form content is indicative until HR supplies the evaluation form) and the detailed functional requirements (FR-NNN) with acceptance criteria. Editable prototype sources: `prototypes/src/`.
 
 ## 3.1 Requirement 1: Automatic generation of the probation evaluation queue
 
@@ -148,21 +148,11 @@ Each requirement below follows the client template: a summary, a prototype and t
 
 *Traceability: FR-001 – FR-006, RULE-01 – RULE-03.*
 
-### 3.1.1 Prototype: Supervisor pending tasks (queue)
+### 3.1.1 Prototype (GUI): Supervisor pending tasks (queue)
 
-```
-+--------------------------------------------------------------------------------+
-| My Pending Tasks                                          [Search........] (Go)|
-+--------------------------------------------------------------------------------+
-| Task                         | Employee            | Dept     | Prob. End  | Due  |
-|------------------------------|---------------------|----------|------------|------|
-| Probation Evaluation         | EMP-TEST-0001  Ali  | Nursing  | 25-Oct-2026| 15 d |
-| Probation Evaluation (Draft) | EMP-TEST-0002  Sara | Pharmacy | 18-Oct-2026|  8 d |
-| Probation Eval. (RETURNED)   | EMP-TEST-0003  Omar | Radiology| 14-Oct-2026|  4 d |
-+--------------------------------------------------------------------------------+
-| Row click -> opens Probation Evaluation form                                   |
-+--------------------------------------------------------------------------------+
-```
+**Screen 1 – My Pending Tasks (supervisor queue)**
+
+![Screen 1 – My Pending Tasks (supervisor queue)](prototypes/01_pending_tasks.png)
 
 ### 3.1.2 Detailed functional requirements
 
@@ -253,33 +243,11 @@ Each requirement below follows the client template: a summary, a prototype and t
 
 *Traceability: FR-007 – FR-010, RULE-04, RULE-05, NFR-DAT-03.*
 
-### 3.2.1 Prototype: Probation Evaluation form
+### 3.2.1 Prototype (GUI): Probation Evaluation form
 
-```
-+--------------------------------------------------------------------------------+
-| Probation Evaluation                         Status: DRAFT    Eval No: PEV-000123|
-+--------------------------------------------------------------------------------+
-| Employee : EMP-TEST-0001  Ali Raza        Designation: Staff Nurse             |
-| Dept     : Nursing                        Joining    : 26-Apr-2026             |
-| Probation: 26-Apr-2026 to 25-Oct-2026     Evaluator  : EMP-TEST-0100           |
-+--------------------------------------------------------------------------------+
-| Evaluation Criteria (from HR template)        Rating (1-5)    Remarks          |
-|  1. Job knowledge                    *        [ 4 v ]         [............]   |
-|  2. Quality of work                  *        [ 3 v ]         [............]   |
-|  3. Punctuality & attendance         *        [ 5 v ]         [............]   |
-|  4. Teamwork & communication         *        [ 4 v ]         [............]   |
-+--------------------------------------------------------------------------------+
-| Recommendation *  ( ) Confirm   ( ) Extend probation   ( ) Not to confirm      |
-| Extend by (days)  [ .... ]   (enabled only for Extend)                         |
-| Evaluator comments [................................................]          |
-| Attachments        [Choose file]                                               |
-+--------------------------------------------------------------------------------+
-| Approval history / comments (read-only)                                        |
-+--------------------------------------------------------------------------------+
-|                                  [ Save as Draft ]  [ Submit ]  [ Cancel ]     |
-+--------------------------------------------------------------------------------+
-  * = mandatory on Submit only
-```
+**Screen 2 – Probation Evaluation form (Save as Draft / Submit)**
+
+![Screen 2 – Probation Evaluation form (Save as Draft / Submit)](prototypes/02_evaluation_form.png)
 
 ### 3.2.2 Detailed functional requirements
 
@@ -347,29 +315,15 @@ Each requirement below follows the client template: a summary, a prototype and t
 
 *Traceability: FR-011 – FR-014, RULE-06, RULE-09.*
 
-### 3.3.1 Prototype: Approver screen and hierarchy setup
+### 3.3.1 Prototype (GUI): Approver screen and hierarchy setup
 
-```
-+--------------------------------------------------------------------------------+
-| Probation Evaluation - Approval       Status: PENDING APPROVAL - LEVEL 1 (HOD) |
-+--------------------------------------------------------------------------------+
-| [ Evaluation form shown read-only, as in Requirement 2 ]                       |
-+--------------------------------------------------------------------------------+
-| Routing:  L1 HOD Nursing (you) -> L2 Director Nursing -> HR                    |
-| Approver comments [..........................................................] |
-|                                    [ Approve ]   [ Return to Evaluator ]       |
-+--------------------------------------------------------------------------------+
+**Screen 3 – Approver view (Approve / Return)**
 
-+--------------------------------------------------------------------------------+
-| Probation Approval Hierarchy Setup  (HR Administrator)                         |
-+--------------------------------------------------------------------------------+
-| Department / Grade | Level | Approver role        | Active |                   |
-|--------------------|-------|----------------------|--------|                   |
-| Nursing            |   1   | Head of Department   |   Y    |                   |
-| Nursing            |   2   | Director Nursing     |   Y    |                   |
-| (All)              |   1   | Head of Department   |   Y    |   [Add] [Save]    |
-+--------------------------------------------------------------------------------+
-```
+![Screen 3 – Approver view (Approve / Return)](prototypes/03_approver.png)
+
+**Screen 4 – Probation Approval Hierarchy Setup (HR Administrator)**
+
+![Screen 4 – Probation Approval Hierarchy Setup (HR Administrator)](prototypes/04_hierarchy_setup.png)
 
 ### 3.3.2 Detailed functional requirements
 
@@ -439,28 +393,15 @@ Each requirement below follows the client template: a summary, a prototype and t
 
 *Traceability: FR-015, FR-016, RULE-07, IMP-15, IMP-34.*
 
-### 3.4.1 Prototype: HR queue and decision
+### 3.4.1 Prototype (GUI): HR queue and decision
 
-```
-+--------------------------------------------------------------------------------+
-| HR - Completed Probation Evaluations                                           |
-+--------------------------------------------------------------------------------+
-| Employee           | Dept     | Prob. End  | Recommendation | Approved by | Act |
-|--------------------|----------|------------|----------------|-------------|-----|
-| EMP-TEST-0001 Ali  | Nursing  | 25-Oct-2026| Confirm        | L2 Director | [>] |
-| EMP-TEST-0004 Hina | Admin    | 30-Oct-2026| Extend 90 days | L1 HOD      | [>] |
-+--------------------------------------------------------------------------------+
+**Screen 5 – HR queue of completed evaluations**
 
-+--------------------------------------------------------------------------------+
-| HR Decision - EMP-TEST-0001                     Status: FORWARDED TO HR        |
-+--------------------------------------------------------------------------------+
-| [ Evaluation + approval trail, read-only ]                                     |
-| HR decision *   ( ) Confirm   ( ) Extend   ( ) Other (per HR policy)           |
-| Extension days  [ .... ]   Reason [ LOV: Probation Reasons v ]                 |
-| HR remarks      [..........................................................]   |
-|                                         [ Complete ]   [ Cancel ]              |
-+--------------------------------------------------------------------------------+
-```
+![Screen 5 – HR queue of completed evaluations](prototypes/05_hr_queue.png)
+
+**Screen 6 – HR Decision (Confirm / Extend)**
+
+![Screen 6 – HR Decision (Confirm / Extend)](prototypes/06_hr_decision.png)
 
 ### 3.4.2 Detailed functional requirements
 
@@ -502,27 +443,11 @@ Each requirement below follows the client template: a summary, a prototype and t
 
 *Traceability: FR-017 – FR-020, RULE-08, RULE-10, NFR-AUD-01/02.*
 
-### 3.5.1 Prototype: Monitoring and status history
+### 3.5.1 Prototype (GUI): Monitoring and status history
 
-```
-+--------------------------------------------------------------------------------+
-| Probation Evaluation Monitoring (HR)                                           |
-| Status [All v]  Dept [All v]  Evaluator [.....]  End date [from] - [to]  (Go)  |
-+--------------------------------------------------------------------------------+
-| Employee          | Prob. End  | Status                 | With          | Flag    |
-|-------------------|------------|------------------------|---------------|---------|
-| EMP-TEST-0001 Ali | 25-Oct-2026| Pending Approval - L2  | Director Nurs.|         |
-| EMP-TEST-0005 Asad| 08-Oct-2026| Draft                  | EMP-TEST-0110 | OVERDUE |
-| EMP-TEST-0006 Zoya| 20-Oct-2026| (no supervisor)        | HR exception  | ASSIGN  |
-+--------------------------------------------------------------------------------+
+**Screen 7 – Probation Evaluation Monitoring with status history (HR)**
 
- Status history - EMP-TEST-0001
- | Date-time         | From               | To                    | By            | Comments |
- | 10-Oct-2026 02:00 | -                  | Evaluation Pending    | SYSTEM        |          |
- | 12-Oct-2026 10:15 | Evaluation Pending | Draft                 | EMP-TEST-0100 |          |
- | 15-Oct-2026 09:40 | Draft              | Pending Approval - L1 | EMP-TEST-0100 |          |
- | 16-Oct-2026 14:05 | Pending Appr. - L1 | Pending Approval - L2 | EMP-TEST-0200 | Agreed   |
-```
+![Screen 7 – Probation Evaluation Monitoring with status history (HR)](prototypes/07_monitoring.png)
 
 ### 3.5.2 Detailed functional requirements
 
