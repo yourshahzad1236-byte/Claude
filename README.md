@@ -61,6 +61,10 @@ All IDs, statuses and rules are defined once in `shared/references/sdlc-conventi
    documents in its knowledge, for extra context.
 
 ### Claude Code (developers, architects)
+On an SKMCH Windows workstation with VS Code and the Claude Code extension installed, run
+`setup/setup-claude-vscode.ps1` once. It checks Git and Python, installs the Python
+packages, writes `.claude\settings.json` so Claude can read `D:\SKM_SCHEMA`, and installs
+the private schema skill if you pass `-PrivateSkill`. Then add the plugin:
 ```
 /plugin marketplace add yourshahzad1236-byte/claude
 /plugin install skmch-sdlc@skmch
